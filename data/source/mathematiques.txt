@@ -1,0 +1,105 @@
+calcul_mental|Calculez 7,2 + 0,085.|7,285|7,805|7,2085|7,925|On aligne les décimales : 7,200 + 0,085 = 7,285.
+calcul_mental|Que vaut 15 − 3,75 ?|11,25|12,25|11,75|12,75|15,00 − 3,75 = 11,25.
+calcul_mental|Calculez 0,6 × 0,04.|0,024|0,24|0,0024|2,4|6 × 4 = 24 ; les deux facteurs totalisent trois chiffres après la virgule.
+calcul_mental|Quel est le quotient de 8,4 par 0,7 ?|12|1,2|120|7,7|Multiplier les deux nombres par 10 donne 84 ÷ 7 = 12.
+calcul_mental|Calculez 125 × 16 mentalement.|2 000|1 800|1 600|2 500|125 × 8 = 1 000 ; doubler donne 2 000.
+calcul_mental|Quelle somme obtient-on avec 2,35 + 4,8 + 0,65 ?|7,8|7,08|8,8|6,8|2,35 + 0,65 = 3 ; puis 3 + 4,8 = 7,8.
+calcul_mental|Que vaut 99 × 37 ?|3 663|3 763|3 563|3 733|100 × 37 − 37 = 3 700 − 37 = 3 663.
+calcul_mental|Divisez 3,6 par 100.|0,036|0,36|0,0036|360|Diviser par 100 déplace la virgule de deux rangs vers la gauche.
+calcul_mental|Quel est le double de 3,075 ?|6,15|6,015|6,075|6,105|3,075 × 2 = 6,150, soit 6,15.
+calcul_mental|Calculez 48 × 25.|1 200|1 000|1 250|1 400|Multiplier par 25 revient à multiplier par 100 puis à diviser par 4 : 4 800 ÷ 4.
+priorites|Calculez 18 − 3 × 4 + 2.|8|62|2|14|La multiplication passe avant : 18 − 12 + 2 = 8.
+priorites|Que vaut (20 + 4) ÷ (8 − 2) ?|4|3|6|8|Les parenthèses donnent 24 et 6 ; 24 ÷ 6 = 4.
+priorites|Calculez 6 + 24 ÷ 3 × 2.|22|10|20|16|Division et multiplication s’effectuent de gauche à droite : 24 ÷ 3 × 2 = 16 ; puis +6.
+priorites|Évaluez 5 × [12 − (3 + 4)].|25|35|45|15|La parenthèse vaut 7 ; le crochet vaut 5 ; 5 × 5 = 25.
+priorites|Que vaut 40 ÷ (2 × 5) + 7 ?|11|107|27|9|Le dénominateur entre parenthèses vaut 10 : 40 ÷ 10 + 7 = 11.
+priorites|Calculez 3² + 2 × 5.|19|45|25|15|3² = 9 et 2 × 5 = 10 ; la somme vaut 19.
+priorites|Quel résultat donne 7 + 3 × (15 − 9) ÷ 2 ?|16|30|13|25|La parenthèse vaut 6 ; 3 × 6 ÷ 2 = 9 ; 7 + 9 = 16.
+priorites|Calculez (8 − 3)² − 4².|9|1|41|21|On calcule 5² − 4² = 25 − 16 = 9.
+fractions|Quelle est la somme de 1/3 et 1/4 ?|7/12|2/7|1/7|5/12|Le dénominateur commun est 12 : 4/12 + 3/12 = 7/12.
+fractions|Simplifiez 42/56.|3/4|2/3|4/5|6/7|Le numérateur et le dénominateur sont divisibles par 14.
+fractions|Combien font les 3/5 de 250 ?|150|125|175|100|250 ÷ 5 = 50 ; 50 × 3 = 150.
+fractions|Quelle fraction est la plus grande ?|5/8|3/5|7/12|1/2|5/8 = 0,625, contre 0,6 ; environ 0,583 ; et 0,5.
+fractions|Calculez 7/8 − 1/4.|5/8|6/4|3/8|3/4|1/4 = 2/8 ; 7/8 − 2/8 = 5/8.
+fractions|Que vaut (2/3) ÷ (4/5) ?|5/6|8/15|6/5|2/5|Diviser par une fraction revient à multiplier par son inverse : 2/3 × 5/4 = 10/12.
+fractions|Un réservoir est rempli aux 5/6. On retire 1/3 de sa capacité totale. Quelle fraction reste remplie ?|1/2|2/3|5/18|1/6|5/6 − 1/3 = 5/6 − 2/6 = 3/6 = 1/2.
+fractions|Quelle fraction correspond à 0,125 ?|1/8|1/4|1/12|1/5|0,125 = 125/1 000 = 1/8.
+fractions|Le tiers d’un budget vaut 18 000 FC. Quel est le budget ?|54 000 FC|6 000 FC|36 000 FC|72 000 FC|Le budget complet contient trois tiers : 18 000 × 3 = 54 000.
+fractions|Quel produit obtient-on avec 9/10 × 5/6 ?|3/4|14/16|2/3|5/12|45/60 se simplifie par 15 et donne 3/4.
+pourcentages|Un article de 80 000 FC bénéficie d’une remise de 15 %. Quel est son nouveau prix ?|68 000 FC|65 000 FC|72 000 FC|92 000 FC|La remise vaut 12 000 FC ; 80 000 − 12 000 = 68 000.
+pourcentages|Un salaire de 240 000 FC augmente de 12,5 %. Quel est le nouveau salaire ?|270 000 FC|252 500 FC|260 000 FC|300 000 FC|12,5 % = 1/8 ; 240 000 ÷ 8 = 30 000. On ajoute cette somme.
+pourcentages|Une valeur passe de 200 à 250. Quel est le taux d’augmentation ?|25 %|20 %|50 %|125 %|La hausse de 50 se rapporte à la valeur initiale : 50/200 = 25 %.
+pourcentages|Après une baisse de 20 %, un prix vaut 64 000 FC. Quel était le prix initial ?|80 000 FC|76 800 FC|84 000 FC|51 200 FC|64 000 représente 80 % du prix initial ; 64 000 ÷ 0,8 = 80 000.
+pourcentages|Un effectif augmente de 10 % puis diminue de 10 %. Quelle est l’évolution globale ?|Baisse de 1 %|Aucune évolution|Hausse de 1 %|Baisse de 2 %|Le coefficient global est 1,10 × 0,90 = 0,99.
+pourcentages|42 dossiers sur 60 sont complets. Quel pourcentage cela représente-t-il ?|70 %|60 %|72 %|75 %|42/60 = 7/10 = 70 %.
+pourcentages|Quel est le montant de 2,5 % de 360 000 FC ?|9 000 FC|900 FC|90 000 FC|8 000 FC|2,5 % = 1/40 ; 360 000 ÷ 40 = 9 000.
+pourcentages|Le taux de remplissage passe de 40 % à 55 %. De combien de points augmente-t-il ?|15 points|37,5 points|55 points|5,5 points|L’écart en points de pourcentage est 55 − 40 = 15. L’augmentation relative serait 37,5 %.
+pourcentages|Sur une population de 500 personnes, 30 % sont des cadres ; parmi ces cadres, 40 % sont des femmes. Combien y a-t-il de femmes cadres ?|60|150|200|120|500 × 0,30 × 0,40 = 60.
+pourcentages|Deux remises successives de 20 % et 25 % équivalent à quelle remise unique ?|40 %|45 %|5 %|50 %|Le prix restant est 0,80 × 0,75 = 0,60 du prix initial, soit 40 % de remise.
+proportionnalite|Six cahiers identiques coûtent 9 000 FC. Combien coûtent dix cahiers ?|15 000 FC|12 000 FC|18 000 FC|16 000 FC|Un cahier vaut 1 500 FC. Dix coûtent 15 000 FC.
+proportionnalite|Douze ouvriers exécutent une tâche en 8 jours. Combien de jours faut-il à 16 ouvriers au même rendement ?|6 jours|10 jours|4 jours|12 jours|La tâche représente 12 × 8 = 96 journées de travail ; 96 ÷ 16 = 6.
+proportionnalite|Une imprimante produit 180 pages en 3 minutes. Combien en produit-elle en 7 minutes au même rythme ?|420|360|540|390|Le débit est de 60 pages par minute ; 60 × 7 = 420.
+proportionnalite|Sur une carte au 1:50 000, deux villes sont distantes de 6 cm. Quelle distance réelle les sépare ?|3 km|30 km|0,3 km|300 km|6 × 50 000 = 300 000 cm, soit 3 km.
+proportionnalite|Un véhicule consomme 8 litres aux 100 km. Quelle quantité faut-il pour 350 km ?|28 litres|35 litres|24 litres|32 litres|8 × 350/100 = 28 litres.
+proportionnalite|Une recette pour 4 personnes exige 300 g de riz. Quelle masse faut-il pour 10 personnes ?|750 g|600 g|900 g|1 200 g|300 ÷ 4 × 10 = 750 g.
+proportionnalite|Trois pompes identiques vident une cuve en 4 heures. Combien de temps faudrait-il à une seule pompe ?|12 heures|4/3 heure|7 heures|8 heures|Le travail total correspond à 3 × 4 = 12 heures d’une pompe.
+proportionnalite|Deux équipes de même rendement traitent 80 dossiers par jour ensemble. Combien en traiteront cinq équipes ?|200|160|240|400|Une équipe traite 40 dossiers ; cinq en traitent 200.
+proportionnalite|Un mélange contient 2 parts de produit pour 7 parts d’eau. Combien de litres de produit faut-il pour 45 litres de mélange ?|10 litres|12,86 litres|14 litres|35 litres|Le mélange totalise 9 parts. Chaque part vaut 5 litres ; le produit en occupe 2.
+proportionnalite|À taux fixe fictif de 2 800 FC par dollar, combien valent 25 dollars ?|70 000 FC|7 000 FC|62 500 FC|75 000 FC|Le taux est fourni uniquement pour l’exercice : 2 800 × 25 = 70 000.
+problemes|Un père a 42 ans et son fils 14 ans. Dans combien d’années le père aura-t-il le double de l’âge du fils ?|14 ans|7 ans|21 ans|28 ans|42 + x = 2(14 + x), donc x = 14.
+problemes|Un train parcourt 180 km en 2 h 15 min. Quelle est sa vitesse moyenne ?|80 km/h|90 km/h|72 km/h|85 km/h|2 h 15 min = 2,25 h ; 180 ÷ 2,25 = 80.
+problemes|Une réunion commence à 9 h 35 et dure 1 h 50. À quelle heure se termine-t-elle ?|11 h 25|10 h 85|11 h 15|11 h 35|35 + 50 = 85 min, soit 1 h 25 ; le total donne 11 h 25.
+problemes|On partage 96 000 FC selon le ratio 3:5. Quelle est la plus petite part ?|36 000 FC|32 000 FC|48 000 FC|60 000 FC|Les 8 parts unitaires valent 12 000 FC chacune ; la petite part en compte 3.
+problemes|Les notes sont 12, 15, 9 et 16. Quelle est la moyenne ?|13|12|14|13,5|La somme est 52 ; 52 ÷ 4 = 13.
+problemes|Quelle note faut-il ajouter à 10, 12 et 14 pour obtenir une moyenne de 13 sur quatre notes ?|16|15|17|18|Le total recherché est 4 × 13 = 52. Les trois notes totalisent 36 ; il manque 16.
+problemes|Un vendeur achète un lot 50 000 FC et le revend 62 000 FC. Quel est son bénéfice rapporté au prix d’achat ?|24 %|19,35 %|12 %|124 %|Le bénéfice est 12 000 ; 12 000/50 000 = 24 %.
+problemes|Un véhicule roule 1 heure à 60 km/h puis 1 heure à 90 km/h. Quelle est sa vitesse moyenne ?|75 km/h|72 km/h|80 km/h|150 km/h|Il parcourt 150 km en 2 heures : 150/2 = 75.
+problemes|Un aller de 60 km se fait à 30 km/h et le retour de 60 km à 60 km/h. Quelle est la vitesse moyenne totale ?|40 km/h|45 km/h|50 km/h|35 km/h|L’aller dure 2 h et le retour 1 h : 120 km en 3 h = 40 km/h.
+problemes|Une caisse contient 18 billets de 5 000 FC et 7 billets de 10 000 FC. Quel est le total ?|160 000 FC|125 000 FC|150 000 FC|170 000 FC|18 × 5 000 + 7 × 10 000 = 90 000 + 70 000 = 160 000.
+problemes|Une équipe traite 3/8 d’un lot le matin et 1/4 du lot l’après-midi. Quelle fraction reste à traiter ?|3/8|5/8|1/8|1/2|La part traitée vaut 3/8 + 2/8 = 5/8 ; il reste 3/8.
+problemes|Un rectangle mesure 18 m sur 12 m. Quel est son périmètre ?|60 m|216 m|30 m|108 m|Le périmètre vaut 2 × (18 + 12) = 60 m.
+problemes|Un sol rectangulaire de 8 m sur 5 m est couvert de carreaux de 0,5 m². Combien en faut-il sans perte ?|80|40|20|160|L’aire vaut 40 m². 40 ÷ 0,5 = 80 carreaux.
+problemes|Un réservoir de 900 litres se remplit à 15 litres par minute. Combien de temps faut-il à partir de vide ?|60 minutes|45 minutes|75 minutes|90 minutes|Temps = volume ÷ débit = 900 ÷ 15 = 60.
+problemes|Un robinet remplit une cuve en 6 h, un autre en 3 h. Ensemble, en combien de temps la remplissent-ils ?|2 h|4,5 h|3 h|1 h|Les débits s’ajoutent : 1/6 + 1/3 = 1/2 cuve par heure, donc 2 h.
+problemes|Dans un service de 30 agents, 18 parlent anglais, 16 swahili et 8 les deux. Combien ne parlent aucune de ces deux langues ?|4|12|8|2|L’union contient 18 + 16 − 8 = 26 agents. Il en reste 4.
+problemes|Un objet est vendu 72 000 FC après une marge égale à 20 % du prix d’achat. Quel est ce prix d’achat ?|60 000 FC|57 600 FC|64 000 FC|54 000 FC|Le prix de vente est 1,20 fois l’achat ; 72 000 ÷ 1,20 = 60 000.
+problemes|La moyenne de 5 valeurs est 18. Si l’on retire la valeur 26, quelle est la nouvelle moyenne ?|16|17|15|14|Le total initial est 90 ; après retrait, il reste 64 pour 4 valeurs, soit 16.
+problemes|Un bateau part à 14 h 20 pour un trajet de 2 h 45, puis subit 35 min de retard. Quelle est l’heure d’arrivée ?|17 h 40|17 h 05|18 h 00|16 h 40|2 h 45 + 35 min = 3 h 20 ; 14 h 20 + 3 h 20 = 17 h 40.
+problemes|Un stock passe de 120 à 95 unités après une livraison de 20 unités et des sorties. Combien d’unités sont sorties ?|45|25|5|35|120 + 20 − x = 95 ; x = 45.
+equations|Résolvez 4x + 9 = 37.|7|9|6|8|4x = 28, donc x = 7.
+equations|Quelle valeur de x vérifie 3(x − 4) = 21 ?|11|7|9|5|x − 4 = 7 ; x = 11.
+equations|Résolvez 5x − 8 = 2x + 13.|7|5|9|3|3x = 21, donc x = 7.
+equations|Si x/4 + 3 = 8, que vaut x ?|20|5|12|32|x/4 = 5 ; x = 20.
+equations|Quel nombre augmenté de ses deux tiers donne 50 ?|30|20|25|35|x + 2x/3 = 5x/3 = 50 ; x = 30.
+equations|Résolvez 0,5x + 6 = 15.|18|9|21|12|0,5x = 9 ; diviser par 0,5 donne 18.
+equations|Deux nombres consécutifs ont pour somme 57. Quel est le plus petit ?|28|27|29|30|x + (x + 1) = 57 ; 2x = 56 ; x = 28.
+equations|Le triple d’un nombre diminué de 5 vaut le double du nombre augmenté de 9 : 3x − 5 = 2x + 9. Trouvez x.|14|4|7|9|En retirant 2x puis en ajoutant 5, on obtient x = 14.
+suites_numeriques|En ajoutant successivement les nombres impairs 3, 5, 7, 9…, complétez : 1, 4, 9, 16, …|25|24|26|32|On ajoute 9 à 16. Ce sont les carrés des entiers successifs.
+suites_numeriques|La règle alterne ×2 puis −3 : 5, 10, 7, 14, 11, …|22|18|8|25|Après −3, il faut multiplier 11 par 2.
+suites_numeriques|Chaque terme est la somme des deux précédents : 2, 3, 5, 8, 13, …|21|18|20|26|8 + 13 = 21.
+suites_numeriques|Les écarts doublent : 3, 5, 9, 17, …|33|25|31|34|Les écarts sont 2, 4, 8 puis 16 ; 17 + 16 = 33.
+suites_numeriques|En divisant chaque terme par 3 : 243, 81, 27, …|9|3|18|6|27 ÷ 3 = 9.
+suites_numeriques|Les écarts sont −2, −4, −6, −8… : 40, 38, 34, 28, …|20|22|18|24|On retire ensuite 8 à 28.
+suites_numeriques|Multipliez par 3 puis ajoutez 1 à chaque étape : 1, 4, 13, 40, …|121|120|124|81|40 × 3 + 1 = 121.
+suites_numeriques|Deux suites s’entrelacent : 10, 1, 20, 2, 30, 3, …|40|4|33|60|Les rangs impairs donnent 10, 20, 30, 40 ; les pairs donnent 1, 2, 3.
+conversions|Combien de minutes représentent 2,4 heures ?|144|124|240|140|0,4 h = 24 minutes ; 120 + 24 = 144.
+conversions|Convertissez 3,75 km en mètres.|3 750 m|375 m|37 500 m|3 075 m|Un kilomètre vaut 1 000 mètres : 3,75 × 1 000 = 3 750.
+conversions|Quelle masse représentent 0,85 tonne en kilogrammes ?|850 kg|85 kg|8 500 kg|850 000 kg|Une tonne contient 1 000 kg ; 0,85 × 1 000 = 850.
+conversions|Combien de litres contiennent 2,5 m³ ?|2 500 L|250 L|25 000 L|25 L|1 m³ = 1 000 litres, donc 2,5 m³ = 2 500 litres.
+conversions|Écrivez 135 minutes en heures et minutes.|2 h 15 min|1 h 35 min|2 h 35 min|3 h 15 min|135 = 2 × 60 + 15.
+conversions|Convertissez 72 km/h en m/s.|20 m/s|25,92 m/s|12 m/s|200 m/s|On divise par 3,6 : 72 ÷ 3,6 = 20.
+conversions|Combien de mètres carrés représentent 1,2 hectare ?|12 000 m²|1 200 m²|120 000 m²|120 m²|Un hectare vaut 10 000 m² ; 1,2 × 10 000 = 12 000.
+conversions|Un colis pèse 2 kg 75 g. Quelle est sa masse en kilogrammes ?|2,075 kg|2,75 kg|2,0075 kg|20,75 kg|75 g = 0,075 kg ; on ajoute 2 kg.
+conversions|Combien de centilitres contiennent 0,45 litre ?|45 cL|4,5 cL|450 cL|0,045 cL|Un litre contient 100 cL ; 0,45 × 100 = 45.
+conversions|Une durée de 1 h 12 min représente quelle fraction d’heure ?|6/5 h|1/5 h|7/6 h|3/2 h|72/60 = 6/5 heure, soit 1,2 heure.
+lecture_donnees|Un tableau donne : lundi 24 colis, mardi 31, mercredi 25. Quel jour dépasse la moyenne des trois jours ?|Mardi seulement|Lundi seulement|Mercredi seulement|Lundi et mercredi|La moyenne est 80/3 ≈ 26,67. Seul mardi, avec 31, la dépasse.
+lecture_donnees|Trois agences réalisent 120, 180 et 300 ventes. Quelle part du total réalise la deuxième ?|30 %|18 %|25 %|60 %|Le total est 600 ; 180/600 = 30 %.
+lecture_donnees|Un tableau de coûts indique fixe : 40 000 FC ; variable : 2 000 FC par unité. Quel est le coût de 15 unités ?|70 000 FC|30 000 FC|600 000 FC|42 000 FC|Coût total = 40 000 + 15 × 2 000 = 70 000 FC.
+lecture_donnees|Les retards d’une semaine sont 0, 5, 10, 5 et 20 minutes. Quelle est la médiane ?|5 minutes|8 minutes|10 minutes|0 minute|Les valeurs triées sont 0, 5, 5, 10, 20. La valeur centrale est 5.
+lecture_donnees|Deux lots comportent respectivement 10 pièces à 4 000 FC et 30 pièces à 2 000 FC. Quel est le prix moyen par pièce ?|2 500 FC|3 000 FC|2 000 FC|3 500 FC|Le coût total est 100 000 FC pour 40 pièces : 100 000/40 = 2 500.
+lecture_donnees|Un service produit 90 dossiers conformes et 10 non conformes, puis corrige 6 non conformes. Quel est le taux final de conformité ?|96 %|90 %|94 %|106 %|Il y a désormais 96 dossiers conformes sur 100, sans augmentation de l’effectif total.
+lecture_donnees|Sur 65 questions, quel nombre minimal de réponses correctes permet d’atteindre 70 % ?|46|45|44|47|65 × 0,70 = 45,5. Il faut un nombre entier au moins égal à 45,5, donc 46.
+lecture_donnees|Trois estimations de trajet valent 40, 50 et 60 minutes, pondérées par 1, 2 et 1. Quelle est la moyenne pondérée ?|50 minutes|45 minutes|55 minutes|37,5 minutes|La somme pondérée vaut 40 + 100 + 60 = 200 ; la somme des poids vaut 4.
+lecture_donnees|Un graphique indique 120 départs prévus et 108 réalisés. Combien de départs manquent pour atteindre 95 % du programme ?|6|12|5|8|95 % de 120 = 114 ; 114 − 108 = 6.
+lecture_donnees|Un budget de 1 000 000 FC consacre 40 % au personnel et 35 % à l’entretien. Quel montant reste disponible ?|250 000 FC|750 000 FC|650 000 FC|150 000 FC|Les deux postes absorbent 75 % ; il reste 25 %, soit 250 000 FC.
+lecture_donnees|Une série de cinq mesures est 4, 4, 6, 8, 13. Quelle est son étendue ?|9|7|13|4|L’étendue est le maximum moins le minimum : 13 − 4 = 9.

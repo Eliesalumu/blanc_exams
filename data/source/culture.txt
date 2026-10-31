@@ -1,0 +1,121 @@
+# sous-catégorie|question|bonne réponse|3 distracteurs|explication|clé source
+rdc_geographie|Quelle ville est la capitale de la République démocratique du Congo ?|Kinshasa|Brazzaville|Lubumbashi|Kisangani|Kinshasa est la capitale de la RDC ; Brazzaville est celle de la République du Congo.|ambassade
+rdc_histoire|À quelle date la RDC a-t-elle obtenu son indépendance de la Belgique ?|30 juin 1960|30 juin 1962|15 août 1960|1er juillet 1960|L’indépendance est proclamée le 30 juin 1960.|sadc_rdc
+rdc_langues|Quelle est la langue officielle de la RDC ?|Français|Lingala|Swahili|Tshiluba|Le français est officiel ; les trois autres propositions sont des langues nationales.|ambassade
+rdc_geographie|Dans quelle région du continent situe-t-on principalement la RDC ?|Afrique centrale|Afrique du Nord|Afrique de l’Ouest|Afrique australe uniquement|Le territoire congolais se trouve au cœur de l’Afrique centrale.|ambassade
+rdc_geographie|Sur quel océan la RDC possède-t-elle une façade côtière ?|Atlantique|Indien|Pacifique|Arctique|Le littoral congolais ouvre sur l’Atlantique.|ambassade
+rdc_geographie|Quel pays ne partage aucune frontière avec la RDC ?|Kenya|Ouganda|Zambie|Angola|L’Ouganda, la Zambie et l’Angola sont voisins de la RDC ; le Kenya ne l’est pas.|ambassade
+rdc_geographie|Quel grand parallèle traverse la RDC ?|L’équateur|Le tropique du Cancer|Le cercle polaire antarctique|Le tropique du Capricorne|La RDC s’étend de part et d’autre de l’équateur.|sadc_rdc
+rdc_geographie|Quelle ville fait face à Kinshasa sur l’autre rive du Congo ?|Brazzaville|Bangui|Libreville|Luanda|Les deux capitales se font face au niveau du Pool Malebo.|rdc
+rdc_histoire|Quel était l’ancien nom de Kinshasa ?|Léopoldville|Élisabethville|Stanleyville|Jadotville|Léopoldville devient Kinshasa en 1966.|factbook
+rdc_histoire|Quel nom le pays portait-il entre 1971 et 1997 ?|Zaïre|Dahomey|Haute-Volta|Rhodésie|Mobutu adopte le nom Zaïre en 1971 ; le nom RDC est rétabli en 1997.|rdc
+rdc_institutions|Quelle monnaie est utilisée en RDC ?|Franc congolais|Franc CFA|Shilling congolais|Kwacha|La monnaie nationale est le franc congolais, code CDF.|ambassade
+rdc_symboles|Quelle est la devise nationale de la RDC ?|Justice, Paix, Travail|Unité, Dignité, Travail|Paix, Travail, Patrie|Un peuple, un but, une foi|La devise congolaise associe justice, paix et travail.|ambassade
+rdc_symboles|Quel est l’hymne national de la RDC ?|Debout Congolais|La Zaïroise|La Congolaise|Ô Cameroun, berceau de nos ancêtres|« Debout Congolais » est l’hymne de la RDC.|ambassade
+rdc_geographie|Quel nom désigne le cours supérieur du fleuve Congo ?|Lualaba|Limpopo|Sénégal|Orange|Le cours supérieur du Congo est appelé Lualaba.|ambassade
+rdc_geographie|Quel climat caractérise la cuvette centrale congolaise ?|Équatorial chaud et humide|Polaire|Désertique froid|Méditerranéen sec en été|La zone centrale équatoriale reçoit de fortes pluies et abrite une forêt dense.|ambassade
+rdc_geographie|Quel pays est situé au sud-est de la RDC et partage une frontière avec elle ?|Zambie|Tchad|Gabon|Malawi|La Zambie borde la RDC au sud et au sud-est.|ambassade
+rdc_geographie|Quelle province congolaise donne accès à l’océan ?|Kongo Central|Tshopo|Maniema|Sankuru|La façade atlantique se situe dans le Kongo Central.|ambassade
+rdc_relief|Quel volcan actif se trouve près de Goma ?|Nyiragongo|Kilimandjaro|Mont Cameroun|Piton de la Fournaise|Le Nyiragongo est un volcan actif du Nord-Kivu.|ambassade
+rdc_histoire|Qui fut le premier Premier ministre du Congo indépendant en 1960 ?|Patrice Lumumba|Mobutu Sese Seko|Laurent-Désiré Kabila|Étienne Tshisekedi|Patrice Lumumba dirige le premier gouvernement à l’indépendance.|rdc
+rdc_histoire|Qui fut le premier président du Congo indépendant ?|Joseph Kasa-Vubu|Patrice Lumumba|Joseph Kabila|Antoine Gizenga|Joseph Kasa-Vubu exerce la présidence à l’indépendance en 1960.|rdc
+rdc_histoire|En quelle année le Congo belge devient-il une colonie de l’État belge, après l’État indépendant du Congo ?|1908|1885|1960|1971|Le transfert de l’administration de Léopold II à l’État belge a lieu en 1908.|rdc
+rdc_histoire|Quel dirigeant prend durablement le pouvoir par le coup d’État de novembre 1965 ?|Mobutu|Lumumba|Kasa-Vubu|Laurent-Désiré Kabila|Le coup d’État de 1965 installe Mobutu au pouvoir.|rdc
+rdc_institutions|Quelles sont les deux chambres du Parlement congolais ?|Assemblée nationale et Sénat|Conseil des ministres et Sénat|Assemblée nationale et Cour constitutionnelle|Sénat et Banque centrale|Le Parlement est bicaméral : Assemblée nationale et Sénat.|rdc
+rdc_institutions|À quelle date la Constitution issue du référendum de 2005 a-t-elle été promulguée ?|18 février 2006|30 juin 1960|17 mai 1997|24 avril 1990|La promulgation de cette Constitution date du 18 février 2006.|factbook
+rdc_institutions|Combien d’entités provinciales comprend le découpage mis en œuvre en 2015, Kinshasa incluse ?|26|11|25|24|Le découpage comprend 25 provinces et la ville-province de Kinshasa, soit 26.|factbook
+rdc_nature|Dans quel pays l’okapi vit-il naturellement à l’état sauvage ?|RDC|Sénégal|Maroc|Madagascar|L’okapi est endémique de la RDC.|virunga
+rdc_patrimoine|Quel parc congolais, inscrit en 1979, abrite notamment des gorilles de montagne ?|Virunga|Kruger|Serengeti|Etosha|Les Virunga abritent une grande variété d’habitats et des gorilles de montagne.|virunga
+rdc_patrimoine|Quel parc congolais est présenté par l’UNESCO comme la plus grande réserve de forêt tropicale pluviale d’Afrique ?|Salonga|Garamba|Kahuzi-Biega|Virunga|La Salonga protège une vaste forêt au cœur du bassin du Congo.|salonga
+rdc_nature|Quel grand singe, aussi appelé chimpanzé nain, est présent à la Salonga ?|Bonobo|Orang-outan|Gibbon|Macaque|Le bonobo est l’une des espèces menacées protégées dans ce parc.|salonga
+rdc_patrimoine|Quelle aire protégée congolaise inscrite en 1996 porte le nom d’un animal endémique ?|Réserve de faune à okapis|Parc national des Virunga|Parc national de la Garamba|Parc national de la Salonga|La Réserve de faune à okapis a été inscrite au patrimoine mondial en 1996.|unesco_rdc
+rdc_patrimoine|Lequel de ces sites du patrimoine mondial est situé en RDC ?|Kahuzi-Biega|Île de Gorée|Tombouctou|Aksoum|Kahuzi-Biega est un parc congolais inscrit en 1980.|unesco_rdc
+rdc_patrimoine|Quel parc congolais figure au patrimoine mondial depuis 1980, aux côtés de Kahuzi-Biega la même année ?|Garamba|Lomami|Upemba|Kundelungu|La liste UNESCO mentionne l’inscription de la Garamba en 1980.|unesco_rdc
+rdc_geographie|Dans quelle chaîne montagneuse la RDC partage-t-elle le pic Marguerite avec l’Ouganda ?|Rwenzori|Atlas|Drakensberg|Tibesti|Le pic Marguerite se trouve dans le massif du Rwenzori, à la frontière avec l’Ouganda.|virunga
+rdc_nature|Quel oiseau endémique est cité parmi les espèces de la Salonga ?|Paon du Congo|Autruche d’Afrique du Nord|Manchot du Cap|Ibis chauve|Le paon du Congo est une espèce emblématique protégée dans la Salonga.|salonga
+rdc_ressources|Le Katanga est historiquement associé à quel métal, qui donne son nom à la « Copperbelt » ?|Cuivre|Plomb|Fer|Aluminium|Copper signifie cuivre en anglais. La Copperbelt est une région minière qui s’étend notamment dans le sud-est congolais.|copperbelt
+rdc_geographie|Quel fleuve structure le principal réseau de navigation intérieure congolais ?|Congo|Niger|Nil|Zambèze|Le Congo et ses affluents forment un vaste réseau de voies navigables.|sadc_rdc
+rdc_institutions|En quelle année la RDC devient-elle membre de plein droit de l’EAC ?|2022|2000|2010|1994|L’EAC donne le 11 juillet 2022 comme date d’entrée de la RDC comme membre de plein droit.|eac
+rdc_geographie|Quel lac sépare notamment la RDC et la Tanzanie ?|Tanganyika|Victoria|Tchad|Tana|La frontière lacustre entre RDC et Tanzanie traverse le Tanganyika.|rdc
+rdc_geographie|Quel cours d’eau est un affluent majeur du Congo ?|Kasaï|Volta|Niger|Limpopo|Le Kasaï appartient au réseau hydrographique du Congo.|rdc
+rdc_histoire|Quel ancien royaume africain s’étendait autour de l’embouchure du Congo ?|Royaume du Kongo|Empire songhaï|Royaume d’Aksoum|Empire du Ghana|Le royaume du Kongo occupait une partie de l’ouest de l’Afrique centrale.|histoire
+rdc_geographie|Quel pays africain est plus vaste que la RDC ?|Algérie|Tchad|Angola|Afrique du Sud|L’Algérie est le plus grand pays africain par superficie ; la RDC vient ensuite.|ambassade
+rdc_reperes|Quel indicatif téléphonique international correspond à la RDC ?|+243|+242|+241|+244|Le code +243 correspond à la RDC ; +242 désigne la République du Congo.|rdc
+capitales|Yamoussoukro est la capitale politique de quel pays ?|Côte d’Ivoire|Togo|Ghana|Bénin|Yamoussoukro est la capitale politique ivoirienne, à distinguer d’Abidjan.|afrique
+capitales|Quelle est la capitale du Rwanda ?|Kigali|Gitega|Kampala|Juba|Kigali est la capitale rwandaise.|afrique
+capitales|Quelle association pays-capitale est correcte ?|Sénégal — Dakar|Mali — Niamey|Niger — Bamako|Gabon — Lomé|Dakar est la capitale du Sénégal. Bamako, Niamey et Libreville sont celles du Mali, du Niger et du Gabon.|afrique
+capitales|Quelle ville est la capitale fédérale du Nigeria ?|Abuja|Lagos|Kano|Ibadan|Abuja a remplacé Lagos comme capitale fédérale en 1991.|afrique
+capitales|Quelle est la capitale politique de la Tanzanie ?|Dodoma|Dar es-Salaam|Arusha|Mwanza|Dodoma est la capitale politique ; Dar es-Salaam demeure un grand centre économique.|afrique
+capitales|Quel pays a pour capitale Lusaka ?|Zambie|Zimbabwe|Malawi|Mozambique|Lusaka est la capitale zambienne.|afrique
+capitales|Quelle capitale se trouve en Éthiopie ?|Addis-Abeba|Asmara|Djibouti|Mogadiscio|Addis-Abeba est la capitale de l’Éthiopie.|afrique
+capitales|Porto-Novo est la capitale officielle de quel État ?|Bénin|Togo|Ghana|Guinée|Porto-Novo est la capitale officielle du Bénin ; Cotonou accueille de nombreuses fonctions gouvernementales.|afrique
+capitales|Quelle ville est la capitale du Botswana ?|Gaborone|Windhoek|Maseru|Mbabane|Gaborone est la capitale du Botswana.|afrique
+capitales|Quelle capitale appartient au Mozambique ?|Maputo|Lilongwe|Harare|Lusaka|Maputo est située dans le sud du Mozambique.|afrique
+capitales|Quel pays a pour capitale Antananarivo ?|Madagascar|Maurice|Comores|Seychelles|Antananarivo est la capitale de Madagascar.|afrique
+capitales|Quelle est la capitale du Maroc ?|Rabat|Casablanca|Marrakech|Fès|Rabat est la capitale politique, tandis que Casablanca est un centre économique majeur.|afrique
+capitales|Gitega est la capitale politique de quel pays depuis 2019 ?|Burundi|Rwanda|Ouganda|Soudan du Sud|Le Burundi a transféré sa capitale politique à Gitega en 2019.|afrique
+capitales|Quelle ville est la capitale de l’Angola ?|Luanda|Malabo|Bissau|Praia|Luanda est la capitale angolaise.|afrique
+capitales|Quel pays a pour capitale Accra ?|Ghana|Gambie|Liberia|Sierra Leone|Accra est la capitale du Ghana.|afrique
+geographie|Quel est le plus grand lac d’Afrique par sa superficie ?|Victoria|Tanganyika|Malawi|Kivu|Le Victoria est le lac africain le plus vaste en surface.|atlas_eau
+geographie|Quel est le lac le plus profond d’Afrique ?|Tanganyika|Victoria|Tchad|Volta|Le Tanganyika est le lac le plus profond du continent.|atlas_eau
+geographie|Dans quel pays se situe le Kilimandjaro ?|Tanzanie|Kenya|Éthiopie|Ouganda|Le Kilimandjaro, point culminant d’Afrique, se trouve en Tanzanie.|geo
+geographie|Quel désert chaud occupe une vaste partie de l’Afrique du Nord ?|Sahara|Kalahari|Namib|Danakil|Le Sahara s’étend sur une large portion du nord du continent.|geo
+geographie|Quel fleuve traverse l’Égypte avant de rejoindre la Méditerranée ?|Nil|Congo|Niger|Sénégal|Le Nil traverse l’Égypte et forme un delta sur la Méditerranée.|geo
+geographie|Sur quel fleuve se trouvent les chutes Victoria ?|Zambèze|Orange|Limpopo|Niger|Les chutes Victoria se trouvent sur le Zambèze, entre Zambie et Zimbabwe.|victoria
+geographie|Quel canal sépare Madagascar du continent africain ?|Canal du Mozambique|Canal de Suez|Détroit de Gibraltar|Détroit de Bab-el-Mandeb|Le canal du Mozambique est situé entre Madagascar et le Mozambique.|geo
+geographie|Quelle mer borde le nord de l’Afrique ?|Méditerranée|Mer Noire|Mer Baltique|Mer Caspienne|La façade septentrionale du continent donne sur la Méditerranée.|geo
+geographie|Quel océan borde la côte orientale du Kenya ?|Indien|Atlantique|Pacifique|Arctique|Le Kenya possède un littoral sur l’océan Indien.|geo
+geographie|Quel pays est entièrement enclavé dans l’Afrique du Sud ?|Lesotho|Eswatini|Botswana|Namibie|Le Lesotho est entouré uniquement par l’Afrique du Sud.|geo
+geographie|Quel désert côtier se situe principalement en Namibie ?|Namib|Sahara|Kalahari|Ténéré|Le Namib longe la façade atlantique de la Namibie.|geo
+geographie|Quelle chaîne de montagnes traverse le Maroc et l’Algérie ?|Atlas|Rwenzori|Drakensberg|Monts Virunga|L’Atlas est une grande chaîne du Maghreb.|geo
+geographie|Le Sahel est principalement une zone de transition entre…|Le Sahara et les savanes plus humides|La Méditerranée et l’Europe|L’océan Indien et Madagascar|Les glaciers et la toundra|Le Sahel forme une bande semi-aride au sud du Sahara.|geo
+geographie|Quel fleuve traverse Bamako et Niamey ?|Niger|Sénégal|Volta|Congo|Bamako au Mali et Niamey au Niger sont situées sur le Niger.|geo
+geographie|Quel pays de la Corne de l’Afrique a Asmara pour capitale ?|Érythrée|Éthiopie|Somalie|Djibouti|Asmara est la capitale de l’Érythrée.|afrique
+geographie|Quelle grande île africaine est située au large du Mozambique ?|Madagascar|Bioko|Zanzibar|Santiago|Madagascar se trouve à l’est du Mozambique, dans l’océan Indien.|geo
+geographie|Quelle mer sépare le nord-est de l’Afrique de la péninsule Arabique ?|Mer Rouge|Mer Adriatique|Mer d’Aral|Mer du Nord|La mer Rouge sépare notamment l’Égypte, le Soudan et l’Érythrée de l’Arabie.|geo
+geographie|Dans quel pays se trouve le delta intérieur de l’Okavango ?|Botswana|Ghana|Tunisie|Rwanda|Le delta de l’Okavango se déploie dans le nord-ouest du Botswana.|okavango
+geographie|Quel pays possède le site d’Aksoum ?|Éthiopie|Égypte|Soudan|Érythrée|Aksoum est une ancienne ville du nord de l’Éthiopie.|aksoum
+geographie|Quelle région africaine comprend notamment le Maroc, l’Algérie et la Tunisie ?|Maghreb|Sahel oriental|Corne de l’Afrique|Bassin du Congo|Ces trois pays constituent le cœur géographique du Maghreb.|geo
+histoire|Quel pays devient indépendant sous la direction de Kwame Nkrumah en 1957 ?|Ghana|Kenya|Zambie|Nigeria|Nkrumah est le premier Premier ministre du Ghana indépendant en 1957.|nkrumah
+histoire|À quel courant politique africain Kwame Nkrumah est-il fortement associé ?|Panafricanisme|Apartheid|Colonialisme de peuplement|Isolationnisme continental|Il défend l’unité et la libération de l’ensemble du continent.|nkrumah
+histoire|En quelle année Nelson Mandela devient-il président de l’Afrique du Sud ?|1994|1990|1964|2004|Il est élu à la suite des premières élections nationales au suffrage universel non racial.|mandela
+histoire|Que désignait l’apartheid en Afrique du Sud ?|Un système de ségrégation raciale institutionnalisée|Une union douanière|Une politique de libre circulation|Un système de partage égal des terres|L’apartheid organisait juridiquement la séparation et la discrimination raciales.|mandela
+histoire|Quel pays portait le nom de Haute-Volta jusqu’en 1984 ?|Burkina Faso|Bénin|Mali|Niger|La Haute-Volta est renommée Burkina Faso sous Thomas Sankara.|burkina
+histoire|Quel était l’ancien nom du Bénin avant 1975 ?|Dahomey|Gold Coast|Tanganyika|Rhodésie du Nord|La République du Dahomey prend le nom de Bénin en 1975.|benin
+histoire|Quel pays africain est devenu indépendant le 5 juillet 1962 ?|Algérie|Maroc|Tunisie|Mauritanie|Le 5 juillet est la fête de l’indépendance algérienne, en 1962.|algerie
+histoire|Quel dirigeant est associé à l’indépendance du Kenya en 1963 ?|Jomo Kenyatta|Julius Nyerere|Kenneth Kaunda|Samora Machel|Jomo Kenyatta devient le premier chef du gouvernement du Kenya indépendant.|kenya
+histoire|L’union du Tanganyika et de Zanzibar en 1964 forme quel État ?|Tanzanie|Zambie|Ouganda|Malawi|Le nom Tanzanie réunit les deux composantes de cette union.|tanzanie
+histoire|Quel pays a Julius Nyerere pour premier président ?|Tanzanie|Ghana|Sénégal|Angola|Nyerere dirige le Tanganyika puis la Tanzanie née de l’union de 1964.|tanzanie
+histoire|Quel ancien empire ouest-africain est associé à Mansa Moussa ?|Empire du Mali|Empire romain|Royaume du Kongo|Royaume zoulou|Mansa Moussa règne sur l’empire du Mali au XIVe siècle.|mali
+histoire|Quel souverain est associé à l’empire songhaï à la fin du XVe siècle ?|Askia Mohammed|Chaka|Sundjata uniquement|Ménélik II|Askia Mohammed prend le pouvoir en 1493 et développe l’empire songhaï.|songhai
+histoire|Quelle conférence de 1884-1885 est liée au partage colonial de l’Afrique ?|Berlin|Bandung|Yalta|Accra|La conférence de Berlin fixe notamment des règles relatives aux entreprises coloniales européennes.|berlin
+histoire|Quel pays conserve son indépendance après sa victoire d’Adoua en 1896 ?|Éthiopie|Libye|Namibie|Mozambique|Les forces de Ménélik II battent l’armée italienne à Adoua.|ethiopie
+histoire|Quel pays devient indépendant de la Belgique le 1er juillet 1962, en même temps que le Rwanda ?|Burundi|Ouganda|Tanzanie|Kenya|Le Rwanda et le Burundi accèdent à l’indépendance à cette date.|burundi
+histoire|Quel pays a pour premier président Kenneth Kaunda en 1964 ?|Zambie|Malawi|Zimbabwe|Botswana|Kaunda devient président de la Zambie lors de son indépendance.|zambie
+histoire|Quel pays africain devient indépendant du Portugal le 11 novembre 1975 ?|Angola|Ghana|Sénégal|Gabon|L’indépendance angolaise est proclamée le 11 novembre 1975.|angola
+histoire|Quel pays était appelé Rhodésie du Sud avant de devenir indépendant en 1980 ?|Zimbabwe|Zambie|Namibie|Botswana|Le Zimbabwe succède à la Rhodésie du Sud.|zimbabwe
+histoire|Quel pays a Léopold Sédar Senghor pour premier président ?|Sénégal|Côte d’Ivoire|Mali|Guinée|Senghor préside le Sénégal à partir de 1960.|senegal
+histoire|Quel pays africain obtient son indépendance en 1990 après une longue administration sud-africaine ?|Namibie|Botswana|Lesotho|Eswatini|La Namibie devient indépendante le 21 mars 1990.|namibie
+institutions|En quelle année l’Organisation de l’unité africaine est-elle fondée ?|1963|1945|1975|2002|La charte de l’OUA est signée à Addis-Abeba en mai 1963.|ua
+institutions|Quelle organisation succède officiellement à l’OUA en 2002 ?|Union africaine|CEDEAO|SADC|COMESA|L’Union africaine est lancée à Durban en juillet 2002.|ua
+institutions|Dans quelle ville est signé l’acte fondateur de l’OUA ?|Addis-Abeba|Lagos|Accra|Le Caire|Les dirigeants fondateurs se réunissent à Addis-Abeba en 1963.|ua
+institutions|Quelle est la vocation principale de la Banque africaine de développement ?|Financer le développement économique et social africain|Organiser les Jeux africains|Fixer toutes les frontières|Administrer tous les ports|La BAD mobilise des ressources pour le développement durable et le progrès social.|bad
+institutions|Dans quelle ville se trouve le siège de la BAD ?|Abidjan|Dakar|Nairobi|Lusaka|La Banque africaine de développement a son siège à Abidjan.|bad
+institutions|Que signifie SADC en français ?|Communauté de développement de l’Afrique australe|Conseil des États du Sahara|Société africaine des douanes centrales|Communauté agricole de l’Afrique occidentale|La SADC vise l’intégration et le développement de l’Afrique australe.|sadc
+institutions|En quelle année le traité transforme-t-il la SADCC en SADC ?|1992|1963|2002|1983|La déclaration et le traité sont signés à Windhoek en août 1992.|sadc
+institutions|Quelle région est couverte par la CEEAC ?|Afrique centrale|Afrique du Nord uniquement|Afrique de l’Ouest uniquement|Océan Indien uniquement|Le sigle désigne la Communauté économique des États de l’Afrique centrale.|ceeac
+institutions|En quelle année est signé le traité constitutif de la CEEAC ?|1983|1960|1999|2006|Le traité constitutif est signé à Libreville en 1983.|ceeac
+institutions|Où se trouve le siège de l’EAC ?|Arusha|Kigali|Kampala|Juba|L’EAC a son siège à Arusha, en Tanzanie.|eac
+institutions|Quel objectif économique est au cœur du COMESA ?|L’intégration des marchés d’Afrique orientale et australe|La politique monétaire de l’ensemble du continent|La gestion commune des recettes pétrolières uniquement|La régulation exclusive des transports aériens|Le COMESA vise un espace économique et commercial régional intégré.|comesa
+institutions|En quelle année le COMESA remplace-t-il la zone d’échanges préférentiels qui l’a précédé ?|1994|1963|1980|2010|Le COMESA est mis en place en décembre 1994.|comesa
+institutions|La CEDEAO est historiquement une organisation d’intégration de quelle région ?|Afrique de l’Ouest|Afrique centrale|Afrique australe|Corne de l’Afrique|Son nom complet est Communauté économique des États de l’Afrique de l’Ouest.|cedeao
+patrimoine|Dans quel pays se trouve l’île de Gorée, site lié à la mémoire de la traite atlantique ?|Sénégal|Ghana|Bénin|Guinée|Gorée se situe au large de Dakar.|goree
+patrimoine|Dans quel pays se trouve Tombouctou, ancien centre de savoir et de commerce ?|Mali|Niger|Tchad|Mauritanie|Tombouctou est une ville historique du Mali.|tombouctou
+patrimoine|Les pyramides de Gizeh se trouvent dans quel pays ?|Égypte|Soudan|Libye|Éthiopie|Le plateau de Gizeh abrite les grandes pyramides de l’Égypte ancienne.|gizeh
+patrimoine|Quel pays abrite les ruines du Grand Zimbabwe ?|Zimbabwe|Zambie|Mozambique|Malawi|Le site médiéval du Grand Zimbabwe a donné son nom au pays.|grand_zimbabwe
+patrimoine|Dans quel pays se trouve le parc national du Serengeti ?|Tanzanie|Kenya|Botswana|Ouganda|Le Serengeti est un parc tanzanien réputé pour ses migrations animales.|serengeti
+patrimoine|Quelle île sud-africaine est liée à l’emprisonnement de Nelson Mandela ?|Robben Island|Zanzibar|Gorée|Pemba|Mandela a passé une longue partie de sa détention sur Robben Island.|robben
+patrimoine|Le site de Lalibela est célèbre pour…|Ses églises taillées dans la roche|Ses pyramides de verre|Ses temples flottants|Ses tours de sel|Lalibela, en Éthiopie, possède des églises monolithes rupestres.|lalibela
+patrimoine|Quel pays possède les médinas historiques de Fès et de Marrakech ?|Maroc|Algérie|Tunisie|Égypte|Ces deux villes historiques sont marocaines.|fes
+patrimoine|La réserve du Dja est située dans quel pays ?|Cameroun|Gabon|Congo|Guinée équatoriale|La réserve de faune du Dja protège une forêt tropicale camerounaise.|dja
+patrimoine|Quel pays abrite les palais royaux d’Abomey ?|Bénin|Togo|Nigeria|Ghana|Abomey fut une capitale du royaume du Dahomey, dans l’actuel Bénin.|abomey
