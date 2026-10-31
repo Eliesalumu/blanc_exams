@@ -54,8 +54,8 @@ test('Persistance : reprise exacte, erreur de quota et données invalides',()=>{
   memory.set(STORAGE_KEY,JSON.stringify({version:BANK_VERSION,attempts:[],active:{ids:[]}}));assert.ok(loadProgress(storage).warning);
 });
 test('Banque complète : IDs, textes, figures, sources, catégories et partition',()=>{
-  const result=validateBank(bank,plan);assert.deepEqual(result.errors,[]);assert.equal(result.total,500);assert.equal(result.visuals,60);assert.equal(result.reserve,175);
-  assert.equal(result.examQuestions,325);assert.equal(result.rdcQuestions,42);
+  const result=validateBank(bank,plan);assert.deepEqual(result.errors,[]);assert.equal(result.total,500);assert.equal(result.visuals,10);assert.equal(result.reserve,175);
+  assert.equal(result.examQuestions,325);assert.ok(result.cases>=400);assert.deepEqual(result.answerPositions,[125,125,125,125]);
   assert.equal(new Set(bank.map(q=>normalize(q.question))).size,500);
   for(const exam of plan.exams)for(const [category,spec] of Object.entries(CATEGORIES))assert.equal(exam.ids.filter(id=>byId.get(id).category===category).length,spec.count);
 });

@@ -1,60 +1,59 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildVisualQuestions } from './visual-questions.js';
 import { CATEGORIES, BANK_VERSION } from '../src/config.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const sources=JSON.parse(fs.readFileSync(path.join(root,'data/sources.json'),'utf8'));
-// Difficulty estimates are editorial, not empirically calibrated psychometric norms.
-// One-based line indexes in each authored source; all unlisted items are medium.
-const levels={
-  francais:{easy:[1,3,4,5,8,9,12,14,20,24,25,28,37,39,55,58,61,62,64,68,71,74,75,76,80,81,82,84,85,89,95],hard:[7,16,17,23,30,35,37,40,41,42,43,44,45,46,48,49,50,51,52,53,54,56,57,60,63,65,67,69,70,72,73,115]},
-  mathematiques:{easy:[1,2,3,4,5,6,8,9,10,11,12,19,20,21,29,34,39,41,45,49,53,56,85,86,87,88],hard:[13,16,18,24,27,32,33,38,46,47,48,55,57,59,61,63,65,66,68,69,71,73,76,78,89,99]},
-  logique:{easy:[1,2,3,4,5,6,7,8,9,10,11,12,13,15,17,19,21,33,34,35,36,37,38,42],hard:[14,18,20,22,23,24,26,28,30,31,32,43,46,48,54,57,59,71,77,79,80,81,84,88]},
-  culture:{easy:[1,2,3,4,5,7,9,10,11,12,13,16,19,20,26,30,35,36,41,43,44,45,46,47,48,49,50,51,52,53],hard:[14,18,21,24,25,28,31,32,33,34,37,39,40,55,57,59,60,66,68,72,76,78,80,82,84,86,88,91,93,95]}
-};
-const prefixes={francais:'FR',mathematiques:'MA',logique:'LO',culture:'CG'};
+const sources=JSON.parse(fs.readFileSync(path.join(root,'data/pca-sources.json'),'utf8'));
+const prefixes={gouvernance:'GV',onatra:'TR',finance:'FI',strategie:'ST',quantitatif:'NU',communication:'CP'};
+const sizes={gouvernance:130,onatra:105,finance:90,strategie:100,quantitatif:45,communication:30};
+// Editorial difficulty estimates; no empirical psychometric calibration is claimed.
+const allocations={gouvernance:[3,9,4],onatra:[3,8,3],finance:[2,7,3],strategie:[3,7,3],quantitatif:[1,3,2],communication:[1,2,1]};
+let seed=0x70ca2026;
+function random(){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return (seed>>>0)/4294967296;}
+function shuffled(items){const copy=[...items];for(let i=copy.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}return copy;}
 const bank=[];
-for(const category of Object.keys(CATEGORIES)) {
+for(const category of Object.keys(CATEGORIES)){
   const lines=fs.readFileSync(path.join(root,`data/source/${category}.txt`),'utf8').split(/\r?\n/).filter(l=>l.trim()&&!l.startsWith('#'));
+  if(lines.length!==sizes[category])throw Error(`Taille inattendue : ${category} ${lines.length}`);
   lines.forEach((line,i)=>{
-    const fields=line.split('|');
-    if(fields.length!==(category==='culture'?8:7))throw new Error(`Nombre de champs : ${category} ligne ${i+1}`);
-    const [subcategory,question,correct,...rest]=fields, choices=[correct,...rest.slice(0,3)], explanation=rest[3],sourceKey=rest[4];
-    const difficulty=levels[category].hard.includes(i+1)?'hard':levels[category].easy.includes(i+1)?'easy':'medium';
-    const offset=(i*7+Object.keys(CATEGORIES).indexOf(category))%4;
-    const rotated=choices.map((_,j)=>choices[(j+offset)%4]);
-    const q={id:`${prefixes[category]}-${String(i+1).padStart(3,'0')}`,category,subcategory,difficulty,question,choices:rotated,correctAnswer:rotated.indexOf(correct),explanation,image:null,source:null};
-    if(sourceKey){if(!sources[sourceKey])throw new Error(`Source inconnue : ${sourceKey}`);q.source=sources[sourceKey];q.lastVerified='2026-10-31';q.region=subcategory.startsWith('rdc_')?'rdc':'autres_afrique';}
-    bank.push(q);
+    const fields=line.split('|');if(fields.length!==8)throw Error(`${category}:${i+1} : ${fields.length} champs au lieu de 8`);
+    const [topic,question,correct,d1,d2,d3,explanation,key]=fields,source=key?sources[key]:null;
+    if(key&&!source)throw Error(`Source inconnue ${key}`);
+    bank.push({id:`${prefixes[category]}-${String(i+1).padStart(3,'0')}`,category,subcategory:topic.replace('!',''),difficulty:'medium',
+      kind:topic.endsWith('!')?'case':'concept',fictionalData:topic.endsWith('!'),question,choices:[correct,d1,d2,d3],correctAnswer:0,explanation,image:null,source,
+      requiresSource:Boolean(key),sourceTitle:source?.name??null,sourceUrl:source?.url??null,lastVerified:source?.lastVerified??null,
+      editorialStatus:'draft-reviewed',difficultyBasis:'estimation éditoriale non calibrée'});
   });
 }
-const visuals=buildVisualQuestions();
-fs.mkdirSync(path.join(root,'assets/psychotechnique'),{recursive:true});
-const easyVisuals=new Set([3,6,11,12,15,17,21,22,25,29,33,34,38,39,41,42]);
-const hardVisuals=new Set([9,10,14,18,20,24,28,30,32,35,45,49,50,55,59,60]);
-for(const [i,{svg,...q}] of visuals.entries()){
-  // Figures that combine multiple transformations receive a higher estimate.
-  q.difficulty=hardVisuals.has(i+1)?'hard':easyVisuals.has(i+1)?'easy':'medium';
-  const correct=q.choices[q.correctAnswer],offset=(i+1)%4;
-  q.choices=q.choices.map((_,j)=>q.choices[(j+offset)%4]);q.correctAnswer=q.choices.indexOf(correct);
-  fs.writeFileSync(path.join(root,q.image),svg);bank.push(q);
-}
-// Subcategory round-robin keeps each simulation varied, instead of contiguous source slices.
-function interleave(items){const groups=new Map();for(const q of items){if(!groups.has(q.subcategory))groups.set(q.subcategory,[]);groups.get(q.subcategory).push(q);}const result=[];while([...groups.values()].some(g=>g.length))for(const g of groups.values())if(g.length)result.push(g.shift());return result;}
-const allocations={francais:{easy:4,medium:8,hard:4},mathematiques:{easy:3,medium:7,hard:4},culture:{easy:4,medium:8,hard:3}};
-const pools=new Map();
-function take(category,difficulty,count,visual=null){const key=`${category}-${difficulty}-${visual}`;if(!pools.has(key))pools.set(key,interleave(bank.filter(q=>q.category===category&&q.difficulty===difficulty&&(visual===null||Boolean(q.image)===visual))));const selected=pools.get(key).splice(0,count);if(selected.length!==count)throw new Error(`Pool insuffisant : ${key} (${selected.length}/${count})`);return selected;}
-const used=new Set(),exams=[];
+const levels=JSON.parse(fs.readFileSync(path.join(root,'data/pca-difficulty.json'),'utf8'));
+for(const c of Object.keys(CATEGORIES))bank.filter(q=>q.category===c).forEach((q,i)=>{
+  if(levels[c].easy.includes(i+1)&&levels[c].hard.includes(i+1))throw Error(`Difficulté contradictoire : ${q.id}`);
+  q.difficulty=levels[c].hard.includes(i+1)?'hard':levels[c].easy.includes(i+1)?'easy':'medium';
+});
+function interleave(items){const groups=new Map();for(const q of shuffled(items)){if(!groups.has(q.subcategory))groups.set(q.subcategory,[]);groups.get(q.subcategory).push(q);}const out=[];while([...groups.values()].some(a=>a.length))for(const a of groups.values())if(a.length)out.push(a.shift());return out;}
+const pools=new Map();for(const c of Object.keys(CATEGORIES))for(const d of ['easy','medium','hard'])pools.set(`${c}:${d}`,interleave(bank.filter(q=>q.category===c&&q.difficulty===d)));
+const exams=[],used=new Set();
 for(let day=1;day<=5;day++){
   const selected=[];
-  for(const [c,counts] of Object.entries(allocations))for(const [difficulty,count] of Object.entries(counts))selected.push(...take(c,difficulty,count));
-  for(const [difficulty,v,w] of [['easy',2,3],['medium',4,6],['hard',2,3]])selected.push(...take('logique',difficulty,v,true),...take('logique',difficulty,w,false));
-  const ordered=interleave(selected);
-  for(const q of ordered){if(used.has(q.id))throw new Error(`Chevauchement : ${q.id}`);used.add(q.id);}
-  exams.push({day,ids:ordered.map(q=>q.id)});
+  for(const [c,counts] of Object.entries(allocations))['easy','medium','hard'].forEach((d,i)=>{const take=pools.get(`${c}:${d}`).splice(0,counts[i]);if(take.length!==counts[i])throw Error(`Pool insuffisant ${c}:${d}`);selected.push(...take);});
+  const ordered=shuffled(selected);ordered.forEach(q=>used.add(q.id));exams.push({day,ids:ordered.map(q=>q.id)});
 }
-const plan={version:BANK_VERSION,durationMinutes:60,thresholdPercent:70,exams,reserve:bank.filter(q=>!used.has(q.id)).map(q=>q.id)};
-fs.writeFileSync(path.join(root,'data/questions.json'),JSON.stringify(bank,null,2)+'\n');
-fs.writeFileSync(path.join(root,'data/exam-plan.json'),JSON.stringify(plan,null,2)+'\n');
-console.log(`${bank.length} questions ; ${visuals.length} SVG ; ${used.size} questions d’examen ; ${plan.reserve.length} en réserve.`);
+// Position balance is exact per exam, and global (125 A/B/C/D). Distractors and
+// positions use a seeded Fisher–Yates shuffle rather than a cyclic position rule.
+const totals=[0,0,0,0];
+function assignPositions(items,positions){shuffled(positions).forEach((p,i)=>{const q=items[i],correct=q.choices[q.correctAnswer],others=shuffled(q.choices.filter((_,j)=>j!==q.correctAnswer));others.splice(p,0,correct);q.choices=others;q.correctAnswer=p;totals[p]++;});}
+for(const e of exams){const positions=[];for(let p=0;p<4;p++)positions.push(...Array(16+(p===(e.day-1)%4?1:0)).fill(p));assignPositions(e.ids.map(id=>bank.find(q=>q.id===id)),positions);}
+const reserve=bank.filter(q=>!used.has(q.id));assignPositions(reserve,totals.flatMap((n,p)=>Array(125-n).fill(p)));
+// Reuse the existing figure renderer for authored technical data, replacing the
+// active psychotechnical puzzles. Complete data also remains in the question text.
+const figures=bank.filter(q=>q.category==='quantitatif').slice(0,10);
+fs.mkdirSync(path.join(root,'assets/psychotechnique'),{recursive:true});
+const xml=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
+for(const q of figures){
+  q.image=`assets/psychotechnique/PCA-${q.id}.svg`;q.imageAlt=`Données fictives — ${q.question}`;
+  const words=q.question.replace('Cas fictif : ','').split(' '),lines=[];let line='';for(const word of words){if((line+' '+word).length>64){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);
+  fs.writeFileSync(path.join(root,q.image),`<svg xmlns="http://www.w3.org/2000/svg" width="660" height="260" viewBox="0 0 660 260" role="img"><title>${xml(q.imageAlt)}</title><rect width="660" height="260" rx="12" fill="#f1f5f9"/><text x="28" y="43" font-family="Arial,sans-serif" font-size="15" fill="#5278ad">DOSSIER DE GESTION · DONNÉES FICTIVES</text>${lines.map((s,i)=>`<text x="28" y="${87+i*30}" font-family="Arial,sans-serif" font-size="17" fill="#183653">${xml(s)}</text>`).join('')}<text x="28" y="237" font-family="Arial,sans-serif" font-size="13" fill="#607487">${q.id} · Aucun chiffre réel de l'ONATRA</text></svg>`);
+}
+const plan={version:BANK_VERSION,durationMinutes:60,thresholdPercent:70,programStatus:'Préparation technique estimative — aucun syllabus officiel disponible',exams,reserve:reserve.map(q=>q.id)};
+fs.writeFileSync(path.join(root,'data/questions.json'),JSON.stringify(bank,null,2)+'\n');fs.writeFileSync(path.join(root,'data/exam-plan.json'),JSON.stringify(plan,null,2)+'\n');
+console.log(`${bank.length} questions techniques, ${bank.filter(q=>q.kind==='case').length} cas ; 325 questions d'examen et ${reserve.length} de réserve.`);

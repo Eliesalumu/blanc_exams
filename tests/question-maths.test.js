@@ -1,36 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const questions=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url))).filter(q=>q.category==='mathematiques');
-// Independent numeric checks: these calculations verify the authored answers,
-// rather than testing the compiler against its own source answer field.
+const questions=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url))).filter(q=>q.category==='quantitatif');
+// Independent numeric oracle: recompute each management exercise, without using
+// the source answer field or compiler allocation logic.
 const expected=[
-  7.2+.085,15-3.75,.6*.04,8.4/.7,125*16,2.35+4.8+.65,99*37,3.6/100,3.075*2,48*25,
-  18-3*4+2,(20+4)/(8-2),6+24/3*2,5*(12-(3+4)),40/(2*5)+7,3**2+2*5,7+3*(15-9)/2,(8-3)**2-4**2,
-  1/3+1/4,42/56,250*3/5,5/8,7/8-1/4,(2/3)/(4/5),5/6-1/3,.125,18000*3,(9/10)*(5/6),
-  80000*.85,240000*1.125,(250-200)/200*100,64000/.8,'Baisse de 1 %',42/60*100,360000*.025,55-40,500*.3*.4,(1-.8*.75)*100,
-  9000/6*10,12*8/16,180/3*7,6*50000/100000,8*350/100,300/4*10,3*4,80/2*5,45*2/9,2800*25,
-  14,180/2.25,'11 h 25',96000*3/8,(12+15+9+16)/4,4*13-(10+12+14),12000/50000*100,(60+90)/2,120/(60/30+60/60),18*5000+7*10000,1-3/8-1/4,2*(18+12),8*5/.5,900/15,1/(1/6+1/3),30-(18+16-8),72000/1.2,(5*18-26)/4,'17 h 40',120+20-95,
-  (37-9)/4,21/3+4,(13+8)/(5-2),(8-3)*4,50/(1+2/3),(15-6)/.5,(57-1)/2,9+5,
-  25,11*2,8+13,17+16,27/3,28-8,40*3+1,40,
-  2.4*60,3.75*1000,.85*1000,2.5*1000,'2 h 15 min',72/3.6,1.2*10000,2+75/1000,.45*100,72/60,
-  'Mardi seulement',180/(120+180+300)*100,40000+2000*15,5,(10*4000+30*2000)/40,96,Math.ceil(65*.7),(40+2*50+60)/4,120*.95-108,1000000*(1-.4-.35),13-4
+ (92000-80000)/80000*100,(1.1*.9-1)*100,50-35,300000/15,100+250-290,120+200-150,
+ .6/3.6*360,8/10*100,30/5*50,1200/8,68/80*100,(460000-400000)/400000*100,
+ .24/2*100,24000/80000,(60*20+40*30)/100,1e6*.08*.5,110000/1.1,
+ 121000/(1.1**2)-100000,240000/60000,360000/300000,100000*(3000-2500)/1e6,
+ Math.min(900,600,750),(200-30)/200*100,12*8,96+24,500000/25000,100000+8*20000,
+ 500000-300000-150000,210000/300000*100,.05*2e6,'B et C','B, avec 135 000 USD',
+ (10-8)/10*100,88-80,900000/3e6*100,2+3+1,600/150,1200/4,(2+4+3+7)/4,
+ 96/(96+4)*100,10000*1.1**2,(40-25)*12000-150000,200000*(1-.6-.25),[2,2,3,3,20].sort((a,b)=>a-b)[2],500000+80000-450000
 ];
-function numeric(text){
-  const s=text.replaceAll(' ','').replace(',','.');
-  const fraction=s.match(/^(\d+)\/(\d+)/);
-  if(fraction)return Number(fraction[1])/Number(fraction[2]);
-  return Number(s.match(/^[0-9.]+/)?.[0]);
-}
-test('Les 105 bonnes réponses numériques sont vérifiées indépendamment',()=>{
-  assert.equal(expected.length,105);assert.equal(questions.length,105);
-  questions.forEach((q,i)=>{
-    const answer=q.choices[q.correctAnswer],truth=expected[i];
-    if(typeof truth==='string')assert.equal(answer,truth,`${q.id} : ${q.question}`);
-    else {
-      assert.ok(Math.abs(numeric(answer)-truth)<1e-8,`${q.id} : ${answer} ; attendu ${truth}`);
-      const matching=q.choices.filter(c=>Math.abs(numeric(c)-truth)<1e-8);
-      assert.equal(matching.length,1,`${q.id} : plusieurs choix numériquement corrects`);
-    }
-  });
+function firstNumber(s){const n=Number(s.replace(/[\s\u00a0\u202f]/g,'').replace(',','.').match(/[-−]?\d+(?:\.\d+)?/)?.[0]?.replace('−','-'));return /baisse/i.test(s)?-n:n;}
+test('Les 45 calculs de gestion ont une réponse numériquement correcte et unique',()=>{
+ assert.equal(questions.length,45);assert.equal(expected.length,45);
+ questions.forEach((q,i)=>{const want=expected[i],answer=q.choices[q.correctAnswer];
+   if(typeof want==='string'){assert.equal(answer,want,q.id);return;}
+   assert.ok(Math.abs(firstNumber(answer)-want)<1e-7,`${q.id} : ${answer} / ${want}`);
+   assert.equal(q.choices.filter(c=>(q.id!=='NU-034'||c.includes('points'))&&Math.abs(firstNumber(c)-want)<1e-7).length,1,`${q.id} : une seule réponse numérique dans l'unité demandée`);
+ });
 });

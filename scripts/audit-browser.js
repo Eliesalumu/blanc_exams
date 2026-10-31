@@ -46,7 +46,7 @@ try{
   assert.ok((await page.locator('.result-ring').textContent()).includes('70,77'));
   await page.screenshot({path:'artifacts/qa/resultat-46-sur-65.png',fullPage:true});
   const figures=bank.filter(q=>q.image);
-  for(let batch=0;batch<6;batch++){
+  for(let batch=0;batch<Math.ceil(figures.length/10);batch++){
     await page.setViewportSize({width:1360,height:1000});
     await page.setContent(`<html lang="fr"><head><title>Relecture des figures</title><style>body{margin:20px;font:14px Arial;background:#eef2f7;color:#183653}main{display:grid;grid-template-columns:1fr 1fr;gap:15px}article{background:white;border:1px solid #d8e1ea;padding:12px;border-radius:8px}img{width:100%;height:auto}h2{font-size:14px;margin:0 0 8px}p{font-size:12px;margin:0 0 8px;min-height:38px}</style></head><body><main>${figures.slice(batch*10,batch*10+10).map(q=>`<article><h2>${q.id}</h2><p>${q.question.replaceAll('&','&amp;').replaceAll('<','&lt;')}</p><img src="http://127.0.0.1:4173/${q.image}" alt="Figure ${q.id}"></article>`).join('')}</main></body></html>`);
     await page.waitForFunction(()=>[...document.images].every(img=>img.complete&&img.naturalWidth>0));

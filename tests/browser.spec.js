@@ -3,6 +3,15 @@ import fs from 'node:fs';
 const bank=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url))),byId=new Map(bank.map(q=>[q.id,q]));
 const key='cap70.progress.v1';
 const start=async page=>{await page.goto('/');await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
+
+test('Nouvelle banque : ancienne progression conservée sans alerte de panne de stockage',async({page})=>{
+ await page.goto('/');
+ const old={version:'2026-10-31-v1',attempts:[],active:null};
+ await page.evaluate(({key,old})=>localStorage.setItem(key,JSON.stringify(old)),{key,old});await page.reload();
+ await expect(page.locator('h1')).toContainText('Votre objectif');await expect(page.locator('.alert.urgent')).toHaveCount(0);
+ expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(`${key}.archive.2026-10-31-v1`)),key)).toEqual(old);
+ await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await page.reload();await expect(page.locator('#timer')).toBeVisible();
+});
 test('Affichage desktop, tablette, mobile ; navigation et figures',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const [name,width,height] of [['desktop',1440,1000],['tablette',820,1180],['mobile',390,844]]){
@@ -10,8 +19,8 @@ test('Affichage desktop, tablette, mobile ; navigation et figures',async({page})
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
     await page.screenshot({path:`test-results/accueil-${name}.png`,fullPage:true});
   }
-  await page.locator('[data-action="nav:revision"]').first().click();await page.locator('[data-action="review:logique"]').click();
-  for(let i=0;i<150;i++){
+  await page.locator('[data-action="nav:revision"]').first().click();await page.locator('[data-action="review:quantitatif"]').click();
+  for(let i=0;i<45;i++){
     if(await page.locator('.question-figure').count())break;
     await page.locator('.choice').first().click();await page.locator('[data-action="review-check"]').click();await page.locator('[data-action="review-next"]').click();
   }
