@@ -1,7 +1,7 @@
 import {apiRequest,isEvaluation,unavailable,tutorAllowed} from './ai.js';
 import {createTutor} from './tutor.js';
 import {companyCards,resultsHTML,technicalHistory} from './technicalUI.js';
-import { CATEGORIES, DURATION, BANK_VERSION, SUBSCRIPTION_EXPIRY, escapeHTML as h, percent, fmt } from './config.js';
+import { CATEGORIES, DURATION, BANK_VERSION, SUBSCRIPTION_EXPIRY, SUBSCRIPTION_REMINDER_ENABLED, escapeHTML as h, percent, fmt } from './config.js';
 import { loadQuestions } from './questionLoader.js';
 import { loadProgress, saveProgress } from './storage.js';
 import { createAttempt, setAnswer, toggleMark, completeAttempt, shuffle } from './exam.js';
@@ -139,7 +139,7 @@ function subscriptionDaysRemaining() {
   return daysUntilExpiry(SUBSCRIPTION_EXPIRY);
 }
 function showSubscriptionReminder() {
-  if(progress?.active||technicalProgress?.active||modal.open)return;
+  if(!SUBSCRIPTION_REMINDER_ENABLED||progress?.active||technicalProgress?.active||modal.open)return;
   const days=subscriptionDaysRemaining();
   const message=days>0?`Votre abonnement arrive à échéance dans ${days} jour${days===1?'':'s'}. Pensez à le renouveler afin de continuer à accéder à la plateforme d’entraînement.`:days===0?'Votre abonnement arrive à échéance aujourd’hui. Pensez à le renouveler afin de continuer à accéder à la plateforme d’entraînement.':`La date d’échéance configurée de votre abonnement est dépassée depuis ${Math.abs(days)} jour${days===-1?'':'s'}. Vérifiez les informations de votre abonnement auprès de la plateforme.`;
   modal.innerHTML=`<div class="subscription-icon">${icon('info',24)}</div><p class="eyebrow">RAPPEL DE RENOUVELLEMENT</p><h2 id="modal-title">RENOUVELLEMENT DE VOTRE ABONNEMENT</h2><p>${h(message)}</p><p class="small muted">Rappel informatif uniquement — aucun paiement ni changement d’accès n’est effectué ici.</p><div class="dialog-actions">${button('J’ai compris','subscription-close','btn primary')}</div>`;

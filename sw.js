@@ -1,4 +1,4 @@
-const CACHE = 'cap70-2026-11-05-results-stream-voice-v4';
+const CACHE = 'cap70-2026-11-05-renewal-disabled-v5';
 const FILES = [
   './', './index.html', './assets/favicon.svg', './src/app.js', './src/config.js', './src/technicalExam.js',
   './src/timer.js', './src/scoring.js', './src/exam.js', './src/storage.js', './src/subscription.js',

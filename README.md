@@ -21,7 +21,7 @@ Ouvrir http://127.0.0.1:4173. Cette commande lance maintenant le site **et son A
 
 La page d’accueil conserve les cinq examens généraux, leur historique et les trois simulations ONATRA, et ajoute trois simulations SNCC et cinq RVA. Chaque examen technique propose 50 questions (40 QCM et 10 réponses écrites) en 60 minutes. Les QCM valent 40 points ; chaque écrit est évalué par IA sur 10 puis converti sur 6 points (× 0,6), pour un total sur 100 et un seuil de 70. Les commentaires sont notés séparément hors total. Les copies restent sauvegardées si l’IA est indisponible et la correction peut être relancée. Les anciennes auto-évaluations sont conservées. Cette pondération est pédagogique et ne représente pas une note du jury officiel.
 
-Un rappel informatif d’échéance est présenté hors examen. La date configurable se trouve dans `src/config.js` (`SUBSCRIPTION_EXPIRY`, initialement `2026-11-06`) ; aucun paiement ni changement d’accès n’est effectué.
+Le rappel de renouvellement est conservé mais désactivé (`SUBSCRIPTION_REMINDER_ENABLED = false` dans `src/config.js`). Le passer à `true` réactive son affichage. La date reste configurable avec `SUBSCRIPTION_EXPIRY` ; aucun paiement ni changement d’accès n’est effectué.
 
 | Domaine | Banque | Par simulation | Réserve |
 |---|---:|---:|---:|

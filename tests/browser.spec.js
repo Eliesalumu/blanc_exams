@@ -14,6 +14,8 @@ const openApp=async page=>{await page.goto('/');await dismissReminder(page);};
 const start=async page=>{await openApp(page);await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
 
 test('Rappel d’échéance calculé, renouvelé au rechargement et absent en examen technique',async({page})=>{
+ // The reminder is disabled in production; retain coverage of its reactivation.
+ await page.route('**/src/config.js',route=>route.fulfill({contentType:'text/javascript',body:fs.readFileSync(new URL('../src/config.js',import.meta.url),'utf8').replace('SUBSCRIPTION_REMINDER_ENABLED = false','SUBSCRIPTION_REMINDER_ENABLED = true')}));
  await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});
  await page.goto('/');
  await expect(page.locator('#modal')).toContainText('dans 2 jours');
@@ -34,7 +36,7 @@ test('Rappel d’échéance calculé, renouvelé au rechargement et absent en ex
 test('Réponse longue et commentaire sont autosauvegardés et les commentaires bloquent l’envoi',async({page})=>{
  test.setTimeout(120000);
  await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});await page.goto('/');
- await page.locator('[data-action="subscription-close"]').click();
+ await dismissReminder(page);
  await page.locator('[data-action="technical-instructions:technical-1"]').click();
  await page.locator('[data-action="technical-start:technical-1"]').click();
  const exam=JSON.parse(fs.readFileSync(new URL('../data/technical-exams.json',import.meta.url))).exams[0];
@@ -61,7 +63,7 @@ test('Réponse longue et commentaire sont autosauvegardés et les commentaires b
 });
 test('Note écrite provisoire, panne et relance IA restent distinctes du jury',async({page})=>{
  await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});await page.goto('/');
- await page.locator('[data-action="subscription-close"]').click();
+ await dismissReminder(page);
  await page.locator('[data-action="technical-instructions:technical-1"]').click();
  const exam=JSON.parse(fs.readFileSync(new URL('../data/technical-exams.json',import.meta.url))).exams[0];
  await page.evaluate(({key,exam})=>{
