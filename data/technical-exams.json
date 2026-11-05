@@ -1,0 +1,2275 @@
+{
+  "exams": [
+    {
+      "id": "technical-1",
+      "title": "Simulation technique 1",
+      "durationMinutes": 60,
+      "questions": [
+        {
+          "id": "t1-A-M01",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel rôle du PCA favorise des décisions éclairées du CA ?",
+          "choices": [
+            "Remplacer les contrôles par un bilan annuel.",
+            "Diriger les opérations quotidiennes.",
+            "Organiser les délibérations et veiller à leur traçabilité.",
+            "Confier l’exécution des résolutions aux administrateurs."
+          ],
+          "answer": 2,
+          "explanation": "Le PCA facilite les travaux du CA sans se substituer au DG.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M02",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Un administrateur a un intérêt dans un marché soumis au CA. Quelle démarche convient ?",
+          "choices": [
+            "Lui demander de voter avec réserve.",
+            "Consigner l’intérêt et appliquer les règles de déport.",
+            "Reporter la déclaration après signature.",
+            "Laisser le PCA décider seul si le prix est influencé."
+          ],
+          "answer": 1,
+          "explanation": "Déclaration et déport selon les règles protègent l’impartialité.",
+          "commentRequired": true
+        },
+        {
+          "id": "t1-A-M03",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel outil facilite le suivi des résolutions du CA ?",
+          "choices": [
+            "Un registre avec responsables, échéances et preuves d’avancement.",
+            "Une liste sans responsables pour rester flexible.",
+            "Un compte rendu oral annuel.",
+            "Un relevé de dépenses sans lien avec les décisions."
+          ],
+          "answer": 0,
+          "explanation": "Un registre attribué permet de suivre l’exécution et les écarts.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M04",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Le PCA reçoit une demande urgente d’autorisation d’une dépense opérationnelle. Que faire ?",
+          "choices": [
+            "Signer pour éviter le retard.",
+            "Orienter la demande vers le DG et les délégations applicables.",
+            "Soumettre toutes les dépenses au prochain CA.",
+            "Demander une validation informelle d’un administrateur."
+          ],
+          "answer": 1,
+          "explanation": "Respecter les délégations évite la confusion entre gouvernance et gestion.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M05",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "À quoi sert principalement un comité spécialisé du CA ?",
+          "choices": [
+            "Préparer l’examen des sujets de son mandat et conseiller le CA.",
+            "Remplacer le CA pour toutes les décisions importantes.",
+            "Diriger les équipes d’exécution.",
+            "Tenir les écritures à la place des fonctions financières."
+          ],
+          "answer": 0,
+          "explanation": "Le comité éclaire le CA dans le périmètre défini.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M06",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Que doit faire le DG après l’adoption d’une résolution du CA ?",
+          "choices": [
+            "Organiser sa mise en œuvre et rendre compte des résultats et écarts.",
+            "La modifier si son exécution paraît coûteuse.",
+            "Demander au PCA de diriger les équipes.",
+            "N’en rendre compte qu’en fin d’exercice."
+          ],
+          "answer": 0,
+          "explanation": "Le DG assure la gestion et l’exécution dans ses pouvoirs.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M07",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel dossier éclaire le mieux le CA sur un investissement important ?",
+          "choices": [
+            "Un coût initial sans hypothèses.",
+            "Un avis oral du fournisseur choisi.",
+            "Un calendrier sans comparaison des options.",
+            "Objectif, options, coûts, risques, financement et indicateurs de suivi."
+          ],
+          "answer": 3,
+          "explanation": "Une décision informée exige hypothèses, alternatives et suivi.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M08",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Que devrait permettre de retrouver le procès-verbal d’une séance ?",
+          "choices": [
+            "Tous les propos, même hors sujet.",
+            "Les échanges informels après clôture.",
+            "Les décisions, votes et actions de suivi selon les règles.",
+            "La seule liste de présence."
+          ],
+          "answer": 2,
+          "explanation": "Une trace fidèle facilite le suivi et la vérification des décisions.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Quelle pratique soutient la responsabilité des administrateurs ?",
+          "choices": [
+            "Recevoir les documents à temps et demander les clarifications utiles.",
+            "S’appuyer sur l’analyse d’un spécialiste tout en exerçant un examen indépendant.",
+            "Voter sans réserve pour gagner du temps.",
+            "Lire les états financiers après leur publication."
+          ],
+          "answer": 0,
+          "explanation": "Un jugement informé suppose préparation et examen des pièces.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M01",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel ensemble correspond au cœur des états financiers annuels selon le référentiel applicable ?",
+          "choices": [
+            "Budget et relevés bancaires uniquement.",
+            "Bilan et compte de résultat sans annexes.",
+            "Grand livre et procès-verbaux uniquement.",
+            "Bilan, compte de résultat, tableau des flux et notes annexes."
+          ],
+          "answer": 3,
+          "explanation": "Les états comprennent ces documents, sous réserve du système applicable.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M02",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Un rapprochement révèle un chèque ancien non débité. Quelle première vérification faire ?",
+          "choices": [
+            "Supprimer automatiquement l’écriture.",
+            "Vérifier pièce, bénéficiaire, ancienneté et traitement comptable.",
+            "Passer le montant en produit.",
+            "Compenser avec une recette future."
+          ],
+          "answer": 1,
+          "explanation": "Une différence doit être expliquée et régularisée sur pièces.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M03",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quelle information renseigne le mieux sur la liquidité à court terme ?",
+          "choices": [
+            "Les immobilisations brutes.",
+            "Une prévision rapprochant encaissements, décaissements et échéances.",
+            "Le nombre de factures émises.",
+            "Le résultat net isolé de son calendrier."
+          ],
+          "answer": 1,
+          "explanation": "La liquidité dépend des flux disponibles aux dates d’échéance.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M04",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Une provision pour litige est envisagée. Quelle démarche est robuste ?",
+          "choices": [
+            "Retenir sans analyse le maximum réclamé.",
+            "Documenter le risque, l’estimation et les incertitudes selon le référentiel.",
+            "Évaluer le litige à sa déclaration, puis ne le réexaminer qu’à la clôture annuelle.",
+            "Enregistrer le même montant chaque année."
+          ],
+          "answer": 1,
+          "explanation": "Le traitement repose sur une évaluation documentée.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M05",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Pourquoi rapprocher les comptes auxiliaires clients du compte collectif ?",
+          "choices": [
+            "Vérifier la cohérence des soldes et investiguer les écarts.",
+            "Accélérer la facturation sans contrôle.",
+            "Remplacer l’inventaire des stocks.",
+            "Effacer les soldes anciens."
+          ],
+          "answer": 0,
+          "explanation": "Le rapprochement vérifie la cohérence entre détail et comptabilité générale.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M06",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Une facture reçue après clôture concerne un service déjà consommé. Quelle analyse faire ?",
+          "choices": [
+            "Examiner le rattachement et documenter, au besoin, une charge à payer.",
+            "L’ignorer jusqu’au budget suivant.",
+            "L’inclure dans le budget de la prochaine période sans examiner le service reçu.",
+            "La déduire du solde bancaire sans écriture."
+          ],
+          "answer": 0,
+          "explanation": "Le rattachement dépend de la période du service et des règles de clôture.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M07",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Pourquoi distinguer les flux de trésorerie du résultat comptable pour un projet ?",
+          "choices": [
+            "Le résultat comptable dépend principalement des encaissements constatés.",
+            "Les flux excluent tous les coûts d’exploitation.",
+            "Le résultat comprend des éléments qui ne décrivent pas le calendrier des flux.",
+            "Un bénéfice comptable peut coexister avec un besoin de trésorerie."
+          ],
+          "answer": 2,
+          "explanation": "Rentabilité comptable et flux effectivement générés se complètent sans se confondre.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M08",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel contrôle limite le risque de double paiement d’une facture ?",
+          "choices": [
+            "Vérifier unicité et fournisseur, puis rapprocher commande, réception et validation.",
+            "Payer sans vérification à l’échéance.",
+            "Se fier au nom du fichier électronique.",
+            "Supprimer les factures de montants proches."
+          ],
+          "answer": 0,
+          "explanation": "L’identification et le rapprochement des pièces vérifient l’unicité et la réalité de l’achat.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-B-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Quel contrôle renforce la transparence d’une décision de marché présentée au conseil ?",
+          "choices": [
+            "Le montant retenu et la date de signature.",
+            "Critères annoncés, déclarations d’intérêts, déports et motifs consignés.",
+            "L’identité des soumissionnaires sans historique des évaluations.",
+            "Une attestation générale de conformité."
+          ],
+          "answer": 1,
+          "explanation": "Des critères traçables et la gestion des intérêts documentée soutiennent l’équité et la redevabilité.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel outil maîtrise les interfaces d’un transport combinant fleuve, port et rail ?",
+          "choices": [
+            "Une consigne au seul transporteur final.",
+            "Reporter les contrôles à destination.",
+            "Un plan de transfert précisant fenêtres, rôles, documents et retards.",
+            "Supprimer les preuves de remise."
+          ],
+          "answer": 2,
+          "explanation": "Les ruptures de charge nécessitent coordination et preuve des transferts.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M02",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Une cargaison est endommagée lors d’un transfert portuaire. Quelle mesure immédiate est utile ?",
+          "choices": [
+            "Décharger sans constat.",
+            "Attribuer aussitôt la responsabilité au dernier intervenant.",
+            "Modifier le manifeste avant notification.",
+            "Sécuriser, constater les dommages et préserver les pièces de transport."
+          ],
+          "answer": 3,
+          "explanation": "Un constat et des documents conservés permettent une enquête fondée.",
+          "commentRequired": true
+        },
+        {
+          "id": "t1-C-M03",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel indicateur mesure la ponctualité des opérations de manutention planifiées ?",
+          "choices": [
+            "Le nombre de courriels clients.",
+            "Le tonnage annuel sans calendrier.",
+            "La part des opérations dans la fenêtre convenue, selon des exclusions définies.",
+            "La valeur comptable des grues."
+          ],
+          "answer": 2,
+          "explanation": "L’indicateur relie la réalisation à l’horaire prévu.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M04",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Que vérifier avant d’accepter une réservation de transport ?",
+          "choices": [
+            "Le tarif seul.",
+            "La capacité nominale sans indisponibilités.",
+            "Capacité, contraintes de la marchandise et jalons de prise en charge.",
+            "Les contraintes seulement après l’arrivée."
+          ],
+          "answer": 2,
+          "explanation": "La réservation doit concorder avec les capacités et contraintes réelles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M05",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Un lot est immobilisé faute d’un document. Quelle démarche réduit les délais sans contourner les règles ?",
+          "choices": [
+            "Le sortir puis régulariser.",
+            "Identifier la pièce, son responsable et un canal d’escalade traçable.",
+            "Changer sa description.",
+            "Attendre sans informer les parties."
+          ],
+          "answer": 1,
+          "explanation": "Clarifier exigences et responsabilités résout le blocage sans contournement.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M06",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel principe guide l’allocation de postes d’accostage entre plusieurs navires ?",
+          "choices": [
+            "Priorité systématique au dernier arrivé.",
+            "Choix selon l’identité du demandeur.",
+            "Critères établis tenant compte de sécurité, capacité et service.",
+            "Réserver toute capacité aux navires les plus grands."
+          ],
+          "answer": 2,
+          "explanation": "Des critères transparents permettent d’arbitrer les contraintes de manière équitable.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M07",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quelle preuve est utile au transfert de garde d’une expédition ?",
+          "choices": [
+            "Une facture antérieure au départ.",
+            "Une estimation téléphonique.",
+            "Une photo sans date ni référence.",
+            "Un récépissé horodaté identifiant lot et parties."
+          ],
+          "answer": 3,
+          "explanation": "La preuve identifie la marchandise, les parties et le moment du transfert.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-C-M08",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Comment préparer le transport d’une marchandise dangereuse ?",
+          "choices": [
+            "Demander sa classification en cours de trajet.",
+            "Vérifier classification, emballage, documents et compatibilité avant acceptation.",
+            "Regrouper sans vérifier la compatibilité.",
+            "Remplacer les documents requis par une note interne."
+          ],
+          "answer": 1,
+          "explanation": "Les exigences applicables doivent être établies avant manutention et transport.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-D-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Avant des travaux sur la voie M–K, quelle étape est prioritaire ?",
+          "choices": [
+            "Évaluer le risque, protéger le chantier et coordonner les restrictions.",
+            "Réduire les inspections.",
+            "Lancer les travaux puis notifier les circulations.",
+            "Commencer dès qu’une équipe est disponible."
+          ],
+          "answer": 0,
+          "explanation": "La planification doit protéger circulations et intervenants.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-D-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Quelle option de renouvellement d’un pont de la ligne Matadi–Kinshasa mérite d’abord une comparaison stratégique ?",
+          "choices": [
+            "Réhabiliter par étapes avec limites de charge et contrôles vérifiés.",
+            "Comparer les trois options selon sécurité, service, coût total et financement.",
+            "Associer inspection renforcée à une décision d’investissement par seuils.",
+            "Remplacer l’ouvrage en une seule tranche après étude de cycle de vie."
+          ],
+          "answer": 1,
+          "explanation": "Le conseil peut comparer plusieurs trajectoires documentées et leurs effets sur le service sans choisir une méthode technique à la place des spécialistes.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-D-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un pilote de suivi numérique des wagons est proposé pour réduire les temps d’attente. Quel cadrage permet de décider de son extension ?",
+          "choices": [
+            "Préciser les gains attendus, coûts récurrents, interopérabilité et critères d’arrêt avant le pilote.",
+            "Élargir le pilote dès que le tableau de bord fonctionne.",
+            "Comparer les délais avant-après en gardant la même définition et les mêmes flux.",
+            "Mesurer délais de bout en bout, qualité des données, adoption et coûts d’intégration sur un périmètre défini."
+          ],
+          "answer": 0,
+          "explanation": "Un pilote utile repose sur un scénario de référence, des coûts complets et des critères définis avant l’investissement.",
+          "commentRequired": true
+        },
+        {
+          "id": "t1-D-M04",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un partenaire propose de financer un terminal en échange d’une durée d’exploitation longue. Quel examen stratégique est déterminant ?",
+          "choices": [
+            "Comparer le financement privé au coût et au risque d’un financement alternatif.",
+            "Négocier la durée après avoir arrêté seul les spécifications.",
+            "Évaluer le partage des revenus et les garanties de disponibilité.",
+            "Comparer valeur pour l’entreprise, obligations de service, partage des risques, concurrence et conditions de sortie."
+          ],
+          "answer": 3,
+          "explanation": "La structure du partenariat doit être comparée aux solutions alternatives et préserver les obligations et intérêts de l’entreprise.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-D-M05",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Le trafic conteneurisé stagne alors que des opérateurs concurrents raccourcissent leurs délais. Quelle priorité commerciale est la plus défendable ?",
+          "choices": [
+            "Accorder une remise uniforme pour rétablir les volumes.",
+            "Segmenter les clients et mesurer les délais d’escale et de transfert avant de cibler une offre.",
+            "Concentrer les efforts sur les volumes déjà contractés.",
+            "Lancer une tarification ciblée après analyse des coûts de service, capacité et élasticité."
+          ],
+          "answer": 3,
+          "explanation": "Une offre ciblée lie la demande aux coûts, à la capacité et aux niveaux de service réellement livrables.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-D-M06",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Une étude propose d’augmenter les rotations ferroviaires vers le port. Quel jalon devrait conditionner l’investissement associé ?",
+          "choices": [
+            "Comparer d’abord l’achat ferme, la location et l’optimisation du parc actuel.",
+            "Engager le matériel roulant avant l’étude des sillons disponibles.",
+            "Lier l’achat à des seuils de trafic et à une disponibilité mesurée du parc.",
+            "Confirmer la demande, les capacités de voie et de terminal, les coûts d’exploitation et les gains de fiabilité."
+          ],
+          "answer": 3,
+          "explanation": "La décision d’investissement doit intégrer la capacité des interfaces et les coûts récurrents, pas seulement la demande projetée.",
+          "commentRequired": true
+        },
+        {
+          "id": "t1-D-M07",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Pour développer les recettes portuaires, quelle analyse aide à choisir entre nouveaux services et hausse tarifaire ?",
+          "choices": [
+            "Augmenter d’abord le tarif des services dont le volume est le plus élevé.",
+            "Évaluer une tarification différenciée avec des indicateurs de volume et de rétention.",
+            "Comparer marges par service, coûts de capacité, demande et effets sur la fidélité des clients.",
+            "Tester de nouveaux services là où les actifs et compétences inutilisés sont documentés."
+          ],
+          "answer": 2,
+          "explanation": "La décision commerciale compare les marges, la demande et les effets sur la compétitivité.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-E-M01",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Quel lien expliciter dans une stratégie d’entreprise publique examinée par le CA ?",
+          "choices": [
+            "Slogan et liste de projets.",
+            "Objectifs financiers seuls.",
+            "Objectifs de service, moyens, risques et indicateurs associés.",
+            "Engagements fournisseurs avant les priorités."
+          ],
+          "answer": 2,
+          "explanation": "Une stratégie relie mandat, ressources, risques et résultats mesurables.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-E-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Quel ensemble aide à distinguer productivité d’une baisse de qualité ?",
+          "choices": [
+            "Le coût unitaire seul.",
+            "La réduction d’effectifs seule.",
+            "Le tonnage facturé sans dommages.",
+            "Production complétée par délai, sécurité et réclamations."
+          ],
+          "answer": 3,
+          "explanation": "La productivité doit se lire avec la qualité et le service.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-E-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Le CA conteste une hypothèse de croissance des recettes. Quelle analyse est utile ?",
+          "choices": [
+            "Écarter les scénarios défavorables.",
+            "Maintenir la prévision initiale pour la cohérence.",
+            "Remplacer par une hausse uniforme.",
+            "Facteurs de volume et tarif, scénarios et effets sur trésorerie et capacité."
+          ],
+          "answer": 3,
+          "explanation": "La sensibilité documentée éclaire l’incertitude et ses effets.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-F-M01",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Scénario fictif : deux directions revendiquent un créneau critique de manutention. Comment arbitrer ?",
+          "choices": [
+            "Par ordre hiérarchique informel.",
+            "Demander au PCA de choisir pendant l’opération.",
+            "Au premier demandeur sans analyser les impacts.",
+            "Appliquer les critères, vérifier la sécurité et tracer les motifs."
+          ],
+          "answer": 3,
+          "explanation": "Des critères connus et une décision traçable soutiennent la continuité.",
+          "commentRequired": true
+        },
+        {
+          "id": "t1-F-M02",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Scénario fictif : une prévision signale un déficit de trésorerie à six semaines. Quelle action convient ?",
+          "choices": [
+            "Suspendre tous les paiements.",
+            "Actualiser la prévision, chiffrer les options et assurer un suivi rapproché.",
+            "Demander au CA de choisir chaque facture.",
+            "Attendre la clôture trimestrielle."
+          ],
+          "answer": 1,
+          "explanation": "L’alerte appelle une analyse des flux et des options selon les pouvoirs applicables.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-F-M03",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Un administrateur reçoit une proposition confidentielle d’un partenaire. Quelle conduite est appropriée ?",
+          "choices": [
+            "La transmettre à un concurrent.",
+            "Conseiller une partie extérieure sans pièces.",
+            "Protéger l’information et déclarer tout intérêt pertinent.",
+            "La garder hors des canaux de gouvernance."
+          ],
+          "answer": 2,
+          "explanation": "Confidentialité et conflits d’intérêts se traitent selon les procédures applicables.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-F-M04",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Après un incident fictif entraînant un arrêt de circulation, que devrait fournir le DG au CA ?",
+          "choices": [
+            "Faits confirmés, mesures de sécurité, impacts et étapes d’enquête et de reprise.",
+            "Une cause définitive avant l’analyse.",
+            "Une responsabilité juridique certaine.",
+            "Les seuls coûts, sans sécurité ni continuité."
+          ],
+          "answer": 0,
+          "explanation": "Il faut distinguer faits et hypothèses et décrire les actions en cours.",
+          "commentRequired": false
+        },
+        {
+          "id": "t1-A-S01",
+          "section": "E",
+          "type": "short",
+          "prompt": "Distinguez le rôle du PCA, du conseil, du DG et de l’assemblée générale dans une décision de gouvernance.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA organise et conduit les travaux du conseil selon les règles; il ne se substitue pas au DG. Le conseil délibère sur les orientations et décisions qui relèvent de ses pouvoirs. Le DG assure la direction générale et l’exécution dans son périmètre. L’assemblée générale exerce les compétences que les textes et statuts lui attribuent, notamment certaines décisions sur le capital ou les comptes. Le dossier doit préciser l’organe compétent, les délégations et la traçabilité de la décision.",
+          "essentials": [
+            "Distinguer animation, décision, exécution et compétence de l’assemblée.",
+            "Respecter textes, statuts et délégations.",
+            "Assurer une trace fidèle."
+          ]
+        },
+        {
+          "id": "t1-B-S01",
+          "section": "C",
+          "type": "short",
+          "prompt": "Expliquez comment le CA peut examiner la qualité d’une prévision de trésorerie sans se substituer à la fonction financière.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "Le CA peut demander une prévision fondée sur encaissements, décaissements, échéances, hypothèses et incertitudes. Il examine les écarts, scénarios défavorables, besoins de financement et réponses, puis s’assure du suivi par des responsables. Il ne valide pas chaque paiement opérationnel si cette tâche relève des délégations. Les données doivent pouvoir être rapprochées des comptes et actualisées quand les hypothèses évoluent.",
+          "essentials": [
+            "Analyser flux, échéances et hypothèses",
+            "Examiner scénarios, écarts et mesures",
+            "Respecter les délégations opérationnelles"
+          ]
+        },
+        {
+          "id": "t1-C-S01",
+          "section": "A",
+          "type": "short",
+          "prompt": "Proposez une méthode de gestion des interfaces d’un transport fictif combinant voie fluviale, port et rail.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Confirmer la marchandise, les contraintes de sécurité, les documents et la capacité prévue pour chaque mode. Établir un plan de transfert indiquant horaires, points de remise, responsables et preuves attendues. Coordonner les fenêtres d’arrivée et de départ avec des marges adaptées et des contacts d’escalade. À chaque transfert, enregistrer l’identification du lot, son état, l’heure et les parties. Suivre retards et immobilisations par cause, informer le client selon les engagements convenus et décider des mesures de reprise. Après l’opération, analyser les écarts pour corriger les interfaces récurrentes sans contourner les exigences documentaires ou de sécurité.",
+          "essentials": [
+            "Confirmer capacité, documents et contraintes",
+            "Définir transferts, rôles, horaires et preuves",
+            "Suivre les écarts et mesures de reprise"
+          ]
+        },
+        {
+          "id": "t1-C-S02",
+          "section": "E",
+          "type": "short",
+          "prompt": "Décrivez le traitement de gouvernance d’un conflit d’intérêts déclaré avant un vote du conseil.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le lien doit être déclaré et consigné selon les règles applicables. Le PCA veille à ce que la personne concernée respecte les règles de participation et de déport, en tenant compte du quorum et du vote. Le conseil examine le dossier sur la base de critères équitables et d’informations suffisantes. Le procès-verbal reflète les décisions et mesures pertinentes sans diffuser inutilement des données confidentielles. En cas d’incertitude, l’organe sollicite un avis compétent. Le PCA facilite la procédure; il ne décide pas seul de l’issue du marché.",
+          "essentials": [
+            "Déclaration et déport selon les règles.",
+            "Décision impartiale et consignée.",
+            "Respect des compétences et de la confidentialité."
+          ]
+        },
+        {
+          "id": "t1-D-S01",
+          "section": "D",
+          "type": "short",
+          "prompt": "Un rapport montre que plusieurs résolutions stratégiques du conseil n’ont pas atteint leurs jalons. Comment le PCA devrait-il conduire la revue et les suites ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA s’assure que le conseil dispose d’un état fiable des engagements, du coût à terminaison, des causes du retard, des options et de leurs effets sur le service. Il organise une délibération permettant de distinguer les faits des hypothèses et de traiter les risques importants. Le conseil décide des mesures relevant de ses compétences, par exemple un réexamen du périmètre ou des seuils de suivi. Le DG demeure responsable de l’exécution et présente un plan avec responsables, échéances et indicateurs. Le PCA suit les résolutions et sollicite une remontée rapide des écarts. Toute décision doit être consignée et rester conforme aux pouvoirs du conseil et aux délégations applicables.",
+          "essentials": [
+            "Obtenir données fiables, options et risques.",
+            "Respecter les compétences du conseil et du DG.",
+            "Fixer un suivi documenté des résolutions et écarts."
+          ]
+        },
+        {
+          "id": "t1-D-S02",
+          "section": "D",
+          "type": "short",
+          "prompt": "Le CA demande une revue d’un investissement après la découverte d’un risque majeur qui n’était pas dans le dossier initial. Quelles démarches de gouvernance le PCA devrait-il organiser ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA s’assure que le conseil dispose d’un état fiable des engagements, du coût à terminaison, des causes du retard, des options et de leurs effets sur le service. Il organise une délibération permettant de distinguer les faits des hypothèses et de traiter les risques importants. Le conseil décide des mesures relevant de ses compétences, par exemple un réexamen du périmètre ou des seuils de suivi. Le DG demeure responsable de l’exécution et présente un plan avec responsables, échéances et indicateurs. Le PCA suit les résolutions et sollicite une remontée rapide des écarts. Toute décision doit être consignée et rester conforme aux pouvoirs du conseil et aux délégations applicables.",
+          "essentials": [
+            "Obtenir données fiables, options et risques.",
+            "Respecter les compétences du conseil et du DG.",
+            "Fixer un suivi documenté des résolutions et écarts."
+          ]
+        },
+        {
+          "id": "t1-D-S03",
+          "section": "D",
+          "type": "short",
+          "prompt": "Le DG présente un plan de redressement après une baisse durable de trafic. Comment le PCA organise-t-il son examen et le contrôle de son exécution par le conseil ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA s’assure que le conseil dispose d’un état fiable des engagements, du coût à terminaison, des causes du retard, des options et de leurs effets sur le service. Il organise une délibération permettant de distinguer les faits des hypothèses et de traiter les risques importants. Le conseil décide des mesures relevant de ses compétences, par exemple un réexamen du périmètre ou des seuils de suivi. Le DG demeure responsable de l’exécution et présente un plan avec responsables, échéances et indicateurs. Le PCA suit les résolutions et sollicite une remontée rapide des écarts. Toute décision doit être consignée et rester conforme aux pouvoirs du conseil et aux délégations applicables.",
+          "essentials": [
+            "Obtenir données fiables, options et risques.",
+            "Respecter les compétences du conseil et du DG.",
+            "Fixer un suivi documenté des résolutions et écarts."
+          ]
+        },
+        {
+          "id": "t1-E-S01",
+          "section": "B",
+          "type": "short",
+          "prompt": "Proposez trois catégories d’indicateurs pour suivre une stratégie de transport et justifiez leur complémentarité.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "Mesurer le service rendu, par exemple ponctualité et délais; la sécurité et la qualité, comme incidents et dommages; et la viabilité économique, par exemple coûts unitaires et recettes. Il faut lire ces catégories ensemble : un coût plus faible n’est pas un progrès si retards, risques ou réclamations augmentent. Définir périmètre, source, fréquence et responsable pour chaque mesure.",
+          "essentials": [
+            "Service, sécurité/qualité et économie",
+            "Expliquer les arbitrages",
+            "Définir périmètre et source"
+          ]
+        },
+        {
+          "id": "t1-E-S02",
+          "section": "C",
+          "type": "short",
+          "prompt": "Un résultat trimestriel s’améliore, mais la trésorerie disponible diminue et les retards fournisseurs augmentent. Quelles analyses le conseil devrait-il demander avant d’arrêter une orientation financière ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Rapprocher le résultat des flux encaissés et décaissés, des échéances clients et fournisseurs, des variations de stocks et des éléments non monétaires. Examiner la prévision de trésorerie, le vieillissement des créances, les engagements et les besoins de financement à court terme. Comparer les hypothèses à la période précédente et tester un scénario défavorable. Le conseil demande au DG des options chiffrées, leurs effets sur le service et des indicateurs de suivi; la fonction financière prépare les analyses et gère les paiements selon les délégations. Les écarts importants sont documentés et réexaminés à une fréquence adaptée.",
+          "essentials": [
+            "Distinguer résultat, flux et échéances.",
+            "Examiner créances, dettes et scénarios.",
+            "Respecter le rôle du DG et des fonctions financières."
+          ]
+        },
+        {
+          "id": "t1-F-S01",
+          "section": "F",
+          "type": "short",
+          "prompt": "Indiquez comment le PCA devrait traiter une alerte du DG sur une baisse fictive des recettes et un risque de liquidité.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Veiller à porter rapidement l’alerte à l’organe compétent avec des données fiables. Le dossier distingue recettes facturées et encaissées, causes connues, prévision actualisée des flux, échéances et scénarios. Le CA examine options, risques, effets sur le service et décisions relevant de ses pouvoirs. Le DG reste responsable des mesures et de leur exécution dans ses délégations. Attribuer responsables, échéances et fréquence de suivi. Signaler les incertitudes et traiter confidentialité ou conflits d’intérêts selon les procédures.",
+          "essentials": [
+            "Organiser un examen rapide et documenté",
+            "Préserver le rôle exécutif du DG",
+            "Attribuer suivi et expliciter incertitudes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technical-2",
+      "title": "Simulation technique 2",
+      "durationMinutes": 60,
+      "questions": [
+        {
+          "id": "t2-A-M01",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Comment mobiliser l’expertise d’administrateurs sans créer un organe parallèle ?",
+          "choices": [
+            "Un groupe informel engage la société auprès des créanciers.",
+            "Confier à l’expert l’approbation des opérations quotidiennes.",
+            "Utiliser les compétences en séance ou dans un comité mandaté, avec compte rendu au CA.",
+            "Remplacer les résolutions par des avis individuels."
+          ],
+          "answer": 2,
+          "explanation": "L’expertise éclaire le CA sans modifier la répartition des pouvoirs.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M02",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quelle question doit accompagner une demande de délégation importante au DG ?",
+          "choices": [
+            "Quels périmètre, limites et comptes rendus sont prévus ?",
+            "Comment rendre la délégation irrévocable ?",
+            "Pourquoi soustraire la délégation au suivi ?",
+            "Quel administrateur exécutera les engagements ?"
+          ],
+          "answer": 0,
+          "explanation": "Une délégation claire définit son étendue, ses limites et sa reddition de comptes.",
+          "commentRequired": true
+        },
+        {
+          "id": "t2-A-M03",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Un administrateur demande une pièce sensible. Quel équilibre rechercher ?",
+          "choices": [
+            "Fournir l’information utile par un canal contrôlé selon les règles d’accès et de confidentialité.",
+            "Refuser toute pièce sensible à tous les administrateurs.",
+            "Envoyer le document à une adresse personnelle.",
+            "Diffuser la pièce à tout le personnel."
+          ],
+          "answer": 0,
+          "explanation": "L’accès nécessaire doit être concilié avec confidentialité et sécurité.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M04",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel est l’usage d’un calendrier annuel des travaux du CA ?",
+          "choices": [
+            "Interdire toute réunion hors calendrier.",
+            "Garantir des décisions sans dossier préparatoire.",
+            "Anticiper décisions récurrentes et sujets stratégiques sans exclure l’urgence.",
+            "Remplacer les règles statutaires de convocation."
+          ],
+          "answer": 2,
+          "explanation": "Le calendrier prépare les travaux, mais ne remplace pas les obligations formelles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M05",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Un administrateur conteste une donnée essentielle en séance. Quelle réponse est responsable ?",
+          "choices": [
+            "Écarter la contestation pour respecter l’ordre du jour.",
+            "Vérifier la source et, si nécessaire, demander un complément avant décision.",
+            "Voter pour la donnée la plus favorable.",
+            "Demander au PCA de certifier la donnée oralement."
+          ],
+          "answer": 1,
+          "explanation": "Une vérification proportionnée évite une décision fondée sur une donnée incertaine.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M06",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel principe guide la tenue du procès-verbal du CA ?",
+          "choices": [
+            "Faire rédiger chaque décision par son responsable opérationnel.",
+            "Omettre les résolutions afin de préserver la confidentialité.",
+            "Assurer une trace fiable selon les règles internes et applicables.",
+            "Confier la rédaction à un tiers sans contrôle."
+          ],
+          "answer": 2,
+          "explanation": "Les procès-verbaux doivent fidèlement retracer les décisions et respecter les règles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M07",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Pourquoi le CA examine-t-il périodiquement les risques majeurs ?",
+          "choices": [
+            "Pour suivre expositions, réponses et sujets nécessitant son attention.",
+            "Pour prendre en charge les contrôles quotidiens de chaque service.",
+            "Pour remplacer les rapports financiers.",
+            "Pour garantir l’absence d’événements imprévus."
+          ],
+          "answer": 0,
+          "explanation": "La surveillance éclaire le contrôle sans remplacer la gestion ni garantir l’absence d’incidents.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M08",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Quelle pratique améliore la qualité d’une évaluation présentée au CA ?",
+          "choices": [
+            "Présenter la conclusion sans hypothèses.",
+            "Exposer mandat, méthode, limites, sources et éventuels conflits d’intérêts.",
+            "Demander à l’évaluateur de confirmer la décision déjà prise.",
+            "Omettre les limites."
+          ],
+          "answer": 1,
+          "explanation": "La transparence permet d’apprécier la portée et l’indépendance de l’analyse.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Comment traiter un ordre du jour chargé ?",
+          "choices": [
+            "Supprimer les sujets à risque.",
+            "Faire voter sans discussion.",
+            "Confier les décisions du CA aux responsables présents.",
+            "Prioriser selon urgence et importance et réserver le temps de délibération nécessaire."
+          ],
+          "answer": 3,
+          "explanation": "La priorisation améliore la discussion sans évincer les décisions requises.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M01",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel contrôle fiabilise le recensement des immobilisations ?",
+          "choices": [
+            "Mettre à jour uniquement les acquisitions.",
+            "S’appuyer sur l’assurance seule.",
+            "Rapprocher registre et inventaire physique et documenter les mouvements.",
+            "Conserver le registre sans signaler les cessions."
+          ],
+          "answer": 2,
+          "explanation": "Le rapprochement et le suivi des mouvements soutiennent l’exhaustivité du registre.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M02",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Comment interpréter un ratio d’endettement d’une entreprise de transport ?",
+          "choices": [
+            "Le comparer au seul chiffre d’affaires d’un mois.",
+            "Le rapprocher des échéances, du coût de la dette, des flux et des investissements nécessaires.",
+            "Considérer toute dette comme insoutenable.",
+            "L’ignorer si les actifs sont élevés."
+          ],
+          "answer": 1,
+          "explanation": "La soutenabilité dépend des flux et engagements, pas d’un ratio isolé.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M03",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Un écart significatif apparaît entre budget et réalisé. Quelle analyse présenter ?",
+          "choices": [
+            "Une cause unique avant vérification.",
+            "Facteurs de volume, prix, calendrier et éléments exceptionnels, avec une action proposée.",
+            "Reporter à la clôture annuelle.",
+            "Modifier le budget pour supprimer l’écart."
+          ],
+          "answer": 1,
+          "explanation": "Décomposer les causes aide à choisir une mesure corrective pertinente.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M04",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel élément essentiel inclure dans un contrôle de clôture des stocks ?",
+          "choices": [
+            "Une estimation sans liste.",
+            "Le seul rapprochement des paiements bancaires.",
+            "L’arrêt des mouvements sans contrôle.",
+            "Instructions d’inventaire, comptages et examen documenté des écarts et de l’état."
+          ],
+          "answer": 3,
+          "explanation": "Comptages et traitement documenté soutiennent l’existence et l’évaluation des stocks.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M05",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Une recette facturée est contestée par le client. Quelle analyse faire ?",
+          "choices": [
+            "Examiner contrat, service rendu, contestation et règles de comptabilisation.",
+            "Annuler sans examiner les pièces.",
+            "Traiter la facture comme un encaissement.",
+            "La reconnaître dès l’émission, même si les conditions de transfert ne sont pas établies."
+          ],
+          "answer": 0,
+          "explanation": "Une facture ne prouve pas à elle seule le droit définitif ni l’encaissement.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M06",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "À quoi sert une analyse de sensibilité du plan de financement ?",
+          "choices": [
+            "Remplacer l’évaluation des risques opérationnels.",
+            "Choisir seulement la prévision optimiste.",
+            "Mesurer l’effet des hypothèses sur besoins, flux et marges de sécurité.",
+            "Éviter de préciser le scénario central."
+          ],
+          "answer": 2,
+          "explanation": "La sensibilité évalue la robustesse aux changements d’hypothèses.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M07",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quelle séparation limite le risque de paiement non autorisé ?",
+          "choices": [
+            "Confier achat et paiement à une personne expérimentée.",
+            "Laisser le fournisseur confirmer sa propre réception.",
+            "Distinguer engagement, réception, validation et mise en paiement autant que possible.",
+            "Supprimer la validation des dépenses récurrentes."
+          ],
+          "answer": 2,
+          "explanation": "Séparer les étapes réduit le risque, avec contrôles compensatoires si nécessaire.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M08",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel effet peut avoir l’allongement des délais clients sur le fonds de roulement ?",
+          "choices": [
+            "Un besoin accru de financement lorsque les encaissements tardent.",
+            "Un effet seulement sur les immobilisations.",
+            "Aucun effet avant un impayé.",
+            "Un effet visible uniquement dans le résultat net."
+          ],
+          "answer": 0,
+          "explanation": "Des encaissements plus tardifs peuvent immobiliser des ressources.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-B-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Quel élément permet au conseil d’examiner la gestion d’un conflit d’intérêts ?",
+          "choices": [
+            "Un échange confidentiel entre PCA et DG après le vote.",
+            "Une déclaration, la mesure de déport applicable et sa consignation dans les procès-verbaux.",
+            "Le seul avis de l’administrateur concerné.",
+            "La publication de toutes les pièces commerciales."
+          ],
+          "answer": 1,
+          "explanation": "La déclaration et le déport selon les règles permettent une décision impartiale et vérifiable.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel contrôle est utile à la réception d’un conteneur au terminal ?",
+          "choices": [
+            "Se fier à la déclaration orale du conducteur.",
+            "Ouvrir chaque conteneur sans consigne.",
+            "Enregistrer le numéro à la sortie seulement.",
+            "Vérifier références, état apparent et scellés selon procédure, puis enregistrer les réserves."
+          ],
+          "answer": 3,
+          "explanation": "Identification et réserves documentées préservent la traçabilité.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M02",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Comment analyser une congestion d’une aire de stockage ?",
+          "choices": [
+            "Augmenter uniformément la cadence des engins.",
+            "Mesurer occupation, durée de séjour, flux et blocages par zone.",
+            "Réduire les contrôles d’accès sans analyse.",
+            "Déplacer les stocks vers une zone non étudiée."
+          ],
+          "answer": 1,
+          "explanation": "L’analyse des flux et du temps de séjour révèle les goulots.",
+          "commentRequired": true
+        },
+        {
+          "id": "t2-C-M03",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quelle démarche convient à une réclamation client pour retard ?",
+          "choices": [
+            "Reconstituer jalons et documents et répondre selon les engagements applicables.",
+            "Répondre par le délai moyen annuel seulement.",
+            "Reconnaître immédiatement toute responsabilité.",
+            "Effacer les horodatages divergents."
+          ],
+          "answer": 0,
+          "explanation": "Une réponse solide repose sur des preuves opérationnelles et les engagements convenus.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M04",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Comment améliorer la planification des engins de manutention ?",
+          "choices": [
+            "Comparer charge, capacité, disponibilité, maintenance et compétences par créneau.",
+            "Réserver selon l’ancienneté du client uniquement.",
+            "Ne planifier qu’après arrivée des navires.",
+            "Programmer en capacité nominale permanente."
+          ],
+          "answer": 0,
+          "explanation": "La capacité utile tient compte des indisponibilités et contraintes opérationnelles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M05",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel avantage apporte une nomenclature harmonisée des unités de fret ?",
+          "choices": [
+            "Éliminer les contrôles documentaires.",
+            "Réduire les ambiguïtés et faciliter le rapprochement des volumes et mouvements.",
+            "Fusionner les lots sans vérification.",
+            "Remplacer le suivi des événements."
+          ],
+          "answer": 1,
+          "explanation": "Des définitions communes facilitent les échanges sans remplacer les contrôles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M06",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Un navire est retardé alors que les équipes sont mobilisées. Quelle réponse est adaptée ?",
+          "choices": [
+            "Maintenir les équipes sans confirmer l’arrivée.",
+            "Annuler toutes les opérations du terminal.",
+            "Affecter des équipes non habilitées ailleurs.",
+            "Replanifier avec les parties et tracer les coûts d’attente."
+          ],
+          "answer": 3,
+          "explanation": "Coordination et suivi des coûts permettent une réponse maîtrisée.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M07",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel contrôle convient à la remise d’une marchandise à un transporteur ?",
+          "choices": [
+            "Transférer automatiquement toute responsabilité.",
+            "Vérifier autorisation, identité, références du lot et tracer la remise.",
+            "Utiliser le bon de commande comme preuve de livraison.",
+            "Autoriser la sortie sur la seule plaque d’immatriculation."
+          ],
+          "answer": 1,
+          "explanation": "La procédure vérifie le droit de prise en charge et conserve une preuve.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-C-M08",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel suivi renseigne sur la performance d’une chaîne multimodale ?",
+          "choices": [
+            "Jalons communs horodatés avec responsables, statut et motifs d’écart.",
+            "Volume final sans étapes.",
+            "Factures des opérateurs seules.",
+            "Kilométrage global sans distinction de mode."
+          ],
+          "answer": 0,
+          "explanation": "Des jalons communs rendent visibles les interfaces et retards.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-D-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel objectif poursuit une inspection programmée des appareils de voie ?",
+          "choices": [
+            "Éviter toute maintenance corrective.",
+            "Garantir qu’aucun défaut ne surviendra.",
+            "Remplacer les comptes rendus d’incident.",
+            "Détecter les défauts selon critères et organiser une action appropriée."
+          ],
+          "answer": 3,
+          "explanation": "L’inspection détecte les écarts mais ne supprime pas l’incertitude.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-D-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Une section de voie exige des travaux importants alors que le trafic varie fortement selon la saison. Quelle stratégie d’investissement comparer ?",
+          "choices": [
+            "Étaler les travaux en fonction des fenêtres disponibles et de seuils de risque approuvés.",
+            "Comparer renouvellement complet, traitement ciblé et restrictions temporaires selon coût de cycle de vie et fiabilité.",
+            "Prioriser un traitement ciblé lorsque les inspections confirment les zones critiques.",
+            "Réserver une enveloppe pluriannuelle avec revues de l’état et de la demande."
+          ],
+          "answer": 1,
+          "explanation": "Une comparaison multicritère rend visibles le risque, le service, le calendrier et le coût complet de chaque option.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-D-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un projet de guichet numérique pourrait relier réservations fluviales et ferroviaires. Quel choix de déploiement est le plus robuste ?",
+          "choices": [
+            "Définir une architecture interopérable, un périmètre pilote et des critères d’usage et de disponibilité.",
+            "Déployer d’abord sur les flux où les échanges manuels sont les plus coûteux et mesurables.",
+            "Acquérir la solution avant d’établir les interfaces et la propriété des données.",
+            "Prévoir une extension par étapes conditionnée par les résultats du pilote et le coût d’exploitation."
+          ],
+          "answer": 0,
+          "explanation": "Le périmètre, l’interopérabilité et les critères de passage à l’échelle doivent précéder l’engagement complet.",
+          "commentRequired": true
+        },
+        {
+          "id": "t2-D-M04",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un consortium propose d’investir dans un parc de manutention portuaire. Quelle condition de gouvernance commerciale est essentielle ?",
+          "choices": [
+            "Comparer le montage aux achats et à la location selon disponibilité, tarifs et partage des risques.",
+            "Fixer une durée de concession liée à des obligations de disponibilité et à une revue de performance.",
+            "Évaluer des engagements de maintenance et des niveaux de service vérifiables.",
+            "Vérifier concurrence, capacités, risques de dépendance et modalités de contrôle du service."
+          ],
+          "answer": 3,
+          "explanation": "La compétitivité de l’offre doit être rapprochée du risque de dépendance et de la capacité de surveillance du contrat.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-D-M05",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "La clientèle fluviale demande une meilleure prévisibilité des départs. Quelle décision commerciale devrait précéder une nouvelle offre ?",
+          "choices": [
+            "Tester des créneaux réservés avec règles de capacité et indicateurs de ponctualité.",
+            "Investir d’abord dans des créneaux supplémentaires sans vérifier les correspondances.",
+            "Proposer des engagements de service différenciés selon les capacités mesurées.",
+            "Analyser la demande par segment, les contraintes hydrologiques et les coûts de fiabilité."
+          ],
+          "answer": 3,
+          "explanation": "La proposition commerciale doit tenir compte des contraintes de navigation, de capacité et de coût du service promis.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-D-M06",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "La modernisation d’un terminal promet une hausse de productivité. Quel indicateur de décision complète le débit horaire ?",
+          "choices": [
+            "Taux d’utilisation rapporté aux heures disponibles et aux arrêts planifiés.",
+            "Débit sur plusieurs périodes avec contrôle de la composition des cargaisons.",
+            "Coût par tonne, temps d’attente, dommages et disponibilité des équipements.",
+            "Comparaison de la productivité avec la qualité et la sécurité de manutention."
+          ],
+          "answer": 2,
+          "explanation": "Les gains de débit n’ont de sens qu’avec les coûts, les interruptions, la qualité et la sécurité.",
+          "commentRequired": true
+        },
+        {
+          "id": "t2-D-M07",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Pour renforcer les recettes du corridor, quelle action associe mieux commercialisation et exécution ?",
+          "choices": [
+            "Négocier une offre groupée en identifiant les coûts et engagements de chaque mode.",
+            "Cibler les flux dont les ruptures de charge peuvent être réduites à coût maîtrisé.",
+            "Offrir une solution de bout en bout avec responsabilités, jalons et tarification lisibles.",
+            "Promettre une durée uniforme indépendamment des aléas et correspondances."
+          ],
+          "answer": 2,
+          "explanation": "Une offre corridor crédible relie commercialisation et capacité opérationnelle aux interfaces.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-E-M01",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Comment comparer renouvellement d’un actif et prolongation de son usage ?",
+          "choices": [
+            "Comparer achat et valeur comptable nette seulement.",
+            "Prolonger jusqu’à panne.",
+            "Renouveler les actifs les plus anciens sans inspection.",
+            "Comparer cycle de vie, risque de défaillance, disponibilité et service."
+          ],
+          "answer": 3,
+          "explanation": "Le choix met en balance coûts futurs, risques et service attendu.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-E-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Pourquoi un objectif stratégique doit-il avoir une situation de référence ?",
+          "choices": [
+            "Pour mesurer l’évolution depuis un point de départ défini.",
+            "Pour garantir le résultat sans ressources.",
+            "Pour éviter les rapports intermédiaires.",
+            "Pour rendre la cible inutile."
+          ],
+          "answer": 0,
+          "explanation": "Référence et cible rendent les progrès mesurables sans garantir leur atteinte.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-E-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Que vérifier pour une subvention ou un financement affecté ?",
+          "choices": [
+            "Le montant nominal seul.",
+            "Les coûts de cofinancement peuvent être ignorés.",
+            "L’annonce publique seule.",
+            "Éligibilité, conditions, calendrier, obligations et risques de conformité."
+          ],
+          "answer": 3,
+          "explanation": "Conditions et obligations déterminent la valeur et la faisabilité réelles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-F-M01",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Scénario fictif : les données de tonnage divergent entre port et commerce. Que faire ?",
+          "choices": [
+            "Choisir le chiffre le plus élevé.",
+            "Harmoniser définitions, rapprocher mouvements et expliquer les écarts avant diffusion.",
+            "Faire la moyenne sans examiner les périmètres.",
+            "Demander au PCA de choisir le chiffre."
+          ],
+          "answer": 1,
+          "explanation": "Les divergences peuvent provenir des définitions, périodes ou événements.",
+          "commentRequired": true
+        },
+        {
+          "id": "t2-F-M02",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Un fournisseur demande un acompte fictif pour éviter une rupture de pièces critiques. Que vérifier ?",
+          "choices": [
+            "Payer si la pièce est critique.",
+            "Refuser tout acompte sans analyse.",
+            "Contrat, justification, garanties, trésorerie, contrôles et délégations.",
+            "Demander à l’équipe technique de faire le virement."
+          ],
+          "answer": 2,
+          "explanation": "L’urgence se confronte aux risques contractuels, financiers et opérationnels.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-F-M03",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Une variation fictive du taux de change renchérit des pièces importées. Que demander au CA ?",
+          "choices": [
+            "La promesse qu’aucun surcoût ne sera enregistré.",
+            "Un montant sans devise ni échéance.",
+            "Exposition, effets sur coûts et calendrier, et options conformes aux règles.",
+            "Une couverture exécutée sans analyse de pouvoirs."
+          ],
+          "answer": 2,
+          "explanation": "L’arbitrage requiert une exposition mesurée et des options correctement autorisées.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-F-M04",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Une interruption fictive affecte plusieurs clients prioritaires. Quelle réponse de continuité convient ?",
+          "choices": [
+            "Servir selon l’ordre des appels seulement.",
+            "Suspendre toute communication jusqu’au rétablissement.",
+            "Promettre une reprise complète sans diagnostic.",
+            "Activer les dispositions de continuité, prioriser selon critères et informer les clients."
+          ],
+          "answer": 3,
+          "explanation": "La continuité nécessite priorités explicites et communication factuelle.",
+          "commentRequired": false
+        },
+        {
+          "id": "t2-A-S01",
+          "section": "E",
+          "type": "short",
+          "prompt": "Décrivez comment le PCA peut organiser un examen transparent d’une décision engageant un administrateur.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA s’assure que l’intérêt concerné est déclaré selon les règles et que les mesures de déport ou d’abstention sont appliquées. Il fait présenter des critères d’évaluation clairs, les éléments utiles et les risques de procédure. Le conseil décide collectivement dans le respect des règles de compétence, de quorum et de vote; le procès-verbal consigne les étapes requises. Une analyse indépendante peut être sollicitée si nécessaire. Le PCA protège l’équité du processus sans choisir seul le bénéficiaire ni conduire l’achat.",
+          "essentials": [
+            "Déclarer les intérêts et appliquer le déport pertinent.",
+            "Décider selon compétence, quorum et critères.",
+            "Consigner les mesures et motifs."
+          ]
+        },
+        {
+          "id": "t2-B-S01",
+          "section": "C",
+          "type": "short",
+          "prompt": "Présentez les vérifications à effectuer avant de conclure qu’un déficit budgétaire implique une crise de liquidité.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "Distinguer résultat budgétaire et flux encaissés ou décaissés. Examiner calendrier des créances et dettes, soldes disponibles, financements confirmés et échéances. Vérifier hypothèses de recettes, retards et éléments exceptionnels. Une prévision de trésorerie par période et des scénarios indiquent si une tension est probable et quand elle survient. Rapprocher les écarts de données fiables avant de proposer des mesures.",
+          "essentials": [
+            "Distinguer résultat et trésorerie",
+            "Examiner échéances, encaissements et financements",
+            "Actualiser hypothèses et scénarios"
+          ]
+        },
+        {
+          "id": "t2-C-S01",
+          "section": "A",
+          "type": "short",
+          "prompt": "Décrivez un protocole de traitement d’écarts de quantité à la remise d’un lot entre deux modes.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "À la remise, sécuriser le lot et effectuer un comptage selon une méthode convenue. Identifier unités, références, scellés et documents de chaque mode. Établir un constat daté, si possible contradictoire, avec réserves et preuves; informer les responsables concernés sans attribuer prématurément la faute. Préserver pesées, documents et images autorisées. Rapprocher les mouvements antérieurs et vérifier erreurs de saisie ou conversion. Documenter les corrections autorisées et analyser les écarts récurrents afin d’améliorer les contrôles d’interface.",
+          "essentials": [
+            "Comptage et identification cohérents",
+            "Constat daté et conservation des preuves",
+            "Rapprochement, correction et analyse des causes"
+          ]
+        },
+        {
+          "id": "t2-C-S02",
+          "section": "E",
+          "type": "short",
+          "prompt": "Précisez les éléments de transparence à suivre dans une recommandation d’audit portée devant le conseil.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le conseil examine le constat, les éléments justificatifs, le niveau de risque et la réponse de la direction. Le PCA veille à ce que les recommandations, leur degré de priorité et les délais soient compris. La direction nomme les responsables et organise les mesures correctives; les fonctions de contrôle rendent compte selon leur indépendance et leur mandat. Le suivi indique les actions terminées, les retards, les preuves de clôture et le risque résiduel. Les informations sont consignées avec le niveau de confidentialité requis. Le PCA organise le suivi collégial sans exécuter les contrôles.",
+          "essentials": [
+            "Examiner constat, risque et réponse.",
+            "Attribuer actions et vérifier preuves de clôture.",
+            "Suivre risque résiduel et indépendance des contrôles."
+          ]
+        },
+        {
+          "id": "t2-D-S01",
+          "section": "D",
+          "type": "short",
+          "prompt": "Le DG signale des retards répétés dans l’application des décisions du conseil. Comment le PCA devrait-il structurer l’examen des causes et des suites ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA inscrit le sujet à l’ordre du jour avec les éléments nécessaires et veille à une discussion indépendante, sans préjuger d’une faute. Le conseil demande à la direction les causes, l’exposition, les contrôles compensatoires et les obligations applicables. Le DG propose des actions, responsables et délais; les fonctions de contrôle vérifient leur mise en œuvre selon leur mandat. Le conseil suit les risques résiduels et les recommandations non clôturées, en protégeant les travaux d’audit et les informations confidentielles. Les décisions et motifs sont consignés. Le PCA ne conduit pas l’enquête ni ne valide chaque achat; il veille à ce que l’organe exerce sa surveillance.",
+          "essentials": [
+            "Examiner les faits et risques sans préjuger.",
+            "Distinguer surveillance du conseil et exécution.",
+            "Suivre actions, responsables et recommandations."
+          ]
+        },
+        {
+          "id": "t2-D-S02",
+          "section": "D",
+          "type": "short",
+          "prompt": "Une décision d’investissement adoptée par le conseil doit être réexaminée après l’apparition d’un risque important. Décrivez la conduite du PCA et le rôle du conseil.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA inscrit le sujet à l’ordre du jour avec les éléments nécessaires et veille à une discussion indépendante, sans préjuger d’une faute. Le conseil demande à la direction les causes, l’exposition, les contrôles compensatoires et les obligations applicables. Le DG propose des actions, responsables et délais; les fonctions de contrôle vérifient leur mise en œuvre selon leur mandat. Le conseil suit les risques résiduels et les recommandations non clôturées, en protégeant les travaux d’audit et les informations confidentielles. Les décisions et motifs sont consignés. Le PCA ne conduit pas l’enquête ni ne valide chaque achat; il veille à ce que l’organe exerce sa surveillance.",
+          "essentials": [
+            "Examiner les faits et risques sans préjuger.",
+            "Distinguer surveillance du conseil et exécution.",
+            "Suivre actions, responsables et recommandations."
+          ]
+        },
+        {
+          "id": "t2-D-S03",
+          "section": "D",
+          "type": "short",
+          "prompt": "Un plan de continuité est soumis après une interruption de service. Comment le PCA organise-t-il la délibération du conseil et le suivi de ses décisions ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA inscrit le sujet à l’ordre du jour avec les éléments nécessaires et veille à une discussion indépendante, sans préjuger d’une faute. Le conseil demande à la direction les causes, l’exposition, les contrôles compensatoires et les obligations applicables. Le DG propose des actions, responsables et délais; les fonctions de contrôle vérifient leur mise en œuvre selon leur mandat. Le conseil suit les risques résiduels et les recommandations non clôturées, en protégeant les travaux d’audit et les informations confidentielles. Les décisions et motifs sont consignés. Le PCA ne conduit pas l’enquête ni ne valide chaque achat; il veille à ce que l’organe exerce sa surveillance.",
+          "essentials": [
+            "Examiner les faits et risques sans préjuger.",
+            "Distinguer surveillance du conseil et exécution.",
+            "Suivre actions, responsables et recommandations."
+          ]
+        },
+        {
+          "id": "t2-E-S01",
+          "section": "B",
+          "type": "short",
+          "prompt": "Expliquez comment apprécier un projet qui améliore la ponctualité mais augmente les coûts d’exploitation.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "Comparer coûts de cycle de vie aux bénéfices attendus et au niveau de service recherché. Quantifier retards, coûts, recettes éventuelles et risques sous des hypothèses explicites. Examiner plusieurs options, dont une mise en œuvre graduelle, et tester les résultats selon différents scénarios. Préciser indicateurs de suivi et conditions de réexamen. Le gain de ponctualité ne suffit pas si le projet fragilise la soutenabilité ou d’autres dimensions du service.",
+          "essentials": [
+            "Évaluer coûts et bénéfices sur la durée",
+            "Expliciter scénarios et hypothèses",
+            "Définir mesure et réexamen"
+          ]
+        },
+        {
+          "id": "t2-E-S02",
+          "section": "C",
+          "type": "short",
+          "prompt": "Un investissement de terminal affiche un rendement prévisionnel positif, mais son coût de maintenance et son calendrier sont incertains. Quels contrôles financiers compléteront l’analyse ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Établir les flux de trésorerie du cycle de vie, en distinguant investissement initial, coûts d’exploitation et maintenance, revenus attendus et valeur résiduelle selon des hypothèses explicites. Comparer un scénario central à des sensibilités portant sur le trafic, les délais de mise en service, les coûts et le financement. Vérifier les besoins de trésorerie, les engagements et la capacité de remboursement éventuelle. Le conseil examine les seuils de décision et les risques; le DG et les équipes compétentes affinent le dossier. Prévoir des jalons de contrôle et une révision lorsque les hypothèses changent matériellement.",
+          "essentials": [
+            "Inclure coûts complets et flux datés.",
+            "Tester hypothèses de coûts, délais et demande.",
+            "Définir seuils de décision et suivi."
+          ]
+        },
+        {
+          "id": "t2-F-S01",
+          "section": "F",
+          "type": "short",
+          "prompt": "Décrivez le traitement par le PCA d’une situation fictive où un administrateur est lié à une entreprise candidate à un contrat.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Veiller à la déclaration formelle du lien et à sa consignation selon les règles applicables. S’assurer que l’administrateur concerné se déporte des échanges et décisions si les procédures l’imposent, en tenant compte du quorum et du vote. L’organe compétent traite le conflit de manière traçable, sans présumer d’une faute ni minimiser le risque. Le processus d’achat reste équitable et fondé sur les critères annoncés; le procès-verbal consigne les mesures pertinentes. En cas d’incertitude juridique, solliciter un avis compétent. Préserver la confidentialité des candidatures.",
+          "essentials": [
+            "Déclaration, consignation et règles de déport",
+            "Préserver équité et traçabilité",
+            "Traiter les incertitudes selon les règles applicables"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technical-3",
+      "title": "Simulation technique 3",
+      "durationMinutes": 60,
+      "questions": [
+        {
+          "id": "t3-A-M01",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel indicateur renseigne sur la préparation des travaux du CA ?",
+          "choices": [
+            "Nombre annuel de pages de procès-verbaux.",
+            "Dossiers transmis à temps avec éléments requis et décisions de suivi identifiées.",
+            "Durée des réunions seule.",
+            "Nombre de participants uniquement."
+          ],
+          "answer": 1,
+          "explanation": "La préparation dépend d’un accès utile à des dossiers adaptés.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M02",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Un dossier présente des conclusions sans hypothèses. Que devrait demander le PCA ?",
+          "choices": [
+            "Hypothèses, sources, incertitudes et effets d’une variation.",
+            "Une conclusion plus affirmative.",
+            "La suppression des annexes.",
+            "Une confirmation que les hypothèses sont certaines."
+          ],
+          "answer": 0,
+          "explanation": "Des hypothèses explicites permettent d’évaluer la robustesse de l’analyse.",
+          "commentRequired": true
+        },
+        {
+          "id": "t3-A-M03",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Le CA reçoit une recommandation d’audit non entièrement mise en œuvre. Que faire ?",
+          "choices": [
+            "Examiner causes, risque résiduel, responsable, échéance et suivi.",
+            "Demander à l’auditeur de l’exécuter.",
+            "La clore dès l’annonce d’un plan.",
+            "Considérer automatiquement qu’une faute est établie."
+          ],
+          "answer": 0,
+          "explanation": "La direction met en œuvre; le CA suit l’avancement et le risque.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M04",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel principe doit guider la communication d’une décision du CA aux équipes ?",
+          "choices": [
+            "Diffuser les échanges confidentiels.",
+            "Laisser chaque administrateur interpréter la décision.",
+            "Communiquer une version exacte et autorisée avec responsabilités et limites de diffusion.",
+            "Attendre une publication externe."
+          ],
+          "answer": 2,
+          "explanation": "Une communication cohérente facilite l’exécution et protège la confidentialité.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M05",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quel dispositif soutient le suivi d’un engagement stratégique pluriannuel ?",
+          "choices": [
+            "Jalons, indicateurs, responsables et actualisation des hypothèses.",
+            "Conserver le plan malgré tout changement.",
+            "Évaluer seulement à l’achèvement.",
+            "Faire valider chaque dépense par le PCA."
+          ],
+          "answer": 0,
+          "explanation": "Les jalons et hypothèses actualisées soutiennent un suivi utile.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M06",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Quelle précaution est pertinente pour une réunion hybride du CA ?",
+          "choices": [
+            "Utiliser une plateforme sans vérifier les accès.",
+            "Enregistrer sur un compte personnel.",
+            "Vérifier participation, identification, confidentialité et vote selon les règles.",
+            "Autoriser tout vote par message privé."
+          ],
+          "answer": 2,
+          "explanation": "Les modalités doivent respecter le cadre applicable et protéger les échanges.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M07",
+          "section": "D",
+          "type": "mcq",
+          "prompt": "Comment traiter une opinion minoritaire exprimée durant une délibération ?",
+          "choices": [
+            "En rendre compte fidèlement lorsque pertinent et selon les règles du procès-verbal.",
+            "La publier avec identité sans autorisation.",
+            "La supprimer pour afficher l’unanimité.",
+            "Remplacer la résolution adoptée par cette opinion."
+          ],
+          "answer": 0,
+          "explanation": "Une trace fidèle ne doit pas dénaturer les délibérations ni le vote.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M08",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Pourquoi le CA évalue-t-il périodiquement ses travaux ?",
+          "choices": [
+            "Transférer la surveillance aux auditeurs.",
+            "Repérer les lacunes d’information, compétences ou suivi et s’améliorer.",
+            "Réduire toutes les séances à une réunion annuelle.",
+            "Garantir l’absence de risques."
+          ],
+          "answer": 1,
+          "explanation": "L’évaluation améliore les pratiques sans transférer les responsabilités.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Un sujet relève de l’assemblée générale plutôt que du CA. Que faire ?",
+          "choices": [
+            "Clarifier la compétence et préparer la saisine de l’organe habilité.",
+            "Faire adopter la décision par le CA puis la présenter comme approuvée.",
+            "Confier l’autorisation au DG.",
+            "Reporter indéfiniment sans informer l’organe concerné."
+          ],
+          "answer": 0,
+          "explanation": "La répartition des compétences doit être respectée.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M01",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel est l’apport des notes annexes aux états financiers ?",
+          "choices": [
+            "Remplacer le contrôle des pièces.",
+            "Fournir méthodes et informations nécessaires à comprendre les chiffres.",
+            "Présenter uniquement les prévisions futures.",
+            "Compenser des soldes sans explication."
+          ],
+          "answer": 1,
+          "explanation": "Les notes complètent les états selon les exigences du référentiel applicable.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M02",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Un actif est endommagé avant clôture. Quelle analyse documenter ?",
+          "choices": [
+            "État, remise en état, valeur recouvrable pertinente et traitement applicable.",
+            "Le coût historique seulement.",
+            "La valeur d’assurance seule.",
+            "Une réduction égale automatiquement au coût des réparations."
+          ],
+          "answer": 0,
+          "explanation": "Les faits et règles comptables guident l’analyse de valeur et de traitement.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M03",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Comment présenter les risques financiers d’un investissement au CA ?",
+          "choices": [
+            "Une mention générale de volatilité.",
+            "Seulement les risques assurés.",
+            "Identifier risques, hypothèses, mesures de maîtrise et exposition résiduelle.",
+            "Omettre les risques de délai."
+          ],
+          "answer": 2,
+          "explanation": "Relier risque, hypothèse, mesure et exposition rend l’analyse utile.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M04",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel contrôle convient aux écritures manuelles de clôture ?",
+          "choices": [
+            "Supprimer l’historique.",
+            "Autoriser toute écriture d’un utilisateur habilité.",
+            "Justification, pièces, approbation indépendante et revue des écritures inhabituelles.",
+            "Vérifier seulement les écritures nulles."
+          ],
+          "answer": 2,
+          "explanation": "Ces écritures nécessitent une justification et une revue proportionnées.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M05",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel est l’intérêt d’analyser le coût complet d’un service logistique ?",
+          "choices": [
+            "Répartir tous les coûts arbitrairement.",
+            "Inclure coûts directs et indirects pertinents selon une méthode cohérente.",
+            "Exclure la maintenance.",
+            "Retenir uniquement la main-d’œuvre directe."
+          ],
+          "answer": 1,
+          "explanation": "Une méthode justifiée permet de comprendre les ressources consommées.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M06",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quel signal peut justifier une analyse de recouvrabilité d’une créance ?",
+          "choices": [
+            "Retard inhabituel, litige ou information affectant les perspectives d’encaissement.",
+            "Une hausse du nombre de clients.",
+            "Une facture récente dans tous les cas.",
+            "Un paiement anticipé d’un autre client."
+          ],
+          "answer": 0,
+          "explanation": "Les indices de risque appellent une analyse documentée selon les règles applicables.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M07",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Un contrat comporte une pénalité potentielle. Quelle démarche est prudente ?",
+          "choices": [
+            "Retenir le plafond contractuel comme estimation de la pénalité.",
+            "Ignorer la clause avant facturation.",
+            "Déduire le montant d’une créance sans accord.",
+            "Examiner clauses, faits déclencheurs, estimation et incertitudes."
+          ],
+          "answer": 3,
+          "explanation": "Le traitement dépend de la situation et des règles, non d’un automatisme.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M08",
+          "section": "C",
+          "type": "mcq",
+          "prompt": "Quelle information aide à comparer deux offres de financement ?",
+          "choices": [
+            "Nom et ancienneté du prêteur seuls.",
+            "Taux nominal seul.",
+            "Montant brut seul.",
+            "Coût total, échéancier, garanties, clauses, risques et flexibilité."
+          ],
+          "answer": 3,
+          "explanation": "Les conditions complètes déterminent coût, risque et capacité de remboursement.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-B-M09",
+          "section": "E",
+          "type": "mcq",
+          "prompt": "Quelle information devrait accompagner le compte rendu d’une recommandation d’audit ?",
+          "choices": [
+            "La réponse de la direction sans état d’avancement.",
+            "Le nombre de recommandations émises.",
+            "Constat, risque, responsable de mise en œuvre, échéance et vérification de clôture.",
+            "La seule date du prochain audit."
+          ],
+          "answer": 2,
+          "explanation": "Le suivi d’audit doit relier le constat aux actions, responsables et éléments de clôture.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Des dommages augmentent dans une zone de stockage. Quelle analyse est pertinente ?",
+          "choices": [
+            "Réduire les constats.",
+            "Attribuer la hausse à l’emballage client sans preuve.",
+            "Segmenter par marchandise, emplacement, manutention et durée.",
+            "Déplacer tout le stock vers le quai."
+          ],
+          "answer": 2,
+          "explanation": "L’analyse des circonstances aide à cibler les causes et contrôles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M02",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "À quoi sert une réservation coordonnée entre opérateurs de modes différents ?",
+          "choices": [
+            "Garantir l’absence de retard.",
+            "Remplacer les horaires et documents des transporteurs.",
+            "Aligner capacités et temps de transfert et rendre visibles les retards.",
+            "Éviter d’enregistrer les transferts."
+          ],
+          "answer": 2,
+          "explanation": "La coordination améliore l’alignement sans éliminer les aléas.",
+          "commentRequired": true
+        },
+        {
+          "id": "t3-C-M03",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel élément doit accompagner une procédure fiable de pesée ?",
+          "choices": [
+            "Choix de la mesure la plus élevée sans analyse.",
+            "Lecture visuelle du conducteur.",
+            "Total journalier sans référence au lot.",
+            "Identification du lot, instrument contrôlé, unité, horodatage et résultat conservé."
+          ],
+          "answer": 3,
+          "explanation": "Une mesure vérifiable doit être reliée à un lot, une méthode et un instrument.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M04",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Une rupture de consommable bloque une opération portuaire. Quelle prévention est pertinente ?",
+          "choices": [
+            "Commander une quantité fixe annuelle.",
+            "Utiliser un produit non homologué.",
+            "Maintenir le stock à zéro.",
+            "Fixer les niveaux selon consommation, délai d’approvisionnement et criticité."
+          ],
+          "answer": 3,
+          "explanation": "Le stock doit être proportionné à l’usage, au délai et au risque.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M05",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quelle information doit figurer dans une transmission de consignes d’escale ?",
+          "choices": [
+            "Le nom du navire seul.",
+            "État des opérations, risques ouverts, changements, responsabilités et prochaine échéance.",
+            "Les tâches clôturées seulement.",
+            "Un message oral sans destinataire."
+          ],
+          "answer": 1,
+          "explanation": "Un passage de relais complet rend visibles actions et risques restants.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M06",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Comment améliorer la comparabilité d’un indicateur de temps de séjour ?",
+          "choices": [
+            "Changer le calcul selon les résultats du mois.",
+            "Inclure seulement les lots sans incident.",
+            "Utiliser une moyenne sans observations.",
+            "Définir les événements de début et fin, exclusions et sources horaires."
+          ],
+          "answer": 3,
+          "explanation": "Des définitions stables et des sources cohérentes rendent la mesure vérifiable.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M07",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel contrôle limite les erreurs lors du chargement d’un wagon ?",
+          "choices": [
+            "Rapprocher ordre, wagon, lot, capacité et destination avant départ.",
+            "Vérifier que le wagon est présent seulement.",
+            "Modifier la destination sans mettre à jour les documents.",
+            "Réutiliser le numéro du wagon précédent."
+          ],
+          "answer": 0,
+          "explanation": "Le rapprochement des références et contraintes prévient erreurs de chargement.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-C-M08",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Quel facteur guide le choix d’une méthode d’inspection d’ouvrage ferroviaire ?",
+          "choices": [
+            "Le coût le plus bas seulement.",
+            "Un appareil non étalonné disponible.",
+            "Une méthode utilisée ailleurs sans adaptation.",
+            "Type d’ouvrage, dégradations recherchées, accès et criticité du service."
+          ],
+          "answer": 3,
+          "explanation": "La méthode doit être adaptée aux dégradations, accès et risques.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-D-M01",
+          "section": "A",
+          "type": "mcq",
+          "prompt": "Comment intégrer les restrictions temporaires de vitesse au programme de sécurité ?",
+          "choices": [
+            "Les garder sans échéance.",
+            "Les enregistrer, communiquer, suivre leur durée et vérifier leur levée.",
+            "Les supprimer après constat visuel.",
+            "Les annoncer après le départ des trains."
+          ],
+          "answer": 1,
+          "explanation": "Le suivi tracé rend les mesures provisoires visibles et maîtrisées.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-D-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Le plan de redressement prévoit une remise à niveau des locomotives et des ateliers. Quel arbitrage devrait éclairer le conseil ?",
+          "choices": [
+            "Prioriser les options qui améliorent le service avec des indicateurs de résultat vérifiables.",
+            "Séquencer les lots selon criticité, financement et capacité de mise en service.",
+            "Évaluer la réhabilitation du parc existant et le renouvellement selon coûts et risques.",
+            "Comparer disponibilité attendue, coût de cycle de vie, délais de pièces et effets sur les dessertes."
+          ],
+          "answer": 3,
+          "explanation": "Les scénarios doivent relier dépenses, disponibilité, risques d’exécution et résultats de service.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-D-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Une plateforme de réservation des opérations portuaires est proposée. Quel critère aide à distinguer modernisation utile et simple acquisition informatique ?",
+          "choices": [
+            "Un pilote avec usagers, données de référence et seuil de décision pour extension.",
+            "Réduction mesurable des temps et erreurs, intégration aux systèmes et coût total de possession.",
+            "Compatibilité avec les systèmes et procédures réellement utilisés au terminal.",
+            "Plan de conduite du changement et responsable des données de référence."
+          ],
+          "answer": 1,
+          "explanation": "La valeur dépend de l’adoption, des interfaces et des coûts récurrents autant que de la technologie.",
+          "commentRequired": true
+        },
+        {
+          "id": "t3-D-M04",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un partenaire offre une concession pour un service logistique intégré. Quel élément doit être comparé à l’intérêt immédiat du financement ?",
+          "choices": [
+            "Les conséquences pour les usagers et les options de sortie en cas de défaillance.",
+            "Les engagements de service, les garanties de performance et les mécanismes de contrôle.",
+            "Les obligations de service, l’accès équitable, les risques transférés et les recettes nettes sur la durée.",
+            "Les recettes prévues, les coûts de contrôle et les risques de dépendance à long terme."
+          ],
+          "answer": 2,
+          "explanation": "Le financement ne suffit pas à établir l’intérêt du partenariat; les obligations et risques de long terme comptent.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-D-M05",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Une baisse durable du fret ferroviaire appelle une révision du plan commercial. Quelle base d’analyse est la plus pertinente ?",
+          "choices": [
+            "Évaluer la contribution marginale par segment et les coûts nécessaires pour regagner le trafic.",
+            "Décomposer les flux par segment, motif, tarif, fiabilité et solutions concurrentes.",
+            "Interroger les clients perdus et relier leurs motifs aux données de service.",
+            "Définir des offres pilotes et mesurer volume, marge et fidélisation."
+          ],
+          "answer": 1,
+          "explanation": "La segmentation permet de cibler les causes et les investissements commerciaux au lieu d’appliquer une réponse uniforme.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-D-M06",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Un corridor port-fleuve-rail est pénalisé par des ruptures de charge. Quelle opportunité mérite une étude préalable ?",
+          "choices": [
+            "Comparer l’optimisation des opérations existantes à l’extension d’infrastructures.",
+            "Mesurer les temps aux interfaces et le coût d’immobilisation par flux.",
+            "Établir des contrats de service communs avec responsabilités et indicateurs d’interface.",
+            "Coordonner les horaires et les échanges de données avant d’engager des capacités nouvelles."
+          ],
+          "answer": 3,
+          "explanation": "Les améliorations de coordination peuvent être comparées aux investissements de capacité sur leurs effets réels.",
+          "commentRequired": true
+        },
+        {
+          "id": "t3-D-M07",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "La diversification des recettes est envisagée dans des espaces portuaires sous-utilisés. Quel processus réduit le risque de mauvais choix ?",
+          "choices": [
+            "Estimer les investissements complémentaires et les coûts de gestion avant décision.",
+            "Étudier une valorisation graduelle avec critères de rendement et de service.",
+            "Mettre en concurrence les usages après vérification des contraintes d’exploitation.",
+            "Inventorier droits et état des actifs, puis comparer usages, demande, coûts et compatibilité opérationnelle."
+          ],
+          "answer": 3,
+          "explanation": "La valorisation doit reposer sur les droits, la demande et les coûts de remise en état et d’exploitation.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-E-M01",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Comment réviser une stratégie lorsque les hypothèses de trafic changent durablement ?",
+          "choices": [
+            "Comparer scénarios révisés aux objectifs, capacités et ressources, puis documenter les choix.",
+            "Conserver les objectifs sans vérification.",
+            "Abandonner la stratégie sans analyser les causes.",
+            "Changer les indicateurs pour préserver les résultats."
+          ],
+          "answer": 0,
+          "explanation": "Une révision structurée relie objectifs et nouvelles hypothèses.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-E-M02",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Pourquoi examiner les effets sociaux d’un investissement en plus de ses recettes directes ?",
+          "choices": [
+            "Pour ne plus analyser les recettes.",
+            "Limiter l’analyse aux recettes directes lorsque les coûts sociaux sont difficiles à chiffrer.",
+            "Le service public peut produire des effets non reflétés directement dans les recettes.",
+            "Pour remplacer l’analyse de risque."
+          ],
+          "answer": 2,
+          "explanation": "Une évaluation peut inclure des effets collectifs en explicitant méthodes et incertitudes.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-E-M03",
+          "section": "B",
+          "type": "mcq",
+          "prompt": "Quelle information renforce le suivi d’un plan stratégique ?",
+          "choices": [
+            "Initiatives sans échéance.",
+            "Bilan final après achèvement seulement.",
+            "Cibles datées, source, responsable et explication des écarts.",
+            "Cibles modifiées sans historique."
+          ],
+          "answer": 2,
+          "explanation": "Des cibles traçables permettent de mesurer et expliquer les résultats.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-F-M01",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Scénario fictif : un incident portuaire menace une marchandise et une équipe. Quelle priorité ?",
+          "choices": [
+            "Diffuser une cause présumée.",
+            "Prioriser l’indemnisation commerciale.",
+            "Reprendre la manutention immédiatement.",
+            "Protéger les personnes et stabiliser la situation, puis préserver les preuves."
+          ],
+          "answer": 3,
+          "explanation": "La protection des personnes précède l’analyse des causes et réclamations.",
+          "commentRequired": true
+        },
+        {
+          "id": "t3-F-M02",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Un projet fictif prévoit un dépassement budgétaire de 12 %. Que demander pour arbitrer ?",
+          "choices": [
+            "Causes, engagements, coût à terminaison, options et effets sur le service.",
+            "Le pourcentage seul.",
+            "Des crédits supplémentaires sans alternatives.",
+            "Le coût initial présenté comme inchangé."
+          ],
+          "answer": 0,
+          "explanation": "L’arbitrage exige coûts prévisionnels, engagements et conséquences des options.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-F-M03",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Une cyberattaque fictive interrompt les réservations. Quelle réponse de gouvernance convient ?",
+          "choices": [
+            "Modifier directement les serveurs au CA.",
+            "Suivre gestion d’incident, continuité, notifications applicables, impacts et actions.",
+            "Publier des détails non vérifiés.",
+            "Suspendre les contrôles d’accès."
+          ],
+          "answer": 1,
+          "explanation": "Le CA suit la réponse exécutive sans se substituer aux équipes techniques.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-F-M04",
+          "section": "F",
+          "type": "mcq",
+          "prompt": "Un retard fictif vient d’une rupture de correspondance rail-port. Quelle action prévient la répétition ?",
+          "choices": [
+            "Pénaliser automatiquement le dernier transporteur.",
+            "Reconstituer horaires et interfaces, identifier causes et suivre un plan d’action.",
+            "Supprimer la correspondance des indicateurs.",
+            "Modifier l’horaire sans analyse."
+          ],
+          "answer": 1,
+          "explanation": "L’analyse de chaîne identifie les causes d’interface et les corrections utiles.",
+          "commentRequired": false
+        },
+        {
+          "id": "t3-A-S01",
+          "section": "E",
+          "type": "short",
+          "prompt": "Distinguez les responsabilités du PCA, du conseil et du DG dans le suivi d’un investissement important.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA organise les travaux et veille à une délibération structurée, sans diriger l’exécution. Le conseil examine opportunité, risques, ressources et suivi dans les limites de ses pouvoirs. Le DG prépare les éléments, met en œuvre les résolutions et rend compte des résultats et écarts. Un suivi utile attribue responsables, échéances et indicateurs et prévoit la remontée des risques importants.",
+          "essentials": [
+            "Distinguer animation du PCA et décision du CA.",
+            "Décrire exécution et compte rendu du DG.",
+            "Prévoir responsables, échéances et suivi."
+          ]
+        },
+        {
+          "id": "t3-B-S01",
+          "section": "C",
+          "type": "short",
+          "prompt": "Expliquez comment présenter au CA un indicateur de coût unitaire dont le périmètre a changé en cours d’année.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "Décrire ancien et nouveau périmètres, périodes et données incluses, puis signaler la rupture de comparabilité. Si possible, recalculer une série homogène ou fournir une passerelle chiffrée entre méthodes. Documenter sources, changements et limites. Ne pas interpréter une rupture méthodologique comme un gain ou une dérive de productivité. Demander une définition stable et un responsable de publication pour les prochains rapports.",
+          "essentials": [
+            "Expliciter changement et limites",
+            "Rendre la série comparable ou fournir une passerelle",
+            "Ne pas confondre méthode et performance"
+          ]
+        },
+        {
+          "id": "t3-C-S01",
+          "section": "A",
+          "type": "short",
+          "prompt": "Proposez les étapes de coordination lorsqu’un lot ferroviaire ne peut être chargé à l’heure prévue dans un scénario fictif.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Confirmer la cause et l’état du lot, du wagon et de l’infrastructure sans compromettre la sécurité. Informer le centre de coordination et les parties, puis vérifier fenêtres et conséquences sur les correspondances. Évaluer replanification, transfert autorisé ou stockage sécurisé, avec coûts et contraintes. Attribuer la décision à la fonction habilitée et communiquer un horaire réaliste. Enregistrer événements et responsabilités. Après résolution, comparer faits et planification, distinguer causes internes et externes, et proposer une correction mesurable si la défaillance se répète.",
+          "essentials": [
+            "Vérifier cause, état et sécurité",
+            "Coordonner options, capacités et communications",
+            "Tracer les jalons et analyser les récurrences"
+          ]
+        },
+        {
+          "id": "t3-C-S02",
+          "section": "E",
+          "type": "short",
+          "prompt": "Expliquez comment le PCA assure la traçabilité d’une délibération contestée sans se substituer au conseil.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA fait préciser l’objet du désaccord et s’assure que les administrateurs ont accès aux éléments pertinents. Il conduit la délibération selon les règles de séance, distingue les faits des opinions et permet l’expression des points de vue utiles. Le conseil adopte la décision collectivement dans son domaine de compétence. Le procès-verbal retrace fidèlement la résolution, les votes et les suites conformément aux règles applicables. Le PCA suit l’exécution avec le DG et le secrétaire du conseil, tout en respectant les exigences de confidentialité et les droits des administrateurs.",
+          "essentials": [
+            "Organiser une délibération régulière.",
+            "Laisser le conseil décider collégialement.",
+            "Tracer la décision et suivre son exécution."
+          ]
+        },
+        {
+          "id": "t3-D-S01",
+          "section": "D",
+          "type": "short",
+          "prompt": "Un comité indique que des actions décidées par le conseil restent en retard. Quelles suites le PCA devrait-il organiser dans le cadre du mandat ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA veille à présenter un diagnostic rapprochant volumes, tarifs, coûts variables, charges fixes et trésorerie, avec hypothèses et scénarios. Le conseil examine les causes, les risques de continuité du service et les leviers de redressement relevant de sa compétence. Il demande au DG un plan hiérarchisé, chiffré, assorti d’indicateurs, d’échéances et de responsables. Des mesures opérationnelles restent à la direction dans les délégations; les choix stratégiques ou financiers importants reviennent au conseil selon les textes et statuts. Le PCA organise un suivi régulier des écarts, sans promettre un résultat non étayé.",
+          "essentials": [
+            "Relier trafic, coûts, trésorerie et hypothèses.",
+            "Faire décider le conseil dans son périmètre.",
+            "Demander un plan DG mesurable et suivre les écarts."
+          ]
+        },
+        {
+          "id": "t3-D-S02",
+          "section": "D",
+          "type": "short",
+          "prompt": "Une hypothèse déterminante d’un investissement approuvé ne se vérifie plus. Comment le PCA doit-il conduire son réexamen par le conseil ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA veille à présenter un diagnostic rapprochant volumes, tarifs, coûts variables, charges fixes et trésorerie, avec hypothèses et scénarios. Le conseil examine les causes, les risques de continuité du service et les leviers de redressement relevant de sa compétence. Il demande au DG un plan hiérarchisé, chiffré, assorti d’indicateurs, d’échéances et de responsables. Des mesures opérationnelles restent à la direction dans les délégations; les choix stratégiques ou financiers importants reviennent au conseil selon les textes et statuts. Le PCA organise un suivi régulier des écarts, sans promettre un résultat non étayé.",
+          "essentials": [
+            "Relier trafic, coûts, trésorerie et hypothèses.",
+            "Faire décider le conseil dans son périmètre.",
+            "Demander un plan DG mesurable et suivre les écarts."
+          ]
+        },
+        {
+          "id": "t3-D-S03",
+          "section": "D",
+          "type": "short",
+          "prompt": "Un rapport d’audit révèle une faiblesse majeure de contrôle interne. Comment le PCA organise-t-il l’examen collectif et le suivi des mesures ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Le PCA veille à présenter un diagnostic rapprochant volumes, tarifs, coûts variables, charges fixes et trésorerie, avec hypothèses et scénarios. Le conseil examine les causes, les risques de continuité du service et les leviers de redressement relevant de sa compétence. Il demande au DG un plan hiérarchisé, chiffré, assorti d’indicateurs, d’échéances et de responsables. Des mesures opérationnelles restent à la direction dans les délégations; les choix stratégiques ou financiers importants reviennent au conseil selon les textes et statuts. Le PCA organise un suivi régulier des écarts, sans promettre un résultat non étayé.",
+          "essentials": [
+            "Relier trafic, coûts, trésorerie et hypothèses.",
+            "Faire décider le conseil dans son périmètre.",
+            "Demander un plan DG mesurable et suivre les écarts."
+          ]
+        },
+        {
+          "id": "t3-E-S01",
+          "section": "B",
+          "type": "short",
+          "prompt": "Distinguez objectif stratégique, cible et indicateur de suivi.",
+          "instruction": "Répondez de manière structurée en 60 à 100 mots.",
+          "minWords": 60,
+          "maxWords": 100,
+          "modelAnswer": "L’objectif décrit le résultat ou l’orientation recherchée, par exemple améliorer la fiabilité du service. La cible précise un niveau attendu et une échéance, sous des hypothèses explicites. L’indicateur définit la mesure, son périmètre, sa source et sa fréquence. Ils doivent être cohérents : un indicateur mal défini ou une cible sans référence peut donner une impression trompeuse de progrès. La gouvernance précise qui suit les résultats et comment les écarts sont examinés.",
+          "essentials": [
+            "Distinguer orientation, résultat attendu et mesure",
+            "Préciser échéance, définition et source",
+            "Relier suivi aux écarts et responsabilités"
+          ]
+        },
+        {
+          "id": "t3-E-S02",
+          "section": "C",
+          "type": "short",
+          "prompt": "Le budget annuel prévoit une croissance des recettes portuaires alors que les capacités de manutention sont contraintes. Comment apprécier la crédibilité de cette prévision ?",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Décomposer la recette en volumes, tarifs, composition des marchandises et périodes, puis rapprocher chaque hypothèse de la capacité réelle des équipements et des équipes. Vérifier les historiques, contrats, tarifs applicables et effets des interruptions. Construire des sensibilités et traduire les écarts en trésorerie, coûts variables et besoins d’investissement. Le conseil demande des hypothèses documentées et un suivi mensuel des facteurs déterminants; la direction commerciale et financière établit les données et propose les mesures relevant de ses pouvoirs. Une prévision ne doit pas être assimilée à un encaissement certain.",
+          "essentials": [
+            "Décomposer prix, volume et capacité.",
+            "Vérifier contrats et données historiques.",
+            "Relier écarts prévus aux flux et aux actions."
+          ]
+        },
+        {
+          "id": "t3-F-S01",
+          "section": "F",
+          "type": "short",
+          "prompt": "Expliquez la conduite attendue du PCA face à une demande publique sur un incident encore sous enquête.",
+          "instruction": "Répondez de manière structurée en 100 à 180 mots.",
+          "minWords": 100,
+          "maxWords": 180,
+          "modelAnswer": "Vérifier qui est habilité à communiquer et coordonner la réponse avec le DG et les fonctions compétentes. S’en tenir aux faits confirmés, aux mesures de sécurité et aux informations de service utiles, sans avancer de cause ni attribuer de responsabilité avant l’enquête. Respecter les notifications et exigences de confidentialité applicables, ainsi que les besoins des clients et autorités. Le CA reçoit une information proportionnée sur l’incident, ses impacts, la continuité et les étapes suivantes. Le PCA ne conduit pas l’enquête technique ni ne promet un résultat. Dater les mises à jour et les corriger si de nouveaux faits vérifiés l’exigent.",
+          "essentials": [
+            "Vérifier les rôles de communication",
+            "Distinguer faits établis et hypothèses",
+            "Coordonner information, confidentialité et suivi"
+          ]
+        }
+      ]
+    }
+  ]
+}

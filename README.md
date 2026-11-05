@@ -16,6 +16,10 @@ Ouvrir http://127.0.0.1:4173. Aucune dépendance n’est nécessaire pour utilis
 
 ## Banque active
 
+La page d’accueil conserve les cinq examens d’origine et leur historique, et ajoute une rubrique indépendante de trois simulations techniques PCA ONATRA. Chaque simulation propose 50 questions (40 QCM et 10 réponses écrites) en 60 minutes. La répartition A–F et la valeur de 1 point par QCM / 6 points par réponse écrite sont des choix pédagogiques, pas un barème officiel détaillé. Les réponses écrites restent en attente jusqu’à leur auto-évaluation guidée ; aucune note de jury n’est simulée. La tentative technique est sauvegardée séparément de l’ancien parcours et peut être recommencée après une réinitialisation confirmée.
+
+Un rappel informatif d’échéance est présenté hors examen. La date configurable se trouve dans `src/config.js` (`SUBSCRIPTION_EXPIRY`, initialement `2026-11-06`) ; aucun paiement ni changement d’accès n’est effectué.
+
 | Domaine | Banque | Par simulation | Réserve |
 |---|---:|---:|---:|
 | Gouvernance & PCA | 130 | 16 | 50 |

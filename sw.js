@@ -1,9 +1,9 @@
-const CACHE = 'cap70-2026-10-31-pca-v3';
+const CACHE = 'cap70-2026-11-04-technical-v1';
 const FILES = [
-  './', './index.html', './assets/favicon.svg', './src/app.js', './src/config.js',
-  './src/timer.js', './src/scoring.js', './src/exam.js', './src/storage.js',
+  './', './index.html', './assets/favicon.svg', './src/app.js', './src/config.js', './src/technicalExam.js',
+  './src/timer.js', './src/scoring.js', './src/exam.js', './src/storage.js', './src/subscription.js',
   './src/analytics.js', './src/questionLoader.js', './src/styles/main.css',
-  './data/questions.json', './data/exam-plan.json',
+  './data/questions.json', './data/exam-plan.json', './data/technical-exams.json',
   ...Array.from({length:10},(_,i)=>`./assets/psychotechnique/PCA-NU-${String(i+1).padStart(3,'0')}.svg`),
 ];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));

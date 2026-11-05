@@ -2,12 +2,82 @@ import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 const bank=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url))),byId=new Map(bank.map(q=>[q.id,q]));
 const key='cap70.progress.v1';
-const start=async page=>{await page.goto('/');await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
+const technicalKey='cap70.technical.v1';
+const dismissReminder=async page=>{await expect(page.locator('#main h1')).toBeVisible({timeout:30000});const close=page.locator('#modal[open] [data-action="subscription-close"]');if(await close.isVisible())await close.click();};
+const openApp=async page=>{await page.goto('/');await dismissReminder(page);};
+const start=async page=>{await openApp(page);await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
 
-test('Nouvelle banque : ancienne progression conservée sans alerte de panne de stockage',async({page})=>{
+test('Rappel d’échéance calculé, renouvelé au rechargement et absent en examen technique',async({page})=>{
+ await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});
  await page.goto('/');
+ await expect(page.locator('#modal')).toContainText('dans 2 jours');
+ await page.locator('[data-action="subscription-close"]').click();
+ await page.reload();await expect(page.locator('#modal')).toContainText('dans 2 jours');
+ await page.locator('[data-action="subscription-close"]').click();
+ await page.locator('[data-action="technical-instructions:technical-1"]').click();
+ await page.locator('[data-action="technical-start:technical-1"]').click();
+ await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);
+ await expect(page.locator('#modal[open]')).toHaveCount(0);
+ const saved=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),technicalKey);
+ expect(saved.active.examId).toBe('technical-1');
+ await page.reload();
+ await expect(page.locator('#timer')).toBeVisible();
+ await expect(page.locator('#modal[open]')).toHaveCount(0);
+ await expect(page.locator('#main')).toContainText('Question 1');
+});
+test('Réponse longue et commentaire sont autosauvegardés et les commentaires bloquent l’envoi',async({page})=>{
+ test.setTimeout(120000);
+ await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});await page.goto('/');
+ await page.locator('[data-action="subscription-close"]').click();
+ await page.locator('[data-action="technical-instructions:technical-1"]').click();
+ await page.locator('[data-action="technical-start:technical-1"]').click();
+ const exam=JSON.parse(fs.readFileSync(new URL('../data/technical-exams.json',import.meta.url))).exams[0];
+ const shortIndex=exam.questions.findIndex(question=>question.type==='short');
+ await page.locator(`[data-action="technical-jump:${shortIndex}"]`).click();
+ await page.locator('.written-answer').fill('Je priorise le suivi des indicateurs de service, la trésorerie disponible et la maintenance selon les risques. Je demande des éléments vérifiables à la direction et prépare une décision collective du conseil en respectant les compétences du directeur général.');
+ const shortId=exam.questions[shortIndex].id;
+ await expect.poll(()=>page.evaluate(({key,id})=>JSON.parse(localStorage.getItem(key)).active.written[id],{key:technicalKey,id:shortId})).toContain('trésorerie disponible');
+ await page.reload();await expect(page.locator('.written-answer')).toContainText('trésorerie disponible');
+ const commentIndex=exam.questions.findIndex(question=>question.commentRequired);
+ await page.locator(`[data-action="technical-jump:${commentIndex}"]`).click();
+ await page.locator('input[name="technical-answer"]').first().check();
+ await page.locator('[data-action="technical-finish"]').click();
+ await expect(page.locator('#main')).toContainText('justification');
+ await expect(page.locator('#timer')).toBeVisible();
+ for(const index of exam.questions.map((question,index)=>question.commentRequired?index:-1).filter(index=>index>=0)){
+  await page.locator(`[data-action="technical-jump:${index}"]`).click();
+  await page.locator('input[name="technical-answer"]').first().check();
+  await page.locator('.comment-answer').fill('Je privilégie une décision documentée relevant des prérogatives du conseil et un suivi des résultats.');
+ }
+ await page.reload();
+ await page.locator('[data-action="technical-finish"]').click();
+ await expect(page.locator('dialog[open]')).toContainText('Terminer votre simulation');
+});
+test('Note écrite provisoire et correction auto-évaluée restent distinctes du jury',async({page})=>{
+ await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});await page.goto('/');
+ await page.locator('[data-action="subscription-close"]').click();
+ await page.locator('[data-action="technical-instructions:technical-1"]').click();
+ const exam=JSON.parse(fs.readFileSync(new URL('../data/technical-exams.json',import.meta.url))).exams[0];
+ await page.evaluate(({key,exam})=>{
+  const now=Date.now(),questionIds=exam.questions.map(question=>question.id);
+  const active={id:'technical-result-test',examId:exam.id,questionIds,answers:Object.fromEntries(exam.questions.filter(question=>question.type==='mcq').map(question=>[question.id,question.answer])),written:Object.fromEntries(exam.questions.filter(question=>question.type==='short').map(question=>[question.id,question.modelAnswer])),comments:Object.fromEntries(exam.questions.filter(question=>question.commentRequired).map(question=>[question.id,'La décision revient au conseil ; le PCA organise la délibération et en suit l’exécution.'])),ratings:{},marked:[],index:49,startedAt:now,deadline:now+3600000};
+  localStorage.setItem(key,JSON.stringify({active,attempts:[]}));
+ },{key:technicalKey,exam});
+ await page.reload();
+ await page.getByRole('button',{name:'Terminer le test',exact:true}).click();await page.locator('[data-action="dialog-confirm"]').click();
+ await expect(page.locator('#main')).toContainText('SCORE QCM : 40/40');
+ await expect(page.locator('#main')).toContainText('non encore calculée');
+ await expect(page.locator('.written-review')).toHaveCount(10);
+ const firstShort=exam.questions.find(question=>question.type==='short');
+ await page.locator(`#rating-${firstShort.id}`).selectOption('3');
+ await expect(page.locator('.section-meta').first()).toContainText('1/10 notées');
+ await expect(page.locator('#main')).toContainText('non encore calculée');
+ await expect(page.locator('#main')).toContainText('ne constitue pas une correction officielle');
+});
+test('Nouvelle banque : ancienne progression conservée sans alerte de panne de stockage',async({page})=>{
+ await openApp(page);
  const old={version:'2026-10-31-v1',attempts:[],active:null};
- await page.evaluate(({key,old})=>localStorage.setItem(key,JSON.stringify(old)),{key,old});await page.reload();
+ await page.evaluate(({key,old})=>localStorage.setItem(key,JSON.stringify(old)),{key,old});await page.reload();await dismissReminder(page);
  await expect(page.locator('h1')).toContainText('Votre objectif');await expect(page.locator('.alert.urgent')).toHaveCount(0);
  expect(await page.evaluate(key=>JSON.parse(localStorage.getItem(`${key}.archive.2026-10-31-v1`)),key)).toEqual(old);
  await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await page.reload();await expect(page.locator('#timer')).toBeVisible();
@@ -15,7 +85,7 @@ test('Nouvelle banque : ancienne progression conservée sans alerte de panne de 
 test('Affichage desktop, tablette, mobile ; navigation et figures',async({page})=>{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const [name,width,height] of [['desktop',1440,1000],['tablette',820,1180],['mobile',390,844]]){
-    await page.setViewportSize({width,height});await page.goto('/');await expect(page.locator('h1')).toContainText('Votre objectif');
+    await page.setViewportSize({width,height});await openApp(page);await expect(page.locator('h1')).toContainText('Votre objectif');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
     await page.screenshot({path:`test-results/accueil-${name}.png`,fullPage:true});
   }
@@ -34,25 +104,22 @@ test('Examen : réponses, marqueur, navigation et reprise après rafraîchisseme
   await page.clock.fastForward(65000);await page.reload();await expect(page.locator('#timer')).toHaveText('58:55');
   await expect(page.locator('h1')).toContainText('Question 2');await page.locator('[data-action="jump:0"]').click();
   await expect(page.locator('input[name="answer"][value="2"]')).toBeChecked();await expect(page.locator('[data-action="jump:0"]')).toHaveClass(/marked/);
-  await page.locator('[data-action="finish-confirm"]').click();await expect(page.locator('dialog')).toContainText('64 question(s) sans réponse');
+  await page.getByRole('button',{name:'Terminer le test',exact:true}).click();await expect(page.locator('dialog')).toContainText('64 question(s) sans réponse');
   await page.locator('[data-action="dialog-cancel"]').click();await expect(page.locator('#timer')).toBeVisible();
 });
 test('Un examen complet à 46 bonnes réponses réussit et conserve la correction',async({page})=>{
-  test.setTimeout(180000);
   const errors=[];page.on('pageerror',e=>errors.push(e.message));await start(page);
   const ids=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).active.ids,key);
-  for(let i=0;i<65;i++){
-    await page.locator(`[data-action="jump:${i}"]`).click();
-    const q=byId.get(ids[i]),choice=i<46?q.correctAnswer:(q.correctAnswer+1)%4;
-    await page.locator('.choice').nth(choice).click();
-  }
+  const answers=Object.fromEntries(ids.map((id,index)=>{const correct=byId.get(id).correctAnswer;return[id,index<46?correct:(correct+1)%4];}));
+  await page.evaluate(({key,answers})=>{const data=JSON.parse(localStorage.getItem(key));data.active.answers=answers;localStorage.setItem(key,JSON.stringify(data));},{key,answers});
+  await page.reload();await expect(page.locator('#timer')).toBeVisible();
   await page.getByRole('button',{name:'Terminer le test',exact:true}).click();await page.locator('[data-action="dialog-confirm"]').click();
   await expect(page.locator('.result-hero')).toContainText('OBJECTIF ATTEINT');await expect(page.locator('.result-ring')).toContainText('70,77');
   await page.screenshot({path:'test-results/resultat-desktop.png',fullPage:true});await page.locator('[data-action="correction"]').click();
   await expect(page.locator('.correction-card')).toHaveCount(65);await page.selectOption('#correction-filter','wrong');await expect(page.locator('.correction-card')).toHaveCount(19);
   await page.locator('[data-action="nav:errors"]').first().click();await expect(page.locator('.error-row').first()).toBeVisible();
   await page.locator('[data-action="review:errors"]').click();await page.locator('.choice').first().click();await page.locator('[data-action="review-check"]').click();await expect(page.locator('.explanation')).toBeVisible();
-  await page.reload();await page.locator('[data-action="nav:history"]').first().click();await expect(page.locator('tbody tr')).toHaveCount(1);expect(errors).toEqual([]);
+  await page.reload();await dismissReminder(page);await page.locator('[data-action="nav:history"]').first().click();await expect(page.locator('tbody tr')).toHaveCount(1);expect(errors).toEqual([]);
 });
 test('Avertissements puis auto-submit à 60 minutes ; aucune double soumission',async({page})=>{
   await page.clock.install({time:new Date('2026-10-31T12:00:00Z')});await page.clock.pauseAt(new Date('2026-10-31T12:01:00Z'));await start(page);
@@ -68,8 +135,8 @@ test('Une tentative expirée pendant la fermeture est soumise à la reprise',asy
   await page.reload();await expect(page.locator('.result-hero')).toBeVisible();await expect(page.locator('.page-heading')).toContainText('Envoi automatique');
 });
 test('Hors ligne : banque, navigation, figure et examen sont disponibles',async({page,context})=>{
-  await page.goto('/');await page.evaluate(()=>navigator.serviceWorker.ready);await page.reload();await page.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));
-  await context.setOffline(true);await page.reload();await expect(page.locator('h1')).toContainText('Votre objectif');
+  await openApp(page);await page.evaluate(()=>navigator.serviceWorker.ready);await page.reload();await dismissReminder(page);await page.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));
+  await context.setOffline(true);await page.reload();await dismissReminder(page);await expect(page.locator('h1')).toContainText('Votre objectif');
   await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();
   const ids=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).active.ids,key),index=ids.findIndex(id=>byId.get(id).image);
   await page.locator(`[data-action="jump:${index}"]`).click();await expect(page.locator('.question-figure img')).toBeVisible();
@@ -91,7 +158,7 @@ test('Réinitialisation : deux confirmations obligatoires',async({page})=>{
   expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).active!==null,key)).toBeTruthy();
   await page.locator('[data-action="dialog-confirm"]').click();await expect(page.locator('h1')).toContainText('Votre objectif');
   expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).active,key)).toBeNull();
-  await page.reload();await expect(page.getByRole('button',{name:'Réinitialiser ma progression',exact:true})).toBeVisible();
+  await page.reload();await dismissReminder(page);await expect(page.getByRole('button',{name:'Réinitialiser ma progression',exact:true})).toBeVisible();
   expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).attempts,key)).toEqual([]);
   expect(await page.evaluate(()=>localStorage.getItem('cap70-test-unrelated'))).toBe('à conserver');
   await page.locator('[data-action="nav:guide"]').first().click();await expect(page.getByRole('button',{name:'Réinitialiser toute ma progression',exact:true})).toBeVisible();
