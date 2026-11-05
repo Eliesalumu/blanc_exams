@@ -1,0 +1,18 @@
+{
+  "scope": [
+    "technical-2",
+    "technical-3",
+    "sncc-1",
+    "sncc-2",
+    "sncc-3",
+    "rva-1",
+    "rva-2",
+    "rva-3",
+    "rva-4",
+    "rva-5"
+  ],
+  "questionCount": 400,
+  "protectedContentHash": "b8d667065995a0b4c2f51937c6e8de34e23da53a82e0497395a4b203bfd00411",
+  "legacyGeneralHash": "9e673bfe8678bfc70d6946e222c0e744954cf32857780b373cfae176587920be",
+  "originalAnswerKeyHash": "e359c0c9d13d48cb87a87f90b2c8c8b5e72bb949f363d4f15968579c259b14d7"
+}

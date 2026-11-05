@@ -1,6 +1,7 @@
 // Editorial source. Each line is a distinct question followed by its validated
 // choice and three distractors. Choices are rotated for balanced answer positions.
 import fs from 'node:fs';
+import {applyReviewedOptions} from './apply-reviewed-options.js';
 const sections=['A','B','C','D','E','F'],mcqCounts=[9,9,8,7,3,4],shortCounts=[1,1,2,3,2,1];
 const sources={
  SNCC:[{name:'SNCC — présentation et activités',url:'https://www.snccsa.com/qui-sommes-nous/'},{name:'SNCC — droit de passage',url:'https://www.snccsa.com/2022/12/14/sncc-droit-de-passage-2/'}],
@@ -460,5 +461,7 @@ const exams=packs.map(({company,n,mcq,written})=>{
   return {id:`${company.toLowerCase()}-${n}`,company,title:`${company} — Simulation technique ${n}`,durationMinutes:60,
     notice:'Cas de gestion et chiffres hypothétiques, distincts des données réelles. Répartition pédagogique : 40 QCM à 1 point et 10 réponses courtes à 6 points. Sources institutionnelles pour les missions ; raisonnements de gestion proposés pour la simulation.',questions};
 });
+const reviewPath=new URL('../data/reviewed-technical-options.json',import.meta.url);
+if(fs.existsSync(reviewPath))applyReviewedOptions(exams,JSON.parse(fs.readFileSync(reviewPath,'utf8')));
 fs.writeFileSync(new URL('../data/company-exams.json',import.meta.url),JSON.stringify({exams},null,2)+'\n');
 console.log(`${exams.length} examens et ${exams.flatMap(e=>e.questions).length} questions écrits.`);

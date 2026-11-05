@@ -768,14 +768,21 @@
           "type": "mcq",
           "prompt": "Comment mobiliser l’expertise d’administrateurs sans créer un organe parallèle ?",
           "choices": [
-            "Un groupe informel engage la société auprès des créanciers.",
-            "Confier à l’expert l’approbation des opérations quotidiennes.",
-            "Utiliser les compétences en séance ou dans un comité mandaté, avec compte rendu au CA.",
-            "Remplacer les résolutions par des avis individuels."
+            "Constituer un groupe d’administrateurs se réunissant entre sessions pour orienter directement les décisions de la DG.",
+            "Demander à certains administrateurs de conseiller la DG au nom du CA, sans formaliser de mandat.",
+            "Utiliser les compétences en séance ou via un comité mandaté, avec compte rendu au CA.",
+            "Créer une cellule d’experts rattachée au CA, avec agenda autonome et conclusions non soumises au CA."
           ],
           "answer": 2,
-          "explanation": "L’expertise éclaire le CA sans modifier la répartition des pouvoirs.",
-          "commentRequired": false
+          "explanation": "La bonne pratique consiste à encadrer l’expertise par les mécanismes du CA (séance ou comité mandaté) et à assurer une restitution au CA, afin que l’expertise éclaire la décision sans déplacer le pouvoir de décision.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Cela met en place une instance de fait qui interfère avec l’exécution par la DG et contourne le débat et la décision en CA.",
+            "L’administrateur n’engage pas le CA hors cadre; conseiller « au nom du CA » sans mandat crée une chaîne d’instructions parallèle et non traçable.",
+            "L’expertise est mobilisée dans un cadre formel (séance ou comité du CA) et revient au CA par un compte rendu, ce qui évite de créer un centre de décision séparé.",
+            "Un agenda autonome et des conclusions non remontées au CA reviennent à instituer un organe parallèle qui produit des positions sans validation du CA."
+          ],
+          "discriminant": "Distinguer « expertise d’appui au CA » et « instance qui pilote ou décide à la place du CA »."
         },
         {
           "id": "t2-A-M02",
@@ -783,14 +790,21 @@
           "type": "mcq",
           "prompt": "Quelle question doit accompagner une demande de délégation importante au DG ?",
           "choices": [
-            "Quels périmètre, limites et comptes rendus sont prévus ?",
-            "Comment rendre la délégation irrévocable ?",
-            "Pourquoi soustraire la délégation au suivi ?",
-            "Quel administrateur exécutera les engagements ?"
+            "Quels périmètre, limites et comptes rendus sont prévus pour cette délégation, y compris les seuils d’engagement et l’information au CA ?",
+            "Quel objectif à atteindre et quel délai, les limites opérationnelles relevant ensuite de l’appréciation du DG ?",
+            "La délégation sera-t-elle inscrite au procès-verbal, l’organisation du reporting pouvant être traitée plus tard ?",
+            "Quelle durée ferme rendre la délégation stable, afin qu’elle ne puisse pas être remise en cause en cours d’exécution ?"
           ],
           "answer": 0,
-          "explanation": "Une délégation claire définit son étendue, ses limites et sa reddition de comptes.",
-          "commentRequired": true
+          "explanation": "La question clé porte sur le cadrage : ce qui est délégué, jusqu’où, avec quels seuils et comment le DG rend compte. Sans ces éléments, le CA ne maîtrise ni le risque ni la responsabilité liée à la délégation.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Une délégation importante doit être bornée (périmètre, limites, seuils) et assortie d’une reddition de comptes (modalités, fréquence, contenu), afin de préserver la responsabilité du CA et la traçabilité du contrôle.",
+            "Objectif et délai ne remplacent pas l’encadrement de la délégation : sans limites définies par le CA, la délégation devient indéterminée et difficile à contrôler.",
+            "L’inscription au PV constate la décision, mais ne précise ni les limites ni les modalités de comptes rendus, qui doivent faire partie de la délégation elle-même.",
+            "Une délégation doit rester révisable par le CA et contrôlable; la recherche d’irrévocabilité détourne la délégation de son rôle d’outil encadré."
+          ],
+          "discriminant": "Distinguer « formaliser la décision » (PV, durée, objectifs) et « encadrer la délégation » (périmètre, limites, reporting)."
         },
         {
           "id": "t2-A-M03",
@@ -799,13 +813,20 @@
           "prompt": "Un administrateur demande une pièce sensible. Quel équilibre rechercher ?",
           "choices": [
             "Fournir l’information utile par un canal contrôlé selon les règles d’accès et de confidentialité.",
-            "Refuser toute pièce sensible à tous les administrateurs.",
-            "Envoyer le document à une adresse personnelle.",
-            "Diffuser la pièce à tout le personnel."
+            "Transmettre la pièce intégrale par messagerie personnelle, le droit d’information primant sur la confidentialité.",
+            "Refuser la communication et exiger un vote préalable du CA pour toute pièce qualifiée de sensible.",
+            "Donner un résumé oral hors trace écrite, afin de limiter les risques liés à la conservation du document."
           ],
           "answer": 0,
-          "explanation": "L’accès nécessaire doit être concilié avec confidentialité et sécurité.",
-          "commentRequired": false
+          "explanation": "L’équilibre recherché est un accès utile et proportionné, dans un cadre sécurisé et conforme (canal contrôlé, règles d’accès, confidentialité), plutôt qu’une diffusion libre ou un blocage total.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "On concilie le droit à l’information du CA avec la protection des données : accès proportionné au besoin, traçabilité, sécurisation du canal et respect des règles de confidentialité.",
+            "Le droit d’information n’abolit pas les exigences de confidentialité et de sécurité; un canal non maîtrisé accroît les risques de fuite et de compromission.",
+            "L’accès doit être géré, pas bloqué par principe; exiger un vote systématique pour informer un administrateur dénature le droit à l’information et peut empêcher l’exercice de la mission.",
+            "L’absence de trace ne constitue pas une mesure de sécurité; elle réduit la traçabilité, complique l’auditabilité et peut dégrader la qualité de l’information communiquée."
+          ],
+          "discriminant": "Distinguer « droit d’accès encadré » et « diffusion non maîtrisée » ou « refus de principe »."
         },
         {
           "id": "t2-A-M04",
@@ -813,14 +834,21 @@
           "type": "mcq",
           "prompt": "Quel est l’usage d’un calendrier annuel des travaux du CA ?",
           "choices": [
-            "Interdire toute réunion hors calendrier.",
-            "Garantir des décisions sans dossier préparatoire.",
+            "Figer l’ordre du jour annuel et limiter l’ajout de points non prévus au calendrier adopté.",
+            "Valider à l’avance les décisions attendues pour chaque réunion, afin de réduire le temps de délibération.",
             "Anticiper décisions récurrentes et sujets stratégiques sans exclure l’urgence.",
-            "Remplacer les règles statutaires de convocation."
+            "Rendre opposables aux comités les échéances du CA comme obligations de conclure et décider avant chaque séance."
           ],
           "answer": 2,
-          "explanation": "Le calendrier prépare les travaux, mais ne remplace pas les obligations formelles.",
-          "commentRequired": false
+          "explanation": "L’usage du calendrier annuel est la planification intelligente des travaux : programmer les sujets récurrents et stratégiques, tout en gardant la capacité de traiter l’urgence, sans confondre calendrier, ordre du jour et décisions.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un calendrier planifie, mais ne verrouille pas l’ordre du jour : le CA doit pouvoir inscrire des sujets nouveaux, notamment en cas d’urgence ou d’évolution du contexte.",
+            "Le calendrier ne préjuge pas des délibérations : le CA doit examiner l’information disponible au moment venu et décider, pas ratifier une décision pré-écrite.",
+            "Le calendrier permet de structurer les travaux du CA (rythme, dossiers récurrents, séquences stratégiques) tout en laissant de la place à l’imprévu, sans remplacer les formalités de convocation et d’ordre du jour.",
+            "Les comités préparent et recommandent; ils ne reçoivent pas du calendrier une obligation de conclure ni un pouvoir de décision qui s’imposerait à leur travail."
+          ],
+          "discriminant": "Distinguer « planification des travaux » et « verrouillage de l’ordre du jour » ou « pré-décision »."
         },
         {
           "id": "t2-A-M05",
@@ -828,14 +856,21 @@
           "type": "mcq",
           "prompt": "Un administrateur conteste une donnée essentielle en séance. Quelle réponse est responsable ?",
           "choices": [
-            "Écarter la contestation pour respecter l’ordre du jour.",
-            "Vérifier la source et, si nécessaire, demander un complément avant décision.",
-            "Voter pour la donnée la plus favorable.",
-            "Demander au PCA de certifier la donnée oralement."
+            "Mettre la contestation aux voix et retenir la donnée majoritairement acceptée en séance.",
+            "Vérifier la source de la donnée et demander un complément avant toute décision si nécessaire.",
+            "Maintenir la décision envisagée et renvoyer la vérification à la direction générale après la séance.",
+            "Consigner l’objection au procès-verbal et poursuivre la délibération sans réexaminer la donnée."
           ],
           "answer": 1,
-          "explanation": "Une vérification proportionnée évite une décision fondée sur une donnée incertaine.",
-          "commentRequired": false
+          "explanation": "Le CA doit arbitrer sur une information fiable ; en cas de contestation, il sécurise la source et ajuste le calendrier décisionnel si besoin.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un vote ne transforme pas une donnée incertaine en donnée exacte : le CA décide, mais ne « valide » pas la réalité factuelle par majorité.",
+            "La réponse responsable consiste à sécuriser l’information contestée (source, calcul, hypothèses) et, si elle reste incertaine, à compléter l’analyse avant de statuer, afin d’éviter une décision fondée sur une base fragile.",
+            "La DG exécute : si la donnée est essentielle à la décision du CA, la vérification doit précéder la décision, pas la suivre.",
+            "La traçabilité d’un désaccord n’apporte pas de fiabilité à l’information : le risque demeure si la donnée reste non vérifiée."
+          ],
+          "discriminant": "Distinguer un mécanisme de gouvernance (vote, PV, renvoi à la DG) d’un mécanisme de fiabilisation de l’information (vérification de source et compléments)."
         },
         {
           "id": "t2-A-M06",
@@ -843,14 +878,21 @@
           "type": "mcq",
           "prompt": "Quel principe guide la tenue du procès-verbal du CA ?",
           "choices": [
-            "Faire rédiger chaque décision par son responsable opérationnel.",
-            "Omettre les résolutions afin de préserver la confidentialité.",
-            "Assurer une trace fiable selon les règles internes et applicables.",
-            "Confier la rédaction à un tiers sans contrôle."
+            "Rédiger un récit des discussions, axé sur les opinions, plutôt que sur les résolutions.",
+            "Faire approuver PV par la direction générale, puis soumettre au président pour signature.",
+            "Consigner décisions et votes de façon traçable, conforme aux règles internes et exigences applicables.",
+            "Traiter le procès-verbal comme mémo interne sans valeur probatoire, donc avec forme libre."
           ],
           "answer": 2,
-          "explanation": "Les procès-verbaux doivent fidèlement retracer les décisions et respecter les règles.",
-          "commentRequired": false
+          "explanation": "Le principe directeur est la fiabilité probatoire et la conformité aux règles applicables, pas la narration ni la validation par l’exécutif.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un PV vise d’abord la trace des décisions et éléments probatoires; privilégier les opinions nuit à la preuve et à la gouvernance.",
+            "La DG peut assister à la rédaction matérielle, mais l’approbation relève du conseil selon ses règles; l’exécutif ne valide pas le PV du CA.",
+            "Le PV doit fournir une preuve fiable: décisions, modalités de vote/approbation, conformité aux règles de forme, signatures et conservation.",
+            "Le PV est un document opposable de gouvernance; il supporte la preuve des décisions et requiert forme, approbation et conservation conformes."
+          ],
+          "discriminant": "Distinguer document probatoire de gouvernance (PV) vs note interne/narration, et séparer CA (approbation) de DG (exécution)."
         },
         {
           "id": "t2-A-M07",
@@ -858,14 +900,21 @@
           "type": "mcq",
           "prompt": "Pourquoi le CA examine-t-il périodiquement les risques majeurs ?",
           "choices": [
-            "Pour suivre expositions, réponses et sujets nécessitant son attention.",
-            "Pour prendre en charge les contrôles quotidiens de chaque service.",
-            "Pour remplacer les rapports financiers.",
-            "Pour garantir l’absence d’événements imprévus."
+            "Apprécier expositions, efficacité des réponses et arbitrages nécessitant l’attention et la supervision du CA.",
+            "Certifier l’absence d’incidents significatifs et dégager la direction générale de la responsabilité des risques.",
+            "Arrêter une cartographie stable servant de référentiel de conformité pour l’audit externe chaque année.",
+            "Décider en séance le détail des mesures opérationnelles et piloter leur mise en œuvre."
           ],
           "answer": 0,
-          "explanation": "La surveillance éclaire le contrôle sans remplacer la gestion ni garantir l’absence d’incidents.",
-          "commentRequired": false
+          "explanation": "Le CA exerce une fonction de supervision: suivre l’exposition et la réponse, sans se substituer au management ni promettre zéro incident.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le CA suit l’évolution des risques majeurs, challenge les réponses proposées et identifie les décisions/orientations relevant de son niveau de supervision.",
+            "L’examen périodique ne certifie pas l’absence d’événements et ne transfère pas la responsabilité opérationnelle, qui demeure à la DG.",
+            "Les risques évoluent; l’objectif est une supervision dynamique, pas un référentiel figé destiné à une logique de certification annuelle.",
+            "Le CA oriente et supervise; la définition détaillée et l’exécution des plans d’actions relèvent du management et des responsables opérationnels."
+          ],
+          "discriminant": "Distinguer supervision stratégique (CA) vs gestion opérationnelle (DG) et logique de « certification d’absence d’incident »."
         },
         {
           "id": "t2-A-M08",
@@ -873,14 +922,21 @@
           "type": "mcq",
           "prompt": "Quelle pratique améliore la qualité d’une évaluation présentée au CA ?",
           "choices": [
-            "Présenter la conclusion sans hypothèses.",
-            "Exposer mandat, méthode, limites, sources et éventuels conflits d’intérêts.",
-            "Demander à l’évaluateur de confirmer la décision déjà prise.",
-            "Omettre les limites."
+            "Remplacer la méthode par une note de synthèse chiffrée, sans scénario ni justification des données.",
+            "Présenter au CA périmètre, hypothèses, sources, limites, sensibilités et intérêts susceptibles d’influencer l’évaluation.",
+            "Fonder la crédibilité sur l’expérience du cabinet, en limitant l’accès aux sources utilisées.",
+            "Aligner les hypothèses sur l’option préférée du CA, afin de confirmer la décision envisagée."
           ],
           "answer": 1,
-          "explanation": "La transparence permet d’apprécier la portée et l’indépendance de l’analyse.",
-          "commentRequired": false
+          "explanation": "La qualité d’une évaluation pour le CA se juge sur la transparence et la vérifiabilité, pas sur la simplification ou l’orientation du résultat.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une conclusion chiffrée sans hypothèses, scénarios ni sources ne permet pas au CA d’évaluer la solidité ni les risques d’erreur.",
+            "Le CA peut apprécier la robustesse et les biais potentiels quand la méthode, les limites, les sources et les conflits possibles sont explicités.",
+            "La réputation ne remplace pas la transparence méthodologique; limiter les sources empêche d’évaluer la qualité, la pertinence et les biais.",
+            "Adapter les hypothèses pour confirmer une préférence introduit un biais; le CA attend une analyse indépendante et traçable, pas une justification."
+          ],
+          "discriminant": "Distinguer transparence méthodologique (auditabilité) vs autorité, persuasion ou résultat prédéterminé."
         },
         {
           "id": "t2-A-M09",
@@ -888,14 +944,21 @@
           "type": "mcq",
           "prompt": "Comment traiter un ordre du jour chargé ?",
           "choices": [
-            "Supprimer les sujets à risque.",
-            "Faire voter sans discussion.",
-            "Confier les décisions du CA aux responsables présents.",
-            "Prioriser selon urgence et importance et réserver le temps de délibération nécessaire."
+            "Prendre la date de dépôt des dossiers comme mesure de leur urgence et de leur importance pour le conseil.",
+            "Traiter les dossiers par approbation du résumé exécutif, en donnant à cet accord la valeur d’un examen du fond.",
+            "Accorder davantage de temps aux dossiers déjà consensuels, le consensus étant pris comme mesure de leur importance stratégique.",
+            "Classer les points par urgence et importance, puis protéger un temps suffisant de délibération."
           ],
           "answer": 3,
-          "explanation": "La priorisation améliore la discussion sans évincer les décisions requises.",
-          "commentRequired": false
+          "explanation": "Le point clé est d’arbitrer selon l’enjeu et d’allouer du temps à la délibération, plutôt que d’optimiser l’ordre ou la vitesse.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’ordre de dépôt ne mesure pas la criticité ni les échéances réelles d’une décision.",
+            "L’approbation d’une synthèse ne prouve pas que le fond d’un dossier a été examiné et délibéré.",
+            "Le degré de consensus ne mesure ni l’urgence ni l’importance stratégique d’une décision.",
+            "La bonne pratique combine priorisation (enjeux/urgence) et protection du temps d’échange, afin de préserver la qualité de décision du CA."
+          ],
+          "discriminant": "Distinguer gestion du temps orientée « confort/équité apparente » vs priorisation par enjeux et exigence de délibération."
         },
         {
           "id": "t2-B-M01",
@@ -903,14 +966,21 @@
           "type": "mcq",
           "prompt": "Quel contrôle fiabilise le recensement des immobilisations ?",
           "choices": [
-            "Mettre à jour uniquement les acquisitions.",
-            "S’appuyer sur l’assurance seule.",
-            "Rapprocher registre et inventaire physique et documenter les mouvements.",
-            "Conserver le registre sans signaler les cessions."
+            "Attester l’existence du parc à partir des factures d’achat, en supposant l’absence de cessions.",
+            "Valider le recensement par concordance entre valeur assurée et valeur nette comptable des actifs.",
+            "Comparer inventaire physique et registre dans les deux sens, en retraçant entrées, sorties et transferts.",
+            "Conclure à l’exhaustivité en vérifiant les numéros d’inventaire déjà inscrits sur les étiquettes."
           ],
           "answer": 2,
-          "explanation": "Le rapprochement et le suivi des mouvements soutiennent l’exhaustivité du registre.",
-          "commentRequired": false
+          "explanation": "Le recensement fiable exige une preuve de présence (terrain) et une preuve d’exhaustivité (aller-retour registre/physique) avec piste des mouvements.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Les factures prouvent l’acquisition historique, pas la présence ni l’intégrité à la date d’inventaire; cessions, pertes ou transferts restent possibles.",
+            "Valeur assurée et VNC sont des agrégats financiers; leur concordance ne prouve ni l’existence physique ni l’exhaustivité des biens recensés.",
+            "Le rapprochement physique/registre, complété par la traçabilité des mouvements, couvre existence et exhaustivité du parc d’immobilisations.",
+            "Vérifier des étiquettes part du registre/biens déjà identifiés; cela ne révèle pas les biens manquants au registre ni les sorties non enregistrées."
+          ],
+          "discriminant": "Distinguer preuves documentaires de financement/valorisation vs preuves d’existence/exhaustivité sur le terrain."
         },
         {
           "id": "t2-B-M02",
@@ -918,14 +988,21 @@
           "type": "mcq",
           "prompt": "Comment interpréter un ratio d’endettement d’une entreprise de transport ?",
           "choices": [
-            "Le comparer au seul chiffre d’affaires d’un mois.",
+            "Lire le ratio d’endettement comme taux de couverture des prochaines échéances par les encaissements d’exploitation.",
             "Le rapprocher des échéances, du coût de la dette, des flux et des investissements nécessaires.",
-            "Considérer toute dette comme insoutenable.",
-            "L’ignorer si les actifs sont élevés."
+            "Le justifier par l’importance des immobilisations et considérer l’endettement acceptable tant que les actifs augmentent.",
+            "Traiter un faible ratio dette nette sur capitaux propres comme preuve de capacité à honorer les prochaines échéances."
           ],
           "answer": 1,
-          "explanation": "La soutenabilité dépend des flux et engagements, pas d’un ratio isolé.",
-          "commentRequired": false
+          "explanation": "L’endettement se juge par la capacité à servir la dette dans le temps, pas par un indicateur unique ou un simple benchmark.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un ratio d’endettement décrit une structure financière ; il ne se confond pas avec la couverture du service de la dette par les flux.",
+            "Un ratio d’endettement n’a de sens qu’en contexte : profil d’échéances, coût et covenants, capacité de génération de flux, besoins d’investissement et cyclicité d’activité conditionnent la soutenabilité de la dette.",
+            "La valeur des immobilisations ne paie pas la dette : la soutenabilité dépend des flux et des échéances, pas de la taille du parc.",
+            "Un faible levier ne démontre pas la liquidité disponible aux dates de remboursement ; échéancier, coût et flux restent nécessaires."
+          ],
+          "discriminant": "Distinguer un ratio comme signal d’alerte d’une analyse de soutenabilité (flux, échéances, coût, investissements)."
         },
         {
           "id": "t2-B-M03",
@@ -933,14 +1010,21 @@
           "type": "mcq",
           "prompt": "Un écart significatif apparaît entre budget et réalisé. Quelle analyse présenter ?",
           "choices": [
-            "Une cause unique avant vérification.",
+            "Présenter l’écart global et demander aux opérationnels une justification générale lors du point suivant.",
             "Facteurs de volume, prix, calendrier et éléments exceptionnels, avec une action proposée.",
-            "Reporter à la clôture annuelle.",
-            "Modifier le budget pour supprimer l’écart."
+            "Isoler les lignes en dépassement et appliquer une coupe linéaire pour revenir au budget initial.",
+            "Rebaser le budget au niveau du réalisé et considérer l’écart traité puisque le budget est désormais aligné."
           ],
           "answer": 1,
-          "explanation": "Décomposer les causes aide à choisir une mesure corrective pertinente.",
-          "commentRequired": false
+          "explanation": "Le CA a besoin d’une lecture causale et actionnable des écarts, pas d’un constat agrégé, d’une coupe mécanique ou d’un rebasage masquant le problème.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un écart agrégé ne permet pas d’identifier les leviers (volume, prix, timing, exceptionnel) ni d’arbitrer une action corrective pertinente.",
+            "Une analyse utile au CA décompose l’écart (volume, prix, mix, calendrier), isole les éléments non récurrents, explicite les hypothèses, puis propose des mesures (correction opérationnelle, réallocation, reforecast) avec responsables et impacts attendus.",
+            "Un dépassement peut être expliqué par volume, calendrier ou décisions ; une coupe linéaire suppose à tort une inefficience uniforme et ignore les causes.",
+            "Rebaser supprime la mesure de performance sans expliquer les causes ; l’écart n’est pas « traité » tant que les drivers ne sont pas adressés."
+          ],
+          "discriminant": "Distinguer une analyse d’écart « driver-based » (volume/prix/timing/exceptionnel + action) d’une approche comptable ou mécanique (constat, coupe, rebasage)."
         },
         {
           "id": "t2-B-M04",
@@ -948,14 +1032,21 @@
           "type": "mcq",
           "prompt": "Quel élément essentiel inclure dans un contrôle de clôture des stocks ?",
           "choices": [
-            "Une estimation sans liste.",
-            "Le seul rapprochement des paiements bancaires.",
-            "L’arrêt des mouvements sans contrôle.",
-            "Instructions d’inventaire, comptages et examen documenté des écarts et de l’état."
+            "Valider les stocks par rapprochement entre valeur assurée et valeur comptable de fin d’exercice.",
+            "Confirmer les stocks de clôture à partir des accusés de livraison fournisseurs du dernier mois.",
+            "Ajuster le stock pour retrouver la marge brute budgétée lorsque l’écart de marge est constaté.",
+            "Formaliser des instructions d’inventaire, réaliser des comptages, et documenter les écarts et l’état."
           ],
           "answer": 3,
           "explanation": "Comptages et traitement documenté soutiennent l’existence et l’évaluation des stocks.",
-          "commentRequired": false
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’assurance couvre des valeurs et des risques; elle ne constitue pas une preuve de quantités physiques ni de l’état réel à la clôture.",
+            "Des livraisons attestent des entrées, pas des quantités encore détenues après sorties, pertes, rebuts ou transferts avant clôture.",
+            "La marge attendue peut révéler un risque, mais ajuster le stock “pour tomber juste” inverse la logique de preuve et fausse l’évaluation.",
+            "Un contrôle de clôture robuste combine organisation (instructions), preuve d’existence (comptages) et preuve d’évaluation (analyse documentée des écarts et de l’état)."
+          ],
+          "discriminant": "Distinguer les preuves directes (comptage, constat d’état, analyse d’écarts) des indicateurs indirects (assurance, budget, livraisons)."
         },
         {
           "id": "t2-B-M05",
@@ -963,14 +1054,21 @@
           "type": "mcq",
           "prompt": "Une recette facturée est contestée par le client. Quelle analyse faire ?",
           "choices": [
-            "Examiner contrat, service rendu, contestation et règles de comptabilisation.",
-            "Annuler sans examiner les pièces.",
-            "Traiter la facture comme un encaissement.",
-            "La reconnaître dès l’émission, même si les conditions de transfert ne sont pas établies."
+            "Analyser le contrat, le service rendu, la contestation reçue et les règles de comptabilisation applicables.",
+            "Maintenir la recette dès lors que la facture est émise et que la taxe correspondante est déclarée.",
+            "Assimiler la déclaration de taxe sur la facture à la preuve du droit définitif au produit comptabilisé.",
+            "Annuler la recette dès la réception d’une contestation, avant revue du contrat et des justificatifs."
           ],
           "answer": 0,
           "explanation": "Une facture ne prouve pas à elle seule le droit définitif ni l’encaissement.",
-          "commentRequired": false
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La bonne analyse relie les droits et obligations contractuels, la réalité de la prestation, le motif de litige et le traitement comptable (produit/annulation/provision).",
+            "La facturation et la déclaration fiscale ne prouvent ni l’acceptation du service ni un droit définitif en cas de contestation.",
+            "La déclaration fiscale ne prouve ni la bonne exécution de la prestation ni le bien-fondé du revenu contesté.",
+            "Une contestation peut être infondée; l’écriture doit résulter d’une analyse des droits, de la preuve de service et des règles comptables."
+          ],
+          "discriminant": "Séparer la preuve de facturation de la preuve du droit (contrat/prestation) et du risque (litige/recouvrabilité)."
         },
         {
           "id": "t2-B-M06",
@@ -978,14 +1076,21 @@
           "type": "mcq",
           "prompt": "À quoi sert une analyse de sensibilité du plan de financement ?",
           "choices": [
-            "Remplacer l’évaluation des risques opérationnels.",
-            "Choisir seulement la prévision optimiste.",
-            "Mesurer l’effet des hypothèses sur besoins, flux et marges de sécurité.",
-            "Éviter de préciser le scénario central."
+            "Déterminer le scénario le plus probable pour remplacer le scénario de base du plan de financement.",
+            "Fixer des hypothèses garantissant le respect des covenants afin de sécuriser l’accord des bailleurs.",
+            "Tester l’impact des hypothèses sur besoins, flux de trésorerie et marges de sécurité.",
+            "Calculer la VAN et le TRI du projet pour décider du lancement du financement."
           ],
           "answer": 2,
           "explanation": "La sensibilité évalue la robustesse aux changements d’hypothèses.",
-          "commentRequired": false
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Choisir un scénario central relève d’une construction budgétaire; la sensibilité mesure des variations autour d’hypothèses, pas un remplacement.",
+            "La sensibilité doit tester des chocs réalistes; sélectionner des hypothèses “conformes” vise à maquiller le risque plutôt qu’à le mesurer.",
+            "La sensibilité quantifie comment une variation d’hypothèses (prix, volumes, délais, taux) dégrade ou améliore financement et liquidité.",
+            "VAN/TRI évaluent la rentabilité d’investissement; la sensibilité du plan de financement porte sur trésorerie, besoins et marges de liquidité."
+          ],
+          "discriminant": "Distinguer robustesse de liquidité (besoins/flux/marges) et outils de décision d’investissement (VAN/TRI) ou “scénario central”."
         },
         {
           "id": "t2-B-M07",
@@ -993,14 +1098,21 @@
           "type": "mcq",
           "prompt": "Quelle séparation limite le risque de paiement non autorisé ?",
           "choices": [
-            "Confier achat et paiement à une personne expérimentée.",
-            "Laisser le fournisseur confirmer sa propre réception.",
-            "Distinguer engagement, réception, validation et mise en paiement autant que possible.",
-            "Supprimer la validation des dépenses récurrentes."
+            "Séparer saisie et rapprochement bancaire, tout en confiant autorisation et exécution du virement au même agent.",
+            "Séparer engagement et réception, mais tenir la signature du demandeur pour une approbation indépendante du paiement.",
+            "Dissocier engagement, constat de service fait, validation de facture et ordre de paiement en trésorerie.",
+            "Autoriser la validation après paiement, en comptant sur le contrôle a posteriori du rapprochement bancaire."
           ],
           "answer": 2,
-          "explanation": "Séparer les étapes réduit le risque, avec contrôles compensatoires si nécessaire.",
-          "commentRequired": false
+          "explanation": "Le bon discriminant est préventif: on réduit le risque en fragmentant les pouvoirs entre étapes qui conditionnent le paiement.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Séparer des tâches comptables ne supprime pas ici le cumul de l’autorisation et de l’exécution du paiement.",
+            "L’auteur de la demande n’apporte pas une approbation indépendante de sa propre opération.",
+            "La séparation des étapes clés (engager, constater la réception/service fait, valider la facture, mettre en paiement) empêche qu’un acteur déclenche un paiement sans justification complète.",
+            "Le rapprochement bancaire détecte après coup; il ne bloque pas un paiement déjà parti, donc ne limite pas le risque de paiement non autorisé."
+          ],
+          "discriminant": "Distinguer contrôles préventifs de séparation des tâches vs contrôles détectifs a posteriori."
         },
         {
           "id": "t2-B-M08",
@@ -1008,14 +1120,21 @@
           "type": "mcq",
           "prompt": "Quel effet peut avoir l’allongement des délais clients sur le fonds de roulement ?",
           "choices": [
-            "Un besoin accru de financement lorsque les encaissements tardent.",
-            "Un effet seulement sur les immobilisations.",
-            "Aucun effet avant un impayé.",
-            "Un effet visible uniquement dans le résultat net."
+            "Un besoin de financement plus élevé lorsque les encaissements clients tardent.",
+            "Une diminution du besoin en fonds de roulement car les créances financent l’exploitation.",
+            "Un effet neutre sur le fonds de roulement tant que le chiffre d’affaires reste stable sur la période.",
+            "Une amélioration de la trésorerie car les ventes comptabilisées augmentent la capacité d’autofinancement à court terme."
           ],
           "answer": 0,
           "explanation": "Des encaissements plus tardifs peuvent immobiliser des ressources.",
-          "commentRequired": false
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Des délais clients plus longs augmentent les créances et immobilisent de la trésorerie, ce qui accroît le besoin en fonds de roulement.",
+            "Ce sont les dettes d’exploitation qui financent l’activité; les créances consomment de la trésorerie tant qu’elles ne sont pas encaissées.",
+            "Même à chiffre d’affaires constant, allonger le délai d’encaissement augmente l’encours de créances et donc le besoin de financement.",
+            "La CAF n’est pas une entrée de cash immédiate; sans encaissement, l’augmentation des ventes accroît surtout les créances et la tension de liquidité."
+          ],
+          "discriminant": "Comprendre le mécanisme BFR : créances = emploi de trésorerie; délais plus longs = encours plus élevé = financement supplémentaire."
         },
         {
           "id": "t2-B-M09",
@@ -1023,14 +1142,21 @@
           "type": "mcq",
           "prompt": "Quel élément permet au conseil d’examiner la gestion d’un conflit d’intérêts ?",
           "choices": [
-            "Un échange confidentiel entre PCA et DG après le vote.",
-            "Une déclaration, la mesure de déport applicable et sa consignation dans les procès-verbaux.",
-            "Le seul avis de l’administrateur concerné.",
-            "La publication de toutes les pièces commerciales."
+            "Le registre des intérêts, dont l’actualisation annuelle vaut traitement des conflits rencontrés pendant les séances.",
+            "Disposer d’une déclaration, du déport retenu et de la mention correspondante au procès-verbal du conseil.",
+            "Une attestation du membre concerné, dont l’absence de gain réalisé vaut preuve d’absence de conflit.",
+            "Un avis du commissaire aux comptes, assimilé à une autorisation de participer au vote du point concerné."
           ],
           "answer": 1,
-          "explanation": "La déclaration et le déport selon les règles permettent une décision impartiale et vérifiable.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la traçabilité opposable en séance: déclaration + déport effectif + mention au PV, pas une preuve informelle ou générale.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La déclaration générale des intérêts ne remplace pas le traitement d’un conflit relatif à une décision donnée.",
+            "Le conseil peut vérifier la gestion du conflit si l’intérêt est déclaré, la mesure de déport appliquée, et l’ensemble tracé au PV.",
+            "Un conflit peut exister avant tout gain et même si aucun avantage n’a finalement été obtenu.",
+            "L’avis de l’auditeur ne vaut pas dispense des règles de déclaration et de déport applicables."
+          ],
+          "discriminant": "Distinguer registre général d’intérêts vs traitement d’un cas concret documenté au PV avec mesure de déport."
         },
         {
           "id": "t2-C-M01",
@@ -1038,14 +1164,21 @@
           "type": "mcq",
           "prompt": "Quel contrôle est utile à la réception d’un conteneur au terminal ?",
           "choices": [
-            "Se fier à la déclaration orale du conducteur.",
-            "Ouvrir chaque conteneur sans consigne.",
-            "Enregistrer le numéro à la sortie seulement.",
-            "Vérifier références, état apparent et scellés selon procédure, puis enregistrer les réserves."
+            "Accepter le conteneur si le manifeste concorde, et traiter ensuite toute avarie comme litige du transporteur.",
+            "Ouvrir le conteneur à la réception pour compter l’ensemble des colis avant l’entrée en aire.",
+            "Donner au document de transport la valeur d’un constat de l’état physique du conteneur lors de sa réception.",
+            "Contrôler références, état apparent et scellés selon procédure, puis enregistrer les réserves constatées."
           ],
           "answer": 3,
           "explanation": "Identification et réserves documentées préservent la traçabilité.",
-          "commentRequired": false
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le manifeste ne prouve pas l’intégrité; sans contrôle des scellés et réserves à réception, la traçabilité et les recours sont fragilisés.",
+            "L’ouverture n’est pas un contrôle standard de réception et peut rompre la chaîne de scellés; on privilégie vérifications externes et réserves.",
+            "Le document accompagne le transport ; il ne remplace pas le constat matériel à la réception et les réserves pertinentes.",
+            "L’identification (références), l’intégrité (scellés) et la constatation d’avaries/réserves documentent la chaîne de garde et la responsabilité."
+          ],
+          "discriminant": "Comprendre la chaîne de garde: contrôles à l’instant de réception (scellés/état/réserves) vs preuves tardives ou indirectes."
         },
         {
           "id": "t2-C-M02",
@@ -1053,14 +1186,21 @@
           "type": "mcq",
           "prompt": "Comment analyser une congestion d’une aire de stockage ?",
           "choices": [
-            "Augmenter uniformément la cadence des engins.",
-            "Mesurer occupation, durée de séjour, flux et blocages par zone.",
-            "Réduire les contrôles d’accès sans analyse.",
-            "Déplacer les stocks vers une zone non étudiée."
+            "Déduire la congestion du nombre de camions traités au portail, sans mesurer l’occupation réelle interne.",
+            "Quantifier l’occupation réelle, les durées de séjour, les flux entrants-sortants et les blocages opérationnels, par zone.",
+            "Utiliser le stock moyen mensuel comme indicateur principal, en supposant des durées de séjour constantes.",
+            "Attribuer la congestion à la disponibilité des engins, en négligeant la répartition des flux par zones."
           ],
           "answer": 1,
-          "explanation": "L’analyse des flux et du temps de séjour révèle les goulots.",
-          "commentRequired": true
+          "explanation": "Une analyse fiable relie volumes, temps et capacité, puis localise les blocages: zone par zone, pas via un seul indicateur global.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Le débit au portail peut rester élevé malgré saturation interne; sans occupation et temps de séjour, la cause et la localisation restent inconnues.",
+            "La congestion se comprend par densité d’occupation, temps de séjour (rotation), flux et goulots localisés; l’analyse par zone identifie la cause.",
+            "Deux situations avec stock moyen identique peuvent avoir des congestions différentes; la distribution des durées de séjour et la rotation sont déterminantes.",
+            "La disponibilité d’engins est un facteur possible, mais la congestion peut venir de goulots de zones, d’occupation et de blocages de circulation."
+          ],
+          "discriminant": "Distinguer indicateurs globaux (débit/stock) vs analyse capacité-temps-flux et localisation des goulots."
         },
         {
           "id": "t2-C-M03",
@@ -1068,14 +1208,21 @@
           "type": "mcq",
           "prompt": "Quelle démarche convient à une réclamation client pour retard ?",
           "choices": [
-            "Reconstituer jalons et documents et répondre selon les engagements applicables.",
-            "Répondre par le délai moyen annuel seulement.",
-            "Reconnaître immédiatement toute responsabilité.",
-            "Effacer les horodatages divergents."
+            "Reconstituer les jalons et pièces, puis répondre selon les engagements contractuels et opérationnels applicables.",
+            "Appliquer le barème interne de pénalités dès la réclamation, sans reconstituer précisément les faits.",
+            "Répondre à partir du planning prévisionnel initial, même si les documents d’exécution sont incomplets.",
+            "Transférer la réclamation au juridique et différer la réponse jusqu’à la fin de l’analyse contentieuse."
           ],
           "answer": 0,
-          "explanation": "Une réponse solide repose sur des preuves opérationnelles et les engagements convenus.",
-          "commentRequired": false
+          "explanation": "Une réponse solide à une réclamation pour retard se construit sur des faits datés et des documents vérifiables, puis s’aligne sur les engagements applicables (contrat/SLA/procédure).",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La démarche attendue consiste à reconstruire la chronologie (prise en charge, transit, avis, livraison), à rassembler les preuves (bordereaux, rapports, horodatages) et à répondre en se fondant sur les engagements convenus (délais, clauses, niveaux de service).",
+            "Un barème interne ne suffit pas à qualifier un retard ni à déterminer la responsabilité sans éléments probants et référence aux engagements applicables au dossier.",
+            "Un planning prévisionnel ne prouve pas l’exécution réelle ni les causes du retard; la réponse doit s’appuyer sur des jalons constatés et des pièces traçables.",
+            "La réponse à une réclamation client nécessite d’abord une clarification opérationnelle et documentaire; l’analyse juridique peut venir ensuite, mais ne remplace pas l’établissement des faits."
+          ],
+          "discriminant": "Distinguer une preuve d’exécution (jalons horodatés, pièces) d’un référentiel interne ou d’un planning prévisionnel, qui ne constatent pas les faits."
         },
         {
           "id": "t2-C-M04",
@@ -1083,14 +1230,21 @@
           "type": "mcq",
           "prompt": "Comment améliorer la planification des engins de manutention ?",
           "choices": [
-            "Comparer charge, capacité, disponibilité, maintenance et compétences par créneau.",
-            "Réserver selon l’ancienneté du client uniquement.",
-            "Ne planifier qu’après arrivée des navires.",
-            "Programmer en capacité nominale permanente."
+            "Arbitrer, par créneau, la charge et la capacité utile: disponibilité, maintenance et compétences opérateurs.",
+            "Partir du parc théorique d’engins et lisser la charge, sans modéliser les indisponibilités réelles.",
+            "Caler le planning sur le débit moyen hebdomadaire, en supposant des besoins constants par poste.",
+            "Déduire la disponibilité technique des engins du nombre d’opérateurs expérimentés inscrits au planning de chaque vacation."
           ],
           "answer": 0,
-          "explanation": "La capacité utile tient compte des indisponibilités et contraintes opérationnelles.",
-          "commentRequired": false
+          "explanation": "Le discriminant est le raisonnement « par créneau » en capacité utile (demande vs capacité réellement disponible), intégrant simultanément maintenance et compétences.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La planification s’améliore quand on confronte, sur chaque créneau, la demande réelle à la capacité réellement mobilisable (engins disponibles, contraintes de maintenance et compétences nécessaires).",
+            "Le parc théorique ne représente pas la capacité utile: pannes, maintenance et absences réduisent la capacité mobilisable par créneau.",
+            "Un débit moyen masque pics, creux et contraintes d’interface; la charge varie par créneau et ne se pilote pas par moyenne uniforme.",
+            "Les compétences des opérateurs et l’aptitude technique des engins sont deux contraintes distinctes de capacité."
+          ],
+          "discriminant": "Planifier = arbitrer charge/capacité utile par créneau, pas lisser par moyennes ni partir du parc ou des seuls profils."
         },
         {
           "id": "t2-C-M05",
@@ -1098,14 +1252,21 @@
           "type": "mcq",
           "prompt": "Quel avantage apporte une nomenclature harmonisée des unités de fret ?",
           "choices": [
-            "Éliminer les contrôles documentaires.",
-            "Réduire les ambiguïtés et faciliter le rapprochement des volumes et mouvements.",
-            "Fusionner les lots sans vérification.",
-            "Remplacer le suivi des événements."
+            "Remplacer les contrôles de pesée et comptage, car la nomenclature rend les unités de fret équivalentes.",
+            "Réduire les ambiguïtés et faciliter le rapprochement des volumes déclarés avec les mouvements réellement enregistrés.",
+            "Garantir l’exactitude des volumes déclarés en imposant une unité unique de fret à tous les trafics.",
+            "Permettre le rapprochement des factures sans référentiel des mouvements physiques, grâce aux définitions harmonisées."
           ],
           "answer": 1,
-          "explanation": "Des définitions communes facilitent les échanges sans remplacer les contrôles.",
-          "commentRequired": false
+          "explanation": "L’avantage central est la réduction des ambiguïtés et l’amélioration des rapprochements entre ce qui est déclaré et ce qui a réellement bougé, sans prétendre remplacer les contrôles.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une nomenclature clarifie les définitions, mais ne mesure pas les quantités; les contrôles physiques restent nécessaires pour valider poids, compte et intégrité.",
+            "Une nomenclature harmonisée fournit des définitions communes (unité, conditionnement, correspondances) qui améliorent la qualité des échanges et rendent les rapprochements volume/mouvement plus fiables.",
+            "L’uniformisation de l’unité ne garantit pas l’exactitude des données saisies ni des mesures; elle réduit surtout les ambiguïtés d’interprétation.",
+            "Le rapprochement financier nécessite un lien avec les opérations (mouvements, jalons, quantités); des définitions communes n’apportent pas, à elles seules, la preuve d’exécution."
+          ],
+          "discriminant": "Distinguer un référentiel de définition (nomenclature) d’un dispositif de preuve (mesure, mouvement, contrôle) : la nomenclature clarifie, elle ne constate pas."
         },
         {
           "id": "t2-C-M06",
@@ -1113,14 +1274,21 @@
           "type": "mcq",
           "prompt": "Un navire est retardé alors que les équipes sont mobilisées. Quelle réponse est adaptée ?",
           "choices": [
-            "Maintenir les équipes sans confirmer l’arrivée.",
-            "Annuler toutes les opérations du terminal.",
-            "Affecter des équipes non habilitées ailleurs.",
-            "Replanifier avec les parties et tracer les coûts d’attente."
+            "Assimiler l’attente des équipes à une surestarie du navire et appliquer le même décompte au client.",
+            "Redéployer discrètement les équipes sur d’autres navires, en supposant l’armateur informé par le manifeste tardivement.",
+            "Qualifier le décalage d’ETA de force majeure contractuelle sur la base du nouvel horaire transmis par l’armateur.",
+            "Reprogrammer le créneau avec l’armateur et les équipes, puis enregistrer précisément les temps d’attente imputables."
           ],
           "answer": 3,
-          "explanation": "Coordination et suivi des coûts permettent une réponse maîtrisée.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la double exigence: (1) replanifier avec les parties prenantes, (2) tracer les coûts d’attente imputables.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’immobilisation des équipes et les surestaries du navire relèvent de faits et d’engagements distincts ; leur imputation doit être justifiée.",
+            "Le manifeste ne remplace pas une coordination de créneau; redéployer sans accord dégrade l’interface et peut amplifier les retards.",
+            "Le changement d’horaire ne prouve pas les conditions contractuelles d’une force majeure.",
+            "La réponse adaptée combine coordination opérationnelle (nouveau créneau validé avec les parties) et traçabilité (temps et ressources immobilisés) pour imputation défendable."
+          ],
+          "discriminant": "Coordination + traçabilité opposable, plutôt que maintien coûteux, redéploiement non coordonné ou qualification non documentée."
         },
         {
           "id": "t2-C-M07",
@@ -1128,14 +1296,21 @@
           "type": "mcq",
           "prompt": "Quel contrôle convient à la remise d’une marchandise à un transporteur ?",
           "choices": [
-            "Transférer automatiquement toute responsabilité.",
-            "Vérifier autorisation, identité, références du lot et tracer la remise.",
-            "Utiliser le bon de commande comme preuve de livraison.",
-            "Autoriser la sortie sur la seule plaque d’immatriculation."
+            "Assimiler le récépissé de paiement du fret à une autorisation nominative de retrait pour le chauffeur présent.",
+            "Contrôler mandat de retrait, identité du transporteur, concordance lot/scellés et conserver une preuve horodatée de remise.",
+            "Retenir la concordance entre plaque du véhicule et lettre de voiture comme preuve de l’habilitation du conducteur.",
+            "Traiter la signature du registre de sortie comme preuve de concordance du lot avec l’ordre de livraison."
           ],
           "answer": 1,
-          "explanation": "La procédure vérifie le droit de prise en charge et conserve une preuve.",
-          "commentRequired": false
+          "explanation": "Le discriminant est le triptyque habilitation–identité–concordance du lot, avec preuve horodatée au moment de la remise.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le paiement du fret ne démontre pas à lui seul que ce chauffeur est habilité à retirer la marchandise.",
+            "La remise transfère la responsabilité: il faut vérifier l’habilitation, l’identité et la correspondance du lot, puis conserver une preuve datée opposable.",
+            "L’identification du véhicule ne prouve pas l’identité ni le mandat de la personne qui se présente.",
+            "La signature atteste une remise déclarée ; elle ne remplace pas le rapprochement des références du lot."
+          ],
+          "discriminant": "Sécuriser le transfert de responsabilité par contrôles opposables, pas par indices indirects (plaque, paiement) ou corrections a posteriori."
         },
         {
           "id": "t2-C-M08",
@@ -1143,14 +1318,21 @@
           "type": "mcq",
           "prompt": "Quel suivi renseigne sur la performance d’une chaîne multimodale ?",
           "choices": [
-            "Jalons communs horodatés avec responsables, statut et motifs d’écart.",
-            "Volume final sans étapes.",
-            "Factures des opérateurs seules.",
-            "Kilométrage global sans distinction de mode."
+            "Tracer des jalons communs horodatés, avec responsable, statut et cause d’écart à chaque interface.",
+            "Additionner les tonnages de chaque mode pour mesurer le volume effectivement livré sur l’ensemble du trajet.",
+            "Calculer le délai global comme la moyenne des durées des segments et des attentes aux interfaces.",
+            "Assimiler le respect des délais propres à chaque opérateur au respect de l’engagement de bout en bout."
           ],
           "answer": 0,
-          "explanation": "Des jalons communs rendent visibles les interfaces et retards.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la capacité d’analyse causale aux interfaces: qui, quand, quoi, et pourquoi l’écart se produit.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La performance multimodale se pilote aux interfaces: jalons partagés, horodatage, responsabilité et causes d’écart permettent d’expliquer et corriger.",
+            "Une même tonne passant successivement par plusieurs modes serait comptée plusieurs fois.",
+            "Les durées successives du parcours s’additionnent ; leur moyenne ne mesure pas le délai de bout en bout.",
+            "Les attentes et ruptures aux interfaces peuvent dégrader le délai global malgré le respect des délais locaux."
+          ],
+          "discriminant": "Un bon suivi multimodal est interfacé et explicatif (jalons + responsables + causes), pas seulement agrégé ou binaire."
         },
         {
           "id": "t2-D-M01",
@@ -1158,14 +1340,21 @@
           "type": "mcq",
           "prompt": "Quel objectif poursuit une inspection programmée des appareils de voie ?",
           "choices": [
-            "Éviter toute maintenance corrective.",
-            "Garantir qu’aucun défaut ne surviendra.",
-            "Remplacer les comptes rendus d’incident.",
-            "Détecter les défauts selon critères et organiser une action appropriée."
+            "Certifier la conformité de la voie pour toute la période jusqu’à la prochaine inspection programmée.",
+            "Déduire l’absence de défaut du respect de la vitesse autorisée pendant les circulations précédentes.",
+            "Évaluer la performance des équipes en vérifiant les travaux réalisés, plutôt que l’état réel des appareils.",
+            "Détecter les défauts selon des critères et organiser l’action appropriée de maintenance ou restriction."
           ],
           "answer": 3,
-          "explanation": "L’inspection détecte les écarts mais ne supprime pas l’incertitude.",
-          "commentRequired": false
+          "explanation": "L’inspection programmée est un dispositif de détection et de décision: constater des défauts selon critères, puis organiser la réponse (maintenance/restriction).",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une inspection réduit l’incertitude à un instant donné; elle ne garantit pas l’état futur ni l’absence d’évolution rapide des défauts sous trafic et conditions.",
+            "Le respect d’une vitesse prescrite ne prouve pas le bon état des appareils de voie ; une inspection recherche les défauts.",
+            "L’inspection porte sur l’état et les défauts des appareils de voie; vérifier des travaux réalisés ne renseigne pas directement sur l’état ni les risques résiduels.",
+            "Une inspection programmée vise à repérer des écarts (géométrie, usure, fixation, ballast) selon des critères, puis à déclencher une réponse adaptée (entretien, réparation, restriction)."
+          ],
+          "discriminant": "Distinguer une inspection (constat d’état et écarts) d’une certification de conformité future, d’un réglage d’exploitation, ou d’un contrôle d’activité des équipes."
         },
         {
           "id": "t2-D-M02",
@@ -1173,14 +1362,21 @@
           "type": "mcq",
           "prompt": "Une section de voie exige des travaux importants alors que le trafic varie fortement selon la saison. Quelle stratégie d’investissement comparer ?",
           "choices": [
-            "Étaler les travaux en fonction des fenêtres disponibles et de seuils de risque approuvés.",
+            "Traiter le débit de pointe saisonnière comme débit permanent pour chiffrer les avantages annuels du renouvellement.",
             "Comparer renouvellement complet, traitement ciblé et restrictions temporaires selon coût de cycle de vie et fiabilité.",
-            "Prioriser un traitement ciblé lorsque les inspections confirment les zones critiques.",
-            "Réserver une enveloppe pluriannuelle avec revues de l’état et de la demande."
+            "Retenir le plus faible investissement initial comme option la moins coûteuse sur la durée complète d’exploitation.",
+            "Réduire le coût à terminaison du montant des travaux différés, en traitant le report comme une économie définitive."
           ],
           "answer": 1,
-          "explanation": "Une comparaison multicritère rend visibles le risque, le service, le calendrier et le coût complet de chaque option.",
-          "commentRequired": false
+          "explanation": "Avec une forte saisonnalité, il faut comparer des scénarios techniques et des mesures d’exploitation, en coût de cycle de vie et fiabilité, pas sur un critère unique.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une pointe saisonnière ne représente pas l’activité pendant toute l’année ; cette assimilation surestime les bénéfices.",
+            "La stratégie doit confronter plusieurs scénarios (renouvellement, interventions ciblées, restrictions) avec une approche coût complet, calendrier, risque, niveau de service et fiabilité.",
+            "Le CAPEX initial ne comprend pas maintenance, indisponibilités, restrictions et autres coûts du cycle de vie.",
+            "Différer une dépense ne l’annule pas ; le coût futur et les effets sur service et risque restent à intégrer."
+          ],
+          "discriminant": "La bonne option met en concurrence trois familles de solutions et les évalue en coût complet + fiabilité; les distracteurs réduisent la décision à la pointe, au CAPEX, ou au calendrier."
         },
         {
           "id": "t2-D-M03",
@@ -1188,14 +1384,21 @@
           "type": "mcq",
           "prompt": "Un projet de guichet numérique pourrait relier réservations fluviales et ferroviaires. Quel choix de déploiement est le plus robuste ?",
           "choices": [
-            "Définir une architecture interopérable, un périmètre pilote et des critères d’usage et de disponibilité.",
-            "Déployer d’abord sur les flux où les échanges manuels sont les plus coûteux et mesurables.",
-            "Acquérir la solution avant d’établir les interfaces et la propriété des données.",
-            "Prévoir une extension par étapes conditionnée par les résultats du pilote et le coût d’exploitation."
+            "Définir l’architecture interopérable, cadrer un pilote, et fixer des critères d’usage et de disponibilité.",
+            "Acheter une solution complète puis traiter l’interopérabilité lors de l’intégration avec les systèmes existants.",
+            "Imposer un système monolithique unique pour réduire les interfaces entre la réservation fluviale et ferroviaire.",
+            "Déployer directement à l’échelle nationale, puis préciser ensuite les critères d’usage et de disponibilité attendus."
           ],
           "answer": 0,
-          "explanation": "Le périmètre, l’interopérabilité et les critères de passage à l’échelle doivent précéder l’engagement complet.",
-          "commentRequired": true
+          "explanation": "Le déploiement robuste priorise l’architecture interopérable, un périmètre pilote maîtrisé et des critères d’adoption/disponibilité avant l’engagement complet.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Commencer par l’interopérabilité, un périmètre pilote et des critères de succès permet de limiter les risques et de décider l’extension sur des preuves.",
+            "L’interopérabilité ne se « rattrape » pas après achat : sans exigences d’interface dès l’amont, l’intégration devient aléatoire et coûteuse.",
+            "Un monolithe réduit parfois le nombre d’interfaces, mais fragilise la capacité à échanger avec d’autres acteurs et à faire évoluer chaque domaine.",
+            "Sans critères d’usage et de disponibilité définis avant passage à l’échelle, l’organisation ne peut pas arbitrer qualité, coûts et priorités de correction."
+          ],
+          "discriminant": "Distinguer « interopérabilité et critères de succès en amont » vs « choix de solution ou échelle d’abord, exigences ensuite »."
         },
         {
           "id": "t2-D-M04",
@@ -1203,14 +1406,21 @@
           "type": "mcq",
           "prompt": "Un consortium propose d’investir dans un parc de manutention portuaire. Quelle condition de gouvernance commerciale est essentielle ?",
           "choices": [
-            "Comparer le montage aux achats et à la location selon disponibilité, tarifs et partage des risques.",
-            "Fixer une durée de concession liée à des obligations de disponibilité et à une revue de performance.",
-            "Évaluer des engagements de maintenance et des niveaux de service vérifiables.",
-            "Vérifier concurrence, capacités, risques de dépendance et modalités de contrôle du service."
+            "Sécuriser l’investissement maximal et une clé de partage des revenus, le contrôle opérationnel venant ensuite.",
+            "Accorder au consortium l’autonomie de fixer les tarifs et d’opérer, en échange d’engagements d’investissement.",
+            "Valider d’abord les spécifications techniques et le plan de maintenance, la concurrence étant un point secondaire.",
+            "Vérifier concurrence, capacités, risques de dépendance et modalités de contrôle du service rendu."
           ],
           "answer": 3,
-          "explanation": "La compétitivité de l’offre doit être rapprochée du risque de dépendance et de la capacité de surveillance du contrat.",
-          "commentRequired": false
+          "explanation": "L’essentiel est de relier compétitivité (concurrence/capacités) et gouvernance (dépendance/contrôle du service) avant de s’engager.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Des termes financiers favorables ne garantissent ni la contestabilité de l’offre, ni la maîtrise d’un fournisseur dominant, ni la surveillance du service.",
+            "Céder la maîtrise des tarifs et de l’exploitation accroît le risque de dépendance et réduit les leviers de contrôle de la qualité de service.",
+            "La performance technique ne suffit pas : sans analyse de concurrence et de dépendance, on peut contractualiser une offre non compétitive et difficile à piloter.",
+            "La gouvernance commerciale doit permettre de comparer l’offre au marché, maîtriser la dépendance au partenaire et contrôler l’exécution contractuelle."
+          ],
+          "discriminant": "Distinguer « gouvernance commerciale = marché + dépendance + contrôlabilité » vs « finance ou technique suffisent »."
         },
         {
           "id": "t2-D-M05",
@@ -1218,14 +1428,21 @@
           "type": "mcq",
           "prompt": "La clientèle fluviale demande une meilleure prévisibilité des départs. Quelle décision commerciale devrait précéder une nouvelle offre ?",
           "choices": [
-            "Tester des créneaux réservés avec règles de capacité et indicateurs de ponctualité.",
-            "Investir d’abord dans des créneaux supplémentaires sans vérifier les correspondances.",
-            "Proposer des engagements de service différenciés selon les capacités mesurées.",
-            "Analyser la demande par segment, les contraintes hydrologiques et les coûts de fiabilité."
+            "Lancer un horaire fixe et compenser les aléas par un système de pénalités internes d’exécution.",
+            "Construire l’offre sur la moyenne des niveaux d’eau de l’an dernier pour tenir un calendrier régulier.",
+            "Aligner les départs sur les horaires des concurrents et ajuster l’exploitation selon les retours clients.",
+            "Analyser la demande par segment, les contraintes hydrologiques et les coûts associés à la fiabilité promise."
           ],
           "answer": 3,
-          "explanation": "La proposition commerciale doit tenir compte des contraintes de navigation, de capacité et de coût du service promis.",
-          "commentRequired": false
+          "explanation": "Avant de promettre de la prévisibilité, il faut quantifier la demande, les contraintes de navigation et le coût de tenir la promesse.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Les pénalités n’augmentent ni le tirant d’eau disponible ni la capacité : elles ne transforment pas une contrainte hydrologique en fiabilité commercialisable.",
+            "La moyenne historique ne décrit pas les épisodes de basses eaux et la variabilité : la fiabilité dépend des extrêmes et de leurs coûts, pas d’une moyenne.",
+            "Copier un horaire externe n’intègre ni vos contraintes hydrologiques/capacitaires ni le coût de service : l’offre peut devenir intenable ou non rentable.",
+            "Une offre plus prévisible doit être dimensionnée par segments clients, contrainte de navigation et coût réel de la fiabilité (capacité, réserve, organisation)."
+          ],
+          "discriminant": "Distinguer « promesse = segmentation + contraintes + coût de fiabilité » vs « calendrier décidé par discipline, moyenne historique ou mimétisme »."
         },
         {
           "id": "t2-D-M06",
@@ -1233,14 +1450,21 @@
           "type": "mcq",
           "prompt": "La modernisation d’un terminal promet une hausse de productivité. Quel indicateur de décision complète le débit horaire ?",
           "choices": [
-            "Taux d’utilisation rapporté aux heures disponibles et aux arrêts planifiés.",
-            "Débit sur plusieurs périodes avec contrôle de la composition des cargaisons.",
-            "Coût par tonne, temps d’attente, dommages et disponibilité des équipements.",
-            "Comparaison de la productivité avec la qualité et la sécurité de manutention."
+            "Le taux d’occupation maximal des quais, interprété comme une disponibilité optimale des capacités du terminal.",
+            "La somme des débits nominaux des engins successifs, retenue comme capacité effective de la chaîne modernisée.",
+            "Ajouter coût/tonne, attente, avaries et disponibilité équipements pour juger le gain net global décisionnel.",
+            "La baisse de dotation aux amortissements, assimilée aux économies de trésorerie produites par la modernisation."
           ],
           "answer": 2,
-          "explanation": "Les gains de débit n’ont de sens qu’avec les coûts, les interruptions, la qualité et la sécurité.",
-          "commentRequired": true
+          "explanation": "Le discriminant est la lecture coût–délai–qualité–disponibilité: un gain de débit peut dégrader le gain net et le service.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Une occupation très élevée peut signaler une saturation ; elle ne démontre pas une capacité disponible optimale.",
+            "Dans une chaîne en série, le goulot contraint le débit ; additionner les capacités nominales le surestime.",
+            "Le débit horaire ne suffit pas: la décision doit intégrer coûts unitaires, délais d’attente, qualité (dommages) et disponibilité (arrêts/pannes).",
+            "La dotation est une charge calculée ; sa baisse ne prouve pas une économie d’exploitation encaissable."
+          ],
+          "discriminant": "Décider = compléter le débit par des indicateurs d’impact économique et de service, pas par utilisation, énergie/heure ou effectif seul."
         },
         {
           "id": "t2-D-M07",
@@ -1248,14 +1472,21 @@
           "type": "mcq",
           "prompt": "Pour renforcer les recettes du corridor, quelle action associe mieux commercialisation et exécution ?",
           "choices": [
-            "Négocier une offre groupée en identifiant les coûts et engagements de chaque mode.",
-            "Cibler les flux dont les ruptures de charge peuvent être réduites à coût maîtrisé.",
-            "Offrir une solution de bout en bout avec responsabilités, jalons et tarification lisibles.",
-            "Promettre une durée uniforme indépendamment des aléas et correspondances."
+            "Accorder des remises corridor et laisser l’exploitation adapter ensuite les capacités aux volumes vendus.",
+            "Publier des tarifs séparés par mode et demander au client d’organiser les correspondances entre segments.",
+            "Offrir une solution bout en bout avec responsabilités, jalons d’interface et tarification lisible par service.",
+            "Signer des protocoles d’accord avec les partenaires, les jalons de service étant définis après les premiers flux."
           ],
           "answer": 2,
-          "explanation": "Une offre corridor crédible relie commercialisation et capacité opérationnelle aux interfaces.",
-          "commentRequired": false
+          "explanation": "Le lien entre commercialisation et exécution passe par une offre intégrée, pilotable, avec interfaces, responsabilités et prix lisibles.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Vendre avant d’aligner capacités et interfaces crée des ruptures de service ; la commercialisation doit intégrer des engagements exécutablement tenables.",
+            "Transférer l’intégration au client fragilise la promesse corridor ; la valeur du corridor est justement la coordination des interfaces et responsabilités.",
+            "Une offre corridor crédible articule promesse commerciale, points de transfert, responsabilités opérationnelles et prix compréhensible pour l’exécution.",
+            "Sans jalons et responsabilités explicites, l’exécution ne se pilote pas et la résolution d’incidents devient conflictuelle entre acteurs du corridor."
+          ],
+          "discriminant": "Distinguer « offre intégrée pilotable » vs « vente d’abord, intégration laissée au client ou aux accords non opérationnalisés »."
         },
         {
           "id": "t2-E-M01",
@@ -1263,14 +1494,21 @@
           "type": "mcq",
           "prompt": "Comment comparer renouvellement d’un actif et prolongation de son usage ?",
           "choices": [
-            "Comparer achat et valeur comptable nette seulement.",
-            "Prolonger jusqu’à panne.",
-            "Renouveler les actifs les plus anciens sans inspection.",
-            "Comparer cycle de vie, risque de défaillance, disponibilité et service."
+            "Comparer le prix d’achat du neuf aux dépenses de réparation prévues sur l’exercice budgétaire en cours.",
+            "Décider à partir de la valeur comptable nette et du plan d’amortissement restant de l’actif.",
+            "Choisir selon la durée de garantie fournisseur et le stock de pièces disponibles pour l’actif actuel.",
+            "Comparer coût de cycle de vie, risque de défaillance, disponibilité attendue et niveau de service requis."
           ],
           "answer": 3,
-          "explanation": "Le choix met en balance coûts futurs, risques et service attendu.",
-          "commentRequired": false
+          "explanation": "Il faut comparer deux trajectoires futures (coûts, risques, disponibilité, service), plutôt que des signaux comptables ou des coûts courts termes.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une comparaison sur un seul exercice ignore l’évolution des pannes, l’obsolescence et l’impact sur la disponibilité sur plusieurs années.",
+            "La valeur comptable traduit des règles d’amortissement, pas l’état technique, le risque de panne ni le niveau de service futur.",
+            "Garantie et pièces réduisent certains risques, mais ne remplacent pas l’analyse de cycle de vie, disponibilité réelle et performance de service attendue.",
+            "Renouveler ou prolonger se décide sur la durée, le risque opérationnel, l’impact sur la disponibilité et la qualité de service, pas sur un instantané."
+          ],
+          "discriminant": "Distinguer « décision en cycle de vie et risque opérationnel » vs « décision par budget annuel, comptabilité, ou garanties »."
         },
         {
           "id": "t2-E-M02",
@@ -1278,14 +1516,21 @@
           "type": "mcq",
           "prompt": "Pourquoi un objectif stratégique doit-il avoir une situation de référence ?",
           "choices": [
-            "Pour mesurer l’évolution depuis un point de départ défini.",
-            "Pour garantir le résultat sans ressources.",
-            "Pour éviter les rapports intermédiaires.",
-            "Pour rendre la cible inutile."
+            "Pour mesurer l’évolution depuis un point de départ défini et rendre le progrès comparable dans le temps.",
+            "Pour démontrer la pertinence de l’objectif en le comparant à la performance des concurrents du secteur.",
+            "Pour fixer l’enveloppe budgétaire de l’objectif et déclencher l’autorisation de dépense correspondante.",
+            "Pour remplacer les indicateurs chiffrés par un récit partagé de départ, jugé plus mobilisateur."
           ],
           "answer": 0,
-          "explanation": "Référence et cible rendent les progrès mesurables sans garantir leur atteinte.",
-          "commentRequired": false
+          "explanation": "Sans référence, il n’y a pas de point zéro partagé : l’évolution devient discutable, même si la cible est formulée.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une situation de référence fixe l’état initial, afin que la cible et les indicateurs décrivent un écart mesurable.",
+            "Un benchmark peut aider, mais la situation de référence sert d’abord à mesurer un changement interne entre deux dates définies.",
+            "La référence mesure un état initial ; elle ne constitue pas une autorisation budgétaire et ne remplace pas les arbitrages financiers.",
+            "Une référence est un niveau mesurable ; un récit peut accompagner, mais ne se substitue pas à la mesure du progrès et à l’écart à la cible."
+          ],
+          "discriminant": "Distinguer « référence = mesure d’écart dans le temps » vs « référence = benchmark, budget, ou narration »."
         },
         {
           "id": "t2-E-M03",
@@ -1293,14 +1538,21 @@
           "type": "mcq",
           "prompt": "Que vérifier pour une subvention ou un financement affecté ?",
           "choices": [
-            "Le montant nominal seul.",
-            "Les coûts de cofinancement peuvent être ignorés.",
-            "L’annonce publique seule.",
-            "Éligibilité, conditions, calendrier, obligations et risques de conformité."
+            "Déduire de la notification d’attribution que les conditions de décaissement ont déjà été satisfaites par le bénéficiaire.",
+            "Assimiler l’admissibilité du bénéficiaire à l’éligibilité de chaque dépense inscrite au plan d’emploi des fonds.",
+            "Considérer le versement sur le compte principal comme une levée de l’affectation contractuelle des fonds reçus.",
+            "Confirmer l’éligibilité, les conditions d’emploi, le calendrier, les obligations de reporting et les risques de conformité."
           ],
           "answer": 3,
-          "explanation": "Conditions et obligations déterminent la valeur et la faisabilité réelles.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la logique « conditions d’accès et de maintien »: éligibilité, calendrier, obligations et risques de conformité.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’attribution d’un financement ne prouve pas que ses conditions préalables au versement sont réalisées.",
+            "Un bénéficiaire admissible peut proposer des dépenses non éligibles au dispositif concerné.",
+            "Le compte bancaire destinataire ne modifie pas les obligations attachées au financement affecté.",
+            "Un financement affecté vaut par ses conditions: il faut vérifier règles d’éligibilité, échéances, obligations et risques de non-conformité avant engagement."
+          ],
+          "discriminant": "Sécuriser un financement affecté = sécuriser ses conditions et obligations, pas seulement le cash, la relation ou le décaissement."
         },
         {
           "id": "t2-F-M01",
@@ -1308,14 +1560,21 @@
           "type": "mcq",
           "prompt": "Scénario fictif : les données de tonnage divergent entre port et commerce. Que faire ?",
           "choices": [
-            "Choisir le chiffre le plus élevé.",
-            "Harmoniser définitions, rapprocher mouvements et expliquer les écarts avant diffusion.",
-            "Faire la moyenne sans examiner les périmètres.",
-            "Demander au PCA de choisir le chiffre."
+            "Corriger les tonnages commerciaux au prorata du chiffre d’affaires pour les aligner sur le total portuaire.",
+            "Aligner définitions et périodes, rapprocher mouvements port et commerce, puis documenter les écarts avant publication.",
+            "Recalculer tonnage depuis factures et corriger la base port, la facturation reflétant le flux physique.",
+            "Publier la moyenne des deux séries et qualifier l’écart de technique, la moyenne restant exploitable."
           ],
           "answer": 1,
-          "explanation": "Les divergences peuvent provenir des définitions, périodes ou événements.",
-          "commentRequired": true
+          "explanation": "Le discriminant est la réconciliation (définitions + rapprochement + explication), plutôt que l’arbitrage par autorité, facturation ou moyenne.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Le chiffre d’affaires dépend aussi des prix et prestations ; il ne fournit pas une clé de rapprochement des tonnages.",
+            "On ne tranche pas arbitrairement: on harmonise les référentiels (définitions/périodes), on réconcilie les mouvements, puis on explique les écarts.",
+            "La facturation suit des règles commerciales (tarifs, annulations, corrections) et ne reflète pas nécessairement les flux physiques manutentionnés.",
+            "Une moyenne mélange potentiellement deux périmètres et définitions; elle produit un chiffre non interprétable opérationnellement."
+          ],
+          "discriminant": "Qualité de données = réconcilier et expliquer, pas « choisir une source » ni fabriquer un chiffre intermédiaire."
         },
         {
           "id": "t2-F-M02",
@@ -1323,14 +1582,21 @@
           "type": "mcq",
           "prompt": "Un fournisseur demande un acompte fictif pour éviter une rupture de pièces critiques. Que vérifier ?",
           "choices": [
-            "Payer si la pièce est critique.",
-            "Refuser tout acompte sans analyse.",
-            "Contrat, justification, garanties, trésorerie, contrôles et délégations.",
-            "Demander à l’équipe technique de faire le virement."
+            "Vérifier la disponibilité budgétaire et l’urgence technique, puis payer sur bon de commande.",
+            "Exiger une attestation du fournisseur et comptabiliser l’acompte en charge d’entretien pour accélérer.",
+            "Vérifier le contrat, la justification, les garanties, la trésorerie, les contrôles et les délégations.",
+            "Accorder l’acompte contre une remise immédiate, sans avenant, car la pièce est critique."
           ],
           "answer": 2,
-          "explanation": "L’urgence se confronte aux risques contractuels, financiers et opérationnels.",
-          "commentRequired": false
+          "explanation": "Dans ce cas hypothétique, la demande d’acompte appelle une vérification du besoin, du contrat, des garanties, de la trésorerie et des délégations applicables. Le caractère fictif du scénario ne constitue pas en lui-même une preuve de fraude.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le budget et l’urgence ne suffisent pas : l’acompte engage contractuellement, crée un risque de non-livraison et doit être sécurisé et autorisé.",
+            "Une attestation ne remplace ni les garanties ni le cadre contractuel; et un acompte n’est pas une charge d’entretien mais une avance à sécuriser et suivre.",
+            "Conforme : un acompte doit rester contractuel, justifié, sécurisé (garanties) et autorisé selon les délégations, tout en évaluant l’impact de trésorerie.",
+            "Une remise n’apporte pas la protection attendue (garantie, restitution, pénalités) et ne remplace pas l’encadrement contractuel requis par les délégations."
+          ],
+          "discriminant": "Sécuriser l’avance (contrat/garanties/autorisation/contrôles) vs se limiter à budget, écritures comptables ou concessions commerciales."
         },
         {
           "id": "t2-F-M03",
@@ -1338,14 +1604,21 @@
           "type": "mcq",
           "prompt": "Une variation fictive du taux de change renchérit des pièces importées. Que demander au CA ?",
           "choices": [
-            "La promesse qu’aucun surcoût ne sera enregistré.",
-            "Un montant sans devise ni échéance.",
-            "Exposition, effets sur coûts et calendrier, et options conformes aux règles.",
-            "Une couverture exécutée sans analyse de pouvoirs."
+            "Traiter le taux budgétaire voté par le conseil comme taux garanti de règlement des fournisseurs en devises.",
+            "Assimiler une hausse du tarif en monnaie locale à une couverture effective du change sur les pièces importées.",
+            "Demander au CA une note chiffrant l’exposition, les impacts coûts/délais, et des options conformes aux règles d’autorisation.",
+            "Demander au CA d’autoriser la capitalisation de l’écart de change sur les pièces pour lisser le coût."
           ],
           "answer": 2,
-          "explanation": "L’arbitrage requiert une exposition mesurée et des options correctement autorisées.",
-          "commentRequired": false
+          "explanation": "L’arbitrage exige de connaître l’exposition (montants, devises, échéances), l’impact sur coûts et calendrier, puis des options d’action compatibles avec les règles et délégations.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un taux interne de planification n’est pas un taux de marché garanti ni une couverture de change exécutée.",
+            "Modifier un tarif ne garantit ni encaissements ni compensation de l’exposition au change et de son calendrier.",
+            "Conforme : le CA arbitre sur une exposition mesurée (sensibilité, scénarios), des impacts opérationnels (coûts et calendrier) et des options correctement habilitées.",
+            "La capitalisation d’écarts de change n’est pas un outil de pilotage discrétionnaire; elle dépend de règles de traitement et ne remplace pas la gestion de l’exposition."
+          ],
+          "discriminant": "Décision éclairée (exposition + impacts + options autorisées) vs solutions de façade (taux interne, hausse prix, traitement comptable)."
         },
         {
           "id": "t2-F-M04",
@@ -1353,14 +1626,21 @@
           "type": "mcq",
           "prompt": "Une interruption fictive affecte plusieurs clients prioritaires. Quelle réponse de continuité convient ?",
           "choices": [
-            "Servir selon l’ordre des appels seulement.",
-            "Suspendre toute communication jusqu’au rétablissement.",
-            "Promettre une reprise complète sans diagnostic.",
-            "Activer les dispositions de continuité, prioriser selon critères et informer les clients."
+            "Basculer toutes les ressources sur le client au plus fort chiffre d’affaires et geler les autres.",
+            "Attendre un diagnostic complet avant de déclencher la continuité, afin d’éviter une fausse alerte.",
+            "Annoncer aux clients un délai ferme de reprise dès l’incident pour rassurer et limiter les réclamations.",
+            "Activer les dispositions de continuité, prioriser selon des critères et informer factuellement les clients."
           ],
           "answer": 3,
-          "explanation": "La continuité nécessite priorités explicites et communication factuelle.",
-          "commentRequired": false
+          "explanation": "La continuité vise à réduire l’impact : déclenchement, priorisation, et communication fiable. Les réponses impulsives (tout pour un client, promesses non validées) augmentent le risque.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le chiffre d’affaires peut être un critère, mais la continuité doit appliquer des priorités prédéfinies (sécurité, obligations, criticité) et justifier les arbitrages.",
+            "En continuité, l’activation dépend de seuils et déclencheurs; attendre un diagnostic exhaustif retarde la réponse et aggrave l’impact sur les clients prioritaires.",
+            "Donner un délai ferme non validé est risqué et contraire à une communication factuelle; il faut partager des informations confirmées et mises à jour.",
+            "Conforme : on déclenche le dispositif prévu, on applique des critères de priorisation explicites, et on communique des informations validées et utiles."
+          ],
+          "discriminant": "Appliquer un dispositif et des critères + communication factuelle vs arbitrages ad hoc ou promesses non maîtrisées."
         },
         {
           "id": "t2-A-S01",
@@ -1525,14 +1805,21 @@
           "type": "mcq",
           "prompt": "Quel indicateur renseigne sur la préparation des travaux du CA ?",
           "choices": [
-            "Nombre annuel de pages de procès-verbaux.",
-            "Dossiers transmis à temps avec éléments requis et décisions de suivi identifiées.",
-            "Durée des réunions seule.",
-            "Nombre de participants uniquement."
+            "Suivre le taux de présence des administrateurs, en considérant l’assiduité comme preuve de préparation.",
+            "Suivre taux de dossiers transmis à temps, complets, avec décision attendue et suivi identifié.",
+            "Le taux de dossiers ajournés, assimilé au taux de dossiers correctement instruits avant la séance du conseil.",
+            "Mesurer le délai de signature du procès-verbal, délai reflétant la qualité des dossiers préalables."
           ],
           "answer": 1,
-          "explanation": "La préparation dépend d’un accès utile à des dossiers adaptés.",
-          "commentRequired": false
+          "explanation": "Le discriminant est l’orientation « préparation = qualité des dossiers transmis avant réunion », pas des indicateurs d’assiduité ou de formalisation après coup.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La présence mesure l’assiduité, pas la qualité ni la ponctualité des dossiers; on peut être présent avec des dossiers faibles ou tardifs.",
+            "La préparation du CA se lit dans les intrants de décision: dossiers reçus en amont, complets, orientés vers une décision et un suivi clair.",
+            "Un ajournement ne prouve pas qu’un dossier était correctement préparé ; les deux indicateurs ne sont pas interchangeables.",
+            "Le délai de PV est un indicateur post-réunion; il ne mesure pas la complétude ni l’orientation décisionnelle des dossiers transmis avant séance."
+          ],
+          "discriminant": "Un bon indicateur suit la disponibilité et l’exploitabilité des dossiers pour décider, plutôt que présence, ajouts ou délai de PV."
         },
         {
           "id": "t3-A-M02",
@@ -1540,14 +1827,21 @@
           "type": "mcq",
           "prompt": "Un dossier présente des conclusions sans hypothèses. Que devrait demander le PCA ?",
           "choices": [
-            "Hypothèses, sources, incertitudes et effets d’une variation.",
-            "Une conclusion plus affirmative.",
-            "La suppression des annexes.",
-            "Une confirmation que les hypothèses sont certaines."
+            "Demander les hypothèses, les sources, les incertitudes, et une analyse de sensibilité des conclusions.",
+            "Demander de remplacer les conclusions par un résumé plus court pour faciliter la lecture du CA.",
+            "Demander de confirmer que les chiffres proviennent du système financier, sans détailler les hypothèses retenues.",
+            "Demander d’ajouter une recommandation unique et de retirer les scénarios pour éviter la complexité."
           ],
           "answer": 0,
-          "explanation": "Des hypothèses explicites permettent d’évaluer la robustesse de l’analyse.",
-          "commentRequired": true
+          "explanation": "Sans hypothèses, une conclusion n’est pas vérifiable. Le PCA doit exiger la traçabilité (sources), la transparence (hypothèses) et la robustesse (incertitudes/sensibilité).",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Conforme : expliciter hypothèses et sources permet de juger la robustesse; traiter les incertitudes et la sensibilité teste la solidité des recommandations.",
+            "Un résumé facilite la lecture mais ne révèle pas les hypothèses ni la sensibilité; le risque est de valider une conclusion non étayée.",
+            "La provenance d’un système ne garantit ni le périmètre, ni les retraitements, ni les hypothèses; le CA doit comprendre ce qui sous-tend les chiffres.",
+            "Supprimer les scénarios masque l’impact des variations d’hypothèses; une recommandation « unique » peut être fragile si les paramètres changent."
+          ],
+          "discriminant": "Rendre l’analyse falsifiable (hypothèses + sources + sensibilité) vs améliorer la forme ou s’en remettre à la « source SI »."
         },
         {
           "id": "t3-A-M03",
@@ -1555,14 +1849,21 @@
           "type": "mcq",
           "prompt": "Le CA reçoit une recommandation d’audit non entièrement mise en œuvre. Que faire ?",
           "choices": [
-            "Examiner causes, risque résiduel, responsable, échéance et suivi.",
-            "Demander à l’auditeur de l’exécuter.",
-            "La clore dès l’annonce d’un plan.",
-            "Considérer automatiquement qu’une faute est établie."
+            "Analyser les causes du retard, le risque résiduel, le responsable, l’échéance et organiser le suivi.",
+            "Classer la recommandation comme traitée dès que le plan d’action est approuvé en comité d’audit.",
+            "Demander à l’audit interne de mettre en œuvre la recommandation afin d’accélérer la clôture.",
+            "Reporter le suivi à la prochaine mission d’audit annuelle, car le contrôle reviendra sur le sujet."
           ],
           "answer": 0,
-          "explanation": "La direction met en œuvre; le CA suit l’avancement et le risque.",
-          "commentRequired": false
+          "explanation": "Le CA ne « fait » pas à la place de la direction : il clarifie pourquoi ça bloque, ce que cela expose, qui porte, pour quand, et comment on suit.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Conforme : la direction exécute; le CA exige une lecture du risque, un portage clair, des délais et un mécanisme de suivi.",
+            "Approuver un plan ne prouve pas l’exécution ni l’efficacité; le CA doit suivre la mise en œuvre et le risque résiduel.",
+            "L’audit interne évalue et recommande; la mise en œuvre relève des opérationnels, sinon on crée un conflit de rôles et on affaiblit l’indépendance.",
+            "Reporter laisse le risque résiduel non maîtrisé entre-temps; le CA doit assurer un suivi proportionné à la criticité, pas attendre le cycle d’audit."
+          ],
+          "discriminant": "Suivi orienté risque et responsabilisation vs clôture administrative, confusion des rôles, ou report de surveillance."
         },
         {
           "id": "t3-A-M04",
@@ -1570,14 +1871,21 @@
           "type": "mcq",
           "prompt": "Quel principe doit guider la communication d’une décision du CA aux équipes ?",
           "choices": [
-            "Diffuser les échanges confidentiels.",
-            "Laisser chaque administrateur interpréter la décision.",
-            "Communiquer une version exacte et autorisée avec responsabilités et limites de diffusion.",
-            "Attendre une publication externe."
+            "Communiquer rapidement une synthèse orale, quitte à préciser plus tard les responsabilités et le périmètre.",
+            "Transmettre la délibération intégrale à toutes les équipes pour garantir transparence et alignement.",
+            "Diffuser une version exacte et autorisée, avec responsabilités, échéances, et limites de diffusion définies.",
+            "Laisser les chefs de service relayer la décision en l’adaptant selon leur contexte opérationnel."
           ],
           "answer": 2,
-          "explanation": "Une communication cohérente facilite l’exécution et protège la confidentialité.",
-          "commentRequired": false
+          "explanation": "Une décision du CA doit être communiquée de manière fidèle, autorisée, actionnable, et conforme aux règles de confidentialité et de diffusion.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La rapidité ne justifie pas un message non cadré; une synthèse non autorisée peut déformer la décision et créer des exécutions divergentes.",
+            "La transparence totale peut violer la confidentialité et exposer des informations sensibles; la diffusion doit être limitée et adaptée aux destinataires.",
+            "Conforme : le message doit être fidèle à la décision, validé, orienté exécution, et respecter la confidentialité et le besoin d’en connaître.",
+            "Adapter peut altérer le sens, les limites et la responsabilité; la communication doit rester conforme et contrôlée, avec un périmètre clair."
+          ],
+          "discriminant": "Fidélité + autorisation + cadrage de diffusion vs vitesse, transparence indiscriminée ou réinterprétation locale."
         },
         {
           "id": "t3-A-M05",
@@ -1585,14 +1893,21 @@
           "type": "mcq",
           "prompt": "Quel dispositif soutient le suivi d’un engagement stratégique pluriannuel ?",
           "choices": [
-            "Jalons, indicateurs, responsables et actualisation des hypothèses.",
-            "Conserver le plan malgré tout changement.",
-            "Évaluer seulement à l’achèvement.",
-            "Faire valider chaque dépense par le PCA."
+            "Fixer jalons, indicateurs, responsables, puis réviser périodiquement les hypothèses clés de trajectoire.",
+            "Additionner les pourcentages annuels d’avancement, même calculés sur des bases différentes, pour établir le progrès pluriannuel.",
+            "Valider la trajectoire à partir du taux de décaissement cumulé sur l’exercice.",
+            "Exiger l’approbation du CA pour tout ajustement, comme preuve de maîtrise pluriannuelle."
           ],
           "answer": 0,
-          "explanation": "Les jalons et hypothèses actualisées soutiennent un suivi utile.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la capacité à comparer prévu/réalisé et à expliquer les écarts: jalons + indicateurs + responsables + hypothèses révisées.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un engagement stratégique pluriannuel se suit avec une trajectoire (jalons), des mesures (indicateurs), des redevables (responsables) et une mise à jour des hypothèses (marché, financement, risques) pour expliquer les écarts prévu/réalisé.",
+            "Des pourcentages reposant sur des bases différentes ne s’additionnent pas pour mesurer un avancement cumulé cohérent.",
+            "Un bon rythme de décaissement peut coexister avec des retards de livrables ou des dérives de contenu; la dépense n’est pas une preuve d’avancement stratégique ni d’atteinte de jalons.",
+            "Le CA supervise via un cadre et des revues structurées; la micro-approbation des ajustements ne remplace pas un dispositif de jalons, indicateurs, responsables et hypothèses révisées."
+          ],
+          "discriminant": "Distinguer un dispositif de pilotage stratégique (trajectoire/mesure/redevabilité/hypothèses) d’un suivi budgétaire, de trésorerie ou d’escalade de décisions au CA."
         },
         {
           "id": "t3-A-M06",
@@ -1600,14 +1915,21 @@
           "type": "mcq",
           "prompt": "Quelle précaution est pertinente pour une réunion hybride du CA ?",
           "choices": [
-            "Utiliser une plateforme sans vérifier les accès.",
-            "Enregistrer sur un compte personnel.",
-            "Vérifier participation, identification, confidentialité et vote selon les règles.",
-            "Autoriser tout vote par message privé."
+            "Diffuser le lien d’enregistrement aux participants pour sécuriser la preuve de réunion et de vote.",
+            "S’appuyer sur la liste de présence générée par la plateforme comme preuve d’identification des administrateurs.",
+            "Vérifier participation, identification, confidentialité et vote selon les règles applicables.",
+            "Prévoir que les membres à distance participent aux débats sans prendre part aux votes, par prudence."
           ],
           "answer": 2,
-          "explanation": "Les modalités doivent respecter le cadre applicable et protéger les échanges.",
-          "commentRequired": false
+          "explanation": "La précaution clé porte sur la régularité de la séance (quorum/identité), la protection des échanges et un vote conforme aux règles.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un enregistrement n’établit pas à lui seul l’identité, le quorum ni la régularité du vote, et peut créer un risque de confidentialité.",
+            "Une liste de connexion ne garantit pas l’identité ni la qualité du votant; les règles exigent souvent des contrôles d’identification et de vote spécifiques.",
+            "En réunion hybride, il faut sécuriser qui participe (quorum), qui est identifié, la confidentialité des échanges et les modalités de vote prévues.",
+            "La modalité hybride ne permet pas de modifier les droits de vote des administrateurs; il faut organiser un vote conforme, pas écarter des votants."
+          ],
+          "discriminant": "Le bon choix couvre simultanément participation, identification, confidentialité et vote; les distracteurs substituent une “preuve technique” ou modifient les droits de vote."
         },
         {
           "id": "t3-A-M07",
@@ -1615,14 +1937,21 @@
           "type": "mcq",
           "prompt": "Comment traiter une opinion minoritaire exprimée durant une délibération ?",
           "choices": [
-            "En rendre compte fidèlement lorsque pertinent et selon les règles du procès-verbal.",
-            "La publier avec identité sans autorisation.",
-            "La supprimer pour afficher l’unanimité.",
-            "Remplacer la résolution adoptée par cette opinion."
+            "La consigner fidèlement au procès-verbal lorsque pertinent, selon les règles de rédaction applicables.",
+            "Joindre au procès-verbal une note de dissidence pour lui donner une valeur opposable aux décisions.",
+            "Ne pas mentionner l’opinion minoritaire afin de préserver la collégialité et l’autorité des décisions.",
+            "Reprendre la délibération jusqu’à obtenir un accord unanime, puis voter à nouveau sur une base commune."
           ],
           "answer": 0,
-          "explanation": "Une trace fidèle ne doit pas dénaturer les délibérations ni le vote.",
-          "commentRequired": false
+          "explanation": "Le traitement correct vise une trace fidèle et régie (PV), sans transformer une dissidence en mécanisme juridique distinct ni dénaturer le vote.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une opinion minoritaire peut être retracée de façon exacte si elle éclaire la décision, sans réécrire le sens des débats ni le résultat du vote.",
+            "Le procès-verbal rend compte des délibérations et décisions; une “valeur opposable” de dissidence n’est pas l’objet du PV et dépend des règles applicables.",
+            "La collégialité n’autorise pas à altérer la fidélité du PV; la traçabilité peut être requise lorsqu’elle est pertinente et prévue par les règles.",
+            "Les décisions du CA sont prises selon les règles de vote; l’existence d’une minorité ne rend pas le vote irrégulier ni n’impose l’unanimité."
+          ],
+          "discriminant": "Le bon choix articule “fidélité” et “règles du PV”; les distracteurs attribuent au PV un effet juridique erroné, imposent le silence, ou exigent l’unanimité."
         },
         {
           "id": "t3-A-M08",
@@ -1630,14 +1959,21 @@
           "type": "mcq",
           "prompt": "Pourquoi le CA évalue-t-il périodiquement ses travaux ?",
           "choices": [
-            "Transférer la surveillance aux auditeurs.",
-            "Repérer les lacunes d’information, compétences ou suivi et s’améliorer.",
-            "Réduire toutes les séances à une réunion annuelle.",
-            "Garantir l’absence de risques."
+            "Fonder sur cette évaluation le transfert d’une partie des responsabilités du CA à la direction générale.",
+            "Identifier les lacunes d’information, de compétences ou de suivi et améliorer le fonctionnement du CA.",
+            "Obtenir une attestation de conformité équivalente à une mission d’audit sur la gouvernance du CA.",
+            "Déterminer la rémunération des administrateurs en fonction d’indicateurs de productivité issus de l’évaluation."
           ],
           "answer": 1,
-          "explanation": "L’évaluation améliore les pratiques sans transférer les responsabilités.",
-          "commentRequired": false
+          "explanation": "L’évaluation est un outil d’apprentissage et d’amélioration continue (information, compétences, suivi), sans modifier la répartition des rôles.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’évaluation vise l’amélioration des pratiques du CA, pas un déplacement des responsabilités; la DG exécute et le CA supervise.",
+            "L’autoévaluation sert à corriger les angles morts (qualité des dossiers, maîtrise des sujets, suivi des décisions) et à renforcer l’efficacité du CA.",
+            "Une évaluation de fonctionnement n’est pas une attestation d’audit avec opinion; elle identifie des axes d’amélioration, pas une certification.",
+            "L’objectif est l’amélioration du fonctionnement et du suivi, non l’instauration d’un dispositif de rémunération indexée sur une “productivité” du CA."
+          ],
+          "discriminant": "Le bon choix cible les lacunes et l’amélioration; les distracteurs confondent l’évaluation avec transfert de responsabilité, certification d’audit ou dispositif de rémunération."
         },
         {
           "id": "t3-A-M09",
@@ -1645,14 +1981,21 @@
           "type": "mcq",
           "prompt": "Un sujet relève de l’assemblée générale plutôt que du CA. Que faire ?",
           "choices": [
-            "Clarifier la compétence et préparer la saisine de l’organe habilité.",
-            "Faire adopter la décision par le CA puis la présenter comme approuvée.",
-            "Confier l’autorisation au DG.",
-            "Reporter indéfiniment sans informer l’organe concerné."
+            "Qualifier la compétence, constituer le dossier, puis inscrire la décision à l’ordre du jour AG.",
+            "Traiter l’avis favorable du représentant de l’actionnaire au CA comme une délibération de l’assemblée générale.",
+            "Demander à la DG d’exécuter provisoirement, en attendant la validation formelle par l’AG ultérieure complète.",
+            "Saisir le commissaire aux comptes pour déterminer l’organe compétent et la procédure applicable au dossier."
           ],
           "answer": 0,
-          "explanation": "La répartition des compétences doit être respectée.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la régularité de compétence: on oriente la décision vers l’organe habilité, au lieu de la faire décider/exécuter ailleurs.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La bonne conduite consiste à vérifier l’organe compétent puis à organiser la décision au bon niveau, avec un dossier conforme et prêt à délibération.",
+            "L’avis d’un représentant dans un organe ne constitue pas une décision régulière d’un autre organe.",
+            "La DG exécute dans le cadre de décisions régulières; exécuter une matière réservée à l’AG crée un risque de nullité/irrégularité et de responsabilité.",
+            "Le commissaire aux comptes contrôle et alerte, mais ne tranche pas la répartition des compétences entre organes ni n’impose la procédure de décision."
+          ],
+          "discriminant": "Savoir traiter une question de compétence d’organe (qualification + saisine) plutôt que chercher une régularisation a posteriori, une exécution anticipée ou un arbitrage par le CAC."
         },
         {
           "id": "t3-B-M01",
@@ -1660,14 +2003,21 @@
           "type": "mcq",
           "prompt": "Quel est l’apport des notes annexes aux états financiers ?",
           "choices": [
-            "Remplacer le contrôle des pièces.",
-            "Fournir méthodes et informations nécessaires à comprendre les chiffres.",
-            "Présenter uniquement les prévisions futures.",
-            "Compenser des soldes sans explication."
+            "Présenter une nouvelle méthode comptable en annexe en considérant cette information comme un ajustement des montants des états.",
+            "Expliquer les méthodes comptables et informations nécessaires pour comprendre les montants des états financiers.",
+            "Présenter la stratégie et les prévisions de la direction afin de justifier les performances affichées.",
+            "Compenser en annexe des actifs et passifs non présentés, dès lors que l’explication est complète."
           ],
           "answer": 1,
-          "explanation": "Les notes complètent les états selon les exigences du référentiel applicable.",
-          "commentRequired": false
+          "explanation": "Les notes annexes complètent les états en rendant lisibles les méthodes et informations indispensables à la compréhension des montants.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Expliquer une méthode en annexe ne modifie pas les montants comptabilisés ; information et comptabilisation sont deux opérations distinctes.",
+            "Les notes décrivent les méthodes, jugements, estimations et détails nécessaires pour interpréter correctement les chiffres présentés.",
+            "La stratégie et les prévisions relèvent plutôt du rapport de gestion; les notes visent l’information financière requise par le référentiel comptable.",
+            "La reconnaissance et la présentation se font dans les états; l’annexe ne permet pas de remplacer des postes par une simple explication."
+          ],
+          "discriminant": "Le bon choix vise la compréhension (méthodes + informations); les distracteurs confondent annexe avec grand livre, document stratégique, ou mécanisme de compensation/remplacement."
         },
         {
           "id": "t3-B-M02",
@@ -1675,14 +2025,21 @@
           "type": "mcq",
           "prompt": "Un actif est endommagé avant clôture. Quelle analyse documenter ?",
           "choices": [
-            "État, remise en état, valeur recouvrable pertinente et traitement applicable.",
-            "Le coût historique seulement.",
-            "La valeur d’assurance seule.",
-            "Une réduction égale automatiquement au coût des réparations."
+            "Documenter l’état, les remises en état, la valeur recouvrable pertinente et le traitement comptable applicable.",
+            "Constater une provision égale au devis de réparation, sans évaluer la valeur recouvrable de l’actif.",
+            "Réévaluer l’actif au coût de remplacement afin de refléter l’impact du dommage avant clôture.",
+            "Différer l’analyse à l’exercice suivant tant que l’actif reste en service à la date de clôture."
           ],
           "answer": 0,
-          "explanation": "Les faits et règles comptables guident l’analyse de valeur et de traitement.",
-          "commentRequired": false
+          "explanation": "L’analyse attendue est factuelle (état, remise en état) et comptable (valeur recouvrable, traitement), documentée avant clôture.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’analyse doit relier le dommage aux flux futurs, aux coûts de remise en état et à la mesure de la valeur recouvrable pour conclure sur la dépréciation/charges.",
+            "Un devis de réparation n’établit pas à lui seul une obligation/provision ni l’absence de dépréciation; il faut analyser la valeur recouvrable et le traitement approprié.",
+            "Un dommage conduit plutôt à analyser perte de valeur et recouvrabilité; une réévaluation au coût de remplacement ne découle pas du fait d’un endommagement.",
+            "Un événement connu avant clôture doit être traité sur l’exercice concerné; le maintien en service n’annule pas l’exigence d’analyse et de documentation."
+          ],
+          "discriminant": "Le bon choix combine diagnostic, recouvrabilité et traitement; les distracteurs substituent une provision mécanique, une réévaluation inappropriée, ou un report d’analyse malgré l’événement avant clôture."
         },
         {
           "id": "t3-B-M03",
@@ -1690,14 +2047,21 @@
           "type": "mcq",
           "prompt": "Comment présenter les risques financiers d’un investissement au CA ?",
           "choices": [
-            "Une mention générale de volatilité.",
-            "Seulement les risques assurés.",
-            "Identifier risques, hypothèses, mesures de maîtrise et exposition résiduelle.",
-            "Omettre les risques de délai."
+            "Présenter une VAN et un TRI en scénario central, en considérant ces mesures comme synthèse du risque.",
+            "Indiquer un ratio d’endettement cible post-investissement et en déduire que le risque financier est maîtrisé.",
+            "Décrire les risques, les hypothèses, les mesures de maîtrise et l’exposition résiduelle, de façon cohérente.",
+            "Limiter l’analyse aux risques de change en supposant que l’assurance couvre les autres risques financiers majeurs."
           ],
           "answer": 2,
-          "explanation": "Relier risque, hypothèse, mesure et exposition rend l’analyse utile.",
-          "commentRequired": false
+          "explanation": "Une bonne présentation relie risques → hypothèses → mesures de maîtrise → exposition résiduelle, pour permettre une décision informée du CA.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "VAN/TRI mesurent une rentabilité sous hypothèses données; elles ne décrivent ni les risques, ni les mitigations, ni l’exposition résiduelle.",
+            "Un ratio cible ne décrit pas les risques (taux, liquidité, change, contrepartie) ni les hypothèses; la maîtrise dépend des mesures et de l’exposition résiduelle.",
+            "Pour éclairer le CA, il faut relier chaque risque aux hypothèses (prix, volume, taux, change), aux mitigations (covenants, couverture, phasage) et à l’exposition restante.",
+            "L’assurance ne couvre pas, par nature, des risques comme taux d’intérêt, liquidité, covenants ou refinancement; l’analyse doit couvrir les risques pertinents et l’exposition résiduelle."
+          ],
+          "discriminant": "Le bon choix impose la chaîne logique risque/hypothèse/maîtrise/exposition; les distracteurs réduisent le risque à une rentabilité, un ratio, ou une catégorie de risque supposée “assurable”."
         },
         {
           "id": "t3-B-M04",
@@ -1705,14 +2069,21 @@
           "type": "mcq",
           "prompt": "Quel contrôle convient aux écritures manuelles de clôture ?",
           "choices": [
-            "Supprimer l’historique.",
-            "Autoriser toute écriture d’un utilisateur habilité.",
-            "Justification, pièces, approbation indépendante et revue des écritures inhabituelles.",
-            "Vérifier seulement les écritures nulles."
+            "Tenir le verrouillage de période pour preuve de justification des écritures manuelles saisies avant clôture.",
+            "Rapprocher les écritures manuelles avec les mouvements bancaires, puis valider l’équilibre mensuel global de trésorerie.",
+            "Justifier chaque écriture, annexer pièces, obtenir une approbation indépendante et revoir les atypiques de clôture.",
+            "Exiger la signature du préparateur et archiver le journal, comme contrôle principal de clôture manuel."
           ],
           "answer": 2,
-          "explanation": "Ces écritures nécessitent une justification et une revue proportionnées.",
-          "commentRequired": false
+          "explanation": "Le discriminant est le contrôle de fond (justification + preuves + approbation indépendante + revue des atypiques), pas un contrôle d’accès, de banque ou de simple traçabilité.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un verrou empêche certaines modifications, mais ne démontre pas la validité des écritures déjà enregistrées.",
+            "La plupart des écritures manuelles de clôture (provisions, cut-off, reclassements) n’ont pas de contrepartie bancaire directe; un rapprochement banque ne teste pas leur bien-fondé.",
+            "Le risque des écritures manuelles de clôture (biais, erreurs, ajustements opportunistes) se traite par justification documentée, pièces probantes, séparation des tâches et revue ciblée des écritures inhabituelles/significatives.",
+            "La signature du préparateur améliore la traçabilité, mais n’apporte ni validation indépendante ni revue critique des écritures atypiques, essentielles pour réduire le risque de manipulation."
+          ],
+          "discriminant": "Distinguer contrôles qui empêchent/modèrent (verrouillage, accès) ou tracent (signature) d’un contrôle qui prouve la validité économique des écritures manuelles."
         },
         {
           "id": "t3-B-M05",
@@ -1720,14 +2091,21 @@
           "type": "mcq",
           "prompt": "Quel est l’intérêt d’analyser le coût complet d’un service logistique ?",
           "choices": [
-            "Répartir tous les coûts arbitrairement.",
-            "Inclure coûts directs et indirects pertinents selon une méthode cohérente.",
-            "Exclure la maintenance.",
-            "Retenir uniquement la main-d’œuvre directe."
+            "Ne retenir que les coûts variables du service pour établir un coût complet comparable entre périodes.",
+            "Mesurer le coût réel en affectant coûts directs et indirects pertinents selon une méthode cohérente.",
+            "Répartir les frais indirects au prorata du chiffre d’affaires afin de représenter la consommation de ressources.",
+            "Calculer le coût complet surtout pour déduire la marge contractuelle, la tarification découlant du coût observé."
           ],
           "answer": 1,
-          "explanation": "Une méthode justifiée permet de comprendre les ressources consommées.",
-          "commentRequired": false
+          "explanation": "L’intérêt du coût complet est de représenter l’ensemble des ressources consommées par le service au moyen d’une méthode cohérente d’affectation des coûts. Réduire l’analyse aux seuls coûts variables, utiliser une clé non causale (CA) ou confondre coût et prix fausse la décision.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Les coûts variables sont utiles pour des décisions marginales, mais le coût complet doit intégrer aussi les coûts fixes/indirects pertinents pour refléter les ressources consommées.",
+            "L’analyse du coût complet sert à comprendre les ressources consommées par le service : coûts directs (main-d’œuvre, carburant) et indirects pertinents (maintenance, supervision, amortissements) selon une clé de répartition justifiée et stable.",
+            "Le chiffre d’affaires mesure des produits, pas la consommation de ressources; une clé d’allocation doit être liée à un inducteur pertinent (volume, temps, km, manutentions).",
+            "Le coût complet éclaire la structure de coûts, mais la marge et le prix relèvent aussi du marché, des risques, du niveau de service et de la stratégie commerciale."
+          ],
+          "discriminant": "Distinguer « mesurer la consommation de ressources » (inducteurs pertinents, direct + indirect) de « calculer un prix/marge » ou d’une répartition arbitraire."
         },
         {
           "id": "t3-B-M06",
@@ -1735,14 +2113,21 @@
           "type": "mcq",
           "prompt": "Quel signal peut justifier une analyse de recouvrabilité d’une créance ?",
           "choices": [
-            "Retard inhabituel, litige ou information affectant les perspectives d’encaissement.",
-            "Une hausse du nombre de clients.",
-            "Une facture récente dans tous les cas.",
-            "Un paiement anticipé d’un autre client."
+            "Un retard inhabituel, un litige, ou une information dégradant les perspectives d’encaissement.",
+            "Le fait que la créance soit libellée en devise étrangère et exposée au risque de change.",
+            "La présence d’un bon de livraison signé par le client, attestant l’exécution de la prestation facturée.",
+            "Le fait que la facture ait été correctement comptabilisée et lettrée dans l’ERP au moment de l’émission."
           ],
           "answer": 0,
-          "explanation": "Les indices de risque appellent une analyse documentée selon les règles applicables.",
-          "commentRequired": false
+          "explanation": "Les signaux pertinents portent sur le risque d’encaissement (retard atypique, litige, information défavorable). La devise, la preuve de livraison ou la qualité du lettrage concernent d’autres dimensions (évaluation/justification comptable) et ne suffisent pas à conclure sur la recouvrabilité.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Ce sont des indices de perte de valeur : ils déclenchent une analyse documentée (probabilité d’encaissement, échéancier, garanties, éléments contradictoires) selon les règles applicables.",
+            "Le risque de change affecte la valorisation en monnaie locale, mais ne constitue pas en soi un indice de non-recouvrabilité du débiteur.",
+            "La preuve de livraison réduit le risque de contestation, mais n’écarte pas un risque d’insolvabilité ou de difficultés de trésorerie du client.",
+            "Le lettrage et l’enregistrement comptable sont des contrôles de rapprochement, pas des éléments sur la capacité ou l’intention de payer du client."
+          ],
+          "discriminant": "Distinguer un indice de crédit (capacité/volonté de payer) d’un élément de preuve de prestation ou d’un sujet de change/saisie comptable."
         },
         {
           "id": "t3-B-M07",
@@ -1750,14 +2135,21 @@
           "type": "mcq",
           "prompt": "Un contrat comporte une pénalité potentielle. Quelle démarche est prudente ?",
           "choices": [
-            "Retenir le plafond contractuel comme estimation de la pénalité.",
-            "Ignorer la clause avant facturation.",
-            "Déduire le montant d’une créance sans accord.",
-            "Examiner clauses, faits déclencheurs, estimation et incertitudes."
+            "Constater une charge au montant maximal prévu au contrat pour couvrir le risque de pénalité.",
+            "Attendre la facture de pénalité du cocontractant avant d’évaluer l’impact en clôture.",
+            "Compenser la pénalité potentielle par les produits du contrat afin de présenter l’effet net de l’opération.",
+            "Analyser les clauses, vérifier les faits déclencheurs, estimer l’exposition et documenter les incertitudes."
           ],
           "answer": 3,
-          "explanation": "Le traitement dépend de la situation et des règles, non d’un automatisme.",
-          "commentRequired": false
+          "explanation": "La démarche prudente est une analyse contractuelle et factuelle suivie d’une estimation documentée. Enregistrer le maximum, attendre une facture, ou compenser avec des produits confondent prudence, déclenchement et présentation.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une estimation prudente n’est pas l’enregistrement du maximum contractuel : il faut apprécier si un déclencheur est probable et estimer l’exposition la plus pertinente.",
+            "L’analyse se fait à la clôture sur la base des obligations et événements connus; l’absence de facture n’élimine pas le risque si les conditions sont réunies.",
+            "La compensation masque la nature du risque et n’est pas une démarche prudente : l’évaluation doit porter sur l’obligation potentielle et sa présentation appropriée.",
+            "La prudence consiste à lier le juridique (clauses et déclencheurs) au factuel (avancement, manquements) puis à estimer l’impact selon la meilleure information disponible, en explicitant les incertitudes."
+          ],
+          "discriminant": "Distinguer « évaluer selon clauses + faits » d’une approche mécanique (maximum, facture) ou d’une compensation de présentation."
         },
         {
           "id": "t3-B-M08",
@@ -1765,14 +2157,21 @@
           "type": "mcq",
           "prompt": "Quelle information aide à comparer deux offres de financement ?",
           "choices": [
-            "Nom et ancienneté du prêteur seuls.",
-            "Taux nominal seul.",
-            "Montant brut seul.",
-            "Coût total, échéancier, garanties, clauses, risques et flexibilité."
+            "Comparer les taux nominaux annoncés et retenir l’offre au taux nominal le plus faible.",
+            "Comparer le montant des premières échéances et choisir l’offre qui minimise l’effort de trésorerie initial.",
+            "Comparer les garanties demandées en supposant des clauses et pénalités similaires entre les deux banques.",
+            "Comparer coût total, échéancier, garanties, clauses contractuelles, risques et marges de flexibilité."
           ],
           "answer": 3,
-          "explanation": "Les conditions complètes déterminent coût, risque et capacité de remboursement.",
-          "commentRequired": false
+          "explanation": "La bonne comparaison est multidimensionnelle : coût total et calendrier des flux, contraintes contractuelles, garanties, risques et flexibilité. Se limiter au taux nominal, au début d’échéancier ou aux garanties confond un indicateur partiel avec l’économie réelle du financement.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le taux nominal ne capture pas les frais, commissions, pénalités, modalités de calcul des intérêts, ni les contraintes contractuelles qui changent le coût effectif et le risque.",
+            "Une échéance initiale faible peut cacher un allongement coûteux, un ballon final, des frais importants ou des révisions de taux; il faut analyser l’échéancier complet.",
+            "Les clauses (covenants, pénalités, options, événements de défaut) varient fortement et peuvent rendre une offre plus risquée même avec une garantie comparable.",
+            "Deux financements au même taux apparent peuvent coûter différemment selon frais, calendrier, covenants, garanties, options de remboursement, pénalités et risques (taux, change)."
+          ],
+          "discriminant": "Distinguer « coût effectif + clauses + risques » d’un critère unique (taux, première échéance, garantie) qui peut inverser le choix."
         },
         {
           "id": "t3-B-M09",
@@ -1780,14 +2179,21 @@
           "type": "mcq",
           "prompt": "Quelle information devrait accompagner le compte rendu d’une recommandation d’audit ?",
           "choices": [
-            "La réponse de la direction sans état d’avancement.",
-            "Le nombre de recommandations émises.",
-            "Constat, risque, responsable de mise en œuvre, échéance et vérification de clôture.",
-            "La seule date du prochain audit."
+            "Joindre la recommandation et le coût estimatif de mise en œuvre, en laissant le reste à l’appréciation du management.",
+            "Indiquer la recommandation, l’équipe d’audit et la date du rapport, la mise en œuvre relevant des opérationnels.",
+            "Présenter constat, risque, action, responsable, échéance, et modalités de vérification de clôture du suivi.",
+            "Décrire le constat et sa priorité, puis considérer la recommandation clôturée après diffusion du rapport d’audit."
           ],
           "answer": 2,
-          "explanation": "Le suivi d’audit doit relier le constat aux actions, responsables et éléments de clôture.",
-          "commentRequired": false
+          "explanation": "Une recommandation d’audit doit être actionnable et suivie : constat + risque + plan d’action, avec responsable, échéance et critères de vérification. Des informations administratives (équipe, date, budget) ne remplacent pas la gouvernance du suivi.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le coût est utile, mais sans risque, responsable et échéance il n’y a pas d’engagement traçable ni de base de suivi et de clôture.",
+            "Le suivi exige l’attribution explicite (responsable) et une échéance; la date du rapport et l’équipe d’audit n’organisent pas l’exécution ni la vérification de clôture.",
+            "Un suivi d’audit efficace relie l’observation au risque, précise qui fait quoi et quand, puis définit comment l’audit constatera la mise en œuvre (preuves attendues, test de clôture).",
+            "La diffusion ne démontre pas la mise en œuvre; la clôture suppose des actions réalisées et une vérification fondée sur des éléments probants."
+          ],
+          "discriminant": "Distinguer un « plan de remédiation traçable et vérifiable » d’un compte rendu informatif sans responsabilité, calendrier ni critères de clôture."
         },
         {
           "id": "t3-C-M01",
@@ -1795,14 +2201,21 @@
           "type": "mcq",
           "prompt": "Des dommages augmentent dans une zone de stockage. Quelle analyse est pertinente ?",
           "choices": [
-            "Réduire les constats.",
-            "Attribuer la hausse à l’emballage client sans preuve.",
-            "Segmenter par marchandise, emplacement, manutention et durée.",
-            "Déplacer tout le stock vers le quai."
+            "Attribuer l’évolution du taux de dommages au volume stocké dès que leurs variations suivent le même sens.",
+            "Imputer les avaries au fournisseur dès que l’emballage est altéré, cet état établissant l’origine du dommage.",
+            "Ventiler les dommages par marchandise, emplacement, opération de manutention, et durée de stockage pour isoler causes.",
+            "Imputer la hausse des dommages à une hausse de franchise, celle-ci mesurant la fréquence des avaries."
           ],
           "answer": 2,
-          "explanation": "L’analyse des circonstances aide à cibler les causes et contrôles.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la recherche de déterminants opérationnels (segmentation) plutôt qu’un indicateur agrégé, une attribution automatique de responsabilité ou un angle assurance.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une corrélation entre volume et dommages n’établit pas la cause des dommages ; les circonstances doivent être examinées.",
+            "L’emballage peut être endommagé à plusieurs étapes ; son état ne suffit pas à attribuer la cause au fournisseur.",
+            "Une segmentation opérationnelle met en évidence des concentrations (type de marchandise, zone, geste, durée) et permet d’identifier des causes racines actionnables (process, environnement, équipements, pratiques).",
+            "La franchise répartit la charge financière d’un sinistre ; elle ne mesure pas la fréquence des avaries."
+          ],
+          "discriminant": "Distinguer analyse causale opérationnelle (segmenter) d’analyses financières/contractuelles qui n’identifient pas les causes à corriger."
         },
         {
           "id": "t3-C-M02",
@@ -1810,14 +2223,21 @@
           "type": "mcq",
           "prompt": "À quoi sert une réservation coordonnée entre opérateurs de modes différents ?",
           "choices": [
-            "Garantir l’absence de retard.",
-            "Remplacer les horaires et documents des transporteurs.",
-            "Aligner capacités et temps de transfert et rendre visibles les retards.",
-            "Éviter d’enregistrer les transferts."
+            "Fixer une heure de départ commune entre modes afin de supprimer les attentes lors des correspondances.",
+            "Transférer la responsabilité des retards vers l’opérateur amont dès qu’une réservation intermodale est confirmée.",
+            "Synchroniser capacités et correspondances, sécuriser les temps de transfert et rendre visibles les retards.",
+            "Utiliser la réservation coordonnée pour mutualiser les recettes entre opérateurs selon un tarif intermodal unique."
           ],
           "answer": 2,
-          "explanation": "La coordination améliore l’alignement sans éliminer les aléas.",
-          "commentRequired": true
+          "explanation": "La réservation coordonnée est un outil de synchronisation et de visibilité des aléas, pas un moyen d’unifier les horaires, de déplacer la responsabilité contractuelle, ni d’organiser le partage des recettes. Elle réduit les frictions intermodales sans supprimer les aléas.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Les contraintes d’exploitation diffèrent selon les modes; une coordination améliore les correspondances mais ne peut pas garantir l’absence d’attente en pratique.",
+            "La réservation organise la coordination et la visibilité, mais ne modifie pas à elle seule les responsabilités contractuelles ni les causes de retard propres à chaque mode.",
+            "La réservation coordonnée sert à aligner planning et capacités entre modes (route/rail/fleuve), réduire les ruptures de charge mal anticipées et améliorer la gestion des retards via une information partagée.",
+            "La réservation vise l’alignement opérationnel (capacité, correspondances, information), tandis que la mutualisation de recettes relève d’accords commerciaux et de clearing distincts."
+          ],
+          "discriminant": "Distinguer coordination opérationnelle (capacité, temps de transfert, information) d’effets prétendus sur responsabilités, tarification ou suppression des aléas."
         },
         {
           "id": "t3-C-M03",
@@ -1825,14 +2245,21 @@
           "type": "mcq",
           "prompt": "Quel élément doit accompagner une procédure fiable de pesée ?",
           "choices": [
-            "Choix de la mesure la plus élevée sans analyse.",
-            "Lecture visuelle du conducteur.",
-            "Total journalier sans référence au lot.",
-            "Identification du lot, instrument contrôlé, unité, horodatage et résultat conservé."
+            "Attacher le certificat d’étalonnage à chaque ticket pour rendre la mesure recevable juridiquement.",
+            "Faire signer le ticket au chef de quai pour garantir l’exactitude du poids.",
+            "Arrondir les poids à l’unité supérieure afin de stabiliser les écarts de pesée.",
+            "Tracer lot, unité, horodatage, instrument identifié et contrôlé, puis archiver le résultat pesé."
           ],
           "answer": 3,
-          "explanation": "Une mesure vérifiable doit être reliée à un lot, une méthode et un instrument.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la traçabilité reproductible de la mesure (lot/unité/temps/instrument/enregistrement), pas une pièce métrologique isolée, une signature ou un formatage.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un certificat prouve l’état métrologique de l’instrument à une date, mais ne garantit pas que le ticket correspond au bon lot, à la bonne unité, ni au bon horodatage.",
+            "La signature est une approbation administrative; elle ne prouve ni l’identité du lot, ni l’unité, ni l’instrument utilisé, ni l’horodatage de la mesure.",
+            "L’arrondi homogénéise la présentation mais peut masquer des erreurs; il n’apporte aucune preuve sur le lot, l’instrument, l’heure, ni l’archivage du résultat brut.",
+            "La fiabilité repose sur la traçabilité complète: rattacher une mesure à un lot identifié, une unité, un moment (horodatage), un instrument maîtrisé, et conserver l’enregistrement."
+          ],
+          "discriminant": "Distinguer maîtrise de la preuve de mesure (traçabilité complète) d’une validation administrative ou d’une justification métrologique partielle."
         },
         {
           "id": "t3-C-M04",
@@ -1840,14 +2267,21 @@
           "type": "mcq",
           "prompt": "Une rupture de consommable bloque une opération portuaire. Quelle prévention est pertinente ?",
           "choices": [
-            "Commander une quantité fixe annuelle.",
-            "Utiliser un produit non homologué.",
-            "Maintenir le stock à zéro.",
-            "Fixer les niveaux selon consommation, délai d’approvisionnement et criticité."
+            "Conclure un contrat-cadre et considérer que les livraisons couvriront toute variabilité de demande.",
+            "Dimensionner le stock de sécurité sur la capacité d’entreposage, tenue pour consommation pendant le délai d’approvisionnement.",
+            "Imposer des pénalités de retard en supposant qu’elles remplacent le stock de sécurité.",
+            "Paramétrer stock mini, point de commande et sécurité selon consommation, délai, criticité."
           ],
           "answer": 3,
-          "explanation": "Le stock doit être proportionné à l’usage, au délai et au risque.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la logique de réapprovisionnement (seuils fondés sur consommation/délai/criticité), plutôt que des mesures contractuelles ou capacitaires confondues avec la prévention.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un contrat-cadre facilite l’achat mais n’absorbe pas mécaniquement les aléas de consommation ni les délais; sans seuils de réapprovisionnement, la rupture reste possible.",
+            "La place disponible ne mesure pas le besoin pendant le délai ; consommation, délai et incertitude doivent être appréciés.",
+            "Les pénalités peuvent inciter, mais elles ne suppriment ni la variabilité de délai ni la nécessité d’un stock tampon; elles ne sécurisent pas une continuité d’exploitation.",
+            "La prévention d’une rupture se fait par des seuils et un stock de sécurité dimensionnés à partir de la consommation, du délai d’approvisionnement et de la criticité opérationnelle."
+          ],
+          "discriminant": "Distinguer prévention structurelle de rupture (dimensionnement des niveaux de stock) de leviers achats/entrepôt/contractuels non équivalents."
         },
         {
           "id": "t3-C-M05",
@@ -1855,14 +2289,21 @@
           "type": "mcq",
           "prompt": "Quelle information doit figurer dans une transmission de consignes d’escale ?",
           "choices": [
-            "Le nom du navire seul.",
-            "État des opérations, risques ouverts, changements, responsabilités et prochaine échéance.",
-            "Les tâches clôturées seulement.",
-            "Un message oral sans destinataire."
+            "Présenter le programme prévu pour la vacation précédente comme état de réalisation transmis à la relève.",
+            "Relayer l’avancement réel, risques ouverts, changements, actions attribuées, et l’échéance de reprise prévue prochaine.",
+            "Communiquer les prestations facturables, montants estimés et imputations, pour sécuriser la consigne d’escale financière.",
+            "Donner les KPI de la dernière escale et la cible, pour guider la relève."
           ],
           "answer": 1,
-          "explanation": "Un passage de relais complet rend visibles actions et risques restants.",
-          "commentRequired": false
+          "explanation": "Le discriminant est le passage de relais orienté sécurité/continuité (risques, actions, responsabilités, échéances), pas la planification, la facturation ou le pilotage KPI.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le planning décrit une intention ; il ne prouve pas l’état réel des opérations au changement d’équipe.",
+            "Une consigne d’escale sert à assurer la continuité sûre: état réel, risques résiduels, changements, responsabilités en cours et prochain jalon/échéance de contrôle.",
+            "La facturation aide le contrôle de gestion, mais ne dit rien sur l’état opérationnel, les risques ouverts et les responsabilités immédiates à reprendre.",
+            "Les KPI et cibles orientent la performance, mais ne listent pas les risques en cours, les changements, ni les actions attribuées à reprendre à l’instant T."
+          ],
+          "discriminant": "Distinguer consigne opérationnelle (état/risques/actions/échéance) d’informations de gestion (planning, coûts, indicateurs)."
         },
         {
           "id": "t3-C-M06",
@@ -1870,14 +2311,21 @@
           "type": "mcq",
           "prompt": "Comment améliorer la comparabilité d’un indicateur de temps de séjour ?",
           "choices": [
-            "Changer le calcul selon les résultats du mois.",
-            "Inclure seulement les lots sans incident.",
-            "Utiliser une moyenne sans observations.",
-            "Définir les événements de début et fin, exclusions et sources horaires."
+            "Diviser le temps de séjour par le tonnage traité pour obtenir un indicateur comparable.",
+            "Remplacer les durées individuelles par leur moyenne mensuelle, puis utiliser cette moyenne pour calculer les percentiles.",
+            "Fixer une cible identique de séjour entre terminaux pour rendre les résultats comparables officiellement.",
+            "Standardiser événements début/fin, exclusions, formule et source d’horodatage pour calculer le séjour de référence."
           ],
           "answer": 3,
-          "explanation": "Des définitions stables et des sources cohérentes rendent la mesure vérifiable.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la comparabilité métrologique/definitionnelle (mêmes règles et horodatages), pas une transformation en ratio, une agrégation ou une harmonisation d’objectifs.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "On change la nature de la mesure (ratio) sans résoudre les divergences de définition (début/fin, exclusions) ni de sources horaires; la comparaison reste biaisée.",
+            "Une moyenne agrégée ne permet pas de reconstituer la distribution des durées ni ses percentiles.",
+            "Une cible commune relève du pilotage; elle n’uniformise pas la mesure. Deux terminaux peuvent viser la même cible tout en calculant le séjour différemment.",
+            "La comparabilité exige une définition identique: mêmes événements de début/fin, mêmes exclusions, même formule, et mêmes sources horaires/horodatages."
+          ],
+          "discriminant": "Distinguer comparabilité de mesure (définition, périmètre, sources) d’outils de pilotage ou de traitement statistique."
         },
         {
           "id": "t3-C-M07",
@@ -1885,14 +2333,21 @@
           "type": "mcq",
           "prompt": "Quel contrôle limite les erreurs lors du chargement d’un wagon ?",
           "choices": [
-            "Rapprocher ordre, wagon, lot, capacité et destination avant départ.",
-            "Vérifier que le wagon est présent seulement.",
-            "Modifier la destination sans mettre à jour les documents.",
-            "Réutiliser le numéro du wagon précédent."
+            "Rapprocher l’ordre de chargement avec wagon, lot, capacité et destination avant l’expédition prévue, documentée.",
+            "Utiliser la masse brute du wagon comme mesure de la masse de marchandise effectivement chargée.",
+            "Retenir le numéro du train comme identifiant du wagon pour rapprocher le lot de l’ordre de chargement.",
+            "Déduire de l’intégrité du scellé que le lot chargé correspond à la destination prévue au manifeste."
           ],
           "answer": 0,
-          "explanation": "Le rapprochement des références et contraintes prévient erreurs de chargement.",
-          "commentRequired": false
+          "explanation": "Le discriminant est le rapprochement complet des références et contraintes avant expédition, plutôt qu’un contrôle isolé (masse, identification, scellés).",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le contrôle clé est un rapprochement de cohérence avant départ entre les références (ordre/lot), le support (wagon), la contrainte (capacité) et la destination.",
+            "La masse brute inclut la tare du wagon ; elle ne correspond pas à la masse nette de marchandise.",
+            "Un train regroupe plusieurs wagons ; son numéro ne permet pas d’identifier le wagon auquel le lot est affecté.",
+            "Un scellé intact renseigne sur l’intégrité de fermeture, pas sur la conformité du lot et de sa destination."
+          ],
+          "discriminant": "Distinguer un contrôle de cohérence multi-références (ordre/lot/wagon/capacité/destination) d’un contrôle isolé (poids, scellé, numéro)."
         },
         {
           "id": "t3-C-M08",
@@ -1900,14 +2355,21 @@
           "type": "mcq",
           "prompt": "Quel facteur guide le choix d’une méthode d’inspection d’ouvrage ferroviaire ?",
           "choices": [
-            "Le coût le plus bas seulement.",
-            "Un appareil non étalonné disponible.",
-            "Une méthode utilisée ailleurs sans adaptation.",
-            "Type d’ouvrage, dégradations recherchées, accès et criticité du service."
+            "Choisir la méthode selon la disponibilité des inspecteurs et le matériel présent au dépôt.",
+            "Choisir la méthode la moins coûteuse afin d’étendre la couverture d’inspection du réseau.",
+            "Choisir la méthode selon l’âge de l’ouvrage, les ouvrages anciens nécessitant une inspection identique.",
+            "Choisir selon type d’ouvrage, dégradations visées, accès disponible et criticité du service."
           ],
           "answer": 3,
-          "explanation": "La méthode doit être adaptée aux dégradations, accès et risques.",
-          "commentRequired": false
+          "explanation": "Le choix d’une méthode d’inspection est une adéquation technique : type d’ouvrage, défauts recherchés, accès et criticité d’exploitation. Les distracteurs remplacent ces critères par des considérations de ressources, de budget ou par un critère unique (âge).",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La disponibilité des ressources influence la planification, mais ne détermine pas la pertinence technique ; une méthode inadaptée peut manquer les dégradations recherchées.",
+            "Le coût doit être considéré, mais une méthode moins coûteuse peut être inapte au type d’ouvrage ou aux défauts visés ; l’adéquation technique prime pour détecter les risques.",
+            "L’âge peut orienter la vigilance, mais les dégradations dépendent du type d’ouvrage, des sollicitations et de l’accès ; une méthode unique par âge ignore ces paramètres.",
+            "La méthode d’inspection dépend de ce qu’on veut détecter, où et comment on peut accéder, et du risque associé à une défaillance de l’ouvrage."
+          ],
+          "discriminant": "Ne pas confondre critères de planification (ressources, coûts) avec critères de pertinence technique (défauts visés, accès, criticité)."
         },
         {
           "id": "t3-D-M01",
@@ -1915,14 +2377,21 @@
           "type": "mcq",
           "prompt": "Comment intégrer les restrictions temporaires de vitesse au programme de sécurité ?",
           "choices": [
-            "Les garder sans échéance.",
-            "Les enregistrer, communiquer, suivre leur durée et vérifier leur levée.",
-            "Les supprimer après constat visuel.",
-            "Les annoncer après le départ des trains."
+            "Inscrire chaque restriction temporaire comme vitesse normative de l’horaire, sans échéance formalisée.",
+            "Enregistrer, diffuser, suivre l’échéance et confirmer la levée contrôlée des restrictions temporaires.",
+            "Assimiler la durée de la fenêtre de travaux à la durée de validité de la restriction temporaire de vitesse.",
+            "Traiter la restriction comme ordre maintenance, en la levant dès clôture d’atelier."
           ],
           "answer": 1,
-          "explanation": "Le suivi tracé rend les mesures provisoires visibles et maîtrisées.",
-          "commentRequired": false
+          "explanation": "Le discriminant est la gestion sécurité complète d’une mesure provisoire (trace, diffusion, échéance, levée), pas sa simple communication ou requalification.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Transformer une mesure temporaire en norme d’horaire supprime le suivi d’échéance et la maîtrise de la levée contrôlée.",
+            "Une restriction temporaire doit être tracée, communiquée, suivie dans le temps et levée formellement quand la condition disparaît.",
+            "Le créneau de travaux et la validité d’une restriction ne se confondent pas ; la levée exige une vérification appropriée.",
+            "La clôture maintenance ne vaut pas levée sécurité: la levée exige vérification opérationnelle et décision contrôlée de suppression."
+          ],
+          "discriminant": "Distinguer une restriction temporaire (traçabilité + échéance + levée contrôlée) d’une règle d’horaire ou d’un ordre maintenance."
         },
         {
           "id": "t3-D-M02",
@@ -1930,14 +2399,21 @@
           "type": "mcq",
           "prompt": "Le plan de redressement prévoit une remise à niveau des locomotives et des ateliers. Quel arbitrage devrait éclairer le conseil ?",
           "choices": [
-            "Prioriser les options qui améliorent le service avec des indicateurs de résultat vérifiables.",
-            "Séquencer les lots selon criticité, financement et capacité de mise en service.",
-            "Évaluer la réhabilitation du parc existant et le renouvellement selon coûts et risques.",
-            "Comparer disponibilité attendue, coût de cycle de vie, délais de pièces et effets sur les dessertes."
+            "Assimiler le nombre de locomotives remises en atelier au nombre de locomotives disponibles pour les dessertes.",
+            "Prioriser les ateliers, car leur remise à niveau suffit à sécuriser durablement la disponibilité locomotives.",
+            "Choisir selon garantie fournisseur et marque, considérées comme indicateurs directs des délais de pièces futurs.",
+            "Arbitrer sur la disponibilité attendue, le coût sur cycle de vie, les délais de pièces, l’effet dessertes."
           ],
           "answer": 3,
-          "explanation": "Les scénarios doivent relier dépenses, disponibilité, risques d’exécution et résultats de service.",
-          "commentRequired": false
+          "explanation": "Le discriminant est l’arbitrage orienté résultats et contraintes (disponibilité, cycle de vie, pièces, dessertes) plutôt que des indicateurs partiels ou commerciaux.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "L’entrée ou la remise en atelier ne démontre pas l’aptitude au service après travaux et essais.",
+            "Les ateliers aident, mais la disponibilité dépend aussi des pièces, du plan de maintenance, des délais, et du contenu des remises à niveau.",
+            "Garantie et marque n’établissent pas les délais de pièces ni la disponibilité; elles ne remplacent pas l’analyse logistique et cycle de vie.",
+            "Le conseil doit comparer des scénarios reliant performance (disponibilité), coût total dans le temps, contraintes d’approvisionnement et impact service (dessertes)."
+          ],
+          "discriminant": "Distinguer des critères d’arbitrage opérationnels (LCC, pièces, disponibilité, dessertes) d’indicateurs partiels (CAPEX, marque, ateliers seuls)."
         },
         {
           "id": "t3-D-M03",
@@ -1945,14 +2421,21 @@
           "type": "mcq",
           "prompt": "Une plateforme de réservation des opérations portuaires est proposée. Quel critère aide à distinguer modernisation utile et simple acquisition informatique ?",
           "choices": [
-            "Un pilote avec usagers, données de référence et seuil de décision pour extension.",
-            "Réduction mesurable des temps et erreurs, intégration aux systèmes et coût total de possession.",
-            "Compatibilité avec les systèmes et procédures réellement utilisés au terminal.",
-            "Plan de conduite du changement et responsable des données de référence."
+            "Retenir la solution la plus récente en technologie, car l’innovation garantit un saut de performance portuaire.",
+            "Mesurer la baisse des délais et erreurs, vérifier l’intégration aux systèmes, et estimer le coût total de possession.",
+            "Décider sur le prix d’achat et le délai de déploiement, car les coûts après mise en service sont marginaux.",
+            "Évaluer d’abord le nombre de fonctionnalités, car une couverture fonctionnelle élevée suffit à justifier l’acquisition."
           ],
           "answer": 1,
-          "explanation": "La valeur dépend de l’adoption, des interfaces et des coûts récurrents autant que de la technologie.",
-          "commentRequired": true
+          "explanation": "Une modernisation utile se juge par des gains opérationnels mesurés, l’intégration au SI (interfaces, données) et le coût complet sur la durée, plutôt que par la technologie ou le CAPEX seul.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "La nouveauté technologique ne prouve ni l’adoption opérationnelle ni la réduction des délais et erreurs.",
+            "Le critère distingue une modernisation opérationnelle d’un simple achat IT : gains prouvables, interopérabilité et coûts récurrents inclus.",
+            "Les licences, maintenance, support, évolutions et dépendances peuvent dominer le coût total de possession.",
+            "Un grand périmètre fonctionnel ne vaut pas sans intégration, qualité de données, adoption et gains mesurables."
+          ],
+          "discriminant": "Distinguer “caractéristiques du produit” (techno, fonctionnalités, prix d’achat) de “résultats vérifiables” (délais/erreurs, intégration, TCO)."
         },
         {
           "id": "t3-D-M04",
@@ -1960,14 +2443,21 @@
           "type": "mcq",
           "prompt": "Un partenaire offre une concession pour un service logistique intégré. Quel élément doit être comparé à l’intérêt immédiat du financement ?",
           "choices": [
-            "Les conséquences pour les usagers et les options de sortie en cas de défaillance.",
-            "Les engagements de service, les garanties de performance et les mécanismes de contrôle.",
-            "Les obligations de service, l’accès équitable, les risques transférés et les recettes nettes sur la durée.",
-            "Les recettes prévues, les coûts de contrôle et les risques de dépendance à long terme."
+            "Comparer surtout l’avance de financement et le volume d’investissements promis, car ils résument l’intérêt du montage.",
+            "Assimiler l’exclusivité d’accès accordée au partenaire à un engagement de performance contractuelle sur le service.",
+            "Comparer obligations de service, accès équitable, risques réellement transférés et recettes nettes sur la durée du contrat.",
+            "Comparer la solidité financière du partenaire, car un opérateur solide porte nécessairement les risques et protège les recettes."
           ],
           "answer": 2,
-          "explanation": "Le financement ne suffit pas à établir l’intérêt du partenariat; les obligations et risques de long terme comptent.",
-          "commentRequired": false
+          "explanation": "Le financement immédiat doit être mis en regard des obligations de service, de l’accès équitable, du transfert effectif des risques et des recettes nettes sur toute la durée.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Un fort financement initial peut être compensé par des obligations faibles, des risques mal placés ou des recettes nettes défavorables.",
+            "Une exclusivité organise un droit d’accès ; elle ne constitue pas un engagement mesurable de résultat du partenaire.",
+            "L’intérêt d’une concession dépasse le financement immédiat : il dépend des obligations, de l’équité d’accès, des risques et du bilan économique sur la durée.",
+            "La solidité du partenaire ne dit pas quels risques sont contractuellement transférés ni le niveau de recettes nettes attendues."
+          ],
+          "discriminant": "Savoir lire une concession comme un paquet “service + risques + économie long terme”, pas comme un simple apport de cash ou d’investissements."
         },
         {
           "id": "t3-D-M05",
@@ -1975,14 +2465,21 @@
           "type": "mcq",
           "prompt": "Une baisse durable du fret ferroviaire appelle une révision du plan commercial. Quelle base d’analyse est la plus pertinente ?",
           "choices": [
-            "Évaluer la contribution marginale par segment et les coûts nécessaires pour regagner le trafic.",
-            "Décomposer les flux par segment, motif, tarif, fiabilité et solutions concurrentes.",
-            "Interroger les clients perdus et relier leurs motifs aux données de service.",
-            "Définir des offres pilotes et mesurer volume, marge et fidélisation."
+            "Analyser le tonnage total mensuel et appliquer une baisse uniforme des tarifs pour relancer le volume.",
+            "Segmenter les flux par client et marchandise, analyser motifs de perte, tarifs, fiabilité et alternatives concurrentes.",
+            "S’appuyer sur la tendance macroéconomique globale, car elle explique l’essentiel des variations de fret ferroviaire.",
+            "Recalculer le coût moyen au kilomètre et augmenter la productivité, car le trafic suit principalement le coût interne."
           ],
           "answer": 1,
-          "explanation": "La segmentation permet de cibler les causes et les investissements commerciaux au lieu d’appliquer une réponse uniforme.",
-          "commentRequired": false
+          "explanation": "Une révision commerciale pertinente décompose la baisse par segments et explique les pertes via prix, qualité (fiabilité) et concurrence, afin de cibler actions et investissements.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le tonnage agrégé masque les segments en cause et peut conduire à subventionner des flux non sensibles au prix.",
+            "La baisse durable se comprend en identifiant précisément où, pourquoi et vers quoi le trafic se déplace, puis en reliant cela à l’offre.",
+            "Une baisse peut provenir de fiabilité, délais, concurrence routière/fluviale, structure de prix ou pertes de clients clés.",
+            "Le trafic dépend aussi de la qualité de service, des tarifs offerts, de la fiabilité et des solutions concurrentes."
+          ],
+          "discriminant": "Passer d’une lecture “agrégée interne” (tonnage, coûts moyens, macro) à une lecture “marché/clients” segmentée et causale."
         },
         {
           "id": "t3-D-M06",
@@ -1990,14 +2487,21 @@
           "type": "mcq",
           "prompt": "Un corridor port-fleuve-rail est pénalisé par des ruptures de charge. Quelle opportunité mérite une étude préalable ?",
           "choices": [
-            "Comparer l’optimisation des opérations existantes à l’extension d’infrastructures.",
-            "Mesurer les temps aux interfaces et le coût d’immobilisation par flux.",
-            "Établir des contrats de service communs avec responsabilités et indicateurs d’interface.",
-            "Coordonner les horaires et les échanges de données avant d’engager des capacités nouvelles."
+            "Acquérir d’abord des capacités supplémentaires de manutention, car la coordination n’a d’effet qu’après investissement.",
+            "Construire un nouveau site de transbordement, car une infrastructure additionnelle supprime la majorité des ruptures.",
+            "Renégocier les barèmes tarifaires intermodaux, car le prix est la cause principale des ruptures de charge.",
+            "Harmoniser horaires et échanges de données entre modes, puis comparer ces gains aux investissements de capacité."
           ],
           "answer": 3,
-          "explanation": "Les améliorations de coordination peuvent être comparées aux investissements de capacité sur leurs effets réels.",
-          "commentRequired": true
+          "explanation": "La bonne opportunité à étudier d’abord est la coordination des horaires et des données (planification, visibilité), à mettre en regard des investissements de capacité.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Une mauvaise synchronisation peut saturer artificiellement les points de rupture même avec plus de capacité installée.",
+            "Les ruptures peuvent venir de planification, fenêtres d’arrivée, information et interfaces, même avec de l’infrastructure.",
+            "Les ruptures de charge sont d’abord un problème d’enchaînement opérationnel et de données, pas uniquement de tarif.",
+            "Avant d’augmenter les capacités, une meilleure synchronisation et information peut réduire les ruptures de charge à moindre coût."
+          ],
+          "discriminant": "Distinguer causes “processus/coordination” des causes “capacité physique”, et savoir prioriser une étude à impact rapide."
         },
         {
           "id": "t3-D-M07",
@@ -2005,14 +2509,21 @@
           "type": "mcq",
           "prompt": "La diversification des recettes est envisagée dans des espaces portuaires sous-utilisés. Quel processus réduit le risque de mauvais choix ?",
           "choices": [
-            "Estimer les investissements complémentaires et les coûts de gestion avant décision.",
-            "Étudier une valorisation graduelle avec critères de rendement et de service.",
-            "Mettre en concurrence les usages après vérification des contraintes d’exploitation.",
-            "Inventorier droits et état des actifs, puis comparer usages, demande, coûts et compatibilité opérationnelle."
+            "Lancer un appel à projets auprès d’investisseurs, puis régulariser les droits d’occupation une fois le meilleur dossier choisi.",
+            "Sélectionner l’activité offrant le loyer le plus élevé, car la valeur locative reflète la meilleure valorisation du site.",
+            "Décider à partir d’un plan de surface disponible, car la disponibilité foncière détermine l’usage et la rentabilité.",
+            "Recenser droits et état des actifs, puis arbitrer entre usages selon demande, coûts et compatibilité opérationnelle."
           ],
           "answer": 3,
-          "explanation": "La valorisation doit reposer sur les droits, la demande et les coûts de remise en état et d’exploitation.",
-          "commentRequired": false
+          "explanation": "La diversification sur espaces portuaires sous-utilisés doit commencer par droits et état des actifs, puis une comparaison structurée des usages selon demande, coûts et compatibilité.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Sans clarifier droits et contraintes, les offres peuvent être inapplicables ou créer des conflits d’usage en exploitation.",
+            "Un loyer élevé peut ignorer les coûts de remise en état, les servitudes, et les incompatibilités avec l’exploitation portuaire.",
+            "La surface ne dit rien sur les droits, l’état réel, les investissements requis, ni les conflits avec les flux portuaires.",
+            "Le processus réduit le risque d’investir sur un usage juridiquement ou techniquement non faisable, ou économiquement non demandé."
+          ],
+          "discriminant": "Distinguer “opportunité foncière” d’un “actif exploitable” : droits + état + économie + compatibilité avec l’exploitation."
         },
         {
           "id": "t3-E-M01",
@@ -2020,14 +2531,21 @@
           "type": "mcq",
           "prompt": "Comment réviser une stratégie lorsque les hypothèses de trafic changent durablement ?",
           "choices": [
-            "Comparer scénarios révisés aux objectifs, capacités et ressources, puis documenter les choix.",
-            "Conserver les objectifs sans vérification.",
-            "Abandonner la stratégie sans analyser les causes.",
-            "Changer les indicateurs pour préserver les résultats."
+            "Mettre à jour les scénarios de trafic, les confronter aux objectifs, capacités et ressources, puis tracer et justifier les arbitrages.",
+            "Aligner d’abord les objectifs sur le nouveau trafic, car les objectifs doivent refléter la réalité constatée.",
+            "Actualiser les prévisions de trafic et garder la stratégie inchangée, car la stratégie reste valide à long terme.",
+            "Réviser le budget d’investissement à la baisse, car la stratégie découle du niveau de ressources financières disponibles."
           ],
           "answer": 0,
-          "explanation": "Une révision structurée relie objectifs et nouvelles hypothèses.",
-          "commentRequired": false
+          "explanation": "La révision stratégique attendue est structurée : scénarios révisés, confrontation aux objectifs/capacités/ressources, puis décisions tracées et justifiées.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Une révision robuste relie nouvelles hypothèses et décisions (priorités, séquencement, ressources) avec une documentation vérifiable.",
+            "Les objectifs peuvent rester ambitieux; la méthode attendue est de tester scénarios, capacités et ressources puis d’arbitrer.",
+            "Un changement durable d’hypothèses modifie la pertinence des investissements, du phasage et de l’allocation des ressources.",
+            "La stratégie se décide par scénarios et objectifs; le budget en est une traduction, pas l’unique base de révision."
+          ],
+          "discriminant": "Savoir distinguer une “mise à jour de chiffres” (trafic/budget) d’une “révision de stratégie” fondée sur scénarios et arbitrages documentés."
         },
         {
           "id": "t3-E-M02",
@@ -2035,14 +2553,21 @@
           "type": "mcq",
           "prompt": "Pourquoi examiner les effets sociaux d’un investissement en plus de ses recettes directes ?",
           "choices": [
-            "Pour ne plus analyser les recettes.",
-            "Limiter l’analyse aux recettes directes lorsque les coûts sociaux sont difficiles à chiffrer.",
-            "Le service public peut produire des effets non reflétés directement dans les recettes.",
-            "Pour remplacer l’analyse de risque."
+            "Parce que les règles comptables intègrent déjà les externalités sociales dans le chiffre d’affaires et la marge.",
+            "Parce que les effets sociaux se transforment nécessairement en recettes futures, donc ils équivalent à un cash-flow différé.",
+            "Parce que le service public produit des effets collectifs et externalités que les recettes directes ne captent pas entièrement.",
+            "Parce qu’une forte utilité sociale dispense d’analyser la rentabilité, l’investissement se justifiant par son impact collectif."
           ],
           "answer": 2,
-          "explanation": "Une évaluation peut inclure des effets collectifs en explicitant méthodes et incertitudes.",
-          "commentRequired": false
+          "explanation": "On examine les effets sociaux car une mission de service public peut générer des bénéfices non monétisés dans les recettes directes, à expliciter avec méthode et incertitudes.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La comptabilité mesure des flux monétaires; les externalités sociales exigent une évaluation spécifique, distincte des recettes.",
+            "Des effets sociaux peuvent exister sans se convertir en recettes pour l’opérateur; ils justifient une analyse séparée.",
+            "Certains bénéfices (accessibilité, sécurité, emplois indirects, fluidité) ne se reflètent pas mécaniquement dans le compte d’exploitation.",
+            "Utilité sociale et viabilité financière sont deux axes; l’impact social n’annule pas le besoin d’analyser soutenabilité et coûts."
+          ],
+          "discriminant": "Distinguer comptabilité financière (recettes) et évaluation socio-économique (externalités, bénéfices collectifs) sans les confondre."
         },
         {
           "id": "t3-E-M03",
@@ -2050,14 +2575,21 @@
           "type": "mcq",
           "prompt": "Quelle information renforce le suivi d’un plan stratégique ?",
           "choices": [
-            "Initiatives sans échéance.",
-            "Bilan final après achèvement seulement.",
-            "Cibles datées, source, responsable et explication des écarts.",
-            "Cibles modifiées sans historique."
+            "Un tableau de bord avec valeurs courantes, car l’actualisation fréquente suffit à piloter le plan stratégique.",
+            "Un rapport narratif d’avancement, car une description qualitative remplace la traçabilité des données et des écarts.",
+            "Des cibles datées avec source, responsable de suivi et justification documentée des écarts constatés.",
+            "Le suivi des dépenses engagées, car l’exécution budgétaire reflète directement l’exécution de la stratégie."
           ],
           "answer": 2,
-          "explanation": "Des cibles traçables permettent de mesurer et expliquer les résultats.",
-          "commentRequired": false
+          "explanation": "Le suivi d’un plan stratégique est renforcé par des cibles datées, des sources de données, des responsables clairement désignés et une explication des écarts.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Sans cibles datées et responsables, des valeurs “courantes” ne disent pas si la trajectoire est acceptable ni qui agit.",
+            "Le narratif ne garantit ni source, ni cible, ni explication structurée des écarts, donc le suivi est peu vérifiable.",
+            "Le suivi devient actionnable : on sait quoi viser, qui rend compte, sur quelles données, et pourquoi ça diverge.",
+            "Dépenser n’implique pas atteindre les résultats; la stratégie se suit par objectifs, indicateurs, cibles et analyse d’écarts."
+          ],
+          "discriminant": "Distinguer “suivre des moyens” (dépenses, activité) et “suivre des résultats” (cibles, écarts, responsabilités, données traçables)."
         },
         {
           "id": "t3-F-M01",
@@ -2065,14 +2597,21 @@
           "type": "mcq",
           "prompt": "Scénario fictif : un incident portuaire menace une marchandise et une équipe. Quelle priorité ?",
           "choices": [
-            "Diffuser une cause présumée.",
-            "Prioriser l’indemnisation commerciale.",
-            "Reprendre la manutention immédiatement.",
-            "Protéger les personnes et stabiliser la situation, puis préserver les preuves."
+            "Documenter d’abord la scène pour les réclamations, puis organiser l’évacuation et la sécurisation.",
+            "Notifier d’abord l’assureur et le client, puis décider des mesures de sécurité sur le terrain.",
+            "Isoler la zone pour l’enquête interne, puis traiter la menace sur la marchandise et l’équipe.",
+            "Mettre l’équipe en sécurité, stabiliser l’incident, puis préserver et tracer les preuves."
           ],
           "answer": 3,
-          "explanation": "La protection des personnes précède l’analyse des causes et réclamations.",
-          "commentRequired": true
+          "explanation": "Dans un incident portuaire, la séquence attendue est : sécurité des personnes, stabilisation/maîtrise de la situation, puis préservation des preuves (photos, scellés, relevés, chaînes de custody) pour l’analyse et les réclamations.",
+          "commentRequired": true,
+          "choiceExplanations": [
+            "Cette proposition inverse l’ordre des priorités : on ne retarde pas la mise en sécurité pour documenter.",
+            "La notification administrative ne doit pas conditionner les actions urgentes de protection et de stabilisation.",
+            "Isoler peut être utile, mais la stabilisation du danger et la protection des personnes restent prioritaires.",
+            "La priorité opérationnelle est la protection des personnes et la maîtrise du danger ; la préservation des preuves vient ensuite."
+          ],
+          "discriminant": "Distinguer l’urgence vitale (protéger et stabiliser) des objectifs post-incident (constater, analyser, réclamer)."
         },
         {
           "id": "t3-F-M02",
@@ -2080,14 +2619,21 @@
           "type": "mcq",
           "prompt": "Un projet fictif prévoit un dépassement budgétaire de 12 %. Que demander pour arbitrer ?",
           "choices": [
-            "Causes, engagements, coût à terminaison, options et effets sur le service.",
-            "Le pourcentage seul.",
-            "Des crédits supplémentaires sans alternatives.",
-            "Le coût initial présenté comme inchangé."
+            "Demander causes, engagements, coût à terminaison, options et impacts sur le service.",
+            "Ramener le dépassement apparent à zéro en prenant la prévision révisée comme budget de référence du projet.",
+            "Compenser la hausse du projet par une baisse d’amortissement prévisionnel de même montant dans le budget.",
+            "Assimiler les engagements non encore payés à des économies disponibles pour financer le dépassement annoncé."
           ],
           "answer": 0,
-          "explanation": "L’arbitrage exige coûts prévisionnels, engagements et conséquences des options.",
-          "commentRequired": false
+          "explanation": "Le discriminant est l’usage d’éléments décisionnels (EAC, engagements, scénarios, impacts) plutôt qu’un document de replanification ou un levier isolé.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Pour décider, il faut comprendre l’origine, ce qui est déjà engagé, la prévision à terminaison, les options possibles et leurs effets service.",
+            "Changer la base efface l’écart affiché, mais n’explique ni le surcoût par rapport au budget initial ni ses options de traitement.",
+            "Une baisse de charge calculée ne finance pas la hausse des dépenses du projet.",
+            "Les engagements non décaissés restent des obligations à intégrer au coût à terminaison, pas des économies."
+          ],
+          "discriminant": "Distinguer arbitrage (options + coût à terminaison + impacts) de rebaselining budgétaire ou de pilotage trésorerie."
         },
         {
           "id": "t3-F-M03",
@@ -2095,14 +2641,21 @@
           "type": "mcq",
           "prompt": "Une cyberattaque fictive interrompt les réservations. Quelle réponse de gouvernance convient ?",
           "choices": [
-            "Modifier directement les serveurs au CA.",
-            "Suivre gestion d’incident, continuité, notifications applicables, impacts et actions.",
-            "Publier des détails non vérifiés.",
-            "Suspendre les contrôles d’accès."
+            "Prendre la main sur la réponse technique, choisir l’outil de remédiation et valider les configurations de sécurité.",
+            "Faire suivre la gestion d’incident et la continuité, vérifier les notifications applicables, et demander impacts et actions.",
+            "Attendre le rapport forensique final avant d’activer la continuité et la communication de crise.",
+            "Se concentrer sur la remise en service, en reportant les notifications et la cartographie des impacts."
           ],
           "answer": 1,
-          "explanation": "Le CA suit la réponse exécutive sans se substituer aux équipes techniques.",
-          "commentRequired": false
+          "explanation": "En cas de cyberattaque interrompant un service critique, le CA doit demander et suivre : gestion d’incident structurée, continuité d’activité, obligations de notification applicables, évaluation d’impacts (opérationnels, financiers, réputationnels) et plan d’actions. Il ne remplace pas la cellule de crise technique.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "Le CA ne se substitue pas aux équipes techniques ; il s’assure que l’exécutif gère l’incident et rend compte.",
+            "Le CA exerce un suivi de gouvernance : continuité, conformité de notification, impacts et plan d’actions, sans pilotage technique direct.",
+            "La continuité et les communications nécessaires se déclenchent pendant l’incident, sans attendre la fin des analyses forensiques.",
+            "La gouvernance exige aussi d’évaluer les impacts, traiter les obligations de notification et suivre les actions correctives."
+          ],
+          "discriminant": "Distinguer le rôle de gouvernance (superviser, exiger reporting, s’assurer de la continuité/conformité) du rôle d’exécution (investigation et remédiation techniques)."
         },
         {
           "id": "t3-F-M04",
@@ -2110,14 +2663,21 @@
           "type": "mcq",
           "prompt": "Un retard fictif vient d’une rupture de correspondance rail-port. Quelle action prévient la répétition ?",
           "choices": [
-            "Pénaliser automatiquement le dernier transporteur.",
-            "Reconstituer horaires et interfaces, identifier causes et suivre un plan d’action.",
-            "Supprimer la correspondance des indicateurs.",
-            "Modifier l’horaire sans analyse."
+            "Renforcer les sanctions et la remontée de rapports pour réduire les retards d’interface.",
+            "Reconstituer horaires et interfaces, identifier les causes, puis piloter un plan d’action suivi.",
+            "Ajouter des ressources de transport et des marges horaires sans revoir les interfaces rail-port.",
+            "Renégocier les engagements contractuels avec les clients pour sécuriser la correspondance rail-port."
           ],
           "answer": 1,
-          "explanation": "L’analyse de chaîne identifie les causes d’interface et les corrections utiles.",
-          "commentRequired": false
+          "explanation": "Une rupture de correspondance rail-port se traite durablement par une reconstitution factuelle (horaires réels, handover, points d’attente), l’identification de causes (processus, coordination, capacité, information) et un plan d’action avec responsables, jalons et suivi.",
+          "commentRequired": false,
+          "choiceExplanations": [
+            "La répétition vient souvent de causes d’interface (horaires, processus, responsabilités) qu’un dispositif disciplinaire ne corrige pas.",
+            "La prévention passe par l’analyse de chaîne (interfaces rail-port) et la mise en œuvre suivie de corrections.",
+            "Augmenter les marges peut déplacer le problème ; la prévention exige d’identifier et corriger les causes d’interface.",
+            "Adapter un contrat ne traite pas les causes opérationnelles d’interface qui produisent la rupture de correspondance."
+          ],
+          "discriminant": "Distinguer une action sur les causes d’interface (analyse + corrections + suivi) d’actions de façade (sanctions, ressources, contrat)."
         },
         {
           "id": "t3-A-S01",

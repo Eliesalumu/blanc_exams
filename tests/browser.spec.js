@@ -13,6 +13,10 @@ const dismissReminder=async page=>{await expect(page.locator('#main h1')).toBeVi
 const openApp=async page=>{await page.goto('/');await dismissReminder(page);};
 const start=async page=>{await openApp(page);await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
 
+test.describe('Rappel activé pour le contrôle',()=>{
+// Route the mocked configuration through Playwright on every reload.
+// Other tests retain service workers, including the offline scenario.
+test.use({serviceWorkers:'block'});
 test('Rappel d’échéance calculé, renouvelé au rechargement et absent en examen technique',async({page})=>{
  // The reminder is disabled in production; retain coverage of its reactivation.
  await page.route('**/src/config.js',route=>route.fulfill({contentType:'text/javascript',body:fs.readFileSync(new URL('../src/config.js',import.meta.url),'utf8').replace('SUBSCRIPTION_REMINDER_ENABLED = false','SUBSCRIPTION_REMINDER_ENABLED = true')}));
@@ -32,6 +36,7 @@ test('Rappel d’échéance calculé, renouvelé au rechargement et absent en ex
  await expect(page.locator('#timer')).toBeVisible();
  await expect(page.locator('#modal[open]')).toHaveCount(0);
  await expect(page.locator('#main')).toContainText('Question 1');
+});
 });
 test('Réponse longue et commentaire sont autosauvegardés et les commentaires bloquent l’envoi',async({page})=>{
  test.setTimeout(120000);
@@ -102,7 +107,7 @@ test('Affichage desktop, tablette, mobile ; navigation et figures',async({page})
     if(await page.locator('.question-figure').count())break;
     await page.locator('.choice').first().click();await page.locator('[data-action="review-check"]').click();await page.locator('[data-action="review-next"]').click();
   }
-  await expect(page.locator('.question-figure img')).toBeVisible();expect(await page.locator('.question-figure img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBeTruthy();
+  await expect(page.locator('.question-figure img')).toBeVisible();await expect.poll(()=>page.locator('.question-figure img').evaluate(img=>img.complete&&img.naturalWidth>0)).toBeTruthy();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.screenshot({path:'test-results/figure-mobile.png',fullPage:true});
   expect(errors).toEqual([]);
 });

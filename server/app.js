@@ -4,7 +4,7 @@ import { createHmac, createHash, timingSafeEqual, randomBytes } from 'node:crypt
 import OpenAI from 'openai';
 import { answerRequest, examRequest, chatRequest, speechRequest } from './schemas.js';
 import { createEvaluator } from './evaluator.js';
-import { TECHNICAL_SECTIONS } from '../src/technicalExam.js';
+import { TECHNICAL_SECTIONS,questionForOptionsVersion } from '../src/technicalExam.js';
 import {verifiedContext,legalCaution} from './verified-context.js';
 import {publicAiError} from './errors.js';
 
@@ -13,6 +13,7 @@ export const bank = () => [...read('technical-exams.json'),...read('company-exam
 const fail = (status, message) => Object.assign(new Error(message),{status,safe:true});
 export function createApi({env=process.env,client,exams=bank(),now=Date.now}={}) {
   const legacyQuestions=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url),'utf8'));
+  const previousOptions=JSON.parse(fs.readFileSync(new URL('../data/technical-options-previous.json',import.meta.url),'utf8')).questions;
   const model=env.OPENAI_MODEL||'gpt-4.1-mini';
   const origins=new Set((env.ALLOWED_ORIGINS||'http://127.0.0.1:4173,http://localhost:4173').split(',').map(s=>s.trim()));
   if(env.NODE_ENV==='production'&&!env.ALLOWED_ORIGINS)throw new Error('ALLOWED_ORIGINS required');
@@ -41,7 +42,7 @@ export function createApi({env=process.env,client,exams=bank(),now=Date.now}={})
     calls++;sessions.set(id,s+1);ips.set(ip,i+1);
   }
   function canonical(item) {
-    const exam=exams.find(e=>e.id===item.examId),question=exam?.questions.find(q=>q.id===item.questionId);
+    const exam=exams.find(e=>e.id===item.examId),question=questionForOptionsVersion(exam?.questions.find(q=>q.id===item.questionId),item.optionsVersion,previousOptions);
     if(!exam||!question||question.type!==(item.kind==='comment'?'mcq':'short')||(item.kind==='comment'&&!question.commentRequired))throw fail(400,'Question inconnue ou type incompatible.');
     return {questionId:question.id,company:exam.company||'ONATRA',role:'PCA',section:TECHNICAL_SECTIONS[question.section].label,
       question:question.prompt,caseData:question.caseData||'Les chiffres des cas sont hypothétiques.',
@@ -104,7 +105,7 @@ export function createApi({env=process.env,client,exams=bank(),now=Date.now}={})
           const request=chatRequest.parse(raw);
           if(request.context.examActive)throw fail(409,'Assistant désactivé pendant une simulation.');
           if(request.messages.at(-1).role!=='user')throw fail(400,'Message utilisateur requis.');
-          const exam=exams.find(e=>e.id===request.context.examId),question=exam?.questions.find(q=>q.id===request.context.questionId)||(!request.context.examId?legacyQuestions.find(q=>q.id===request.context.questionId):null);
+          const exam=exams.find(e=>e.id===request.context.examId),question=questionForOptionsVersion(exam?.questions.find(q=>q.id===request.context.questionId),request.context.optionsVersion,previousOptions)||(!request.context.examId?legacyQuestions.find(q=>q.id===request.context.questionId):null);
           if(exam&&(exam.company||'ONATRA')!==request.context.company)throw fail(400,'Contexte incohérent.');
           reserve(id,ip);
           const options={model,store:false,max_output_tokens:number('AI_CHAT_MAX_TOKENS',700),

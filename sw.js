@@ -1,4 +1,4 @@
-const CACHE = 'cap70-2026-11-05-renewal-disabled-v5';
+const CACHE = 'cap70-2026-11-05-reviewed-options-v6';
 const FILES = [
   './', './index.html', './assets/favicon.svg', './src/app.js', './src/config.js', './src/technicalExam.js',
   './src/timer.js', './src/scoring.js', './src/exam.js', './src/storage.js', './src/subscription.js',
@@ -6,6 +6,7 @@ const FILES = [
   './src/ai.js', './src/api-config.js', './src/tutor.js', './src/technicalUI.js', './data/company-exams.json',
   './src/speech.js',
   './data/questions.json', './data/exam-plan.json', './data/technical-exams.json',
+  './data/technical-options-previous.json',
   ...Array.from({length:10},(_,i)=>`./assets/psychotechnique/PCA-NU-${String(i+1).padStart(3,'0')}.svg`),
 ];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));

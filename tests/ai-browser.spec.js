@@ -5,15 +5,33 @@ const exams=JSON.parse(fs.readFileSync(new URL('../data/company-exams.json',impo
 const key='cap70.technical.v1';
 const value=(id)=>({questionId:id,scoreOutOf10:8,appreciation:'Bonne réponse',correctElements:['Supervision bien comprise'],missingElements:['Préciser le suivi'],errors:[],improvedAnswer:'Le conseil supervise le plan de la DG et suit les indicateurs.',keyTakeaway:'Suivre les résultats sans diriger les opérations.',needsHumanReview:false});
 const open=async page=>{await page.goto('/');await expect(page.locator('#main h1')).toBeVisible();const close=page.locator('[data-action="subscription-close"]');if(await close.isVisible())await close.click();};
-async function completed(page,exam){
+async function completed(page,exam,optionsVersion='options-2026-11-05-v1'){
   await open(page);
-  await page.evaluate(({exam,key})=>{
+  await page.evaluate(({exam,key,optionsVersion})=>{
     const now=Date.now(),attempt={id:'ai-browser-copy',examId:exam.id,questionIds:exam.questions.map(q=>q.id),startedAt:now,deadline:now+3600000,submittedAt:now,index:0,marked:[],answers:Object.fromEntries(exam.questions.filter(q=>q.type==='mcq').map(q=>[q.id,q.answer])),written:Object.fromEntries(exam.questions.filter(q=>q.type==='short').map(q=>[q.id,q.modelAnswer])),comments:Object.fromEntries(exam.questions.filter(q=>q.commentRequired).map(q=>[q.id,'Le conseil supervise la DG et demande des preuves.'])),ratings:{},evaluations:{},commentEvaluations:{},result:{mcqScore:40,total:null}};
+    if(optionsVersion!=='legacy')attempt.optionsVersion=optionsVersion;
     localStorage.setItem(key,JSON.stringify({active:null,attempts:[attempt]}));
-  },{exam,key});
+  },{exam,key,optionsVersion});
   await page.reload();await expect(page.locator('#main h1')).toBeVisible();const close=page.locator('[data-action="subscription-close"]');if(await close.isVisible())await close.click();
   await page.locator('[data-action="technical-result:ai-browser-copy"]').click();
 }
+
+test('QCM révisés : raisons par choix dans les nouvelles copies et texte historique dans les anciennes',async({page})=>{
+  await page.route('**/api/**',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:'Indisponible'})}));
+  const exam=exams[0],q=exam.questions.find(q=>q.type==='mcq');
+  const old=JSON.parse(fs.readFileSync(new URL('../data/technical-options-previous.json',import.meta.url),'utf8')).questions[q.id];
+  await completed(page,exam,'legacy');
+  let card=page.locator(`[data-review-question="${q.id}"]`);
+  await card.locator('summary').click();
+  await expect(card).toContainText(old.choices[q.answer]);
+  await expect(card.locator('.choice-rationale')).toHaveCount(0);
+  await completed(page,exam);
+  card=page.locator(`[data-review-question="${q.id}"]`);
+  await card.locator('summary').click();
+  await expect(card).toContainText(q.choices[q.answer]);
+  await expect(card.locator('.choice-rationale li')).toHaveCount(4);
+  await expect(card.locator('.choice-rationale')).toContainText(q.discriminant);
+});
 test('IA progressive : conservation partielle, relance sans doublons, calcul /100 et rechargement',async({page})=>{
   const counts={},exam=exams[0];let failed=false;
   await page.route('**/api/**',async route=>{

@@ -1,4 +1,15 @@
 export const TECHNICAL_STORAGE_KEY = 'cap70.technical.v1';
+export const OPTIONS_VERSION = 'options-2026-11-05-v1';
+export function questionForOptionsVersion(question,version,previous){
+  const old=version==='legacy'&&previous?.[question?.id];
+  if(!old)return question;
+  const {choiceExplanations,discriminant,...rest}=question;
+  return {...rest,...old};
+}
+export function examForAttempt(exam,attempt){
+  if(!exam||!attempt||attempt.optionsVersion===OPTIONS_VERSION)return exam;
+  return {...exam,questions:exam.questions.map(q=>questionForOptionsVersion(q,'legacy',exam.previousOptions))};
+}
 export const TECHNICAL_SECTIONS = {
   A: { label: 'Connaissance de l’entreprise et du secteur', points: 15, mcq: 9, short: 1 },
   B: { label: 'Vision stratégique et opportunités', points: 15, mcq: 9, short: 1 },
@@ -9,6 +20,9 @@ export const TECHNICAL_SECTIONS = {
 };
 export const TECHNICAL_DURATION = 60 * 60 * 1000;
 const questionKey = text => String(text).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+// A minus sign changes a numerical assertion. Treat "-1" and "moins 1"
+// alike, while preserving the distinction between "1" and "-1".
+const choiceKey = text => questionKey(String(text).trim().replace(/[−–]/g,'-').replace(/^-\s*(?=\d)/,'moins '));
 
 export function validateTechnicalExams(data) {
   if (!Array.isArray(data?.exams) || !data.exams.length) throw new Error('Les simulations techniques sont requises.');
@@ -25,7 +39,7 @@ export function validateTechnicalExams(data) {
       if (!prompt || prompts.has(prompt)) throw new Error(`Question répétée ou vide : ${question.id}`);
       prompts.add(prompt);
       if (question.type === 'mcq') {
-        if (!Array.isArray(question.choices) || question.choices.length !== 4 || new Set(question.choices.map(questionKey)).size !== 4 || !Number.isInteger(question.answer) || question.answer < 0 || question.answer > 3 || !question.explanation || typeof question.commentRequired !== 'boolean') throw new Error(`QCM invalide : ${question.id}`);
+        if (!Array.isArray(question.choices) || question.choices.length !== 4 || new Set(question.choices.map(choiceKey)).size !== 4 || !Number.isInteger(question.answer) || question.answer < 0 || question.answer > 3 || !question.explanation || typeof question.commentRequired !== 'boolean') throw new Error(`QCM invalide : ${question.id}`);
         answerPositions[question.answer]++;
         if (question.commentRequired) commentCount++;
         sections[question.section].mcq++;
@@ -48,12 +62,12 @@ export function validateTechnicalExams(data) {
 }
 
 export async function loadTechnicalExams() {
-  const groups=await Promise.all(['technical-exams.json','company-exams.json'].map(async name=>{
+  const [previous,...groups]=await Promise.all(['technical-options-previous.json','technical-exams.json','company-exams.json'].map(async name=>{
     const response=await fetch('./data/'+name);
     if(!response.ok)throw new Error('Les simulations techniques sont indisponibles.');
-    return (await response.json()).exams;
+    return response.json();
   }));
-  return validateTechnicalExams({exams:groups.flat()});
+  return validateTechnicalExams({exams:groups.flatMap(group=>group.exams)}).map(exam=>({...exam,previousOptions:previous.questions}));
 }
 
 export function emptyTechnicalProgress() {
@@ -90,6 +104,7 @@ export function createTechnicalAttempt(exam, now = Date.now()) {
   return {
     id: globalThis.crypto?.randomUUID?.() ?? `${exam.id}-${now}`,
     examId: exam.id,
+    optionsVersion: OPTIONS_VERSION,
     questionIds: exam.questions.map(question => question.id),
     answers: {}, written: {}, comments: {}, ratings: {}, evaluations: {}, commentEvaluations: {}, marked: [], index: 0,
     startedAt: now, deadline: now + TECHNICAL_DURATION,

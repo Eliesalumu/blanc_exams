@@ -1,6 +1,6 @@
 import {apiRequest,isEvaluation,unavailable,tutorAllowed} from './ai.js';
 import {createTutor} from './tutor.js';
-import {companyCards,resultsHTML,technicalHistory} from './technicalUI.js';
+import {companyCards,resultsHTML,technicalHistory,choiceRationaleHTML} from './technicalUI.js';
 import { CATEGORIES, DURATION, BANK_VERSION, SUBSCRIPTION_EXPIRY, SUBSCRIPTION_REMINDER_ENABLED, escapeHTML as h, percent, fmt } from './config.js';
 import { loadQuestions } from './questionLoader.js';
 import { loadProgress, saveProgress } from './storage.js';
@@ -8,7 +8,7 @@ import { createAttempt, setAnswer, toggleMark, completeAttempt, shuffle } from '
 import { scoreExam } from './scoring.js';
 import { analyze } from './analytics.js';
 import { formatTime, remaining, startClock } from './timer.js';
-import { TECHNICAL_SECTIONS, loadTechnicalExams, loadTechnicalProgress, saveTechnicalProgress, createTechnicalAttempt, scoreTechnicalAttempt, missingRequiredComments } from './technicalExam.js';
+import { TECHNICAL_SECTIONS, OPTIONS_VERSION, examForAttempt, loadTechnicalExams, loadTechnicalProgress, saveTechnicalProgress, createTechnicalAttempt, scoreTechnicalAttempt, missingRequiredComments } from './technicalExam.js';
 import { daysUntilExpiry } from './subscription.js';
 
 const app = document.querySelector('#app'), modal = document.querySelector('#modal');
@@ -31,11 +31,12 @@ function navigate(target) { page=target; review=null; render(); window.scrollTo(
 let tutorQuestionId=null,tutorCompany='ONATRA',technicalReview=null;
 const aiBusy=new Set(),aiErrors=new Map();
 function tutorContext(){
+  const revision=page==='technical-revision'?technicalReview:null;
   const attempt=technicalProgress?.attempts.find(a=>a.id===technicalResultId)||technicalProgress?.attempts.find(a=>a.examId===technicalResultId);
-  const exam=technicalReview?.exam||technicalExams?.find(e=>e.id===attempt?.examId)||technicalExams?.find(e=>e.id===technicalResultId);
-  const questionId=tutorQuestionId||technicalReview?.question?.id||(page==='revision'&&review?review.ids[review.index]:null);
+  const exam=revision?.exam||technicalExams?.find(e=>e.id===attempt?.examId)||technicalExams?.find(e=>e.id===technicalResultId);
+  const questionId=tutorQuestionId||revision?.question?.id||(page==='revision'&&review?review.ids[review.index]:null);
   const context={company:exam?.company||tutorCompany,examActive:!!(progress?.active||technicalProgress?.active),frequentErrors:[]};
-  if(exam)context.examId=exam.id;
+  if(exam){context.examId=exam.id;context.optionsVersion=attempt&&!revision?(attempt.optionsVersion||'legacy'):OPTIONS_VERSION;}
   if(questionId){context.questionId=questionId;const evaluation=attempt?.evaluations?.[questionId]||attempt?.commentEvaluations?.[questionId];if(evaluation){const {evaluatedAt,...correction}=evaluation;context.correction=correction;}context.candidateAnswer=attempt?.written?.[questionId]||attempt?.comments?.[questionId]||'';}
   if(attempt)context.frequentErrors=exam.questions.filter(q=>q.type==='mcq'&&attempt.answers[q.id]!==q.answer).slice(0,6).map(q=>q.prompt.slice(0,200));
   else if(technicalProgress&&technicalExams)context.frequentErrors=technicalProgress.attempts.filter(a=>(technicalExam(a.examId)?.company||'ONATRA')===context.company).flatMap(a=>technicalExam(a.examId).questions.filter(q=>q.type==='mcq'&&a.answers[q.id]!==q.answer).map(q=>q.prompt.slice(0,200))).slice(0,6);
@@ -47,7 +48,7 @@ app.addEventListener('toggle',e=>{const id=e.target.dataset.reviewQuestion;if(id
 async function evaluateTechnical(id){
   const attempt=technicalProgress.attempts.find(a=>a.id===id);if(!attempt||aiBusy.has(id))return;
   if(technicalProgress.active||progress.active){aiErrors.set(id,'Terminez la simulation en cours avant de lancer une correction IA.');if(page==='technical-results')technicalResults();return;}
-  const exam=technicalExam(attempt.examId);aiBusy.add(id);aiErrors.delete(id);
+  const exam=technicalExam(attempt.examId,attempt);aiBusy.add(id);aiErrors.delete(id);
   delete attempt.aiError;
   if(page==='technical-results')technicalResults();
   let errors=false;
@@ -58,7 +59,7 @@ async function evaluateTechnical(id){
       const field=q.type==='short'?'evaluations':'commentEvaluations';
       if(isEvaluation(attempt[field]?.[q.id],q.id))continue;
       try{
-        const result=await apiRequest('/api/evaluate-answer',{examId:exam.id,questionId:q.id,kind:q.type==='short'?'short':'comment',answer:(q.type==='short'?attempt.written[q.id]:attempt.comments[q.id])||'',selectedChoice:attempt.answers[q.id]??null});
+        const result=await apiRequest('/api/evaluate-answer',{examId:exam.id,optionsVersion:attempt.optionsVersion||'legacy',questionId:q.id,kind:q.type==='short'?'short':'comment',answer:(q.type==='short'?attempt.written[q.id]:attempt.comments[q.id])||'',selectedChoice:attempt.answers[q.id]??null});
         const evaluation=result.evaluations?.[0];if(!isEvaluation(evaluation,q.id))throw new Error(unavailable);
         attempt[field]??={};attempt[field][q.id]={...evaluation,evaluatedAt:new Date().toISOString()};
         attempt.result=scoreTechnicalAttempt(exam,attempt);persistTechnical();
@@ -85,9 +86,9 @@ function dashboard() {
   ${companyCards(technicalExams,technicalProgress)}
   <div class="dashboard-lower"><section class="panel"><div class="section-heading"><h2>Vos repères par matière</h2><span class="subtle-label">Toutes vos tentatives</span></div>${catBars}</section><section class="panel revision-callout"><span class="outlined-icon">${icon('book',26)}</span><span class="eyebrow">PROGRESSER ENTRE DEUX TESTS</span><h2>La bonne réponse,<br>c’est aussi la comprendre.</h2><p>175 questions supplémentaires, des explications immédiates et un entraînement ciblé sur vos erreurs.</p>${button('Explorer la banque '+icon('arrow'),'nav:revision','text-button')}<div class="callout-bottom">500 questions originales <span>·</span> 6 domaines techniques</div></section></div><div class="info-strip">${icon('info',19)}<p><strong>Le seuil exact : 46 bonnes réponses.</strong> 45/65 = 69,23 % ; 46/65 = 70,77 %. Chaque bonne réponse compte.</p></div>`);
 }
-const technicalExam = id => technicalExams.find(exam=>exam.id===id);
+const technicalExam = (id,attempt=null) => examForAttempt(technicalExams.find(exam=>exam.id===id),attempt);
 const activeTechnicalAttempt = () => technicalProgress.active;
-const technicalQuestion = attempt => technicalExam(attempt.examId)?.questions.find(question=>question.id===attempt.questionIds[attempt.index]);
+const technicalQuestion = attempt => technicalExam(attempt.examId,attempt)?.questions.find(question=>question.id===attempt.questionIds[attempt.index]);
 function technicalInstructions(id) {
   const exam=technicalExam(id),attempt=technicalProgress.attempts.find(item=>item.examId===id),active=technicalProgress.active;
   if(!exam)return navigate('dashboard');
@@ -96,7 +97,7 @@ function technicalInstructions(id) {
 function technicalExamScreen() {
   const attempt=activeTechnicalAttempt();
   if(!attempt)return navigate('dashboard');
-  const exam=technicalExam(attempt.examId),question=technicalQuestion(attempt);
+  const exam=technicalExam(attempt.examId,attempt),question=technicalQuestion(attempt);
   if(!question)throw new Error('Question technique de la sauvegarde introuvable.');
   const answered=exam.questions.filter(item=>item.type==='mcq'?Number.isInteger(attempt.answers[item.id]):Boolean(attempt.written[item.id]?.trim())).length;
   const missingComments=missingRequiredComments(exam,attempt).length;
@@ -108,7 +109,7 @@ function technicalExamScreen() {
 function technicalResults() {
   const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId);
   if(!attempt)return navigate('dashboard');
-  const exam=technicalExam(attempt.examId);
+  const exam=technicalExam(attempt.examId,attempt);
   frame(heading('RÉSULTAT PÉDAGOGIQUE',h(exam.title),'Copie et évaluations conservées sur cet appareil.',button('← Tableau de bord','nav:dashboard','btn outline'))+resultsHTML(exam,attempt,{busy:aiBusy.has(attempt.id),error:aiErrors.get(attempt.id)||attempt.aiError})+button('Réinitialiser cette tentative','technical-reset:'+exam.id,'btn danger'));
 }
 function technicalRevision(company,selectedIds=null){
@@ -118,13 +119,13 @@ function technicalRevision(company,selectedIds=null){
 }
 function technicalRevisionScreen(){
   const r=technicalReview,q=r.question;
-  frame(heading('RÉVISION '+r.company,h(r.exam.title),'Révision libre, sans chronomètre.',button('Retour','nav:dashboard','btn outline'))+`<section class="panel narrow"><p>${r.index+1}/${r.questions.length} · ${q.section} — ${TECHNICAL_SECTIONS[q.section].label}</p><h2>${h(q.prompt)}</h2>${q.type==='mcq'?`<ol type="A">${q.choices.map(c=>`<li>${h(c)}</li>`).join('')}</ol>`:''}<details data-revision-correction><summary>Consulter la correction</summary><p>${h(q.type==='mcq'?q.choices[q.answer]+' — '+q.explanation:q.modelAnswer)}</p></details><div class="question-actions">${button('Précédente','technical-review-prev','btn outline',r.index?'':'disabled')}${button('Suivante','technical-review-next','btn primary',r.index<r.questions.length-1?'':'disabled')}</div></section>`);
+  frame(heading('RÉVISION '+r.company,h(r.exam.title),'Révision libre, sans chronomètre.',button('Retour','nav:dashboard','btn outline'))+`<section class="panel narrow"><p>${r.index+1}/${r.questions.length} · ${q.section} — ${TECHNICAL_SECTIONS[q.section].label}</p><h2>${h(q.prompt)}</h2>${q.type==='mcq'?`<ol type="A">${q.choices.map(c=>`<li>${h(c)}</li>`).join('')}</ol>`:''}<details data-revision-correction><summary>Consulter la correction</summary><p>${h(q.type==='mcq'?q.choices[q.answer]+' — '+q.explanation:q.modelAnswer)}</p>${q.type==='mcq'?choiceRationaleHTML(q):''}</details><div class="question-actions">${button('Précédente','technical-review-prev','btn outline',r.index?'':'disabled')}${button('Suivante','technical-review-next','btn primary',r.index<r.questions.length-1?'':'disabled')}</div></section>`);
 }
 function submitTechnical(automatic=false) {
   const attempt=activeTechnicalAttempt();
   if(!attempt)return;
   if(modal.open)modal.close();
-  const exam=technicalExam(attempt.examId);
+  const exam=technicalExam(attempt.examId,attempt);
   const completed={...attempt,submittedAt:Math.min(Date.now(),attempt.deadline),automatic,result:scoreTechnicalAttempt(exam,attempt)};
   technicalProgress.attempts=[...technicalProgress.attempts.filter(item=>item.examId!==attempt.examId),completed];
   technicalProgress.active=null;stopTechnicalClock?.();stopTechnicalClock=null;persistTechnical();technicalResultId=completed.id;page='technical-results';render();window.scrollTo(0,0);
@@ -250,7 +251,7 @@ app.addEventListener('click',async e=>{
   if(action==='technical-evaluate'){void evaluateTechnical(value);return;}
   if(action==='tutor-summary'||action==='technical-review-weak'){
     const attempt=technicalProgress.attempts.find(a=>a.id===value);if(!attempt)return;
-    const exam=technicalExam(attempt.examId),score=scoreTechnicalAttempt(exam,attempt);
+    const exam=technicalExam(attempt.examId,attempt),score=scoreTechnicalAttempt(exam,attempt);
     if(action==='technical-review-weak'){
       const sections=Object.entries(score.sections).filter(([,s])=>s.score!==null&&s.score/s.max<.7).map(([key])=>key);
       const ids=new Set(exam.questions.filter(q=>sections.includes(q.section)||(q.type==='mcq'&&attempt.answers[q.id]!==q.answer)||(q.type==='short'&&attempt.evaluations?.[q.id]?.scoreOutOf10<7)).map(q=>q.id));
@@ -292,7 +293,7 @@ app.addEventListener('click',async e=>{
     attempt.marked=attempt.marked.includes(id)?attempt.marked.filter(item=>item!==id):[...attempt.marked,id];persistTechnical();technicalExamScreen();
   }else if(action==='technical-finish'){
     const attempt=activeTechnicalAttempt();if(!attempt)return;
-    const exam=technicalExam(attempt.examId),missing=missingRequiredComments(exam,attempt)[0];
+    const exam=technicalExam(attempt.examId,attempt),missing=missingRequiredComments(exam,attempt)[0];
     if(missing){attempt.index=attempt.questionIds.indexOf(missing.id);persistTechnical();technicalExamScreen();toast('Ajoutez une justification à chaque question marquée « Réponse à commenter » avant de soumettre.');return;}
     const unanswered=exam.questions.filter(question=>question.type==='mcq'?!Number.isInteger(attempt.answers[question.id]):!attempt.written[question.id]?.trim()).length;
     confirmDialog('Terminer votre simulation technique ?',`Il reste ${unanswered} question(s) sans réponse et ${attempt.marked.length} question(s) marquée(s) à revoir. Les commentaires obligatoires sont renseignés. Après l’envoi, la copie ne pourra plus être modifiée.`,'Terminer quand même',()=>submitTechnical(false));
@@ -325,7 +326,7 @@ app.addEventListener('click',async e=>{
 app.addEventListener('change',e=>{
   if(e.target.name==='answer'){const a=progress.active;if(!a)return;if(!setAnswer(a,a.ids[a.index],Number(e.target.value))){submit(true);return;}persist();const focused=Number(e.target.value);showExam();document.querySelector(`input[name="answer"][value="${focused}"]`)?.focus();}
   else if(e.target.name==='technical-answer'){const attempt=activeTechnicalAttempt();if(!attempt)return;attempt.answers[attempt.questionIds[attempt.index]]=Number(e.target.value);persistTechnical();technicalExamScreen();document.querySelector(`input[name="technical-answer"][value="${e.target.value}"]`)?.focus();}
-  else if(e.target.dataset.technicalRating){const attempt=technicalProgress.attempts.find(item=>item.id===technicalResultId)||technicalProgress.attempts.find(item=>item.examId===technicalResultId);if(!attempt)return;const value=e.target.value;if(value==='')delete attempt.ratings[e.target.dataset.technicalRating];else attempt.ratings[e.target.dataset.technicalRating]=Number(value);attempt.result=scoreTechnicalAttempt(technicalExam(attempt.examId),attempt);persistTechnical();technicalResults();}
+  else if(e.target.dataset.technicalRating){const attempt=technicalProgress.attempts.find(item=>item.id===technicalResultId)||technicalProgress.attempts.find(item=>item.examId===technicalResultId);if(!attempt)return;const value=e.target.value;if(value==='')delete attempt.ratings[e.target.dataset.technicalRating];else attempt.ratings[e.target.dataset.technicalRating]=Number(value);attempt.result=scoreTechnicalAttempt(technicalExam(attempt.examId,attempt),attempt);persistTechnical();technicalResults();}
   else if(e.target.name==='review-answer'){review.answers[review.ids[review.index]]=Number(e.target.value);const focused=e.target.value;render();document.querySelector(`input[name="review-answer"][value="${focused}"]`)?.focus();}
   else if(e.target.id==='correction-filter'){correctionFilter=e.target.value;render();}
   else if(e.target.id==='category-filter'){categoryFilter=e.target.value;render();}

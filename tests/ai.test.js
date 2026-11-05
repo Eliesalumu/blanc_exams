@@ -113,6 +113,20 @@ test('API : contexte canonique, correction de commentaire séparée, pas de conf
   res=await send('/api/evaluate-answer',{...request,questionId:mcq.id,kind:'comment',selectedChoice:(mcq.answer+1)%4},token);
   assert.equal(res.status,200);assert.equal(inputs[1].correctChoice,mcq.answer);assert.notEqual(inputs[1].selectedChoice,inputs[1].correctChoice);
 });
+
+test('API : une correction de commentaire retrouve les choix de la version de la copie',async t=>{
+  const inputs=[],client={responses:{parse:async req=>{const c=JSON.parse(req.input);inputs.push(c);return {output_parsed:evaluation(c.questionId)};}}};
+  const {send,token}=await fixture(t,{client});
+  const q=exam.questions.find(q=>q.commentRequired);
+  const previous=JSON.parse(fs.readFileSync(new URL('../data/technical-options-previous.json',import.meta.url),'utf8')).questions[q.id];
+  for(const optionsVersion of ['legacy','options-2026-11-05-v1']){
+    const res=await send('/api/evaluate-answer',{...request,questionId:q.id,kind:'comment',selectedChoice:q.answer,optionsVersion},token);
+    assert.equal(res.status,200);
+  }
+  assert.deepEqual(inputs[0].choices,previous.choices);
+  assert.deepEqual(inputs[1].choices,q.choices);
+  assert.equal(inputs[0].correctChoice,inputs[1].correctChoice);
+});
 test('API : lot partiel conserve les évaluations valides ; erreur de fournisseur expurgée',async t=>{
   let count=0;const client={responses:{parse:async req=>{if(count++===1)throw new Error('SECRET-NEVER-RETURN');return {output_parsed:evaluation(JSON.parse(req.input).questionId)};}}};
   const {send,token}=await fixture(t,{client});const shorts=exam.questions.filter(q=>q.type==='short');
