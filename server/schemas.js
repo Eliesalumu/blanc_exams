@@ -16,6 +16,7 @@ export const answerRequest = z.object({
   answer: z.string().max(6000), kind: z.enum(['short', 'comment']).default('short'),
   selectedChoice: z.number().int().min(0).max(3).nullable().default(null),
   optionsVersion: z.enum(['legacy','options-2026-11-05-v1']).optional(),
+  bankVersion: z.enum(['rva-dg-2026-11-v1']).optional(),
 }).strict();
 export const examRequest = z.object({ examId: z.string().max(80), answers: z.array(answerRequest.omit({examId:true})).min(1).max(22) }).strict();
 export const chatRequest = z.object({
@@ -26,6 +27,7 @@ export const chatRequest = z.object({
     company:z.enum(['ONATRA','SNCC','RVA']), examId:z.string().max(80).optional(),
     questionId:z.string().max(100).optional(), correction:evaluationSchema.optional(),
     optionsVersion:z.enum(['legacy','options-2026-11-05-v1']).optional(),
+    bankVersion:z.enum(['rva-dg-2026-11-v1']).optional(),
     candidateAnswer:z.string().max(6000).optional(), frequentErrors:z.array(z.string().max(200)).max(6).default([]),
     examActive:z.boolean(),
   }).strict(),

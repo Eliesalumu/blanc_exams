@@ -1,5 +1,6 @@
 import {apiRequest,isEvaluation,unavailable,tutorAllowed} from './ai.js';
 import {createTutor} from './tutor.js';
+import {correctionSpeech,REVIEW_FILTERS} from './resultReview.js';
 import {companyCards,resultsHTML,technicalHistory,choiceRationaleHTML} from './technicalUI.js';
 import { CATEGORIES, DURATION, BANK_VERSION, SUBSCRIPTION_EXPIRY, SUBSCRIPTION_REMINDER_ENABLED, escapeHTML as h, percent, fmt } from './config.js';
 import { loadQuestions } from './questionLoader.js';
@@ -19,6 +20,7 @@ const icon = (name, size=20) => {
 };
 let bank, plan, byId, progress, technicalExams, technicalProgress, page='dashboard', selectedDay=1, resultId=null, technicalResultId=null, correctionFilter='all', categoryFilter='all';
 let review=null, stopClock=null, stopTechnicalClock=null, storageWarning=false, technicalStorageWarning=false, offlineReady=false;
+let technicalCorrectionFilter='all',technicalFilterAttemptId=null;
 const toast = message => { const t=document.querySelector('#toast'); t.textContent=message; t.classList.add('visible'); clearTimeout(toast.timeout); toast.timeout=setTimeout(()=>t.classList.remove('visible'),5000); };
 const persist = () => { const saved=saveProgress(progress); if (!saved) { storageWarning=true; toast('Sauvegarde impossible : exportez vos résultats avant de fermer cette page.'); } return saved; };
 const persistTechnical = () => { const saved=saveTechnicalProgress(technicalProgress); if (!saved) toast('Sauvegarde technique impossible : gardez cette page ouverte et exportez votre progression.'); return saved; };
@@ -33,13 +35,13 @@ const aiBusy=new Set(),aiErrors=new Map();
 function tutorContext(){
   const revision=page==='technical-revision'?technicalReview:null;
   const attempt=technicalProgress?.attempts.find(a=>a.id===technicalResultId)||technicalProgress?.attempts.find(a=>a.examId===technicalResultId);
-  const exam=revision?.exam||technicalExams?.find(e=>e.id===attempt?.examId)||technicalExams?.find(e=>e.id===technicalResultId);
+  const exam=revision?.exam||examForAttempt(technicalExams?.find(e=>e.id===attempt?.examId),attempt)||technicalExams?.find(e=>e.id===technicalResultId);
   const questionId=tutorQuestionId||revision?.question?.id||(page==='revision'&&review?review.ids[review.index]:null);
   const context={company:exam?.company||tutorCompany,examActive:!!(progress?.active||technicalProgress?.active),frequentErrors:[]};
-  if(exam){context.examId=exam.id;context.optionsVersion=attempt&&!revision?(attempt.optionsVersion||'legacy'):OPTIONS_VERSION;}
+  if(exam){context.examId=exam.id;if(exam.bankVersion)context.bankVersion=exam.bankVersion;context.optionsVersion=attempt&&!revision?(attempt.optionsVersion||'legacy'):OPTIONS_VERSION;}
   if(questionId){context.questionId=questionId;const evaluation=attempt?.evaluations?.[questionId]||attempt?.commentEvaluations?.[questionId];if(evaluation){const {evaluatedAt,...correction}=evaluation;context.correction=correction;}context.candidateAnswer=attempt?.written?.[questionId]||attempt?.comments?.[questionId]||'';}
   if(attempt)context.frequentErrors=exam.questions.filter(q=>q.type==='mcq'&&attempt.answers[q.id]!==q.answer).slice(0,6).map(q=>q.prompt.slice(0,200));
-  else if(technicalProgress&&technicalExams)context.frequentErrors=technicalProgress.attempts.filter(a=>(technicalExam(a.examId)?.company||'ONATRA')===context.company).flatMap(a=>technicalExam(a.examId).questions.filter(q=>q.type==='mcq'&&a.answers[q.id]!==q.answer).map(q=>q.prompt.slice(0,200))).slice(0,6);
+  else if(technicalProgress&&technicalExams)context.frequentErrors=technicalProgress.attempts.filter(a=>(technicalExam(a.examId)?.company||'ONATRA')===context.company&&(!technicalExam(a.examId)?.bankVersion||a.bankVersion===technicalExam(a.examId).bankVersion)).flatMap(a=>technicalExam(a.examId,a).questions.filter(q=>q.type==='mcq'&&a.answers[q.id]!==q.answer).map(q=>q.prompt.slice(0,200))).slice(0,6);
   if(!exam&&questionId&&byId?.has(questionId)){context.company='ONATRA';const q=byId.get(questionId);context.candidateAnswer=Number.isInteger(review?.answers[q.id])?q.choices[review.answers[q.id]]:'';}
   return context;
 }
@@ -59,7 +61,7 @@ async function evaluateTechnical(id){
       const field=q.type==='short'?'evaluations':'commentEvaluations';
       if(isEvaluation(attempt[field]?.[q.id],q.id))continue;
       try{
-        const result=await apiRequest('/api/evaluate-answer',{examId:exam.id,optionsVersion:attempt.optionsVersion||'legacy',questionId:q.id,kind:q.type==='short'?'short':'comment',answer:(q.type==='short'?attempt.written[q.id]:attempt.comments[q.id])||'',selectedChoice:attempt.answers[q.id]??null});
+        const result=await apiRequest('/api/evaluate-answer',{examId:exam.id,...(attempt.bankVersion?{bankVersion:attempt.bankVersion}:{}),optionsVersion:attempt.optionsVersion||'legacy',questionId:q.id,kind:q.type==='short'?'short':'comment',answer:(q.type==='short'?attempt.written[q.id]:attempt.comments[q.id])||'',selectedChoice:attempt.answers[q.id]??null});
         const evaluation=result.evaluations?.[0];if(!isEvaluation(evaluation,q.id))throw new Error(unavailable);
         attempt[field]??={};attempt[field][q.id]={...evaluation,evaluatedAt:new Date().toISOString()};
         attempt.result=scoreTechnicalAttempt(exam,attempt);persistTechnical();
@@ -70,7 +72,7 @@ async function evaluateTechnical(id){
 }
 function frame(content) {
   const inExam=page==='exam'||page==='technical-exam', items=[['dashboard','home','Vue d’ensemble'],['revision','book','Banque d’entraînement'],['history','chart','Mes résultats'],['errors','flag','Mes erreurs fréquentes'],['guide','info','Mode d’emploi']];
-  app.innerHTML=`<aside class="sidebar ${inExam?'exam-sidebar':''}"><a href="#" class="brand" data-action="nav:dashboard" aria-label="CAP 70, accueil"><span class="brand-mark">${icon('check',24)}</span><span>CAP<span class="brand-number">70</span><small>PRÉPARATION TECHNIQUE PCA</small></span></a><div class="nav-caption">VOTRE ESPACE CANDIDAT</div><nav aria-label="Navigation principale">${items.map(([id,ic,label])=>button(icon(ic)+`<span>${label}</span>`,`nav:${id}`,`nav-link ${page===id?'active':''}`,page===id?'aria-current="page"':'')).join('')}</nav><div class="sidebar-bottom"><div class="goal-mini"><span>VOTRE CAP</span><strong>70<span>%</span></strong><p>46 bonnes réponses sur 65</p><div class="mini-line"><i></i></div></div><p class="local-note">${icon('shield',17)} Progression sur cet appareil</p><span class="offline-indicator">${offlineReady?'● Disponible hors ligne':'○ Préparation hors ligne…'}</span></div></aside>
+  app.innerHTML=`<aside class="sidebar ${inExam?'exam-sidebar':''}"><a href="#" class="brand" data-action="nav:dashboard" aria-label="CAP 70, accueil"><span class="brand-mark">${icon('check',24)}</span><span>CAP<span class="brand-number">70</span><small>PRÉPARATION TECHNIQUE PCA / DG</small></span></a><div class="nav-caption">VOTRE ESPACE CANDIDAT</div><nav aria-label="Navigation principale">${items.map(([id,ic,label])=>button(icon(ic)+`<span>${label}</span>`,`nav:${id}`,`nav-link ${page===id?'active':''}`,page===id?'aria-current="page"':'')).join('')}</nav><div class="sidebar-bottom"><div class="goal-mini"><span>VOTRE CAP</span><strong>70<span>%</span></strong><p>46 bonnes réponses sur 65</p><div class="mini-line"><i></i></div></div><p class="local-note">${icon('shield',17)} Progression sur cet appareil</p><span class="offline-indicator">${offlineReady?'● Disponible hors ligne':'○ Préparation hors ligne…'}</span></div></aside>
   <div class="workspace ${inExam?'exam-workspace':''}"><header class="topbar"><div class="breadcrumb">Espace de préparation <span>/</span> ${inExam?'Simulation en cours':page==='dashboard'?'Tableau de bord':page==='revision'?'Entraînement':page==='errors'?'Journal des erreurs':page==='guide'?'Mode d’emploi':'Résultats'}</div><div class="topbar-right"><span class="status-dot"></span><span>Parcours de 5 jours</span><span class="avatar" aria-label="Espace personnel">C</span></div></header><main id="main" tabindex="-1">${storageWarning?'<div class="alert urgent" role="alert">La sauvegarde locale est indisponible. Exportez régulièrement vos résultats.</div>':''}${technicalStorageWarning?'<div class="alert urgent" role="alert">La sauvegarde des examens techniques est indisponible ou illisible. Vos réponses ne sont pas garanties après fermeture.</div>':''}${content}</main><footer>CAP 70 <span>Outil indépendant d’entraînement. Questions originales, non officielles et non confidentielles.</span></footer></div>`;
   tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
 }
@@ -79,7 +81,7 @@ function dashboard() {
   const stats=analysis(), done=new Set(progress.attempts.map(a=>a.day)).size, next=[1,2,3,4,5].find(d=>!latest(d))||5;
   const catBars=Object.entries(CATEGORIES).map(([c,s])=>{const v=stats.categories[c],p=percent(v.correct,v.total);return `<div class="subject-row"><span class="subject-icon" style="--subject:${s.color}">${s.short}</span><div><div class="subject-label"><strong>${s.label}</strong><span>${v.total?`${fmt(p)} %`:'À évaluer'}</span></div><div class="track"><i style="width:${p}%;background:${s.color}"></i></div></div></div>`;}).join('');
   const dayCards=[1,2,3,4,5].map(d=>{const a=latest(d),active=progress.active?.day===d;return `<article class="day-card ${d===next&&!a?'recommended':''}"><div class="day-top"><span class="day-number">0${d}</span><span class="pill ${a?(a.result.passed?'success':'warning'):active?'blue':''}">${a?(a.result.passed?'Réussi':'À renforcer'):active?'En cours':d===next?'Prochaine étape':'À votre rythme'}</span></div><h3>Jour ${d}</h3><p>${['Prendre ses repères','Consolider les bases','Affiner son raisonnement','Gagner en précision','Viser la maîtrise'][d-1]}</p><div class="day-details"><span>${icon('book',15)}65 questions</span><span>${icon('clock',15)}60 min</span></div>${a?`<div class="day-result ${a.result.passed?'good':'bad'}">${fmt(a.result.percentage)}<small> %</small><span>${a.result.correct}/65</span></div>`:'<div class="day-empty">Un nouveau pas vers votre objectif</div>'}${button(a?'Voir mon résultat':active?'Reprendre':`Préparer le jour ${d}`,a?`result:${a.id}`:`instructions:${d}`,`btn ${d===next&&!a?'primary':'outline'} full`)}${a?button('Refaire cette simulation',`instructions:${d}`,'text-button retry'):''}</article>`;}).join('');
-  frame(heading('PRÉPARATION TECHNIQUE PCA','Votre objectif, à portée de méthode.','Préparation intensive — 5 jours pour progresser avec confiance.',`<div class="heading-actions">${button(icon('book')+' Mode révision','nav:revision','btn outline')}${button('Réinitialiser ma progression','reset','btn danger')}</div>`)+
+  frame(heading('PRÉPARATION TECHNIQUE PCA / DG','Votre objectif, à portée de méthode.','Préparation intensive — 5 jours pour progresser avec confiance.',`<div class="heading-actions">${button(icon('book')+' Mode révision','nav:revision','btn outline')}${button('Réinitialiser ma progression','reset','btn danger')}</div>`)+
   `<section class="hero"><div><span class="hero-tag"><span></span> UN PARCOURS. UN CAP CLAIR.</span><h2>5 jours pour vous préparer.<br><em>70 % pour atteindre le cap.</em></h2><p>Programme de préparation technique estimatif fondé sur les exigences du poste et les textes applicables.<br class="desktop-br"> PCA de l’ONATRA · Questions originales non officielles.</p><div class="hero-actions">${button((progress.active?'Reprendre ma simulation':'Commencer ma préparation')+' '+icon('arrow'),progress.active?'resume':`instructions:${next}`,'btn light')}<span>${icon('clock',17)} Une heure par jour</span></div></div><div class="hero-visual" aria-label="Objectif : 46 bonnes réponses sur 65"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-gauge"><strong>70<small>%</small></strong><span>VOTRE OBJECTIF</span></div><div class="gauge-caption">46 <span>/ 65 bonnes réponses</span></div></div></section>
   <section class="stat-grid" aria-label="Votre progression"><article class="stat-card"><span>Simulations terminées</span><strong>${done}<small>/ 5</small></strong><div class="stat-steps">${[1,2,3,4,5].map(d=>`<i class="${latest(d)?'filled':''}"></i>`).join('')}</div></article><article class="stat-card"><span>Meilleur score</span><strong>${stats.best===null?'—':fmt(stats.best)}<small>${stats.best===null?'':'%'}</small></strong><p>${stats.best===null?'Votre premier résultat vous attend':'Votre meilleure performance'}</p></article><article class="stat-card"><span>Moyenne générale</span><strong>${stats.average===null?'—':fmt(stats.average)}<small>${stats.average===null?'':'%'}</small></strong><p>${progress.attempts.length?`${progress.attempts.length} tentative(s) enregistrée(s)`:'Une progression qui se construit'}</p></article><article class="stat-card accent-stat"><span>À renforcer en priorité</span><strong class="stat-subject">${stats.weakest?CATEGORIES[stats.weakest].label:'À découvrir'}</strong><p>${stats.weakest?'Votre matière au taux le plus faible':'Commencez par une simulation'}</p></article></section>
   <section class="section"><div class="section-heading"><div><h2>Vos cinq simulations</h2><p>Cinq examens distincts. La même exigence, chaque jour.</p></div><span class="section-meta">325 questions sans répétition</span></div><div class="day-grid">${dayCards}</div></section>
@@ -90,9 +92,9 @@ const technicalExam = (id,attempt=null) => examForAttempt(technicalExams.find(ex
 const activeTechnicalAttempt = () => technicalProgress.active;
 const technicalQuestion = attempt => technicalExam(attempt.examId,attempt)?.questions.find(question=>question.id===attempt.questionIds[attempt.index]);
 function technicalInstructions(id) {
-  const exam=technicalExam(id),attempt=technicalProgress.attempts.find(item=>item.examId===id),active=technicalProgress.active;
+  const exam=technicalExam(id),attempt=technicalProgress.attempts.find(item=>item.examId===id&&(!exam?.bankVersion||item.bankVersion===exam.bankVersion)),active=technicalProgress.active;
   if(!exam)return navigate('dashboard');
-  frame(`<div class="narrow">${button('← Retour au tableau de bord','nav:dashboard','text-button back')}${heading('EXAMEN TECHNIQUE · FORMAT PÉDAGOGIQUE',h(exam.title),'Une simulation indépendante, conçue pour travailler les compétences attendues d’un PCA.') }<section class="panel instructions"><div class="instruction-metrics"><div><strong>50</strong><span>questions au total</span></div><div><strong>60</strong><span>minutes</span></div><div><strong>70/100</strong><span>objectif pédagogique</span></div></div><p><strong>Composition simulée :</strong> 40 QCM à réponse unique (1 point chacun) et 10 réponses courtes (6 points chacune). Les questions peuvent inclure une justification obligatoire. La répartition par section et le barème sont pédagogiques et ne constituent pas une information officielle.</p><p>Les réponses écrites sont conservées et restent modifiables jusqu’à l’envoi. Elles seront évaluées par IA sur 10, puis converties sur 6 points (note × 0,6). En cas de panne, la copie reste sauvegardée et la correction peut être relancée.</p><p>Le chronomètre commence au lancement, continue après fermeture ou rafraîchissement et entraîne l’envoi automatique après 60 minutes. Une tentative initiale est conservée jusqu’à réinitialisation volontaire.</p><div class="exam-distribution">${Object.entries(TECHNICAL_SECTIONS).map(([section,detail])=>`<span><b>${section}</b> ${detail.label} · ${detail.points} pts</span>`).join('')}</div>${active?`<div class="alert notice">Une simulation technique est déjà en cours. Reprenez-la avant d’en démarrer une autre.</div>${button('Reprendre la simulation en cours','technical-resume','btn primary full')}`:attempt?`${button('Voir ma copie et la correction',`technical-result:${attempt.id}`,'btn outline full')}`:button('COMMENCER LE TEST '+icon('arrow'),`technical-start:${id}`,'btn primary full')}<p class="center muted small">Questions originales, non officielles et non confidentielles. Les cas financiers sont fictifs.</p></section></div>`);
+  frame(`<div class="narrow">${button('← Retour au tableau de bord','nav:dashboard','text-button back')}${heading('EXAMEN TECHNIQUE · FORMAT PÉDAGOGIQUE',h(exam.title),`Une simulation indépendante, conçue pour travailler les compétences attendues ${exam.role==='DG'?'du directeur général de la RVA':'d’un PCA'}.`) }<section class="panel instructions"><div class="instruction-metrics"><div><strong>50</strong><span>questions au total</span></div><div><strong>60</strong><span>minutes</span></div><div><strong>70/100</strong><span>objectif pédagogique</span></div></div><p><strong>Composition simulée :</strong> 40 QCM à réponse unique (1 point chacun) et 10 réponses courtes (6 points chacune). Les questions peuvent inclure une justification obligatoire. La répartition par section et le barème sont pédagogiques et ne constituent pas une information officielle.</p><p>Les réponses écrites sont conservées et restent modifiables jusqu’à l’envoi. Elles seront évaluées par IA sur 10, puis converties sur 6 points (note × 0,6). En cas de panne, la copie reste sauvegardée et la correction peut être relancée.</p><p>Le chronomètre commence au lancement, continue après fermeture ou rafraîchissement et entraîne l’envoi automatique après 60 minutes. Une tentative initiale est conservée jusqu’à réinitialisation volontaire.</p><div class="exam-distribution">${Object.entries(TECHNICAL_SECTIONS).map(([section,detail])=>`<span><b>${section}</b> ${detail.label} · ${detail.points} pts</span>`).join('')}</div>${active?`<div class="alert notice">Une simulation technique est déjà en cours. Reprenez-la avant d’en démarrer une autre.</div>${button('Reprendre la simulation en cours','technical-resume','btn primary full')}`:attempt?`${button('Voir ma copie et la correction',`technical-result:${attempt.id}`,'btn outline full')}`:button('COMMENCER LE TEST '+icon('arrow'),`technical-start:${id}`,'btn primary full')}<p class="center muted small">Questions originales, non officielles et non confidentielles. Les cas financiers sont fictifs.</p></section></div>`);
 }
 function technicalExamScreen() {
   const attempt=activeTechnicalAttempt();
@@ -109,8 +111,9 @@ function technicalExamScreen() {
 function technicalResults() {
   const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId);
   if(!attempt)return navigate('dashboard');
+  if(technicalFilterAttemptId!==attempt.id){technicalFilterAttemptId=attempt.id;technicalCorrectionFilter='all';}
   const exam=technicalExam(attempt.examId,attempt);
-  frame(heading('RÉSULTAT PÉDAGOGIQUE',h(exam.title),'Copie et évaluations conservées sur cet appareil.',button('← Tableau de bord','nav:dashboard','btn outline'))+resultsHTML(exam,attempt,{busy:aiBusy.has(attempt.id),error:aiErrors.get(attempt.id)||attempt.aiError})+button('Réinitialiser cette tentative','technical-reset:'+exam.id,'btn danger'));
+  frame(heading('RÉSULTAT PÉDAGOGIQUE',h(exam.title),'Copie et évaluations conservées sur cet appareil.',button('← Tableau de bord','nav:dashboard','btn outline'))+resultsHTML(exam,attempt,{busy:aiBusy.has(attempt.id),error:aiErrors.get(attempt.id)||attempt.aiError,filter:technicalCorrectionFilter})+button('Réinitialiser cette tentative','technical-reset-copy:'+attempt.id,'btn danger'));
 }
 function technicalRevision(company,selectedIds=null){
   const questions=technicalExams.filter(e=>(e.company||'ONATRA')===company).flatMap(exam=>exam.questions.filter(q=>!selectedIds||selectedIds.has(q.id)).map(question=>({exam,question})));
@@ -127,7 +130,7 @@ function submitTechnical(automatic=false) {
   if(modal.open)modal.close();
   const exam=technicalExam(attempt.examId,attempt);
   const completed={...attempt,submittedAt:Math.min(Date.now(),attempt.deadline),automatic,result:scoreTechnicalAttempt(exam,attempt)};
-  technicalProgress.attempts=[...technicalProgress.attempts.filter(item=>item.examId!==attempt.examId),completed];
+  technicalProgress.attempts=[...technicalProgress.attempts.filter(item=>item.examId!==attempt.examId||item.bankVersion!==attempt.bankVersion),completed];
   technicalProgress.active=null;stopTechnicalClock?.();stopTechnicalClock=null;persistTechnical();technicalResultId=completed.id;page='technical-results';render();window.scrollTo(0,0);
   void evaluateTechnical(completed.id);
   if(automatic)toast('Le temps est écoulé. Votre copie a été envoyée automatiquement.');
@@ -198,7 +201,7 @@ function correction() {
 }
 function correctionCard(q,answer,num) {
   const ok=answer===q.correctAnswer,missing=!Number.isInteger(answer);
-  return `<article class="panel correction-card"><div class="correction-top"><span>QUESTION ${num} <span class="muted">· ${CATEGORIES[q.category].label}</span></span><span class="pill ${ok?'success':'warning'}">${ok?'Correct':missing?'Sans réponse':'Incorrect'}</span></div><h2>${h(q.question)}</h2>${figure(q)}<div class="answer-comparison"><p><span>Votre réponse</span><strong class="${ok?'good':'bad'}">${missing?'Non répondue':`${'ABCD'[answer]}. ${h(q.choices[answer])}`}</strong></p><p><span>Bonne réponse</span><strong class="good">${'ABCD'[q.correctAnswer]}. ${h(q.choices[q.correctAnswer])}</strong></p></div><div class="explanation"><strong>${ok?'Le raisonnement à retenir':missing?'Comment résoudre cette question':'Comprendre votre erreur'}</strong><p>${!ok&&!missing?`Votre choix « ${h(q.choices[answer])} » ne convient pas. `:''}${h(q.explanation)}</p></div>${q.source?`<p class="source small">Source : <a href="${h(q.source.url)}" target="_blank" rel="noopener noreferrer">${h(q.source.name)}</a> · Vérifiée le ${h(q.lastVerified)}</p>`:''}<span class="question-id">${q.id}</span></article>`;
+  return `<article class="panel correction-card review-card review-${ok?'correct':missing?'unanswered':'wrong'}"><div class="correction-top"><span>QUESTION ${num} <span class="muted">· ${CATEGORIES[q.category].label}</span></span><span class="review-badge review-${ok?'correct':missing?'unanswered':'wrong'}">${ok?'Correct':missing?'Sans réponse':'Échouée'}</span></div><h2>${h(q.question)}</h2>${figure(q)}<div class="answer-comparison"><p><span>Votre réponse</span><strong class="${ok?'good':'bad'}">${missing?'Non répondue':`${'ABCD'[answer]}. ${h(q.choices[answer])}`}</strong></p><p><span>Bonne réponse</span><strong class="good">${'ABCD'[q.correctAnswer]}. ${h(q.choices[q.correctAnswer])}</strong></p></div><div class="explanation"><strong>${ok?'Le raisonnement à retenir':missing?'Comment résoudre cette question':'Comprendre votre erreur'}</strong><p>${!ok&&!missing?`Votre choix « ${h(q.choices[answer])} » ne convient pas. `:''}${h(q.explanation)}</p></div>${q.source?`<p class="source small">Source : <a href="${h(q.source.url)}" target="_blank" rel="noopener noreferrer">${h(q.source.name)}</a> · Vérifiée le ${h(q.lastVerified)}</p>`:''}${button('Écouter le corrigé','read-general:'+q.id,'text-button')}<span class="question-id">${q.id}</span></article>`;
 }
 function categorySelect(id='category-filter') { return `<label>Matière<select id="${id}"><option value="all">Toutes les matières</option>${Object.entries(CATEGORIES).map(([c,s])=>`<option value="${c}" ${c===categoryFilter?'selected':''}>${s.label}</option>`).join('')}</select></label>`; }
 function revision() {
@@ -260,10 +263,17 @@ app.addEventListener('click',async e=>{
     tutorQuestionId=null;technicalResultId=attempt.id;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
     tutor.ask(`Analyse mon résultat ${exam.company||'ONATRA'} : QCM ${score.mcqScore}/40 ; écrit ${score.writtenScore??'en attente'}/60 ; total ${score.total??'provisoire'}/100. Sections : ${Object.entries(score.sections).map(([key,s])=>`${key} ${s.score??'en attente'}/${s.max}`).join(', ')}. Donne deux points forts et trois priorités concrètes de révision, en signalant les notes encore manquantes.`);return;
   }
-  if(action==='read-correction'){
-    const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId),evaluation=attempt?.evaluations?.[value];if(!evaluation)return;
+  if(action==='read-general'){
+    const question=byId.get(value);if(!question)return;
+    tutorCompany='ONATRA';tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
+    tutor.speak(`Question : ${question.question}. Réponse attendue : ${question.choices[question.correctAnswer]}. Explication : ${question.explanation}`,'general:'+value);return;
+  }
+  if(['read-correction','read-model','read-mcq','read-comment'].includes(action)){
+    const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId);if(!attempt)return;
+    const question=technicalExam(attempt.examId,attempt)?.questions.find(q=>q.id===value);if(!question)return;
+    const text=correctionSpeech(question,attempt,{'read-correction':'ai','read-model':'model','read-mcq':'mcq','read-comment':'comment'}[action]);if(!text)return;
     tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
-    tutor.speak(`Note : ${evaluation.scoreOutOf10} sur 10. ${evaluation.appreciation}. Ce qui est correct : ${evaluation.correctElements.join('. ')}. Ce qui manque : ${[...evaluation.missingElements,...evaluation.errors].join('. ')}. Réponse améliorée : ${evaluation.improvedAnswer}. À retenir : ${evaluation.keyTakeaway}`);return;
+    tutor.speak(text,attempt.id+':'+action+':'+value);return;
   }
   if(action==='tutor-question'){tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));tutor.open();return;}
   if(action==='technical-review'){technicalRevision(value);return;}
@@ -280,7 +290,7 @@ app.addEventListener('click',async e=>{
     if(progress.active){toast('Reprenez ou terminez d’abord la simulation en cours.');return;}
     const active=activeTechnicalAttempt();
     if(active){if(active.examId===value){page='technical-exam';render();armTechnicalClock();}else toast('Terminez ou reprenez d’abord la simulation technique déjà en cours.');return;}
-    if(technicalProgress.attempts.some(item=>item.examId===value)){toast('Cette simulation a déjà une tentative. Réinitialisez-la volontairement pour recommencer.');return;}
+    if(technicalProgress.attempts.some(item=>item.examId===value&&(!technicalExam(value).bankVersion||item.bankVersion===technicalExam(value).bankVersion))){toast('Cette simulation a déjà une tentative. Réinitialisez-la volontairement pour recommencer.');return;}
     technicalProgress.active=createTechnicalAttempt(technicalExam(value));persistTechnical();page='technical-exam';render();armTechnicalClock();
   }else if(action==='technical-resume'){if(activeTechnicalAttempt()){page='technical-exam';render();armTechnicalClock();}}
   else if(action==='technical-result'){tutorQuestionId=null;technicalResultId=value;page='technical-results';render();window.scrollTo(0,0);}
@@ -297,12 +307,14 @@ app.addEventListener('click',async e=>{
     if(missing){attempt.index=attempt.questionIds.indexOf(missing.id);persistTechnical();technicalExamScreen();toast('Ajoutez une justification à chaque question marquée « Réponse à commenter » avant de soumettre.');return;}
     const unanswered=exam.questions.filter(question=>question.type==='mcq'?!Number.isInteger(attempt.answers[question.id]):!attempt.written[question.id]?.trim()).length;
     confirmDialog('Terminer votre simulation technique ?',`Il reste ${unanswered} question(s) sans réponse et ${attempt.marked.length} question(s) marquée(s) à revoir. Les commentaires obligatoires sont renseignés. Après l’envoi, la copie ne pourra plus être modifiée.`,'Terminer quand même',()=>submitTechnical(false));
-  }else if(action==='technical-reset'){
-    const exam=technicalExam(value);
+  }else if(action==='technical-reset'||action==='technical-reset-copy'){
+    const copy=action==='technical-reset-copy'?technicalProgress.attempts.find(a=>a.id===value):technicalProgress.active?.examId===value?technicalProgress.active:null;
+    const exam=copy?technicalExam(copy.examId,copy):technicalExam(value);
     if(!exam)return;
+    const matches=item=>copy?item.id===copy.id:item.examId===exam.id&&item.bankVersion===exam.bankVersion;
     confirmDialog('Réinitialiser cette tentative ?',`La copie enregistrée de « ${exam.title} » sera supprimée de cet appareil. Cette action permet de recommencer l’entraînement.`, 'Réinitialiser',()=>{
-      if(technicalProgress.active?.examId===value){stopTechnicalClock?.();stopTechnicalClock=null;technicalProgress.active=null;}
-      technicalProgress.attempts=technicalProgress.attempts.filter(item=>item.examId!==value);persistTechnical();page='dashboard';render();
+      if(technicalProgress.active&&matches(technicalProgress.active)){stopTechnicalClock?.();stopTechnicalClock=null;technicalProgress.active=null;}
+      technicalProgress.attempts=technicalProgress.attempts.filter(item=>!matches(item));persistTechnical();page='dashboard';render();
     });
   }
   else if(action==='jump'||action==='next'||action==='previous'){
@@ -328,6 +340,10 @@ app.addEventListener('change',e=>{
   else if(e.target.name==='technical-answer'){const attempt=activeTechnicalAttempt();if(!attempt)return;attempt.answers[attempt.questionIds[attempt.index]]=Number(e.target.value);persistTechnical();technicalExamScreen();document.querySelector(`input[name="technical-answer"][value="${e.target.value}"]`)?.focus();}
   else if(e.target.dataset.technicalRating){const attempt=technicalProgress.attempts.find(item=>item.id===technicalResultId)||technicalProgress.attempts.find(item=>item.examId===technicalResultId);if(!attempt)return;const value=e.target.value;if(value==='')delete attempt.ratings[e.target.dataset.technicalRating];else attempt.ratings[e.target.dataset.technicalRating]=Number(value);attempt.result=scoreTechnicalAttempt(technicalExam(attempt.examId,attempt),attempt);persistTechnical();technicalResults();}
   else if(e.target.name==='review-answer'){review.answers[review.ids[review.index]]=Number(e.target.value);const focused=e.target.value;render();document.querySelector(`input[name="review-answer"][value="${focused}"]`)?.focus();}
+  else if(e.target.id==='technical-correction-filter'){
+    if(!REVIEW_FILTERS.some(([key])=>key===e.target.value))return;
+    technicalCorrectionFilter=e.target.value;const position=window.scrollY;technicalResults();document.querySelector('#technical-correction-filter')?.focus({preventScroll:true});window.scrollTo(0,position);
+  }
   else if(e.target.id==='correction-filter'){correctionFilter=e.target.value;render();}
   else if(e.target.id==='category-filter'){categoryFilter=e.target.value;render();}
 });
@@ -343,7 +359,10 @@ try {
   [{bank,plan,byId},technicalExams]=await Promise.all([loadQuestions(),loadTechnicalExams()]);
   const loaded=loadProgress(),technicalLoaded=loadTechnicalProgress();progress=loaded.data;technicalProgress=technicalLoaded.data;storageWarning=!!loaded.warning;technicalStorageWarning=!!technicalLoaded.warning;
   if(progress.active&&progress.active.ids.some(id=>!byId.has(id)))throw new Error('Sauvegarde incompatible avec cette banque');
-  if(technicalProgress.active&&technicalProgress.active.questionIds.some(id=>!technicalExams.some(exam=>exam.questions.some(question=>question.id===id))))throw new Error('Sauvegarde incompatible avec les simulations techniques');
+  if(technicalProgress.active){
+    const saved=technicalProgress.active,exam=technicalExam(saved.examId,saved);
+    if(!exam||saved.questionIds.some(id=>!exam.questions.some(question=>question.id===id)))throw new Error('Sauvegarde incompatible avec les simulations techniques');
+  }
   if(technicalProgress.active)page='technical-exam';else if(progress.active)page='exam';render();armClock();armTechnicalClock();if(loaded.warning||loaded.notice||technicalLoaded.warning)toast(loaded.warning||loaded.notice||technicalLoaded.warning);if(!progress.active&&!technicalProgress.active)showSubscriptionReminder();
   window.addEventListener('storage',e=>{if(e.key==='cap70.technical.v1'){const stored=loadTechnicalProgress();if(!stored.warning){technicalProgress=stored.data;armTechnicalClock();page=technicalProgress.active?'technical-exam':'dashboard';render();}}});
   if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{offlineReady=true;const el=document.querySelector('.offline-indicator');if(el)el.textContent='● Disponible hors ligne';}).catch(()=>{const el=document.querySelector('.offline-indicator');if(el)el.textContent='○ Mode connecté';});

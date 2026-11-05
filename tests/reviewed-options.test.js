@@ -7,7 +7,14 @@ import {choiceRationaleHTML} from '../src/technicalUI.js';
 import {applyReviewedOptions} from '../scripts/apply-reviewed-options.js';
 
 const read=name=>JSON.parse(fs.readFileSync(new URL('../'+name,import.meta.url),'utf8'));
-const exams=['data/technical-exams.json','data/company-exams.json'].flatMap(name=>read(name).exams);
+// These regressions protect the previous editorial revision, including the RVA
+// PCA snapshots. The replacement DG bank has separate role/version regressions.
+const currentExams=['data/technical-exams.json','data/company-exams.json'].flatMap(name=>read(name).exams);
+const archives=read('data/technical-options-previous.json').exams;
+const exams=currentExams.map(exam=>{
+  if(!archives[exam.id])return exam;
+  const {role,...original}=archives[exam.id];return original;
+});
 const baseline=read('data/options-review-baseline.json'),previous=read('data/technical-options-previous.json').questions;
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 test('Révision : énoncés, réponses courtes, ONATRA 1, cinq modules et clés inchangés',()=>{

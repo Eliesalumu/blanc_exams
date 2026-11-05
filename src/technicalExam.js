@@ -7,7 +7,11 @@ export function questionForOptionsVersion(question,version,previous){
   return {...rest,...old};
 }
 export function examForAttempt(exam,attempt){
-  if(!exam||!attempt||attempt.optionsVersion===OPTIONS_VERSION)return exam;
+  if(!exam||!attempt)return exam;
+  if(exam.bankVersion&&attempt.bankVersion!==exam.bankVersion&&exam.previousExam){
+    exam={...exam.previousExam,previousOptions:exam.previousOptions,archived:true};
+  }
+  if(attempt.optionsVersion===OPTIONS_VERSION)return exam;
   return {...exam,questions:exam.questions.map(q=>questionForOptionsVersion(q,'legacy',exam.previousOptions))};
 }
 export const TECHNICAL_SECTIONS = {
@@ -67,7 +71,7 @@ export async function loadTechnicalExams() {
     if(!response.ok)throw new Error('Les simulations techniques sont indisponibles.');
     return response.json();
   }));
-  return validateTechnicalExams({exams:groups.flatMap(group=>group.exams)}).map(exam=>({...exam,previousOptions:previous.questions}));
+  return validateTechnicalExams({exams:groups.flatMap(group=>group.exams)}).map(exam=>({...exam,previousOptions:previous.questions,previousExam:previous.exams?.[exam.id]}));
 }
 
 export function emptyTechnicalProgress() {
@@ -104,6 +108,7 @@ export function createTechnicalAttempt(exam, now = Date.now()) {
   return {
     id: globalThis.crypto?.randomUUID?.() ?? `${exam.id}-${now}`,
     examId: exam.id,
+    ...(exam.bankVersion?{bankVersion:exam.bankVersion}:{}),
     optionsVersion: OPTIONS_VERSION,
     questionIds: exam.questions.map(question => question.id),
     answers: {}, written: {}, comments: {}, ratings: {}, evaluations: {}, commentEvaluations: {}, marked: [], index: 0,
@@ -112,6 +117,7 @@ export function createTechnicalAttempt(exam, now = Date.now()) {
 }
 
 export function scoreTechnicalAttempt(exam, attempt) {
+  exam=examForAttempt(exam,attempt);
   const questions = exam.questions;
   const mcq = questions.filter(question => question.type === 'mcq');
   const short = questions.filter(question => question.type === 'short');

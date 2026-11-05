@@ -127,6 +127,38 @@ test('API : une correction de commentaire retrouve les choix de la version de la
   assert.deepEqual(inputs[1].choices,q.choices);
   assert.equal(inputs[0].correctChoice,inputs[1].correctChoice);
 });
+
+test('RVA : correction IA canonique DG pour les nouvelles copies, PCA pour les archives ; refus des identités mélangées',async t=>{
+  const seen=[],client={responses:{parse:async req=>{const c=JSON.parse(req.input);seen.push(c);return {output_parsed:evaluation(c.questionId)};}}};
+  const {send,token}=await fixture(t,{client});
+  const current=exams.find(e=>e.id==='rva-1');
+  const archive=JSON.parse(fs.readFileSync(new URL('../data/technical-options-previous.json',import.meta.url),'utf8')).exams[current.id];
+  for(const [exam,role]of [[current,'DG'],[archive,'PCA']])for(const kind of ['short','comment']){
+    const q=exam.questions.find(q=>kind==='short'?q.type==='short':q.commentRequired);
+    const res=await send('/api/evaluate-answer',{examId:exam.id,questionId:q.id,answer:'Décision argumentée',kind,selectedChoice:kind==='comment'?q.answer:null,optionsVersion:'options-2026-11-05-v1',...(exam.bankVersion?{bankVersion:exam.bankVersion}:{})},token);
+    assert.equal(res.status,200);
+    const c=seen.at(-1);assert.equal(c.role,role);assert.equal(c.question,q.prompt);assert.equal(c.referenceAnswer,q.modelAnswer||q.explanation);
+    if(kind==='comment')assert.deepEqual(c.choices,q.choices);
+  }
+  const newQ=current.questions.find(q=>q.type==='short'),oldQ=archive.questions.find(q=>q.type==='short');
+  for(const body of [{questionId:newQ.id},{questionId:oldQ.id,bankVersion:current.bankVersion}]){
+    const res=await send('/api/evaluate-answer',{examId:current.id,kind:'short',answer:'Texte',...body},token);
+    assert.equal(res.status,400);
+  }
+  assert.match(evaluationInstructions,/Pour PCA/);assert.match(evaluationInstructions,/pour DG/);
+});
+
+test('RVA : le tuteur reçoit le poste DG ou le poste PCA archivé, jamais un rôle choisi dans le message',async t=>{
+  const seen=[],client={responses:{create:async req=>{seen.push(req);return {output_text:'Explication pédagogique.'};}}};
+  const {send,token}=await fixture(t,{client});
+  const current=exams.find(e=>e.id==='rva-2');
+  for(const [context,role]of [[{company:'RVA',examActive:false},'DG'],[{company:'RVA',examId:current.id,bankVersion:current.bankVersion,examActive:false},'DG'],[{company:'RVA',examId:current.id,optionsVersion:'options-2026-11-05-v1',examActive:false},'PCA']]){
+    const res=await send('/api/tutor/chat',{mode:'Comprendre',messages:[{role:'user',content:'Explique mon rôle.'}],context},token);
+    assert.equal(res.status,200);
+    assert.equal(JSON.parse(seen.at(-1).input[0].content).role,role);
+    assert.ok(seen.at(-1).instructions.includes(`Le poste préparé est ${role}.`));
+  }
+});
 test('API : lot partiel conserve les évaluations valides ; erreur de fournisseur expurgée',async t=>{
   let count=0;const client={responses:{parse:async req=>{if(count++===1)throw new Error('SECRET-NEVER-RETURN');return {output_parsed:evaluation(JSON.parse(req.input).questionId)};}}};
   const {send,token}=await fixture(t,{client});const shorts=exam.questions.filter(q=>q.type==='short');
