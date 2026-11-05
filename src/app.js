@@ -1,3 +1,6 @@
+import {apiRequest,isEvaluation,unavailable,tutorAllowed} from './ai.js';
+import {createTutor} from './tutor.js';
+import {companyCards,resultsHTML,technicalHistory} from './technicalUI.js';
 import { CATEGORIES, DURATION, BANK_VERSION, SUBSCRIPTION_EXPIRY, escapeHTML as h, percent, fmt } from './config.js';
 import { loadQuestions } from './questionLoader.js';
 import { loadProgress, saveProgress } from './storage.js';
@@ -25,10 +28,50 @@ const latest = day => progress.attempts.filter(a=>a.day===day).at(-1);
 const analysis = () => analyze(progress.attempts,byId);
 const currentResult = () => progress.attempts.find(a=>a.id===resultId) || progress.attempts.at(-1);
 function navigate(target) { page=target; review=null; render(); window.scrollTo(0,0); }
+let tutorQuestionId=null,tutorCompany='ONATRA',technicalReview=null;
+const aiBusy=new Set(),aiErrors=new Map();
+function tutorContext(){
+  const attempt=technicalProgress?.attempts.find(a=>a.id===technicalResultId)||technicalProgress?.attempts.find(a=>a.examId===technicalResultId);
+  const exam=technicalReview?.exam||technicalExams?.find(e=>e.id===attempt?.examId)||technicalExams?.find(e=>e.id===technicalResultId);
+  const questionId=tutorQuestionId||technicalReview?.question?.id||(page==='revision'&&review?review.ids[review.index]:null);
+  const context={company:exam?.company||tutorCompany,examActive:!!(progress?.active||technicalProgress?.active),frequentErrors:[]};
+  if(exam)context.examId=exam.id;
+  if(questionId){context.questionId=questionId;const evaluation=attempt?.evaluations?.[questionId]||attempt?.commentEvaluations?.[questionId];if(evaluation){const {evaluatedAt,...correction}=evaluation;context.correction=correction;}context.candidateAnswer=attempt?.written?.[questionId]||attempt?.comments?.[questionId]||'';}
+  if(attempt)context.frequentErrors=exam.questions.filter(q=>q.type==='mcq'&&attempt.answers[q.id]!==q.answer).slice(0,6).map(q=>q.prompt.slice(0,200));
+  else if(technicalProgress&&technicalExams)context.frequentErrors=technicalProgress.attempts.filter(a=>(technicalExam(a.examId)?.company||'ONATRA')===context.company).flatMap(a=>technicalExam(a.examId).questions.filter(q=>q.type==='mcq'&&a.answers[q.id]!==q.answer).map(q=>q.prompt.slice(0,200))).slice(0,6);
+  if(!exam&&questionId&&byId?.has(questionId)){context.company='ONATRA';const q=byId.get(questionId);context.candidateAnswer=Number.isInteger(review?.answers[q.id])?q.choices[review.answers[q.id]]:'';}
+  return context;
+}
+const tutor=createTutor(tutorContext,toast);
+app.addEventListener('toggle',e=>{const id=e.target.dataset.reviewQuestion;if(id&&e.target.open){tutorQuestionId=id;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));}},true);
+async function evaluateTechnical(id){
+  const attempt=technicalProgress.attempts.find(a=>a.id===id);if(!attempt||aiBusy.has(id))return;
+  if(technicalProgress.active||progress.active){aiErrors.set(id,'Terminez la simulation en cours avant de lancer une correction IA.');if(page==='technical-results')technicalResults();return;}
+  const exam=technicalExam(attempt.examId);aiBusy.add(id);aiErrors.delete(id);
+  delete attempt.aiError;
+  if(page==='technical-results')technicalResults();
+  let errors=false;
+  try{
+    const items=[...exam.questions.filter(q=>q.type==='short'),...exam.questions.filter(q=>q.type==='mcq'&&q.commentRequired)];
+    for(const q of items){
+      if(technicalProgress.active||progress.active)break;
+      const field=q.type==='short'?'evaluations':'commentEvaluations';
+      if(isEvaluation(attempt[field]?.[q.id],q.id))continue;
+      try{
+        const result=await apiRequest('/api/evaluate-answer',{examId:exam.id,questionId:q.id,kind:q.type==='short'?'short':'comment',answer:(q.type==='short'?attempt.written[q.id]:attempt.comments[q.id])||'',selectedChoice:attempt.answers[q.id]??null});
+        const evaluation=result.evaluations?.[0];if(!isEvaluation(evaluation,q.id))throw new Error(unavailable);
+        attempt[field]??={};attempt[field][q.id]={...evaluation,evaluatedAt:new Date().toISOString()};
+        attempt.result=scoreTechnicalAttempt(exam,attempt);persistTechnical();
+        if(page==='technical-results'&&technicalResultId===id)technicalResults();
+      }catch(error){errors=true;aiErrors.set(id,error.message);attempt.aiError=error.message;persistTechnical();break;}
+    }
+  }finally{aiBusy.delete(id);if(errors&&!aiErrors.has(id))aiErrors.set(id,unavailable);if(page==='technical-results'&&technicalResultId===id)technicalResults();}
+}
 function frame(content) {
   const inExam=page==='exam'||page==='technical-exam', items=[['dashboard','home','Vue d’ensemble'],['revision','book','Banque d’entraînement'],['history','chart','Mes résultats'],['errors','flag','Mes erreurs fréquentes'],['guide','info','Mode d’emploi']];
   app.innerHTML=`<aside class="sidebar ${inExam?'exam-sidebar':''}"><a href="#" class="brand" data-action="nav:dashboard" aria-label="CAP 70, accueil"><span class="brand-mark">${icon('check',24)}</span><span>CAP<span class="brand-number">70</span><small>PRÉPARATION TECHNIQUE PCA</small></span></a><div class="nav-caption">VOTRE ESPACE CANDIDAT</div><nav aria-label="Navigation principale">${items.map(([id,ic,label])=>button(icon(ic)+`<span>${label}</span>`,`nav:${id}`,`nav-link ${page===id?'active':''}`,page===id?'aria-current="page"':'')).join('')}</nav><div class="sidebar-bottom"><div class="goal-mini"><span>VOTRE CAP</span><strong>70<span>%</span></strong><p>46 bonnes réponses sur 65</p><div class="mini-line"><i></i></div></div><p class="local-note">${icon('shield',17)} Progression sur cet appareil</p><span class="offline-indicator">${offlineReady?'● Disponible hors ligne':'○ Préparation hors ligne…'}</span></div></aside>
   <div class="workspace ${inExam?'exam-workspace':''}"><header class="topbar"><div class="breadcrumb">Espace de préparation <span>/</span> ${inExam?'Simulation en cours':page==='dashboard'?'Tableau de bord':page==='revision'?'Entraînement':page==='errors'?'Journal des erreurs':page==='guide'?'Mode d’emploi':'Résultats'}</div><div class="topbar-right"><span class="status-dot"></span><span>Parcours de 5 jours</span><span class="avatar" aria-label="Espace personnel">C</span></div></header><main id="main" tabindex="-1">${storageWarning?'<div class="alert urgent" role="alert">La sauvegarde locale est indisponible. Exportez régulièrement vos résultats.</div>':''}${technicalStorageWarning?'<div class="alert urgent" role="alert">La sauvegarde des examens techniques est indisponible ou illisible. Vos réponses ne sont pas garanties après fermeture.</div>':''}${content}</main><footer>CAP 70 <span>Outil indépendant d’entraînement. Questions originales, non officielles et non confidentielles.</span></footer></div>`;
+  tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
 }
 function heading(eyebrow,title,desc,action='') { return `<div class="page-heading"><div><p class="eyebrow">${eyebrow}</p><h1>${title}</h1><p class="muted">${desc}</p></div>${action}</div>`; }
 function dashboard() {
@@ -39,7 +82,7 @@ function dashboard() {
   `<section class="hero"><div><span class="hero-tag"><span></span> UN PARCOURS. UN CAP CLAIR.</span><h2>5 jours pour vous préparer.<br><em>70 % pour atteindre le cap.</em></h2><p>Programme de préparation technique estimatif fondé sur les exigences du poste et les textes applicables.<br class="desktop-br"> PCA de l’ONATRA · Questions originales non officielles.</p><div class="hero-actions">${button((progress.active?'Reprendre ma simulation':'Commencer ma préparation')+' '+icon('arrow'),progress.active?'resume':`instructions:${next}`,'btn light')}<span>${icon('clock',17)} Une heure par jour</span></div></div><div class="hero-visual" aria-label="Objectif : 46 bonnes réponses sur 65"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-gauge"><strong>70<small>%</small></strong><span>VOTRE OBJECTIF</span></div><div class="gauge-caption">46 <span>/ 65 bonnes réponses</span></div></div></section>
   <section class="stat-grid" aria-label="Votre progression"><article class="stat-card"><span>Simulations terminées</span><strong>${done}<small>/ 5</small></strong><div class="stat-steps">${[1,2,3,4,5].map(d=>`<i class="${latest(d)?'filled':''}"></i>`).join('')}</div></article><article class="stat-card"><span>Meilleur score</span><strong>${stats.best===null?'—':fmt(stats.best)}<small>${stats.best===null?'':'%'}</small></strong><p>${stats.best===null?'Votre premier résultat vous attend':'Votre meilleure performance'}</p></article><article class="stat-card"><span>Moyenne générale</span><strong>${stats.average===null?'—':fmt(stats.average)}<small>${stats.average===null?'':'%'}</small></strong><p>${progress.attempts.length?`${progress.attempts.length} tentative(s) enregistrée(s)`:'Une progression qui se construit'}</p></article><article class="stat-card accent-stat"><span>À renforcer en priorité</span><strong class="stat-subject">${stats.weakest?CATEGORIES[stats.weakest].label:'À découvrir'}</strong><p>${stats.weakest?'Votre matière au taux le plus faible':'Commencez par une simulation'}</p></article></section>
   <section class="section"><div class="section-heading"><div><h2>Vos cinq simulations</h2><p>Cinq examens distincts. La même exigence, chaque jour.</p></div><span class="section-meta">325 questions sans répétition</span></div><div class="day-grid">${dayCards}</div></section>
-  <section class="section technical-section"><div class="section-heading"><div><p class="eyebrow">NOUVEAU FORMAT D’ENTRAÎNEMENT</p><h2>EXAMENS TECHNIQUES — FORMAT CONFIRMÉ PCA ONATRA</h2><p>Trois simulations pédagogiques de 50 questions en 60 minutes. La répartition et la pondération sont des choix d’entraînement, pas des informations officielles.</p></div><span class="section-meta">3 examens · 150 questions nouvelles</span></div><div class="technical-cards">${technicalExams.map((exam,index)=>{const attempt=technicalProgress.attempts.find(item=>item.examId===exam.id),active=technicalProgress.active?.examId===exam.id;return `<article class="panel technical-card"><div class="day-top"><span class="day-number">0${index+1}</span><span class="pill ${active?'blue':attempt?'success':''}">${active?'En cours':attempt?'Terminée':'Disponible'}</span></div><h3>${h(exam.title)}</h3><p>50 questions : 40 QCM et 10 réponses courtes.</p><div class="day-details"><span>${icon('clock',15)}60 min</span><span>100 points</span></div>${button(active?'Reprendre':attempt?'Voir les résultats':'Consulter les consignes',active?'technical-resume':attempt?`technical-result:${attempt.id}`:`technical-instructions:${exam.id}`,`btn ${active?'primary':'outline'} full`)}${attempt||active?button('Réinitialiser la tentative','technical-reset:'+exam.id,'text-button retry'):''}</article>`;}).join('')}</div></section>
+  ${companyCards(technicalExams,technicalProgress)}
   <div class="dashboard-lower"><section class="panel"><div class="section-heading"><h2>Vos repères par matière</h2><span class="subtle-label">Toutes vos tentatives</span></div>${catBars}</section><section class="panel revision-callout"><span class="outlined-icon">${icon('book',26)}</span><span class="eyebrow">PROGRESSER ENTRE DEUX TESTS</span><h2>La bonne réponse,<br>c’est aussi la comprendre.</h2><p>175 questions supplémentaires, des explications immédiates et un entraînement ciblé sur vos erreurs.</p>${button('Explorer la banque '+icon('arrow'),'nav:revision','text-button')}<div class="callout-bottom">500 questions originales <span>·</span> 6 domaines techniques</div></section></div><div class="info-strip">${icon('info',19)}<p><strong>Le seuil exact : 46 bonnes réponses.</strong> 45/65 = 69,23 % ; 46/65 = 70,77 %. Chaque bonne réponse compte.</p></div>`);
 }
 const technicalExam = id => technicalExams.find(exam=>exam.id===id);
@@ -48,7 +91,7 @@ const technicalQuestion = attempt => technicalExam(attempt.examId)?.questions.fi
 function technicalInstructions(id) {
   const exam=technicalExam(id),attempt=technicalProgress.attempts.find(item=>item.examId===id),active=technicalProgress.active;
   if(!exam)return navigate('dashboard');
-  frame(`<div class="narrow">${button('← Retour au tableau de bord','nav:dashboard','text-button back')}${heading('EXAMEN TECHNIQUE · FORMAT PÉDAGOGIQUE',h(exam.title),'Une simulation indépendante, conçue pour travailler les compétences attendues d’un PCA.') }<section class="panel instructions"><div class="instruction-metrics"><div><strong>50</strong><span>questions au total</span></div><div><strong>60</strong><span>minutes</span></div><div><strong>70/100</strong><span>objectif pédagogique</span></div></div><p><strong>Composition simulée :</strong> 40 QCM à réponse unique (1 point chacun) et 10 réponses courtes (6 points chacune). Les questions peuvent inclure une justification obligatoire. La répartition par section et le barème sont pédagogiques et ne constituent pas une information officielle.</p><p>Les réponses écrites sont conservées et restent modifiables jusqu’à l’envoi. Elles ne sont pas notées automatiquement : vous pourrez vous auto-évaluer à l’aide du corrigé après la simulation.</p><p>Le chronomètre commence au lancement, continue après fermeture ou rafraîchissement et entraîne l’envoi automatique après 60 minutes. Une tentative initiale est conservée jusqu’à réinitialisation volontaire.</p><div class="exam-distribution">${Object.entries(TECHNICAL_SECTIONS).map(([section,detail])=>`<span><b>${section}</b> ${detail.label} · ${detail.points} pts</span>`).join('')}</div>${active?`<div class="alert notice">Une simulation technique est déjà en cours. Reprenez-la avant d’en démarrer une autre.</div>${button('Reprendre la simulation en cours','technical-resume','btn primary full')}`:attempt?`${button('Voir ma copie et la correction',`technical-result:${attempt.id}`,'btn outline full')}`:button('COMMENCER LE TEST '+icon('arrow'),`technical-start:${id}`,'btn primary full')}<p class="center muted small">Questions originales, non officielles et non confidentielles. Les cas financiers sont fictifs.</p></section></div>`);
+  frame(`<div class="narrow">${button('← Retour au tableau de bord','nav:dashboard','text-button back')}${heading('EXAMEN TECHNIQUE · FORMAT PÉDAGOGIQUE',h(exam.title),'Une simulation indépendante, conçue pour travailler les compétences attendues d’un PCA.') }<section class="panel instructions"><div class="instruction-metrics"><div><strong>50</strong><span>questions au total</span></div><div><strong>60</strong><span>minutes</span></div><div><strong>70/100</strong><span>objectif pédagogique</span></div></div><p><strong>Composition simulée :</strong> 40 QCM à réponse unique (1 point chacun) et 10 réponses courtes (6 points chacune). Les questions peuvent inclure une justification obligatoire. La répartition par section et le barème sont pédagogiques et ne constituent pas une information officielle.</p><p>Les réponses écrites sont conservées et restent modifiables jusqu’à l’envoi. Elles seront évaluées par IA sur 10, puis converties sur 6 points (note × 0,6). En cas de panne, la copie reste sauvegardée et la correction peut être relancée.</p><p>Le chronomètre commence au lancement, continue après fermeture ou rafraîchissement et entraîne l’envoi automatique après 60 minutes. Une tentative initiale est conservée jusqu’à réinitialisation volontaire.</p><div class="exam-distribution">${Object.entries(TECHNICAL_SECTIONS).map(([section,detail])=>`<span><b>${section}</b> ${detail.label} · ${detail.points} pts</span>`).join('')}</div>${active?`<div class="alert notice">Une simulation technique est déjà en cours. Reprenez-la avant d’en démarrer une autre.</div>${button('Reprendre la simulation en cours','technical-resume','btn primary full')}`:attempt?`${button('Voir ma copie et la correction',`technical-result:${attempt.id}`,'btn outline full')}`:button('COMMENCER LE TEST '+icon('arrow'),`technical-start:${id}`,'btn primary full')}<p class="center muted small">Questions originales, non officielles et non confidentielles. Les cas financiers sont fictifs.</p></section></div>`);
 }
 function technicalExamScreen() {
   const attempt=activeTechnicalAttempt();
@@ -63,12 +106,19 @@ function technicalExamScreen() {
   updateTimer(remaining(attempt.deadline));
 }
 function technicalResults() {
-  const attempt=technicalProgress.attempts.find(item=>item.id===technicalResultId)||technicalProgress.attempts.find(item=>item.examId===technicalResultId);
+  const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId);
   if(!attempt)return navigate('dashboard');
-  const exam=technicalExam(attempt.examId),score=scoreTechnicalAttempt(exam,attempt),short=exam.questions.filter(question=>question.type==='short');
-  const written=short.map((question,index)=>`<article class="panel written-review"><div class="correction-top"><span>RÉPONSE COURTE ${index+1} · ${question.section} — ${TECHNICAL_SECTIONS[question.section].label}</span><span class="pill ${Number.isInteger(attempt.ratings?.[question.id])?'success':'warning'}">${Number.isInteger(attempt.ratings?.[question.id])?`${attempt.ratings[question.id]}/6`:'À auto-évaluer'}</span></div><h2>${h(question.prompt)}</h2><h3>Votre réponse</h3><div class="candidate-answer">${h(attempt.written[question.id]||'Aucune réponse rédigée.')}</div><h3>Réponse modèle</h3><p>${h(question.modelAnswer)}</p><h3>Éléments essentiels attendus</h3><ul>${question.essentials.map(item=>`<li>${h(item)}</li>`).join('')}</ul><div class="rubric"><strong>Grille de comparaison (0 à 6 points)</strong><p>Évaluez la pertinence, la compréhension du rôle du PCA, le raisonnement, la priorisation, la précision et la clarté.</p>${question.essentials.slice(0,6).map((item,i)=>`<span>${i+1}. ${h(item)}</span>`).join('')}</div><label class="rating-label" for="rating-${question.id}">Votre auto-évaluation</label><select id="rating-${question.id}" data-technical-rating="${question.id}"><option value="">Choisir une note sur 6</option>${Array.from({length:7},(_,value)=>`<option value="${value}" ${attempt.ratings?.[question.id]===value?'selected':''}>${value} / 6</option>`).join('')}</select><p class="small muted">Cette auto-évaluation est pédagogique et ne constitue pas une correction officielle du jury.</p></article>`).join('');
-  const multiple=exam.questions.filter(question=>question.type==='mcq').map(question=>`<details class="panel technical-mcq-review"><summary>${h(question.prompt)} — ${attempt.answers[question.id]===question.answer?'Bonne réponse':'À revoir'}</summary><p><strong>Réponse attendue :</strong> ${'ABCD'[question.answer]}. ${h(question.choices[question.answer])}</p><p>${h(question.explanation)}</p>${question.commentRequired?`<p><strong>Votre commentaire :</strong> ${h(attempt.comments[question.id]||'Aucun commentaire.')}</p>`:''}</details>`).join('');
-  frame(heading('RÉSULTAT PROVISOIRE',h(exam.title),attempt.automatic?'Envoi automatique à l’expiration du temps.':'Copie conservée sur cet appareil.',button('← Tableau de bord','nav:dashboard','btn outline'))+`<section class="result-hero"><div><span class="pill blue">SCORE QCM : ${score.mcqScore}/40</span><h2>Réponses courtes : ${score.allRated?'auto-évaluées':'en attente d’auto-évaluation'}</h2><p>Note finale indicative : ${score.allRated?`${score.total}/100 — ${score.passed?'70/100 ou plus : objectif atteint.':'Moins de 70/100 : objectif non atteint.'}`:'non encore calculée'}.</p><p>La note écrite dépend de votre comparaison au corrigé et ne remplace pas l’évaluation du jury.</p></div></section><section class="section"><div class="section-heading"><div><h2>CORRECTION DES RÉPONSES ÉCRITES</h2><p>Comparez vos réponses au modèle puis attribuez-vous une note de 0 à 6 pour chacune.</p></div><span class="section-meta">${short.filter(question=>Number.isInteger(attempt.ratings?.[question.id])).length}/10 notées</span></div><div class="written-review-list">${written}</div></section><section class="section"><div class="section-heading"><h2>Correction des QCM</h2><span class="section-meta">Score calculé automatiquement · 1 point par bonne réponse</span></div><div class="technical-mcq-list">${multiple}</div></section>${button('Réinitialiser cette tentative','technical-reset:'+exam.id,'btn danger')}`);
+  const exam=technicalExam(attempt.examId);
+  frame(heading('RÉSULTAT PÉDAGOGIQUE',h(exam.title),'Copie et évaluations conservées sur cet appareil.',button('← Tableau de bord','nav:dashboard','btn outline'))+resultsHTML(exam,attempt,{busy:aiBusy.has(attempt.id),error:aiErrors.get(attempt.id)||attempt.aiError})+button('Réinitialiser cette tentative','technical-reset:'+exam.id,'btn danger'));
+}
+function technicalRevision(company,selectedIds=null){
+  const questions=technicalExams.filter(e=>(e.company||'ONATRA')===company).flatMap(exam=>exam.questions.filter(q=>!selectedIds||selectedIds.has(q.id)).map(question=>({exam,question})));
+  if(!questions.length){toast('Aucune question à réviser pour cette sélection.');return;}
+  technicalReview={company,questions,index:0,...questions[0]};tutorCompany=company;tutorQuestionId=null;page='technical-revision';render();
+}
+function technicalRevisionScreen(){
+  const r=technicalReview,q=r.question;
+  frame(heading('RÉVISION '+r.company,h(r.exam.title),'Révision libre, sans chronomètre.',button('Retour','nav:dashboard','btn outline'))+`<section class="panel narrow"><p>${r.index+1}/${r.questions.length} · ${q.section} — ${TECHNICAL_SECTIONS[q.section].label}</p><h2>${h(q.prompt)}</h2>${q.type==='mcq'?`<ol type="A">${q.choices.map(c=>`<li>${h(c)}</li>`).join('')}</ol>`:''}<details data-revision-correction><summary>Consulter la correction</summary><p>${h(q.type==='mcq'?q.choices[q.answer]+' — '+q.explanation:q.modelAnswer)}</p></details><div class="question-actions">${button('Précédente','technical-review-prev','btn outline',r.index?'':'disabled')}${button('Suivante','technical-review-next','btn primary',r.index<r.questions.length-1?'':'disabled')}</div></section>`);
 }
 function submitTechnical(automatic=false) {
   const attempt=activeTechnicalAttempt();
@@ -78,6 +128,7 @@ function submitTechnical(automatic=false) {
   const completed={...attempt,submittedAt:Math.min(Date.now(),attempt.deadline),automatic,result:scoreTechnicalAttempt(exam,attempt)};
   technicalProgress.attempts=[...technicalProgress.attempts.filter(item=>item.examId!==attempt.examId),completed];
   technicalProgress.active=null;stopTechnicalClock?.();stopTechnicalClock=null;persistTechnical();technicalResultId=completed.id;page='technical-results';render();window.scrollTo(0,0);
+  void evaluateTechnical(completed.id);
   if(automatic)toast('Le temps est écoulé. Votre copie a été envoyée automatiquement.');
 }
 function armTechnicalClock() {
@@ -167,7 +218,7 @@ function history() {
   const chart=attempts.length?`<section class="panel"><h2>Dernier score par journée</h2><div class="progress-chart" aria-label="Scores par jour">${[1,2,3,4,5].map(d=>{const a=latest(d);return `<div class="chart-column"><div class="chart-value">${a?fmt(a.result.percentage)+' %':'—'}</div><div class="chart-track"><div class="chart-goal" aria-hidden="true"></div><div class="chart-bar ${a?.result.passed?'bg-good':''}" style="height:${a?.result.percentage||0}%"></div></div><span>Jour ${d}</span></div>`;}).join('')}</div><p class="small muted">Ligne repère : 70 % · Meilleure matière : ${CATEGORIES[stats.strongest]?.label||'—'} · À renforcer : ${CATEGORIES[stats.weakest]?.label||'—'}</p></section>`:'';
   const rows=attempts.map(a=>`<tr><td>Jour ${a.day}</td><td>${new Date(a.submittedAt).toLocaleString('fr-FR')}</td><td><strong>${fmt(a.result.percentage)} %</strong> <span class="muted">${a.result.correct}/65</span></td><td><span class="pill ${a.result.passed?'success':'warning'}">${a.result.passed?'Réussi':'À renforcer'}</span></td><td>${button('Consulter →',`result:${a.id}`,'text-button')}</td></tr>`).join('');
   const table=attempts.length?`<div class="table-scroll panel"><table><caption>Historique complet des tentatives</caption><thead><tr><th>Simulation</th><th>Date</th><th>Score</th><th>Résultat</th><th>Détail</th></tr></thead><tbody>${rows}</tbody></table></div>`:`<section class="panel empty-state">${icon('chart',40)}<h2>Votre courbe commence au jour 1.</h2><p>Une première simulation vous donnera des repères précis.</p>${button('Préparer ma première simulation','instructions:1','btn primary')}</section>`;
-  frame(heading('SUIVI DE PROGRESSION','Vos résultats, dans la durée.','Toutes les tentatives sont conservées. Le tableau de bord affiche la dernière par jour.',button(icon('download')+' Exporter ma progression','export','btn outline'))+chart+table);
+  frame(heading('SUIVI DE PROGRESSION','Vos résultats, dans la durée.','Toutes les tentatives sont conservées. Le tableau de bord affiche la dernière par jour.',button(icon('download')+' Exporter ma progression','export','btn outline'))+technicalHistory(technicalExams,technicalProgress)+chart+table);
 }
 function errors() {
   const stats=analysis(), sorted=Object.entries(stats.errors).sort((a,b)=>b[1]-a[1]);
@@ -177,6 +228,7 @@ function guide() {
   frame(heading('MODE D’EMPLOI','Un cadre simple pour progresser.','Un test par jour, puis une révision attentive de vos erreurs.')+`<div class="guide-grid"><section class="panel prose"><h2>Votre parcours en cinq jours</h2><p>Prévoyez une heure au calme pour chaque simulation. Relisez ensuite la correction et consacrez 15 à 30 minutes à vos points faibles. Les cinq journées restent accessibles librement.</p><h2>Le score exact</h2><p>Chaque question vaut un point. Ni les erreurs ni les absences de réponse ne retirent de points. Le seuil se calcule sur les 65 questions : <strong>46/65 = 70,77 %</strong>, contre 45/65 = 69,23 %. L’affichage est arrondi, la décision de réussite ne l’est pas.</p><h2>Gérer votre temps</h2><p>Vous disposez en moyenne d’environ 55 secondes par question. Passez les questions longues et marquez-les à revoir. Le chronomètre continue en arrière-plan, après fermeture ou rechargement. Au retour, une tentative expirée est envoyée automatiquement.</p><h2>Révision et cas professionnels</h2><p>Les 175 questions de réserve sont distinctes des examens. Les filtres par matière permettent aussi de reprendre les questions d’examen. La banque porte sur la gouvernance, l’ONATRA et la logistique, la finance, les risques, les calculs de gestion et la communication. Les situations et chiffres d’exercice sont fictifs.</p><h2>Un entraînement indépendant</h2><p>Programme de préparation technique estimatif fondé sur les exigences du poste et les textes applicables. Nous ne disposons pas d’un syllabus officiel : la répartition proposée est pédagogique. Ce simulateur n’est affilié à aucun recruteur et ne reproduit aucune question officielle ou confidentielle. Atteindre le seuil ici ne garantit pas le résultat d’un véritable concours.</p></section><aside><section class="panel prose"><h2>Vos données restent ici</h2><p>Réponses, chronomètre et résultats sont sauvegardés dans ce navigateur, sur cet appareil. Effacer les données du navigateur efface cette progression. Un autre appareil ne la reçoit pas automatiquement.</p><p>Une fois la préparation hors ligne terminée, l’application et les figures restent disponibles sans connexion. Gardez la même adresse locale pour retrouver la sauvegarde.</p>${button(icon('download')+' Exporter ma progression','export','btn outline full')}<p class="small muted">L’export JSON contient vos réponses et vos résultats.</p></section><section class="panel danger-zone"><h2>Repartir de zéro</h2><p>Supprime toutes les tentatives et la simulation en cours sur cet appareil.</p>${button('Réinitialiser toute ma progression','reset','btn danger full')}</section></aside></div>`);
 }
 function render() {
+  if(page==='technical-revision'){technicalRevisionScreen();return;}
   if(page==='dashboard')dashboard();else if(page==='instructions')instructions();else if(page==='exam')showExam();else if(page==='technical-instructions')technicalInstructions(technicalResultId);else if(page==='technical-exam')technicalExamScreen();else if(page==='technical-results')technicalResults();else if(page==='results')results();else if(page==='correction')correction();else if(page==='revision')revision();else if(page==='history')history();else if(page==='errors')errors();else guide();
 }
 function confirmDialog(title,message,confirmLabel,onConfirm) {
@@ -195,14 +247,34 @@ app.addEventListener('click',async e=>{
   // Never accept edits after the saved deadline, even if an inactive tab delayed its timer.
   if(progress.active&&remaining(progress.active.deadline)===0){submit(true);return;}
   if(technicalProgress.active&&remaining(technicalProgress.active.deadline)===0){submitTechnical(true);return;}
-  if(action==='nav')return navigate(value);
+  if(action==='technical-evaluate'){void evaluateTechnical(value);return;}
+  if(action==='tutor-summary'||action==='technical-review-weak'){
+    const attempt=technicalProgress.attempts.find(a=>a.id===value);if(!attempt)return;
+    const exam=technicalExam(attempt.examId),score=scoreTechnicalAttempt(exam,attempt);
+    if(action==='technical-review-weak'){
+      const sections=Object.entries(score.sections).filter(([,s])=>s.score!==null&&s.score/s.max<.7).map(([key])=>key);
+      const ids=new Set(exam.questions.filter(q=>sections.includes(q.section)||(q.type==='mcq'&&attempt.answers[q.id]!==q.answer)||(q.type==='short'&&attempt.evaluations?.[q.id]?.scoreOutOf10<7)).map(q=>q.id));
+      technicalRevision(exam.company||'ONATRA',ids.size?ids:new Set(exam.questions.map(q=>q.id)));return;
+    }
+    tutorQuestionId=null;technicalResultId=attempt.id;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
+    tutor.ask(`Analyse mon résultat ${exam.company||'ONATRA'} : QCM ${score.mcqScore}/40 ; écrit ${score.writtenScore??'en attente'}/60 ; total ${score.total??'provisoire'}/100. Sections : ${Object.entries(score.sections).map(([key,s])=>`${key} ${s.score??'en attente'}/${s.max}`).join(', ')}. Donne deux points forts et trois priorités concrètes de révision, en signalant les notes encore manquantes.`);return;
+  }
+  if(action==='read-correction'){
+    const attempt=technicalProgress.attempts.find(a=>a.id===technicalResultId)||technicalProgress.attempts.find(a=>a.examId===technicalResultId),evaluation=attempt?.evaluations?.[value];if(!evaluation)return;
+    tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));
+    tutor.speak(`Note : ${evaluation.scoreOutOf10} sur 10. ${evaluation.appreciation}. Ce qui est correct : ${evaluation.correctElements.join('. ')}. Ce qui manque : ${[...evaluation.missingElements,...evaluation.errors].join('. ')}. Réponse améliorée : ${evaluation.improvedAnswer}. À retenir : ${evaluation.keyTakeaway}`);return;
+  }
+  if(action==='tutor-question'){tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));tutor.open();return;}
+  if(action==='technical-review'){technicalRevision(value);return;}
+  if(action==='technical-review-next'||action==='technical-review-prev'){technicalReview.index+=action==='technical-review-next'?1:-1;Object.assign(technicalReview,technicalReview.questions[technicalReview.index]);tutorQuestionId=null;technicalRevisionScreen();return;}
+  if(action==='nav'){tutorQuestionId=null;technicalReview=null;technicalResultId=null;return navigate(value);}
   if(action==='instructions'){selectedDay=Number(value);page='instructions';render();window.scrollTo(0,0);}
   else if(action==='start'){
     if(technicalProgress.active){page='technical-exam';render();armTechnicalClock();return;}
     const disk=loadProgress().data;if(disk.active){progress=disk;armClock();page='exam';render();return;}
     if(progress.active)return;progress.active=createAttempt(selectedDay,plan.exams[selectedDay-1].ids);persist();page='exam';render();armClock();
   }else if(action==='resume'){if(progress.active){page='exam';render();}}
-  else if(action==='technical-instructions'){technicalResultId=value;page='technical-instructions';render();window.scrollTo(0,0);}
+  else if(action==='technical-instructions'){tutorQuestionId=null;tutorCompany=technicalExam(value).company||'ONATRA';technicalResultId=value;page='technical-instructions';render();window.scrollTo(0,0);}
   else if(action==='technical-start'){
     if(progress.active){toast('Reprenez ou terminez d’abord la simulation en cours.');return;}
     const active=activeTechnicalAttempt();
@@ -210,7 +282,7 @@ app.addEventListener('click',async e=>{
     if(technicalProgress.attempts.some(item=>item.examId===value)){toast('Cette simulation a déjà une tentative. Réinitialisez-la volontairement pour recommencer.');return;}
     technicalProgress.active=createTechnicalAttempt(technicalExam(value));persistTechnical();page='technical-exam';render();armTechnicalClock();
   }else if(action==='technical-resume'){if(activeTechnicalAttempt()){page='technical-exam';render();armTechnicalClock();}}
-  else if(action==='technical-result'){technicalResultId=value;page='technical-results';render();window.scrollTo(0,0);}
+  else if(action==='technical-result'){tutorQuestionId=null;technicalResultId=value;page='technical-results';render();window.scrollTo(0,0);}
   else if(action==='technical-jump'||action==='technical-next'||action==='technical-previous'){
     const attempt=activeTechnicalAttempt();if(!attempt)return;
     attempt.index=action==='technical-jump'?Number(value):Math.max(0,Math.min(49,attempt.index+(action==='technical-next'?1:-1)));

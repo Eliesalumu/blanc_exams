@@ -1,4 +1,6 @@
-# CAP 70 — Préparation technique PCA / ONATRA
+# CAP 70 — Préparation technique PCA / ONATRA, SNCC et RVA
+
+Mise à niveau du 5 novembre 2026 : backend OpenAI sécurisé, correction sémantique sur 10, assistant pédagogique contextuel, trois examens SNCC et cinq examens RVA (400 questions ajoutées). Voir le [guide OpenAI/Render](docs/OPENAI_RENDER.md) et le [rapport de vérification](docs/VERIFICATION_IA_SNCC_RVA.md).
 
 Programme de préparation technique estimatif fondé sur les exigences du poste et les textes applicables. Aucun syllabus officiel détaillé n’est fourni. Les 500 questions originales ne sont ni officielles ni confidentielles. Les cas et données de gestion sont fictifs.
 
@@ -9,14 +11,15 @@ L’interface, les écrans et l’architecture de l’application sont conservé
 Prérequis : Node.js 20 ou ultérieur ; version 24 déclarée pour Render.
 
 ```sh
+npm ci
 npm run dev
 ```
 
-Ouvrir http://127.0.0.1:4173. Aucune dépendance n’est nécessaire pour utiliser le simulateur localement. Ne pas ouvrir index.html directement : les modules et JSON nécessitent HTTP.
+Ouvrir http://127.0.0.1:4173. Cette commande lance maintenant le site **et son API IA** dans un seul processus. La clé doit être présente dans l’environnement du terminal, sans être affichée. Ne pas ouvrir `index.html` directement : les modules et JSON nécessitent HTTP. Le Live Server de VS Code sur 5500/5501 peut aussi afficher le site, mais `npm run dev` doit rester lancé pour fournir l’API.
 
 ## Banque active
 
-La page d’accueil conserve les cinq examens d’origine et leur historique, et ajoute une rubrique indépendante de trois simulations techniques PCA ONATRA. Chaque simulation propose 50 questions (40 QCM et 10 réponses écrites) en 60 minutes. La répartition A–F et la valeur de 1 point par QCM / 6 points par réponse écrite sont des choix pédagogiques, pas un barème officiel détaillé. Les réponses écrites restent en attente jusqu’à leur auto-évaluation guidée ; aucune note de jury n’est simulée. La tentative technique est sauvegardée séparément de l’ancien parcours et peut être recommencée après une réinitialisation confirmée.
+La page d’accueil conserve les cinq examens généraux, leur historique et les trois simulations ONATRA, et ajoute trois simulations SNCC et cinq RVA. Chaque examen technique propose 50 questions (40 QCM et 10 réponses écrites) en 60 minutes. Les QCM valent 40 points ; chaque écrit est évalué par IA sur 10 puis converti sur 6 points (× 0,6), pour un total sur 100 et un seuil de 70. Les commentaires sont notés séparément hors total. Les copies restent sauvegardées si l’IA est indisponible et la correction peut être relancée. Les anciennes auto-évaluations sont conservées. Cette pondération est pédagogique et ne représente pas une note du jury officiel.
 
 Un rappel informatif d’échéance est présenté hors examen. La date configurable se trouve dans `src/config.js` (`SUBSCRIPTION_EXPIRY`, initialement `2026-11-06`) ; aucun paiement ni changement d’accès n’est effectué.
 
@@ -81,7 +84,7 @@ npm run audit:browser
 
 Les tests de navigateur utilisent Microsoft Edge à son emplacement Windows standard. Sinon, installer Chromium avec `npx playwright install chromium`. L’audit complémentaire attend un serveur à http://127.0.0.1:4173 et vérifie aussi clavier, plein écran, console, images et largeurs de 320 à 1440 pixels. Il utilise un profil de test distinct de celui de l’utilisateur.
 
-`npm run build:render` valide la banque, exécute les tests Node et produit `dist/`. Le [Blueprint Render](render.yaml) et le [guide de déploiement](docs/DEPLOIEMENT_RENDER.md) restent applicables : `npm ci && npm run build:render`, répertoire publié `dist/`, site statique HTTPS sans clé API ni base de données. Aucun déploiement public n’est effectué automatiquement.
+`npm run build:render` valide les banques, exécute les tests Node et produit `dist/`. Le [Blueprint Render](render.yaml) conserve le Static Site et ajoute un backend Node séparé pour OpenAI. La clé appartient uniquement au backend. Voir le [guide de configuration](docs/OPENAI_RENDER.md). Aucun déploiement public n’est effectué automatiquement.
 
 ## Architecture conservée
 

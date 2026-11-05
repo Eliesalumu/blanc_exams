@@ -1,6 +1,6 @@
 # Déployer CAP 70 sur Render
 
-Le projet est prêt pour un **Static Site** Render. Le fichier `render.yaml` décrit le service et ses en-têtes HTTP. Aucun serveur Node permanent, base de données, clé API ou secret n’est nécessaire.
+Le frontend reste un **Static Site** Render. La mise à niveau IA ajoute un Web Service Node séparé. Suivre [le guide complet OpenAI et Render](OPENAI_RENDER.md) pour le backend, les secrets et l’URL publique. Les étapes ci-dessous décrivent le frontend historique ; aucun secret ne doit y être ajouté.
 
 ## Déploiement avec le Blueprint
 

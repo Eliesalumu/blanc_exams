@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "api": "node server/index.js",
+    "test:live": "node scripts/smoke-openai.js",
     "dev": "node scripts/serve.js",
     "start": "node scripts/serve.js",
     "build": "node scripts/build.js",
@@ -13,12 +15,16 @@
     "bank": "node scripts/compile-bank.js",
     "test:browser": "playwright test",
     "audit:browser": "node scripts/audit-browser.js",
-    "build:render": "npm run validate && npm run validate:technical && npm test && npm run build"
+    "build:render": "npm run validate && npm run validate:technical && npm test && npm run build && node scripts/check-static-security.js"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1"
+  },
+  "dependencies": {
+    "openai": "^7.51.0",
+    "zod": "^4.6.7"
   }
 }

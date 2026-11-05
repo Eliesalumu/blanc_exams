@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { TECHNICAL_SECTIONS, validateTechnicalExams } from '../src/technicalExam.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const exams = JSON.parse(fs.readFileSync(path.join(root, 'data/technical-exams.json'), 'utf8'));
+const exams = {exams:['technical-exams.json','company-exams.json'].flatMap(name=>JSON.parse(fs.readFileSync(path.join(root,'data',name),'utf8')).exams)};
+for(const [company,count] of [['ONATRA',3],['SNCC',3],['RVA',5]])if(exams.exams.filter(e=>(e.company||'ONATRA')===company).length!==count)throw new Error('Nombre de simulations incorrect : '+company);
 const oldBank = JSON.parse(fs.readFileSync(path.join(root, 'data/questions.json'), 'utf8'));
 const normalize = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const oldPrompts = new Set(oldBank.map(question => normalize(question.question)));

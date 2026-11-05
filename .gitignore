@@ -3,3 +3,6 @@ dist/
 test-results/
 artifacts/
 .browser-profile/
+.env
+.env.*
+!.env.example

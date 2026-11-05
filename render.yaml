@@ -5,6 +5,9 @@ services:
     runtime: static
     buildCommand: npm ci && npm run build:render
     staticPublishPath: ./dist
+    envVars:
+      - key: PUBLIC_API_URL
+        value: https://cap70-pedagogie-api.onrender.com
     headers:
       - path: /*
         name: X-Content-Type-Options
@@ -17,7 +20,37 @@ services:
         value: no-referrer
       - path: /*
         name: Content-Security-Policy
-        value: "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+        value: "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://cap70-pedagogie-api.onrender.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
       - path: /*
         name: Cache-Control
         value: no-cache
+  - type: web
+    name: cap70-pedagogie-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm run api
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini
+      - key: OPENAI_TTS_MODEL
+        value: gpt-4o-mini-tts
+      - key: OPENAI_TTS_VOICE
+        value: marin
+      - key: AI_AUDIO_DAILY_LIMIT
+        value: '50'
+      - key: ALLOWED_ORIGINS
+        value: https://cap70-aptitude.onrender.com
+      - key: AI_DAILY_CALL_LIMIT
+        value: '500'
+      - key: AI_SESSION_DAILY_LIMIT
+        value: '80'
+      - key: AI_IP_DAILY_LIMIT
+        value: '120'
+      - key: AI_MAX_CONCURRENT
+        value: '3'

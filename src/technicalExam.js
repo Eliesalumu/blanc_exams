@@ -5,16 +5,16 @@ export const TECHNICAL_SECTIONS = {
   C: { label: 'Finance, pilotage et supervision', points: 20, mcq: 8, short: 2 },
   D: { label: 'Cœur du mandat', points: 25, mcq: 7, short: 3 },
   E: { label: 'Rôle dans la gouvernance', points: 15, mcq: 3, short: 2 },
-  F: { label: 'Mise en situation réelle', points: 10, mcq: 4, short: 1 },
+  F: { label: 'Mise en situation', points: 10, mcq: 4, short: 1 },
 };
 export const TECHNICAL_DURATION = 60 * 60 * 1000;
 const questionKey = text => String(text).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 export function validateTechnicalExams(data) {
-  if (!Array.isArray(data?.exams) || data.exams.length !== 3) throw new Error('Les trois simulations techniques sont requises.');
+  if (!Array.isArray(data?.exams) || !data.exams.length) throw new Error('Les simulations techniques sont requises.');
   const ids = new Set(), prompts = new Set();
   for (const [index, exam] of data.exams.entries()) {
-    if (exam.id !== `technical-${index + 1}` || exam.questions?.length !== 50 || exam.durationMinutes !== 60) throw new Error(`Structure invalide pour la simulation technique ${index + 1}.`);
+    if (!/^(technical-[123]|sncc-[123]|rva-[1-5])$/.test(exam.id) || data.exams.filter(e=>e.id===exam.id).length!==1 || exam.questions?.length !== 50 || exam.durationMinutes !== 60) throw new Error(`Structure invalide pour la simulation technique ${index + 1}.`);
     const sections = Object.fromEntries(Object.keys(TECHNICAL_SECTIONS).map(section => [section, { mcq: 0, short: 0, points: 0 }]));
     const answerPositions = [0, 0, 0, 0];
     let commentCount = 0;
@@ -48,9 +48,12 @@ export function validateTechnicalExams(data) {
 }
 
 export async function loadTechnicalExams() {
-  const response = await fetch('./data/technical-exams.json');
-  if (!response.ok) throw new Error('Les simulations techniques sont indisponibles.');
-  return validateTechnicalExams(await response.json());
+  const groups=await Promise.all(['technical-exams.json','company-exams.json'].map(async name=>{
+    const response=await fetch('./data/'+name);
+    if(!response.ok)throw new Error('Les simulations techniques sont indisponibles.');
+    return (await response.json()).exams;
+  }));
+  return validateTechnicalExams({exams:groups.flat()});
 }
 
 export function emptyTechnicalProgress() {
@@ -64,10 +67,10 @@ export function loadTechnicalProgress(storage = globalThis.localStorage) {
     if (!Array.isArray(saved.attempts)) throw new Error('Sauvegarde invalide');
     const attempt = saved.active;
     if (attempt) {
-      if (!/^technical-[123]$/.test(attempt.examId) || !Array.isArray(attempt.questionIds) || attempt.questionIds.length !== 50 || !Number.isFinite(attempt.startedAt) || !Number.isFinite(attempt.deadline) || attempt.deadline - attempt.startedAt !== TECHNICAL_DURATION || !Number.isInteger(attempt.index) || attempt.index < 0 || attempt.index > 49 || !attempt.answers || !attempt.written || !attempt.comments || !Array.isArray(attempt.marked)) throw new Error('Tentative technique invalide');
+      if (!/^(technical-[123]|sncc-[123]|rva-[1-5])$/.test(attempt.examId) || !Array.isArray(attempt.questionIds) || attempt.questionIds.length !== 50 || !Number.isFinite(attempt.startedAt) || !Number.isFinite(attempt.deadline) || attempt.deadline - attempt.startedAt !== TECHNICAL_DURATION || !Number.isInteger(attempt.index) || attempt.index < 0 || attempt.index > 49 || !attempt.answers || !attempt.written || !attempt.comments || !Array.isArray(attempt.marked)) throw new Error('Tentative technique invalide');
       if (Object.entries(attempt.answers).some(([id, answer]) => !attempt.questionIds.includes(id) || !Number.isInteger(answer) || answer < 0 || answer > 3) || [attempt.written, attempt.comments].some(values => Object.keys(values).some(id => !attempt.questionIds.includes(id) || typeof values[id] !== 'string')) || attempt.marked.some(id => !attempt.questionIds.includes(id))) throw new Error('Réponse sauvegardée invalide');
     }
-    if (!saved.attempts.every(item => item && /^technical-[123]$/.test(item.examId) && Array.isArray(item.questionIds) && item.questionIds.length === 50 && item.result)) throw new Error('Résultat technique invalide');
+    if (!saved.attempts.every(item => item && /^(technical-[123]|sncc-[123]|rva-[1-5])$/.test(item.examId) && Array.isArray(item.questionIds) && item.questionIds.length === 50 && item.result)) throw new Error('Résultat technique invalide');
     return { data: saved, warning: null };
   } catch {
     return { data: emptyTechnicalProgress(), warning: 'La sauvegarde des simulations techniques est indisponible ou illisible.' };
@@ -88,7 +91,7 @@ export function createTechnicalAttempt(exam, now = Date.now()) {
     id: globalThis.crypto?.randomUUID?.() ?? `${exam.id}-${now}`,
     examId: exam.id,
     questionIds: exam.questions.map(question => question.id),
-    answers: {}, written: {}, comments: {}, ratings: {}, marked: [], index: 0,
+    answers: {}, written: {}, comments: {}, ratings: {}, evaluations: {}, commentEvaluations: {}, marked: [], index: 0,
     startedAt: now, deadline: now + TECHNICAL_DURATION,
   };
 }
@@ -98,9 +101,17 @@ export function scoreTechnicalAttempt(exam, attempt) {
   const mcq = questions.filter(question => question.type === 'mcq');
   const short = questions.filter(question => question.type === 'short');
   const mcqScore = mcq.reduce((score, question) => score + (attempt.answers[question.id] === question.answer ? 1 : 0), 0);
-  const allRated = short.every(question => Number.isInteger(attempt.ratings?.[question.id]) && attempt.ratings[question.id] >= 0 && attempt.ratings[question.id] <= 6);
-  const writtenScore = allRated ? short.reduce((score, question) => score + attempt.ratings[question.id], 0) : null;
-  return { mcqScore, mcqTotal: 40, writtenScore, writtenTotal: 60, total: allRated ? mcqScore + writtenScore : null, passed: allRated ? mcqScore + writtenScore >= 70 : null, allRated };
+  const validAI = q => { const n=attempt.evaluations?.[q.id]?.scoreOutOf10;return Number.isFinite(n)&&n>=0&&n<=10&&Number.isInteger(n*2); };
+  // Older self-assessments stay readable. New attempts use exclusively AI grades.
+  const legacy = !Object.hasOwn(attempt,'evaluations');
+  const points = q => validAI(q)?attempt.evaluations[q.id].scoreOutOf10*0.6:legacy&&Number.isInteger(attempt.ratings?.[q.id])&&attempt.ratings[q.id]>=0&&attempt.ratings[q.id]<=6?attempt.ratings[q.id]:null;
+  const allRated=short.every(q=>points(q)!==null),round=n=>Math.round(n*100)/100;
+  const writtenScore=allRated?round(short.reduce((s,q)=>s+points(q),0)):null;
+  const sections=Object.fromEntries(Object.entries(TECHNICAL_SECTIONS).map(([key,spec])=>{
+    const items=questions.filter(q=>q.section===key),complete=items.filter(q=>q.type==='short').every(q=>points(q)!==null);
+    return [key,{max:spec.points,mcq:items.filter(q=>q.type==='mcq').reduce((s,q)=>s+(attempt.answers[q.id]===q.answer?1:0),0),score:complete?round(items.reduce((s,q)=>s+(q.type==='short'?points(q):attempt.answers[q.id]===q.answer?1:0),0)):null}];
+  }));
+  return { mcqScore, mcqTotal: 40, writtenScore, writtenTotal: 60, total:allRated?round(mcqScore+writtenScore):null, passed:allRated?round(mcqScore+writtenScore)>=70:null, allRated,sections,graded:short.filter(validAI).length,legacy };
 }
 
 export function missingRequiredComments(exam, attempt) {

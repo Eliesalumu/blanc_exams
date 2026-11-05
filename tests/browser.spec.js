@@ -3,6 +3,12 @@ import fs from 'node:fs';
 const bank=JSON.parse(fs.readFileSync(new URL('../data/questions.json',import.meta.url))),byId=new Map(bank.map(q=>[q.id,q]));
 const key='cap70.progress.v1';
 const technicalKey='cap70.technical.v1';
+test.beforeEach(async({page})=>{
+  await page.route('**/api/**',async route=>{
+    const session=route.request().url().endsWith('/api/session');
+    await route.fulfill({status:session?200:503,contentType:'application/json',headers:{'Access-Control-Allow-Origin':'http://127.0.0.1:4173'},body:JSON.stringify(session?{token:'mock-session'}:{error:'Correction IA momentanément indisponible. Vos réponses sont sauvegardées.'})});
+  });
+});
 const dismissReminder=async page=>{await expect(page.locator('#main h1')).toBeVisible({timeout:30000});const close=page.locator('#modal[open] [data-action="subscription-close"]');if(await close.isVisible())await close.click();};
 const openApp=async page=>{await page.goto('/');await dismissReminder(page);};
 const start=async page=>{await openApp(page);await page.locator('[data-action="instructions:1"]').first().click();await page.locator('[data-action="start"]').click();await expect(page.locator('#timer')).toHaveText(/^(60:00|59:\d{2})$/);};
@@ -53,7 +59,7 @@ test('Réponse longue et commentaire sont autosauvegardés et les commentaires b
  await page.locator('[data-action="technical-finish"]').click();
  await expect(page.locator('dialog[open]')).toContainText('Terminer votre simulation');
 });
-test('Note écrite provisoire et correction auto-évaluée restent distinctes du jury',async({page})=>{
+test('Note écrite provisoire, panne et relance IA restent distinctes du jury',async({page})=>{
  await page.clock.install({time:new Date('2026-11-04T12:00:00Z')});await page.goto('/');
  await page.locator('[data-action="subscription-close"]').click();
  await page.locator('[data-action="technical-instructions:technical-1"]').click();
@@ -68,9 +74,9 @@ test('Note écrite provisoire et correction auto-évaluée restent distinctes du
  await expect(page.locator('#main')).toContainText('SCORE QCM : 40/40');
  await expect(page.locator('#main')).toContainText('non encore calculée');
  await expect(page.locator('.written-review')).toHaveCount(10);
- const firstShort=exam.questions.find(question=>question.type==='short');
- await page.locator(`#rating-${firstShort.id}`).selectOption('3');
- await expect(page.locator('.section-meta').first()).toContainText('1/10 notées');
+ await expect(page.locator('.ai-status')).toContainText('momentanément indisponible');
+ await expect(page.locator('[data-action^="technical-evaluate:"]')).toBeVisible();
+ await expect(page.locator('.section-meta').first()).toContainText('0/10 notées');
  await expect(page.locator('#main')).toContainText('non encore calculée');
  await expect(page.locator('#main')).toContainText('ne constitue pas une correction officielle');
 });

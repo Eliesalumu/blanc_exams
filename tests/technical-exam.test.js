@@ -62,6 +62,7 @@ test('Autosauvegarde, reprise exacte et échéance immuable de soixante minutes'
 
 test('Résultat provisoire et note pédagogique sur cent après auto-évaluation', () => {
   const exam = exams[0], attempt = createTechnicalAttempt(exam, 0);
+  delete attempt.evaluations; // Historical attempts used manual ratings on six.
   for (const question of exam.questions.filter(item => item.type === 'mcq')) attempt.answers[question.id] = question.answer;
   let score = scoreTechnicalAttempt(exam, attempt);
   assert.equal(score.mcqScore, 40);
