@@ -1,6 +1,7 @@
 // Editorial source. Each line is a distinct question followed by its validated
 // choice and three distractors. Choices are rotated for balanced answer positions.
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import {buildRvaDgExams} from './rva-dg-bank.js';
 import {applyReviewedOptions} from './apply-reviewed-options.js';
 const sections=['A','B','C','D','E','F'],mcqCounts=[9,9,8,7,3,4],shortCounts=[1,1,2,3,2,1];
@@ -199,5 +200,8 @@ const exams=packs.map(({company,n,mcq,written})=>{
 exams.push(...buildRvaDgExams());
 const reviewPath=new URL('../data/reviewed-technical-options.json',import.meta.url);
 if(fs.existsSync(reviewPath))applyReviewedOptions(exams,JSON.parse(fs.readFileSync(reviewPath,'utf8')));
-fs.writeFileSync(new URL('../data/company-exams.json',import.meta.url),JSON.stringify({exams},null,2)+'\n');
+const companyFile = new URL('../data/company-exams.json', import.meta.url);
+const existing = fs.existsSync(companyFile) ? JSON.parse(fs.readFileSync(companyFile, 'utf8')) : {};
+fs.writeFileSync(companyFile, JSON.stringify({exams, ...(existing.premiumLevels ? {premiumLevels: existing.premiumLevels} : {})}, null, 2)+'\n');
+execFileSync(process.execPath, [new URL('./refine-company-qcm.js', import.meta.url).pathname], {stdio: 'inherit'});
 console.log(`${exams.length} examens et ${exams.flatMap(e=>e.questions).length} questions écrits.`);

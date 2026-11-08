@@ -4,8 +4,15 @@ import { fileURLToPath } from 'node:url';
 import { TECHNICAL_SECTIONS, validateTechnicalExams } from '../src/technicalExam.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const exams = {exams:['technical-exams.json','company-exams.json'].flatMap(name=>JSON.parse(fs.readFileSync(path.join(root,'data',name),'utf8')).exams)};
-for(const [company,count] of [['ONATRA',3],['SNCC',3],['RVA',5]])if(exams.exams.filter(e=>(e.company||'ONATRA')===company).length!==count)throw new Error('Nombre de simulations incorrect : '+company);
+const loaded=['technical-exams.json','company-exams.json'].map(name=>JSON.parse(fs.readFileSync(path.join(root,'data',name),'utf8')));
+const exams = {exams:loaded.flatMap(group=>[...(group.exams||[]),...(group.premiumLevels||[])])};
+for(const [company,count] of [['ONATRA',3],['SNCC',3],['RVA',5]])if(exams.exams.filter(e=>(e.company||'ONATRA')===company&&!e.format).length!==count)throw new Error('Nombre de simulations incorrect : '+company);
+const premium=exams.exams.filter(exam=>exam.format==='premium-practice');
+if(premium.length!==2||premium.some(exam=>exam.questions.length!==15)||new Set(premium.map(exam=>exam.company)).size!==2)throw new Error('Niveaux premium SNCC/RVA incomplets.');
+for (const exam of exams.exams.filter(exam=>['SNCC','RVA'].includes(exam.company) && !exam.format)) {
+  const mcq = exam.questions.filter(question=>question.type==='mcq');
+  if (mcq.filter(question=>question.refonteVersion==='statuts-techniques-v1' && question.originalPrompt).length !== 30) throw new Error(`Refonte 75 % incomplète : ${exam.id}.`);
+}
 const oldBank = JSON.parse(fs.readFileSync(path.join(root, 'data/questions.json'), 'utf8'));
 const normalize = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 const oldPrompts = new Set(oldBank.map(question => normalize(question.question)));

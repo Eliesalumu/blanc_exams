@@ -1,6 +1,7 @@
 // New DG bank. Hand-authored scenarios: first assertion is the validated answer.
 // Each assertion has its own rationale after '~'. Rotations balance answer keys.
 import {refineDgChallenges} from './rva-dg-challenges.js';
+import {refineCompanyQcm} from './refine-company-qcm.js';
 export const RVA_DG_VERSION='rva-dg-2026-11-v1';
 const sources=[
   {name:'AAC/RDC — prestataires ATS, AIS, CNS et MET',url:'https://aacrdc.org/website/navigation-aerienne'},
@@ -281,7 +282,7 @@ Cas fictif : service rétabli, fatigue élevée, cause commune non corrigée. Qu
 ]);
 
 export function buildRvaDgExams(){
-  return packs.map(({n,title,mcq,written})=>{
+  const exams = packs.map(({n,title,mcq,written})=>{
     const lines=mcq.trim().split('\n').filter(Boolean);
     if(lines.length!==40||written.length!==10)throw new Error(`RVA DG ${n}: ${lines.length} QCM / ${written.length} écrits`);
     const positions=Array.from({length:40},(_,i)=>i%4);let seed=2309+n*71;
@@ -310,4 +311,5 @@ export function buildRvaDgExams(){
     return {id:`rva-${n}`,company:'RVA',role:'DG',bankVersion:RVA_DG_VERSION,title:`RVA DG — ${n}. ${title}`,durationMinutes:60,
       notice:'Préparation au poste de directeur général. Questions originales, non officielles. Tous les cas, chiffres, budgets, incidents et hypothèses sont fictifs. Les sources institutionnelles documentent le contexte ; les décisions de gestion proposées sont pédagogiques et ne constituent pas des procédures opérationnelles aéronautiques.',questions};
   });
+  return refineCompanyQcm({exams}).exams;
 }

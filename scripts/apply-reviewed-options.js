@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
 const root=new URL('../',import.meta.url);
-export const sourceHash=q=>createHash('sha256').update(JSON.stringify([q.id,q.prompt,q.answer])).digest('hex');
+export const sourceHash=q=>createHash('sha256').update(JSON.stringify([q.id,q.originalPrompt||q.prompt,q.answer])).digest('hex');
 export function applyReviewedOptions(exams,review) {
   for(const exam of exams)for(const q of exam.questions){
     const revised=review.questions[q.id];
@@ -11,7 +11,7 @@ export function applyReviewedOptions(exams,review) {
     if(revised.sourceHash!==sourceHash(q)||revised.answer!==q.answer)throw new Error(`Révision incompatible : ${q.id}`);
     if(!revised.localApproval&&(revised.editorialIssues?.length||!revised.blindReview||revised.blindReview.chosenIndex!==q.answer||revised.blindReview.otherDefensibleIndices.length||revised.blindReview.weakDistractorIndices.length||revised.blindReview.issue))throw new Error(`Révision à résoudre : ${q.id}`);
     q.choices=revised.choices;
-    q.explanation=revised.explanation;
+    if(!q.refonteVersion)q.explanation=revised.explanation;
     q.choiceExplanations=revised.choiceExplanations;
     q.discriminant=revised.discriminant;
   }

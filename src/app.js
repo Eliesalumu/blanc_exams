@@ -122,7 +122,7 @@ function technicalRevision(company,selectedIds=null){
 }
 function technicalRevisionScreen(){
   const r=technicalReview,q=r.question;
-  frame(heading('RÉVISION '+r.company,h(r.exam.title),'Révision libre, sans chronomètre.',button('Retour','nav:dashboard','btn outline'))+`<section class="panel narrow"><p>${r.index+1}/${r.questions.length} · ${q.section} — ${TECHNICAL_SECTIONS[q.section].label}</p><h2>${h(q.prompt)}</h2>${q.type==='mcq'?`<ol type="A">${q.choices.map(c=>`<li>${h(c)}</li>`).join('')}</ol>`:''}<details data-revision-correction><summary>Consulter la correction</summary><p>${h(q.type==='mcq'?q.choices[q.answer]+' — '+q.explanation:q.modelAnswer)}</p>${q.type==='mcq'?choiceRationaleHTML(q):''}</details><div class="question-actions">${button('Précédente','technical-review-prev','btn outline',r.index?'':'disabled')}${button('Suivante','technical-review-next','btn primary',r.index<r.questions.length-1?'':'disabled')}</div></section>`);
+  frame(heading('RÉVISION '+r.company,h(r.exam.title),'Révision libre, sans chronomètre.',button('Retour','nav:dashboard','btn outline'))+`<section class="panel narrow"><p>${r.index+1}/${r.questions.length} · ${h(q.domain||`${q.section} — ${TECHNICAL_SECTIONS[q.section].label}`)}</p><h2>${h(q.prompt)}</h2>${q.type==='mcq'?`<ol type="A">${q.choices.map(c=>`<li>${h(c)}</li>`).join('')}</ol>`:''}<details data-revision-correction><summary>Consulter la correction</summary><p>${h(q.type==='mcq'?q.choices[q.answer]+' — '+q.explanation:q.modelAnswer)}</p>${q.type==='mcq'?choiceRationaleHTML(q):''}</details><div class="question-actions">${button('Précédente','technical-review-prev','btn outline',r.index?'':'disabled')}${button('Suivante','technical-review-next','btn primary',r.index<r.questions.length-1?'':'disabled')}</div></section>`);
 }
 function submitTechnical(automatic=false) {
   const attempt=activeTechnicalAttempt();
@@ -277,6 +277,7 @@ app.addEventListener('click',async e=>{
   }
   if(action==='tutor-question'){tutorQuestionId=value;tutor.update(tutorAllowed({active:progress?.active,technicalActive:technicalProgress?.active}));tutor.open();return;}
   if(action==='technical-review'){technicalRevision(value);return;}
+  if(action==='technical-review-level'){const level=technicalExams.find(exam=>exam.id===value&&exam.format==='premium-practice');if(level)technicalRevision(level.company,new Set(level.questions.map(question=>question.id)));return;}
   if(action==='technical-review-next'||action==='technical-review-prev'){technicalReview.index+=action==='technical-review-next'?1:-1;Object.assign(technicalReview,technicalReview.questions[technicalReview.index]);tutorQuestionId=null;technicalRevisionScreen();return;}
   if(action==='nav'){tutorQuestionId=null;technicalReview=null;technicalResultId=null;return navigate(value);}
   if(action==='instructions'){selectedDay=Number(value);page='instructions';render();window.scrollTo(0,0);}

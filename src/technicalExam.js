@@ -32,7 +32,8 @@ export function validateTechnicalExams(data) {
   if (!Array.isArray(data?.exams) || !data.exams.length) throw new Error('Les simulations techniques sont requises.');
   const ids = new Set(), prompts = new Set();
   for (const [index, exam] of data.exams.entries()) {
-    if (!/^(technical-[123]|sncc-[123]|rva-[1-5])$/.test(exam.id) || data.exams.filter(e=>e.id===exam.id).length!==1 || exam.questions?.length !== 50 || exam.durationMinutes !== 60) throw new Error(`Structure invalide pour la simulation technique ${index + 1}.`);
+    const practice = exam.format === 'premium-practice';
+    if (!/^(technical-[123]|sncc-[123]|rva-[1-5]|sncc-expert-transversal|rva-aviation-securite)$/.test(exam.id) || data.exams.filter(e=>e.id===exam.id).length!==1 || !Array.isArray(exam.questions) || (practice ? exam.questions.length !== 15 : exam.questions.length !== 50) || (!practice && exam.durationMinutes !== 60)) throw new Error(`Structure invalide pour la simulation technique ${index + 1}.`);
     const sections = Object.fromEntries(Object.keys(TECHNICAL_SECTIONS).map(section => [section, { mcq: 0, short: 0, points: 0 }]));
     const answerPositions = [0, 0, 0, 0];
     let commentCount = 0;
@@ -48,11 +49,15 @@ export function validateTechnicalExams(data) {
         if (question.commentRequired) commentCount++;
         sections[question.section].mcq++;
         sections[question.section].points++;
-      } else if (question.type === 'short') {
+      } else if (question.type === 'short' && !practice) {
         if (!question.instruction || !question.modelAnswer || !Array.isArray(question.essentials) || question.essentials.length < 3 || ![[60, 100], [100, 180]].some(([minimum, maximum]) => question.minWords === minimum && question.maxWords === maximum) || question.commentRequired) throw new Error(`Réponse courte invalide : ${question.id}`);
         sections[question.section].short++;
         sections[question.section].points += 6;
       } else throw new Error(`Type de question invalide : ${question.id}`);
+    }
+    if (practice) {
+      if (exam.questions.some(question => question.type !== 'mcq') || !exam.notice || !exam.title || !exam.company) throw new Error(`Niveau de révision invalide : ${exam.id}.`);
+      continue;
     }
     if (answerPositions.some(count => count !== 10)) throw new Error(`Réponses QCM déséquilibrées dans ${exam.id}.`);
     if (commentCount < 3 || commentCount > 12) throw new Error(`Nombre inadéquat de QCM à commenter dans ${exam.id}.`);
@@ -71,7 +76,7 @@ export async function loadTechnicalExams() {
     if(!response.ok)throw new Error('Les simulations techniques sont indisponibles.');
     return response.json();
   }));
-  return validateTechnicalExams({exams:groups.flatMap(group=>group.exams)}).map(exam=>({...exam,previousOptions:previous.questions,previousExam:previous.exams?.[exam.id]}));
+  return validateTechnicalExams({exams:groups.flatMap(group=>[...(group.exams||[]),...(group.premiumLevels||[])])}).map(exam=>({...exam,previousOptions:previous.questions,previousExam:previous.exams?.[exam.id]}));
 }
 
 export function emptyTechnicalProgress() {

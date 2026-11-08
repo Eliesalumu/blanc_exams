@@ -20,8 +20,8 @@ const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex
 test('Révision : énoncés, réponses courtes, ONATRA 1, cinq modules et clés inchangés',()=>{
   const protectedData=exams.map(e=>({...e,questions:e.questions.map(q=>{
     if(!baseline.scope.includes(e.id)||q.type!=='mcq')return q;
-    const {choices,explanation,choiceExplanations,discriminant,...rest}=q;
-    return rest;
+    const {choices,explanation,choiceExplanations,discriminant,originalPrompt,refonteVersion,...rest}=q;
+    return {...rest,prompt:originalPrompt||rest.prompt};
   })}));
   assert.equal(hash(protectedData),baseline.protectedContentHash);
   assert.equal(hash(read('data/questions.json')),baseline.legacyGeneralHash);
